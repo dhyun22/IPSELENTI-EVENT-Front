@@ -1,12 +1,97 @@
+/*header*/
+
 .header {
-    height: 80%;
-    background: blue;
+    width: 100%;
+    height: 22vh;
+    text-align: center;
+    background-color: blue;
+    align-items: center;
+    position: relative;
 }
 
+.headerContainer {
+    width: 100%;
+    display: flex;
+}
+
+.logoContainer {
+    width: 100%;
+    height: 20%;
+}
+
+.logo {
+    width: 25%;
+    height: 80%;
+    margin-top: 1vh;
+    cursor: pointer;
+}
+
+.myPageButton {
+    position: absolute;
+    right: 10%;
+    top: 5%;
+    background-color: green;
+    width: 10%;
+    height: 16%;
+    cursor: pointer;
+}
+
+.myPage {
+    position: absolute;
+    font-size: 20px;
+    top: 20%;
+    left: 25%;
+}
+
+.searchBarContainer {
+    margin-top: 4%;
+    display: flex;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.searchBar {
+    width: 80%;
+    height: 4vh;
+    border-radius: 6px 0px 0px 6px;
+}
+
+.searchButton {
+    position: absolute;
+    width: 10%;
+    height: 18%;
+    background-color: grey;
+    right: 9%;
+    margin-top: 0.7%;
+    align-items: center;
+    cursor: pointer;
+}
+
+.search {
+    position: absolute;
+    font-size: 20px;
+    top: 20%;
+    left: 25%;
+}
+
+
+
+.banner {
+    width: 76%;
+    height: 6vh;
+    margin-top: 20px;
+    margin-left: 12%;
+    background-color: grey;
+    border-radius: 6px;
+}
+
+/*wiki*/
 .body {
     display: flex;
-    height: 500px;
-    background: grey;
+    width: 100%;;
+    height: 78vh;
+    background-color: grey;
+    position: relative;
     justify-content: center;
 }
 
@@ -14,12 +99,11 @@
     color: white;
     background-color: red;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 18px;
     border-radius: 6px;
     border:none;
-    text-align: center;
-    width: 200px;
-    height: 50px;
+    width: 60%;
+    height: 12%;
     cursor: pointer;
     padding: 5px;
     position: absolute;
@@ -29,9 +113,220 @@
 .index {
     border: solid black 2px;
     padding: 5px;
-    width: 20%;
+    width: 60%;
 }
 
 a {
     text-decoration-line: none;
+}
+
+.completedButton {
+    color: white;
+    background-color: red;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 6px;
+    border:none;
+    width: 60%;
+    height: 8%;
+    cursor: pointer;
+    padding: 5px;
+    position: absolute;
+    bottom: 10%;
+    right: 20%;
+}
+
+.signUpCompleted{
+    color: white;
+    background-color: red;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 6px;
+    border:none;
+    width: 60%;
+    height: 6%;
+    cursor: pointer;
+    padding: 5px;
+    position: absolute;
+    bottom: 15%;
+    right: 20%;
+}
+
+.backToHome {
+    color: white;
+    background-color: rgb(163, 159, 159);
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 6px;
+    border:none;
+    width: 60%;
+    height: 6%;
+    cursor: pointer;
+    padding: 5px;
+    position: absolute;
+    bottom: 7%;
+    right: 20%;
+}
+/* 로그인 */
+.auth{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-img{
+    margin-left: 3px;
+    margin-top: 190px;
+    margin-bottom: 20px;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 20px;
+
+    
+}
+.login-form input{
+    width: 260px;
+    height: 33px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    margin: 7px;
+}
+.login-form #btn{
+    border-radius: 30px;
+    height: 40px;
+    background-color: #c72f44;
+    color: white;
+    border: none;
+    margin-bottom: 10px;
+
+}
+.login-form span{
+    font-size: 11px;
+    margin-left: 45px;
+}
+/* 회원가입 */
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    padding-top: 100px;
+}
+.info img{
+    margin-bottom: 30px;
+}
+.signup-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.signup-content{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.signup-content input{
+    display: block;
+    height: 20px;
+    width: 200px;
+    margin: 5px 0px;
+    padding: 5px;
+    font-size: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+h4{
+    margin: 7px 0px;
+}
+.content-in span{
+    display: block;
+    font-size: 7px;
+    padding: 8px 0px;
+}
+.phone-auth input{
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: none;
+    border-radius: 6px 0px 0px 6px;
+    margin-bottom: 5px;
+
+}
+.hidden{
+    display: none;
+}
+
+.phone-auth button{
+    background-color: #d63d43;
+    border: none;
+    height: 32px;
+    width: 60px;
+    color: white;
+    border-radius: 0px 6px 6px 0px;
+
+}
+#signup-btn{
+    width: 150px;
+    height: 40px;
+    margin-top: 50px;
+    margin-left: 35px;
+    border: none;
+    background-color: #c72f44;
+    color: white;
+    border-radius: 6px;
+
+}
+
+
+
+
+/* 이 아래 코드가 웹 모바일 감지 위해서 넣은 코드 */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+  }
+  /* 모바일 뷰를 하나의 container로 잡고 제한 */
+  .mobile-view {
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+  }
+
+  /* 이 부분부터 먼저추가!!!!!!!!!!!!!! */
+ /* 이는 우리가 보는 화면이 768이상으로 커졌을때 기존의 mobileview를 아래 코드로 반영 즉 아래가 웹뷰일때의 css*/
+  @media (min-width: 768px) {
+    .mobile-view {
+      display: flex;
+      position: relative;
+      width: 375px;
+      height: 667px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+
+/* 위키 관련 페이지 */
+.editResult {
+    white-space:pre-wrap;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20%;
+}
+
+
+.temporaryLogo {
+
 }
