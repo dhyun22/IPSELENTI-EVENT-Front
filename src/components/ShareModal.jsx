@@ -1,7 +1,7 @@
 import Modal from 'react-modal';
 import { useState } from 'react';
 
-function AddLineupModal() {
+function ShareModal() {
     const [modalOpen, setModalOpen] = useState(false);
     return (
         <div>
@@ -14,4 +14,4 @@ function AddLineupModal() {
     );
 };
 
-export default AddLineupModal;
+export default ShareModal;
