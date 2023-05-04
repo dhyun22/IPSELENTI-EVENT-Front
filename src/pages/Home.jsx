@@ -2,15 +2,20 @@ import Header from "../components/Header";
 
 function Home() {
     return (
-        <div>
-            <div className="header">
-                <Header />
+
+        <div className="container">
+            <div className="mobile-view">
+                    <div className="headerContainer"> 
+                        <Header />
+                    </div>
+                    <div className="body">
+                        <button className="redbutton">입실렌티 함께하기!</button>
+                    </div>
             </div>
-            <div className="body">
-                <button className="redbutton">입실렌티 함께하기!</button>
-            </div>
-            
         </div>
+
+
+        
         
     );
 }
