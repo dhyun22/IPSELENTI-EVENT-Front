@@ -1,14 +1,38 @@
 import Header from '../components/Header';
-import React, {useRef} from 'react';
 import { Link } from "react-router-dom/dist";
+import React, {useRef, useEffect} from 'react';
+import WikiBox from '../components/Wiki/WikiBox';
 
 
+const data = [
+    {
+        'index' : '0',
+        'header': '일번항목',
+        'content': "Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddNostrum, optio, assumenda distinctio autem, nimi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt! " 
+    },
+    {
+        'index' : '1',
+        'header': '이번항목',
+        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddddddddddostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+    },
+    {
+        'index' : '2',
+        'header': '삼번항목',
+        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elitddddddddddddddddddddddddddddd. ostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+    },
+    {
+        'index': '3',
+        'header': '사번항목',
+        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ostrum, odfkjs;fjskdjf;alskdjf;sdlkfj;alsdkjf;alskdjf;laksdjf;laskdjfaffffffffffffffffffffffffffptio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+    },
+]
 
 function WikiViewer() {
     const myDivRef = useRef([]);
 
     function handleClick(index) {
         myDivRef.current[index].scrollIntoView({ behavior: "smooth" });
+        
     }
     
     return (
@@ -18,62 +42,33 @@ function WikiViewer() {
                     <Header />
                 </div>
                 <div className='wiki-viewer'>
-                    
-                    <div>
-                        <h1>입실렌티</h1>
-                        <div className='wiki-index'>
-                            <ul onClick={() => handleClick(0)}>1. 일번항목</ul>
-                            <ul onClick={() => handleClick(1)}>2. 이번항목</ul>
-                            <ul onClick={() => handleClick(2)}>3. 삼번항목</ul>
-                            <ul onClick={() => handleClick(3)}>4. 사번항목</ul>
-                        </div>
-                        <div className="wiki-contents content-one" ref={(el) => (myDivRef.current[0] = el)}>
-                            <details>
-                                <summary>1. 일번항목 <Link to="/wiki_edit">편집</Link><hr></hr></summary>
-                                <div className="contents-content" >
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Nostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! 
-                                    Similique aperiam eaque aliquam ratione earum, unde sunt!
-                                </div>
-                            </details>
-                        </div>
-                        <div className="wiki-contents content-three" ref={(el) => (myDivRef.current[1] = el)}>
-                            <details>
-                                <summary>2. 이번항목 <Link to="/wiki_edit">편집</Link><hr></hr></summary>
-                                <div className="contents-content">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Nostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! 
-                                    Similique aperiam eaque aliquam ratione earum, unde sunt!
-                                </div>
-                            </details>
-                        </div>
-                        <div className="wiki-contents content-three" ref={(el) => (myDivRef.current[2] = el)}>
-                            <details>
-                                <summary>3. 삼번항목 <Link to="/wiki_edit">편집</Link><hr></hr></summary>
-                                <div className="contents-content">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Nostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! 
-                                    Similique aperiam eaque aliquam ratione earum, unde sunt!
-                                </div>
-                            </details>
-                        </div>
-                        <div className="wiki-contents content-three" ref={(el) => (myDivRef.current[3] = el)}>
-                            <details>
-                                <summary>4. 사번항목 <Link to="/wiki_edit">편집</Link><hr></hr></summary>
-                                <div className="contents-content">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Nostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! 
-                                    Similique aperiam eaque aliquam ratione earum, unde sunt!
-                                </div>
-                            </details>
-                        </div>
+                    <h1>입실렌티</h1> 
+                    <div className='wiki-index'>
+                        <ol>
+                            {data.map((item) => {
+                                return(
+                                <li onClick={() => handleClick(parseInt(item.index))}>{item.header}</li>
+                                );
+                            })}
+                        </ol>
                     </div>
+                    <div className='wiki-content'>
+                        {data.map((item) => {
+                            return(
+                                <div ref={(el) => (myDivRef.current[parseInt(item.index)] = el)}>
+                                    <WikiBox 
+                                    header={item.header} content={item.content} idx={item.index}
+                                    />
+                                </div>
+                            );
+                        })}
+                    </div>    
                 </div>
             </div>
         </div>
         
 
-    )
+    );
 }
 
 export default WikiViewer;
