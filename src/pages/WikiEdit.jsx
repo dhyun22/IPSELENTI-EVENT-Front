@@ -1,5 +1,10 @@
 function WikiEdit() {
-    return null;
+    return (
+        <div>
+            wiki edit
+        </div>
+
+    );
 }
 
 export default WikiEdit;

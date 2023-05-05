@@ -282,6 +282,25 @@ h4{
     border-radius: 6px;
 
 }
+/* 위키뷰어 */
+.wiki-viewer{
+    padding: 10px;
+}
+.wiki-index{
+    display: flex;
+    flex-direction: column;
+    border: solid black 2px;
+    width: 60%;
+    font-size: 10px;
+}
+.wiki-index ul{
+    cursor: pointer;
+}
+.wiki-contents{
+    margin: 10px 0px;
+    font-size: 12px;
+}
+
 
 
 
