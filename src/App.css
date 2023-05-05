@@ -293,13 +293,16 @@ h4{
     width: 60%;
     font-size: 10px;
 }
-.wiki-index ul{
+.wiki-index ol{
     cursor: pointer;
 }
 .wiki-contents{
     margin: 10px 0px;
     font-size: 12px;
 }
+
+/* 위키 편집기 */
+
 
 
 
