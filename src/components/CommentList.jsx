@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import Comment from './Comment';
 import {FiChevronDown} from 'react-icons/fi'
 

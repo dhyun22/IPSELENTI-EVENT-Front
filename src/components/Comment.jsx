@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import {FcLike} from 'react-icons/fc'
 
-const Comment = ({ comment_id, comment, time, liked }) => {
+const Comment = ({ comment_id, comment_text, time, liked }) => {
   const [likeCount, setLikeCount] = useState(liked);
   const handleLikeClick = () => {
     setLikeCount(likeCount + 1);
@@ -15,7 +15,7 @@ const Comment = ({ comment_id, comment, time, liked }) => {
         <p className="comment_id">{comment_id}</p>
       </div>
       <div className="comment_body">
-        <p className="comment_text">{comment}</p>
+        <p className="comment_text">{comment_text}</p>
       </div>
       <div className='comment_footer'>
         <p className="comment_time">{time}</p>
