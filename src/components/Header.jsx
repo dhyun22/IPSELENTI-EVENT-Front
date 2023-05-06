@@ -2,6 +2,7 @@ import logo from '../img/logo.png';
 import { BsSearch } from 'react-icons/bs';
 import { FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import banner from '../img/banner.png';
 
 function Header() {
     return(
@@ -25,7 +26,7 @@ function Header() {
                 </Link>
             </div>
             <Link to='/lineup_event'>
-                <div className='banner'></div>
+                    <img src={banner} className='banner' alt='banner'/>
             </Link>
         </div>
     );
