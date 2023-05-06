@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../img/logo.png';
-import {BiInfoCircle} from 'react-icons/bi'
+
 import CommentList from '../components/CommentList';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 
@@ -52,9 +52,7 @@ function CommentPage() {
         <div className='comment_head'>
             <h2 className='comment_head_title'>댓글</h2>
             <span className='comment_head_count'>899</span>
-            <div className='comment_head_tools'>
-                <BiInfoCircle />
-            </div>
+            
         </div>
         <div className='comment_writingbox'>
             <form className='comment_form'>

@@ -586,11 +586,7 @@ h4{
   color: #000;
 }
 
-.comment_head_tools{
-  padding-top: 7px;
-  float: right;
-  margin: 0 6px 0 0;
-}
+
 
 .comment_writing_area{
   margin-top: 20px;
@@ -634,6 +630,7 @@ h4{
   border-radius: 4px;
   color: #444;
   float: right; 
+  cursor: pointer;
 }
 .comment_btn:hover{
   color: white;
@@ -650,10 +647,22 @@ h4{
   border-bottom: 1px solid #ccc;
   font-size: 13px;
 }
+
+.comment_header{
+  display :flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .comment_id {
   
   font-weight: bold;
   margin-left: 10px;
+}
+
+.comment_head_tools{
+  padding-top: 7px;
+  float: right;
+  margin: 0 10px 0 0;
 }
 
 .comment_text{
@@ -684,7 +693,7 @@ h4{
   text-align: center;
   background: none;
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   cursor: pointer;
 }
 
@@ -715,6 +724,7 @@ h4{
 .scroll-to-top button:hover {
   background-color: #eaeaea
 }
+
 
 
 /* 여기까지 다현이 css */

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import {FcLike} from 'react-icons/fc'
+import {BsThreeDotsVertical} from 'react-icons/bs'
 
 const Comment = ({ comment_id, comment_text, time, liked }) => {
   const [likeCount, setLikeCount] = useState(liked);
@@ -13,6 +14,9 @@ const Comment = ({ comment_id, comment_text, time, liked }) => {
     <div className="comment">
       <div className="comment_header">
         <p className="comment_id">{comment_id}</p>
+        <div className='comment_head_tools'>
+                <BsThreeDotsVertical />
+        </div>
       </div>
       <div className="comment_body">
         <p className="comment_text">{comment_text}</p>
