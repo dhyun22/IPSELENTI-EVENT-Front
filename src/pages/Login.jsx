@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom/dist";
-import SignUp from "./SignUp";
 import temporaryLogo from '../img/temporaryLogo.png';
 
 function Login() {

@@ -1,11 +1,16 @@
 import Header from '../components/Header';
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom/dist';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 // convertToRaw: editorState 객체가 주어지면 원시 JS 구조로 변환.
-import { EditorState, convertToRaw } from 'draft-js';
+import { EditorState, convertToRaw, ContentState, convertFromRaw } from 'draft-js';
 // convertToRaw로 변환시켜준 원시 JS 구조를 HTML로 변환.
 import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
+import axios from 'axios';
+import traverseHtml from '../components/Wiki/HtmlToWiki';
+import WikiToHtml from "../components/Wiki/WikiToHtml";
 
 
 const editorStyle = {
@@ -38,41 +43,73 @@ function WikiEdit() {
 
     const parser = new DOMParser();
     const parsedHtml = parser.parseFromString(editorToHtml, 'text/html');
-
-    function traverseHtml(node) {
-        switch (node.nodeType) {
-          case Node.ELEMENT_NODE:
-            const tagName = node.tagName.toLowerCase();
-            switch (tagName) {
-              case 'p':
-                return `\\n${traverseChildren(node)}\\n`;
-              case 'strong':
-                return `'''${traverseChildren(node)}'''`;
-              case 'em':
-                return `''${traverseChildren(node)}''`;
-              case 'del':
-                return `--${traverseChildren(node)}--`;              // ... other HTML tags
-              default:
-                return traverseChildren(node);
-            }
-          case Node.TEXT_NODE:
-            return node.textContent.trim();
-          // ... other node types
-          default:
-            return '';
-        }
-      }
-      
-      function traverseChildren(node) {
-        let result = '';
-        for (let childNode of node.childNodes) {
-          result += traverseHtml(childNode);
-        }
-        return result;
-      }
       
     const wikiMarkup = traverseHtml(parsedHtml.body);
-    console.log(wikiMarkup);
+    
+    //const navigate = useNavigate();
+
+    const addWikiEdit = wikiMarkup => {
+        // axios.post('http://49.50.167.168:3000/wiki/contents/', wikiMarku) 
+        //   .then(res => {
+        //     console.log(res.data);
+        //     if (res === 202){
+        //         navigate('/입실렌티');
+        //     }
+        //     //getToDos();
+        //   })
+        //   .catch(error => console.log(error));
+        
+    };
+
+    const [sam, setSam] = useState(null);
+    const [wiki, setWiki] = useState(null);
+    const [html, setHtml] = useState(null);
+
+
+    useEffect(() => {
+        const getWiki = async () => {
+            try{
+                const result = await axios.get('http://49.50.167.168:3000/wiki/contents/5');
+                console.log(result.data);
+                setSam(result.data);
+                setWiki(result.data['title']+'\n'+result.data['content']);
+                //setHtml(WikiToHtml());
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        getWiki();
+        
+    }, []);
+    
+    useEffect(() => {
+        if (wiki) {
+          const contentState = ContentState.createFromText(wiki);
+          const editorState = EditorState.createWithContent(contentState);
+          setEditorState(editorState);
+        }
+      }, [wiki]);
+    
+    // if(wiki) {
+    //     console.log(wiki);
+    //     const originContent = wiki;
+    //     if (originContent) {
+    //         //const { contentBlocks, entityMap } = originContent;
+    //         // https://draftjs.org/docs/api-reference-content-state/#createfromblockarray
+    //         const contentState = ContentState.createFromText(originContent);
+    //         // ContentState를 EditorState기반으로 새 개체를 반환.
+    //         // https://draftjs.org/docs/api-reference-editor-state/#createwithcontent
+    //         const editorState = EditorState.createWithContent(contentState);
+    //         setEditorState(editorState);
+    //     };
+    // }
+    
+    // useEffect(() => {
+        
+    //     // 처음 마운트됬을 때만 실행되야 된다.
+    //     // eslint-disable-next-line
+    // }, []);
     
     return (
         <div className="container">
@@ -103,7 +140,7 @@ function WikiEdit() {
                             onEditorStateChange={onEditorStateChange}
                         />
                     </div>
-                    <button>submit</button>
+                    <button onClick={addWikiEdit}>submit</button>
                     <div
                         // dangerouslySetInnerHTML={{__html: editorToHtml}}
                         

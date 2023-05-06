@@ -7,7 +7,7 @@ function WikiBox (props) {
         <details>
             <summary>{props.header}<Link to="/wiki_edit">편집</Link><hr></hr></summary>
                 <div className="contents-content" >
-                    {props.content}
+                  <div dangerouslySetInnerHTML={{ __html: props.content }} />;
                 </div>
         </details>
     </div>

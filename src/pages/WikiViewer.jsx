@@ -4,6 +4,8 @@ import React, {useRef, useEffect} from 'react';
 import WikiBox from '../components/Wiki/WikiBox';
 
 
+
+
 const data = [
     {
         'index' : '0',
@@ -27,13 +29,16 @@ const data = [
     },
 ]
 
-function WikiViewer() {
+
+
+function WikiViewer(props) {
     const myDivRef = useRef([]);
 
     function handleClick(index) {
         myDivRef.current[index].scrollIntoView({ behavior: "smooth" });
         
     }
+
     
     return (
         <div className='container'>
@@ -57,7 +62,7 @@ function WikiViewer() {
                             return(
                                 <div ref={(el) => (myDivRef.current[parseInt(item.index)] = el)}>
                                     <WikiBox 
-                                    header={item.header} content={item.content} idx={item.index}
+                                    header={item.header} content={props.view} idx={item.index}
                                     />
                                 </div>
                             );

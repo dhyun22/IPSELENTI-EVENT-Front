@@ -12,16 +12,20 @@ import SignUpCompleted from "./pages/SignUpCompleted";
 import WikiEdit from "./pages/WikiEdit";
 import WikiEditCompleted from "./pages/WikiEditCompleted";
 import WikiViewer from "./pages/WikiViewer";
-import { useEffect } from 'react';
+import WikiToHtml from "./components/Wiki/WikiToHtml";
+import { useEffect, useRef } from 'react';
+import axios from 'axios';
+
 
 
 function App() {
+
         return (
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/입실렌티" element={<WikiViewer />} />
-                    <Route path="/wiki_edit" element={<WikiEdit />} />
+                    <Route path="/입실렌티" element={<WikiViewer/>} />
+                    <Route path="/wiki_edit" element={<WikiEdit  />} />
                     <Route path="/wiki_edit_completed" element={<WikiEditCompleted />} />
                     <Route path="/addindex_completed" element={<WikiEditCompleted/>} />
                     <Route path="/signup_completed" element={<SignUpCompleted />} />
