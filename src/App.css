@@ -554,3 +554,77 @@ h4{
 /* 여기까지 다현이 css */
 
 /* modal */
+.lineupModal {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 70%;
+  height: 40%;
+  top: 30%;
+  left: 15%;
+  right: 15%;
+  bottom: 30%;
+  border-radius: 10px;
+  border: solid black 2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.closeContainer {
+  height: 10%;
+  margin-bottom: 3%;
+}
+
+.modalClose {
+  position: absolute;
+  margin-top: 4%;
+  right: 5%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.singerContainer {
+  height: 80%;
+  position: absolute;
+  margin-top: 20%;
+}
+
+h3 {
+  margin-left: 3vw;
+  font-size: 14px;
+  margin-top: 8%;
+  margin-left: 10%;
+}
+
+.singerInput {
+  margin-left: 3vw;
+  width: 75%;
+  height: 8%;
+  border: solid grey 1px;
+  border-radius: 3px;
+  margin-left: 10%;
+}
+
+.reasonInput {
+  margin-left: 3vw;
+  width: 75%;
+  height: 32%;
+  border: solid grey 1px;
+  border-radius: 6px;
+  margin-left: 10%;
+  text-align: left;
+}
+
+.addlineupBtn {
+  margin-top: 10%;
+  color: white;
+  background-color: red;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 6px;
+  border:none;
+  width: 60%;
+  right: 20%;
+  height: 12%;
+  cursor: pointer;
+  padding: 5px;
+}

@@ -6,8 +6,10 @@ import Modal from 'react-modal';
 
 function LineupEvent() {
     return (
-        <div>
-            <AddLineupModal />
+        <div className="container">
+            <div className="mobile-view">
+                <AddLineupModal />
+            </div>
         </div>
     );
 };
