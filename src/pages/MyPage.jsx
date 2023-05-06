@@ -10,7 +10,8 @@ import logo from '../img/logo.png';
 function MyPage() {
   return (
     <div className='container'>
-      <div className='content'>
+    <div className='mobile-view'>
+      <div className='mypage_content'>
         <div className='myPageLogo'>
           <img className='logo' src={logo} alt='logo' />
         </div>
@@ -104,20 +105,9 @@ function MyPage() {
               </li>
             </ul>
           </div>
-          <div className='customer_box' id='customer_box'>
-            <div className="title" id='customer_title'>
-              <h3 className="title_text" id='customer_text'>고객센터</h3>
-            </div>
-          </div>
-
-          <div className='askupagemove_box' id='askupagemove_box'>
-            <div className="title" id='askupagemove_title'>
-              <h3 className="title_text" id='askupagemove_text'>ASKu페이지</h3>
-            </div>
-          </div>
-
         </div>
       </div>
+    </div>
     </div>
   )
 } 
