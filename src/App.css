@@ -649,7 +649,7 @@ h4{
   display: block;
   height: 7px;
   border-radius: 5px;
-  background-color: crimson;
+  background-image: linear-gradient(to right,#631917, crimson);
 }
 
 .celeb_per_text{

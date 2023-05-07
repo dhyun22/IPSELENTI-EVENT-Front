@@ -36,7 +36,7 @@ function LineupEvent() {
                             <div className='info_box'>
                                 <span className='celeb_rank'>1</span>
                                 <div className='thumb'>
-                                    <img id='celeb_thumb' src="https://dimg.donga.com/a/120/120/90/3/carriage/NEWS/content/IDOLPICK/Profile/2021/03/15/20210315090053.jpg" alt="브레이브걸스"/>
+                                    <img id='celeb_thumb' src="https://www.akbobada.com/home/akbobada/archive/akbo/img/202304111337030.jpg" alt='아이브'/>
                                 </div>
                                 <div className='celeb_info'>
                                     <span id='celeb_name'>IVE(아이브)</span>
@@ -58,7 +58,7 @@ function LineupEvent() {
                             <div className='info_box'>
                                 <span className='celeb_rank'>2</span>
                                 <div className='thumb'>
-                                    <img id='celeb_thumb' src="https://dimg.donga.com/a/120/120/90/3/carriage/NEWS/content/IDOLPICK/Profile/2021/03/15/20210315090053.jpg" alt="브레이브걸스"/>
+                                    <img id='celeb_thumb' src="https://www.akbobada.com/home/akbobada/archive/akbo/img/202305021004012.jpg" alt='르세라핌'/>
                                 </div>
                                 <div className='celeb_info'>
                                     <span id='celeb_name'>르세라핌(LE SSERAFIM)</span>
@@ -78,7 +78,7 @@ function LineupEvent() {
                             <div className='info_box'>
                                 <span className='celeb_rank'>3</span>
                                 <div className='thumb'>
-                                    <img id='celeb_thumb' src="https://dimg.donga.com/a/120/120/90/3/carriage/NEWS/content/IDOLPICK/Profile/2021/03/15/20210315090053.jpg" alt="브레이브걸스"/>
+                                    <img id='celeb_thumb' src="https://www.akbobada.com/home/akbobada/archive/akbo/img/202212200942036.jpg" alt='뉴진스'/>
                                 </div>
                                 <div className='celeb_info'>
                                     <span id='celeb_name'>NewJeans</span>
