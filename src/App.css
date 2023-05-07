@@ -546,20 +546,85 @@ h4{
   }
 
 /* 메인페이지 */
+.main_content{
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.main_head, .main_body{
+  position: relative;
+  min-height: 41px;
+  line-height: 41px;
+  border-bottom: 1px solid #c9c6c6;
+  margin-bottom: 20px;
+}
+.main_head_title{
+  display: initial;
+  text-align: left;
+}
 
+.info_box{
+  border-bottom: 1px solid #c9c6c6;
+  position: relative;
+  padding-bottom: 15px;
+}
+.celeb_rank {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
 
+#celeb_thumb {
+  float: left;
+  width: 60px;
+  height: 60px;
+  margin: 0 0 0 30px;
+  border-radius: 20px;
+  box-shadow: 0px 2px 4px 0 rgba(42, 55, 71, 0.15);
+  position: relative;
+}
 
+.celeb_info {
+  display: flex;
+  flex-direction: column;
+}
+
+#celeb_name, #celeb_betrate {
+  display: block;
+  margin-left: 10px;
+}
+#celeb_name{
+  font-size: 16px;
+  font-weight: bold;
+}
+#celeb_betrate{
+  margin-top: 5px;
+  font-size: 10px;
+  color:rgb(122, 122, 122);
+}
+.celeb_footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 10px;
+}
+#celeb_point {
+  margin-top: 20px;
+  margin-right: 10px;
+  font-size: 10px;
+  color: rgb(122, 122, 122);
+}
 
 
 
 
 /* 댓글창 */
 .comment_content{
-  
- 
   padding: 0 20px;
   box-sizing: border-box;
-  
 }
 
 .comment_head{
