@@ -556,7 +556,9 @@ h4{
   line-height: 41px;
   border-bottom: 1px solid #c9c6c6;
   margin-bottom: 20px;
+
 }
+
 .main_head_title{
   display: initial;
   text-align: left;
@@ -566,6 +568,8 @@ h4{
   border-bottom: 1px solid #c9c6c6;
   position: relative;
   padding-bottom: 15px;
+  margin-bottom: 20px;
+
 }
 .celeb_rank {
   position: absolute;
@@ -590,6 +594,7 @@ h4{
 .celeb_info {
   display: flex;
   flex-direction: column;
+  
 }
 
 #celeb_name, #celeb_betrate {
@@ -618,7 +623,41 @@ h4{
   color: rgb(122, 122, 122);
 }
 
+.betting_btn{
+  font-weight: bold;
+}
 
+.celeb_graph{
+  margin : 0 15px 0 15px;
+  display: flex; 
+  align-items: center; 
+}
+
+#celeb_per{
+  clear: both;
+  display: block;
+  width: 100%;
+  height: 7px;
+  background: #eaeaea;
+  border-radius: 5px;
+  margin-top: 5px;
+  
+}
+
+#celeb_bg{
+  
+  display: block;
+  height: 7px;
+  border-radius: 5px;
+  background-color: crimson;
+}
+
+.celeb_per_text{
+  font-size: 12px;
+  margin-top: 5px;
+  margin-left: 5px;
+  color: #7A7A7A;
+}
 
 
 /* 댓글창 */

@@ -13,7 +13,7 @@ function BettingButton() {
   };
 
   const buttonStyle = {
-    backgroundColor: isHovered ? '#8B0000' : '#DC143C',
+    backgroundColor: isHovered ? 'darkred' : 'crimson',
     color: '#FFFFFF',
     borderRadius: '4px',
     boxShadow: '1px 1px 3px rgba(0, 0, 0, 0.2)',
@@ -24,7 +24,7 @@ function BettingButton() {
   };
 
   return (
-    <button style={buttonStyle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <button className='betting_btn' style={buttonStyle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       베팅
     </button>
   );
