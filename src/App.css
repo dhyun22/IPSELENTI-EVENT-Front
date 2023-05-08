@@ -1,13 +1,9 @@
 /*header*/
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
-<<<<<<< HEAD
+
 * {
   font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-=======
-.App {
-    font-family: "Pretendard";
->>>>>>> parent of 308956c (모달 css값 수정 필요)
 }
 
 .header {
@@ -632,8 +628,6 @@ h3 {
   height: 12%;
   cursor: pointer;
   padding: 5px;
-<<<<<<< HEAD
-=======
   top: 85%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -793,5 +787,4 @@ hr {
     height: 8%;
     cursor: pointer;
     padding: 5px;
->>>>>>> parent of 3ffa277 (베팅, 라인업 추가 모달 생성)
 }

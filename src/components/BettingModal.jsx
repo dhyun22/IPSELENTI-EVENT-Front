@@ -1,19 +1,11 @@
 import Modal from 'react-modal';
 import { useState } from 'react';
+import { GrClose } from 'react-icons/gr';
 
 function BettingModal() {
     const [modalOpen, setModalOpen] = useState(false);
     return (
-<<<<<<< HEAD
-        <div>
-            <button onClick={() => setModalOpen(true)}>Modal Open</button>
-            <Modal isOpen={modalOpen} onRequestClose={() => setModalOpen}>
-                This is Modal content
-                <button onClick={() => setModalOpen(false)}>Modal close</button>
-            </Modal>
-        </div>
-=======
-            <div className=''>
+            <div>
                 <button onClick={() => setModalOpen(true)}>Modal Open</button>
                 <Modal
                 className='bettingModal'
@@ -70,7 +62,6 @@ function BettingModal() {
                     </div>
                 </Modal>
             </div>
->>>>>>> parent of 3ffa277 (베팅, 라인업 추가 모달 생성)
     );
 };
 
