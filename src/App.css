@@ -788,3 +788,23 @@ hr {
     cursor: pointer;
     padding: 5px;
 }
+
+.shareModal {
+  position: relative;
+  max-width: 330px;
+  max-height: 630px;
+  width: 70vw;
+  height: 20%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  border: solid black 2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.shareContainer {
+  position: absolute;
+  top: 8%;
+  left: 10%;
+}

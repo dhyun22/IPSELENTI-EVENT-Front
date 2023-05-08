@@ -10,6 +10,7 @@ function LineupEvent() {
             <div className="mobile-view">
                 <AddLineupModal />
                 <BettingModal />
+                <ShareModal />
             </div>
         </div>
     );
