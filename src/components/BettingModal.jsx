@@ -44,7 +44,7 @@ function BettingModal() {
                             <p>잔여 포인트</p>
                         </div>
                         <div className='betInfo2'>
-                            <p className='betInput'>10000</p>
+                            <p>일단 아무거나</p>
                             <p>1.1</p>
                             <p>77777777777</p>
                             <p>264000</p>

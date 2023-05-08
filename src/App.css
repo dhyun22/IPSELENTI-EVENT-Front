@@ -621,4 +621,163 @@ h3 {
   height: 12%;
   cursor: pointer;
   padding: 5px;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bettingModal {
+  position: relative;
+  max-width: 330px;
+  max-height: 630px;
+  width: 70%;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  border: solid black 2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.singerInfoContainer {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 20%;
+  margin-top: 15%;
+  margin-left: 10%;
+}
+
+.profileContainer {
+  height: 100%;
+  width: 60vw;
+}
+
+.singerDetailContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.profilePic {
+  width: 10vw;
+  height: 50px;
+  background-color: grey;
+  margin-top: 30%;
+  margin-left: 5%;
+}
+
+.nameAndVoterate {
+  display: flex;
+  flex-direction: row;
+}
+
+.singerNameContainer {
+  text-align: left;
+}
+
+.singerName {
+  font-weight: bold;
+  font-size: 18px;
+  width: 200%;
+}
+
+.voterateContainer {
+  text-align: right;
+  margin-left: 20%;
+}
+
+.voterate {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.pointAndRank {
+  display: flex;
+  flex-direction: row;
+}
+
+.betPoint {
+  text-align: left;
+  color: grey;
+  font-size: 13px;
+  width: 150px;
+}
+
+.betRank {
+  text-align: right;
+  color: grey;
+  font-size: 13px;
+  width: 30px;
+}
+
+hr {
+  width: 80%;
+  justify-content: center;
+}
+
+.betContainer {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10%;
+}
+
+.betInfo {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20%;
+  font-size: 14px;
+}
+
+.betInfo2 {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  margin-right: 3%;
+  font-size: 14px;
+}
+
+.betInfo3 {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  margin-right: 0%;
+  font-size: 14px;
+}
+
+.betBtnContainer {
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-35%);
+  margin-top: 5%;
+}
+
+.betBtn {
+    color: white;
+    background-color: red;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    width: 30%;
+    height: 8%;
+    cursor: pointer;
+    padding: 5px;
+    margin-right: 5%;
+}
+
+.betCanBtn {
+    color: white;
+    background-color: grey;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 6px;
+    border:none;
+    width: 30%;
+    height: 8%;
+    cursor: pointer;
+    padding: 5px;
 }
