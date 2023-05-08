@@ -805,6 +805,28 @@ hr {
 
 .shareContainer {
   position: absolute;
+  width: 90%;
   top: 8%;
   left: 10%;
+}
+
+.shareLink {
+  width: 80%;
+  height: 3%;
+}
+
+.copyBtn {
+  color: white;
+  position: absolute;
+  right: 35%;
+  top: 75%;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  width: 30%;
+  height: 15%;
+  cursor: pointer;
+  background-color: grey;
+  padding: 5px;
 }
