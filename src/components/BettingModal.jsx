@@ -5,7 +5,7 @@ import { GrClose } from 'react-icons/gr';
 function BettingModal() {
     const [modalOpen, setModalOpen] = useState(false);
     return (
-            <div>
+            <div className=''>
                 <button onClick={() => setModalOpen(true)}>Modal Open</button>
                 <Modal
                 className='bettingModal'
@@ -44,7 +44,7 @@ function BettingModal() {
                             <p>잔여 포인트</p>
                         </div>
                         <div className='betInfo2'>
-                            <p>일단 아무거나</p>
+                            <p className='betInput'>10000</p>
                             <p>1.1</p>
                             <p>77777777777</p>
                             <p>264000</p>

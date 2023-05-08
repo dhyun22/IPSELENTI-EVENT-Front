@@ -87,7 +87,6 @@
     width: 80%;
     height: 6vh;
     margin-top: 20px;
-    background-color: grey;
     border-radius: 6px;
 }
 
@@ -276,7 +275,6 @@ h4{
     width: 60px;
     color: white;
     border-radius: 0px 6px 6px 0px;
-
 }
 #signup-btn{
     width: 150px;
@@ -555,23 +553,18 @@ h4{
 
 /* modal */
 .lineupModal {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  width: 70%;
+  position: relative;
+  max-width: 330px;
+  max-height: 630px;
+  width: 70vw;
   height: 40%;
-  top: 30%;
-  left: 15%;
-  right: 15%;
-  bottom: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 10px;
   border: solid black 2px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.closeContainer {
-  height: 10%;
-  margin-bottom: 3%;
 }
 
 .modalClose {
@@ -583,49 +576,50 @@ h4{
 }
 
 .singerContainer {
-  height: 80%;
+  width: 100%;
+  height: 60%;
   position: absolute;
-  top: 35%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 h3 {
   margin-left: 3vw;
-  font-size: 14px;
+  font-size: 16px;
   margin-top: 8%;
   margin-left: 10%;
 }
 
 .singerInput {
-  margin-left: 3vw;
+  margin-left: 5%;
   width: 75%;
-  height: 8%;
+  height: 12%;
   border: solid grey 1px;
   border-radius: 3px;
   margin-left: 10%;
 }
 
 .reasonInput {
-  margin-left: 3vw;
+  margin-left: 5%;
   width: 75%;
   height: 32%;
   border: solid grey 1px;
-  border-radius: 6px;
+  border-radius: 3px;
   margin-left: 10%;
   text-align: left;
 }
 
-.addlineupBtn {
-  margin-top: 10%;
+.addLineupBtn {
+  position: absolute;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: white;
   background-color: red;
   font-weight: 700;
   font-size: 12px;
   border-radius: 6px;
-  border:none;
-  width: 60%;
-  right: 20%;
+  border: none;
+  width: 40%;
   height: 12%;
   cursor: pointer;
   padding: 5px;
@@ -752,9 +746,7 @@ hr {
 }
 
 .betInput {
-
 }
-
 
 .betInfo3 {
   display: flex;
