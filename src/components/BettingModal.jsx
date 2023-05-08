@@ -6,11 +6,11 @@ function BettingModal() {
     const [modalOpen, setModalOpen] = useState(false);
     return (
             <div className=''>
-                <button onClick={() => setModalOpen(true)}>Modal Open</button>
+                <button onClick={() => setModalOpen(true)}>베팅</button>
                 <Modal
                 className='bettingModal'
                 isOpen={modalOpen}
-                onRequestClose={() => setModalOpen}>
+                onRequestClose={() => setModalOpen(false)}>
                     <GrClose className='modalClose' onClick={() => setModalOpen(false)} />
                     <div className='singerInfoContainer'>
                         <div className='profileContainer'>

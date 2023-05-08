@@ -13,12 +13,12 @@ function ShareModal() {
     }
     return (
         <div>
-            <button onClick={() => setModalOpen(true)}>Modal Open</button>
+            <button onClick={() => setModalOpen(true)}>친구에게 공유</button>
             <Modal
             className='shareModal'
             isOpen={modalOpen}
-            onRequestClose={() => setModalOpen}>
-                <GrClose className='modalClose' onClick={() => setModalOpen(false)} />
+            onRequestClose={() => setModalOpen(false)}>
+                <GrClose className='modalClose' onClick={() => setModalOpen(false)}/>
                 <div className='shareContainer'>
                     <h2>공유</h2>
                     <input className='shareLink' placeholder='www.asku.wiki/lineup_event' disabled></input>
