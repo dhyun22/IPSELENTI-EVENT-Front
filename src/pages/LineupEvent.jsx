@@ -9,6 +9,7 @@ function LineupEvent() {
         <div className="container">
             <div className="mobile-view">
                 <AddLineupModal />
+                <BettingModal />
             </div>
         </div>
     );
