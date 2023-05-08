@@ -16,9 +16,9 @@ function AddLineupModal() {
                         <h3>가수 이름</h3>
                         <input className='singerInput'></input>
                         <h3>신청사유(선택)</h3>
-                        <textarea className='reasonInput'></textarea>
+                        <input className='reasonInput'></input>
+                        <button className='redbutton'>라인업 추가</button>
                     </div>
-                    <button className='addLineupBtn'>라인업 추가</button>
                 </Modal>
             </div>
     );
