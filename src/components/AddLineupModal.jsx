@@ -5,7 +5,7 @@ import { GrClose } from 'react-icons/gr';
 function AddLineupModal() {
     const [modalOpen, setModalOpen] = useState(false);
     return (
-            <div>
+        <div>
                 <button onClick={() => setModalOpen(true)}>Modal Open</button>
                 <Modal className='lineupModal' isOpen={modalOpen} onRequestClose={() => setModalOpen}>
                     <div className='closeContainer'>
@@ -20,7 +20,7 @@ function AddLineupModal() {
                     </div>
                     
                 </Modal>
-            </div>
+        </div>
     );
 };
 
