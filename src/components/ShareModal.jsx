@@ -6,8 +6,10 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 function ShareModal() {
     const [modalOpen, setModalOpen] = useState(false);
     const [buttonText, setButtonText] = useState('복사하기');
+    const [buttonColor, setButtonColor] = useState({backgroundColor: "red"});
     const handleClick = () => {
         setButtonText('복사완료');
+        setButtonColor({backgroundColor: "grey"})
     }
     return (
         <div>
@@ -24,7 +26,8 @@ function ShareModal() {
                 <CopyToClipboard text='www.asku.wiki/lineup_event'>
                     <button
                     onClick={handleClick}
-                    className='copyBtn'>
+                    className='copyBtn'
+                    style={buttonColor}>
                         {buttonText}
                     </button>
                 </CopyToClipboard>
