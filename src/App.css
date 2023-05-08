@@ -2,7 +2,7 @@
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
 * {
-  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 
 .header {
@@ -585,7 +585,9 @@ h4{
 .singerContainer {
   height: 80%;
   position: absolute;
-  margin-top: 20%;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 h3 {
@@ -658,7 +660,7 @@ h3 {
 
 .profileContainer {
   height: 100%;
-  width: 60vw;
+  width: 30%;
 }
 
 .singerDetailContainer {
@@ -667,16 +669,17 @@ h3 {
 }
 
 .profilePic {
-  width: 10vw;
-  height: 50px;
+  width: 5vh;
+  height: 5vh;
   background-color: grey;
-  margin-top: 30%;
+  margin-top: 35%;
   margin-left: 5%;
 }
 
 .nameAndVoterate {
   display: flex;
   flex-direction: row;
+  margin-top: 5%;
 }
 
 .singerNameContainer {
@@ -687,29 +690,31 @@ h3 {
   font-weight: bold;
   font-size: 18px;
   width: 200%;
+  margin-right: 20%;
 }
 
 .voterateContainer {
-  text-align: right;
-  margin-left: 20%;
 }
 
 .voterate {
   color: red;
   font-size: 18px;
   font-weight: bold;
+  margin-left: 100%;
 }
 
 .pointAndRank {
   display: flex;
   flex-direction: row;
+  margin-top: -15%;
 }
 
 .betPoint {
   text-align: left;
   color: grey;
   font-size: 13px;
-  width: 150px;
+  width: 200%;
+  margin-left: 0%;
 }
 
 .betRank {
@@ -722,6 +727,7 @@ h3 {
 hr {
   width: 80%;
   justify-content: center;
+  margin-top: 0%;
 }
 
 .betContainer {
@@ -745,6 +751,11 @@ hr {
   font-size: 14px;
 }
 
+.betInput {
+
+}
+
+
 .betInfo3 {
   display: flex;
   flex-direction: column;
@@ -757,7 +768,7 @@ hr {
   width: 80%;
   position: absolute;
   left: 50%;
-  transform: translate(-35%);
+  transform: translate(-30%);
   margin-top: 5%;
 }
 
