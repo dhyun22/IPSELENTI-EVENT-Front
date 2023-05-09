@@ -46,18 +46,16 @@ function WikiEdit() {
       
     const wikiMarkup = traverseHtml(parsedHtml.body);
     
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const addWikiEdit = wikiMarkup => {
-        // axios.post('http://49.50.167.168:3000/wiki/contents/', wikiMarku) 
-        //   .then(res => {
-        //     console.log(res.data);
-        //     if (res === 202){
-        //         navigate('/입실렌티');
-        //     }
-        //     //getToDos();
-        //   })
-        //   .catch(error => console.log(error));
+        axios.post('http://49.50.167.168:3000/wiki/contents/', wikiMarkup) 
+          .then(res => {
+            if (res.status === 200){
+                navigate('/입실렌티');
+            }
+          })
+          .catch(error => console.log(error));
         
     };
 

@@ -1,7 +1,8 @@
 import Header from '../components/Header';
 import { Link } from "react-router-dom/dist";
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import WikiBox from '../components/Wiki/WikiBox';
+import axios from 'axios';
 
 
 
@@ -31,6 +32,8 @@ const data = [
 
 
 
+
+
 function WikiViewer(props) {
     const myDivRef = useRef([]);
 
@@ -38,6 +41,31 @@ function WikiViewer(props) {
         myDivRef.current[index].scrollIntoView({ behavior: "smooth" });
         
     }
+
+    const [title, setTitle] = useState(null);
+    const [content, setContent] = useState(null);
+    const [wiki, setWiki] = useState(null);
+    const [html, setHtml] = useState(null);
+
+
+    useEffect(() => {
+        const getWiki = async () => {
+            try{
+                const result = await axios.get('http://49.50.167.168:3000/wiki/contents/5');
+                console.log(result.data);
+                setTitle(result.data['title']);
+                setContent(result.data['content']);
+                //setHtml(WikiToHtml(result.data['title']+'\n'+result.data['content']));
+                //setHtml(WikiToHtml());
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        getWiki();
+        
+    }, []);
+    
 
     
     return (
@@ -52,7 +80,7 @@ function WikiViewer(props) {
                         <ol>
                             {data.map((item) => {
                                 return(
-                                <li onClick={() => handleClick(parseInt(item.index))}>{item.header}</li>
+                                <li onClick={() => handleClick(parseInt(data.index))}>{title}</li>
                                 );
                             })}
                         </ol>
@@ -60,9 +88,9 @@ function WikiViewer(props) {
                     <div className='wiki-content'>
                         {data.map((item) => {
                             return(
-                                <div ref={(el) => (myDivRef.current[parseInt(item.index)] = el)}>
+                                <div ref={(el) => (myDivRef.current[parseInt(data.index)] = el)}>
                                     <WikiBox 
-                                    header={item.header} content={props.view} idx={item.index}
+                                    header={title} content={content} idx={data.index}
                                     />
                                 </div>
                             );

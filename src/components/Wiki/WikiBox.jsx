@@ -1,13 +1,18 @@
 import React from 'react';
 import { Link } from "react-router-dom/dist";
+import WikiToHtml from './WikiToHtml';
 
 function WikiBox (props) {
+
+  const title = WikiToHtml(props.title);
+  const content = WikiToHtml(props.content);
+
   return (
     <div className="wiki-contents content-one" >
         <details>
-            <summary>{props.header}<Link to="/wiki_edit">편집</Link><hr></hr></summary>
+            <summary>{title}<Link to="/wiki_edit">편집</Link><hr></hr></summary>
                 <div className="contents-content" >
-                  <div dangerouslySetInnerHTML={{ __html: props.content }} />;
+                  <div dangerouslySetInnerHTML={{ __html: content }} />;
                 </div>
         </details>
     </div>
