@@ -1,9 +1,23 @@
 import Modal from 'react-modal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GrClose } from 'react-icons/gr';
+import axios from 'axios';
+
+
+
 
 function BettingModal() {
     const [modalOpen, setModalOpen] = useState(false);
+
+    const[myPoint, setMyPoint] = useState('');
+
+    // useEffect(()=> {
+    //     axios.get('http//localhost:3000/').then((res)=>{
+    //            setMyPoint(res.data['point']);
+    //     }).catch( (err) => console.error(err));
+    // }, []);  
+
+
     return (
             <div className=''>
                 <button onClick={() => setModalOpen(true)}>베팅</button>
@@ -44,7 +58,7 @@ function BettingModal() {
                             <p>잔여 포인트</p>
                         </div>
                         <div className='betInfo2'>
-                            <p className='betInput'>10000</p>
+                            <p className='betInput'>{myPoint}</p>
                             <p>1.1</p>
                             <p>77777777777</p>
                             <p>264000</p>
