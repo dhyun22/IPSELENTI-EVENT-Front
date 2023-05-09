@@ -757,6 +757,9 @@ h4{
 
 }
 
+.ranking_count{
+  padding-bottom: 20px;
+}
 
 /* 댓글창 */
 .comment_content{
