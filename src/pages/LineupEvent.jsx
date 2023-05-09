@@ -5,18 +5,54 @@ import ShareModal from '../components/ShareModal';
 import Modal from 'react-modal';
 import logo from '../img/logo.png';
 import BettingButton from '../components/BettingButton';
-import LineupGraph from '../components/LineupGraph';
+import TimeLeft from '../components/TimeLeft'
+import MainCommentList from '../components/MainCommentList';
+import Celebrity from '../components/Celebrity';
+import MovetoComment from '../components/MovetoComment';
+import ScrollToTopButton from '../components/ScrollToTopButton';
 
 function LineupEvent() {
-    const player1Labels = ["Player 1"];
-    const player1Values = [15000];
-  
-    const player2Labels = ["Player 2"];
-    const player2Values = [10000];
-  
-    const player3Labels = ["Player 3"];
-    const player3Values = [5000];
-  
+    
+    const comments = [
+        { id: 1, comment_id: 'Alice', comment_text: 'HEllo', time: '4분 전', liked: 0},
+        { id: 2, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 3, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 4, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 5, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 6, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 7, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 8, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 9, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 10, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 11, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 12, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 13, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 14, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 15, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 16, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 17, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 18, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 19, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.' , time: '4분 전', liked: 0},
+        { id: 20, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 21, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 22, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 23, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 24, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 25, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 26, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 27, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 28, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 29, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 30, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 31, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 32, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 33, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 34, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 35, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        
+        //... more comments
+    ];
+
 
     return (
         <div className='container'>
@@ -27,85 +63,63 @@ function LineupEvent() {
                     </div>
                     <div className='main_head'>
                         <h2 className='main_head_title'>입실렌티 라인업 예측</h2>
+                        <AddLineupModal className='Adding_lineup'/>
                     </div>
                     <div className='main_body'>
-
-                    </div>
-                    <div className='ranking_count'>
-                        <div className='ranking_list'>
-                            <div className='info_box'>
-                                <span className='celeb_rank'>1</span>
-                                <div className='thumb'>
-                                    <img id='celeb_thumb' src="https://www.akbobada.com/home/akbobada/archive/akbo/img/202304111337030.jpg" alt='아이브'/>
-                                </div>
-                                <div className='celeb_info'>
-                                    <span id='celeb_name'>IVE(아이브)</span>
-                                    <span id='celeb_betrate'>배당률 1.1%</span>
-                                </div>
-                                <div className='celeb_footer'>
-                                    <span id='celeb_point'>모인 포인트 : 12345 P</span>
-                                    <BettingButton id='celeb_bet'/>
-                                </div>
-                                <div className='celeb_graph'>
-                                    <span id='celeb_per'> 
-                                        <span id='celeb_bg' style={{width:'70%'}}></span>
-                                    </span>
-                                    <span className='celeb_per_text'>70%</span>
-
-                                </div>
-                            </div>
-
-                            <div className='info_box'>
-                                <span className='celeb_rank'>2</span>
-                                <div className='thumb'>
-                                    <img id='celeb_thumb' src="https://www.akbobada.com/home/akbobada/archive/akbo/img/202305021004012.jpg" alt='르세라핌'/>
-                                </div>
-                                <div className='celeb_info'>
-                                    <span id='celeb_name'>르세라핌(LE SSERAFIM)</span>
-                                    <span id='celeb_betrate'>배당률 1.1%</span>
-                                </div>
-                                <div className='celeb_footer'>
-                                    <span id='celeb_point'>모인 포인트 : 12345 P</span>
-                                    <BettingButton id='celeb_bet'/>
-                                </div>
-                                <div className='celeb_graph'>
-                                    <span id='celeb_per'> 
-                                        <span id='celeb_bg' style={{width: '50%'}}></span>
-                                    </span>
-                                    <span className='celeb_per_text'>50%</span>
-                                </div>
-                            </div>
-                            <div className='info_box'>
-                                <span className='celeb_rank'>3</span>
-                                <div className='thumb'>
-                                    <img id='celeb_thumb' src="https://www.akbobada.com/home/akbobada/archive/akbo/img/202212200942036.jpg" alt='뉴진스'/>
-                                </div>
-                                <div className='celeb_info'>
-                                    <span id='celeb_name'>NewJeans</span>
-                                    <span id='celeb_betrate'>배당률 1.1%</span>
-                                </div>
-                                <div className='celeb_footer'>
-                                    <span id='celeb_point'>모인 포인트 : 12345 P</span>
-                                    <BettingButton id='celeb_bet'/>
-                                </div>
-                                <div className='celeb_graph'>
-                                    <span className='celeb_per'> 
-                                        <span className='celeb_bg'></span>
-                                        <LineupGraph labels={player3Labels} values={player3Values} />                                
-                                    </span>
-                                    <span className='celeb_per_text'>60%</span>
-                                </div>
-                            </div>
+                        <div className='left_body'>
+                            <span className='remaintime_text'>남은 시간</span>
+                            <TimeLeft/>
+                            <ShareModal/>
+                        </div>
+                        <div className='rignt_body'>
+                            <span className='Totalpoint_text'>누적 포인트</span>
+                            <span className='Totalpoint'>10000000P</span>
+                            <MovetoComment/>
                         </div>
                     </div>
-                
-                
-        
-                </div>                
-                <div>
-                    <AddLineupModal />
                 </div>
-            </div>
+                    <div className='ranking_count'>
+                        <Celebrity/>
+                    </div>
+                    <div className='comment_content'>
+                     <div className='comment_head'>
+                        <h2 className='comment_head_title'>댓글</h2>
+                        <span className='comment_head_count'>899</span>
+                     </div>
+                     <div className='comment_writingbox'>
+                         <form className='comment_form'>
+                            <div className='comment_writing' id='comment_writing'>
+                                <div className='comment_writing_inner' id='comment_writing_inner'>
+                                    <form className='comment_writing_area' id="comment_writing_area">
+                                         <div className='comment_writing_name'>
+                                             <span className='comment_writing_name'>
+                                                 &nbsp; 정ㅇㅇ
+                                             </span>
+                                         </div>
+                                          <textarea rows="5" id='comment_writing_textarea' placeholder="댓글을 작성해주세요"></textarea>
+                                         <div className='comment_button' id='comment_button'>
+                                            <div className='comment_btn_wrapper'>
+                                              <button type="submit" className="comment_btn">
+                                                   &nbsp; 작성 &nbsp;
+                                              </button>
+                                            </div>
+                                         </div>
+                                    </form>
+                                </div>
+                            </div>
+                      </form>
+                     </div>
+                    </div>
+                <div className='comment_main'>
+                  <MainCommentList comments={comments} />
+                </div>
+
+                <div className='go_to_celeb'>
+                    <ScrollToTopButton/>
+                </div>
+            </div>                
+                
+                
         </div>
     );
 };
