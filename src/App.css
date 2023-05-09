@@ -126,53 +126,6 @@ a {
     text-decoration-line: none;
 }
 
-.completedButton {
-    color: white;
-    background-color: red;
-    font-weight: 700;
-    font-size: 18px;
-    border-radius: 6px;
-    border:none;
-    width: 60%;
-    height: 8%;
-    cursor: pointer;
-    padding: 5px;
-    position: absolute;
-    bottom: 10%;
-    right: 20%;
-}
-
-.signUpCompleted{
-    color: white;
-    background-color: red;
-    font-weight: 700;
-    font-size: 18px;
-    border-radius: 6px;
-    border:none;
-    width: 60%;
-    height: 6%;
-    cursor: pointer;
-    padding: 5px;
-    position: absolute;
-    bottom: 15%;
-    right: 20%;
-}
-
-.backToHome {
-    color: white;
-    background-color: rgb(163, 159, 159);
-    font-weight: 700;
-    font-size: 18px;
-    border-radius: 6px;
-    border:none;
-    width: 60%;
-    height: 6%;
-    cursor: pointer;
-    padding: 5px;
-    position: absolute;
-    bottom: 7%;
-    right: 20%;
-}
 /* 로그인 */
 .auth{
     display: flex;
@@ -329,11 +282,83 @@ h4{
     text-align: center;
     font-weight: bold;
     margin-top: 20%;
+    position: relative;
+    width: 80%;
+    height: 90%;
 }
 
 
-.temporaryLogo {
+.editLogo {
+  position: absolute;
+  width: 56%;
+  height: 8%;
+  right: 5%;
+}
 
+.editCharacter {
+  position: absolute;
+  margin-top: 35%;
+  width: 85%;
+  height: 35%;
+  left: 25%;
+}
+
+.textContainer {
+  position: absolute;
+  width: 70%;
+  top: 57%;
+  left: 27%;
+}
+
+.editText {
+  font-size: 16px;
+}
+
+.completedButton {
+  color: white;
+  background-color: red;
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 6px;
+  border:none;
+  width: 60%;
+  height: 8%;
+  cursor: pointer;
+  padding: 5px;
+  position: absolute;
+  bottom: 15%;
+  right: 5%;
+}
+
+.signUpCompleted{
+  color: white;
+  background-color: red;
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 6px;
+  border:none;
+  width: 60%;
+  height: 6%;
+  cursor: pointer;
+  padding: 5px;
+  position: absolute;
+  bottom: 10%;
+}
+
+.backToHome {
+  color: white;
+  background-color: rgb(163, 159, 159);
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 6px;
+  border:none;
+  width: 60%;
+  height: 6%;
+  cursor: pointer;
+  padding: 5px;
+  position: absolute;
+  bottom: 7%;
+  right: 20%;
 }
 
 /* 마이페이지 */

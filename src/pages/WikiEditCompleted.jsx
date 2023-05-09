@@ -1,5 +1,6 @@
-import temporaryLogo from '../img/temporaryLogo.png';
+import logo from '../img/logo.png';
 import { Link } from 'react-router-dom';
+import editCharcter from '../img/haho-head.png';
 
 function WikiEditCompleted() {
     const editText = "문서가 수정되었습니다!\n기여해주셔서 감사합니다 :)"
@@ -8,9 +9,12 @@ function WikiEditCompleted() {
         <div className='container'>
             <div className='mobile-view'>
                 <div className='editResult'>
-                    <img className='temporaryLogo' src={temporaryLogo} alt='temporary_logo' />
-                    <p>{editText}</p>
-                    <p>{point}</p>
+                    <img className='editLogo' src={logo} alt='logo' />
+                    <img className='editCharacter' src={editCharcter} alt='haho' />
+                    <div className='textContainer'>
+                        <p className=''>{editText}</p>
+                        <p className=''>{point}</p>
+                    </div>
                     <Link to='/wiki'>
                         <button className="completedButton">문서로 돌아가기</button>
                     </Link>
