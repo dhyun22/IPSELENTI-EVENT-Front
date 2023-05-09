@@ -36,8 +36,8 @@
     right: 10%;
     top: 5%;
     background-color: green;
-    width: 10%;
-    height: 16%;
+    width: 4vh;
+    height: 4vh;
     cursor: pointer;
     color: black;
 }
@@ -64,11 +64,11 @@
 
 .searchButton {
     position: absolute;
-    width: 10%;
-    height: 18%;
+    width: 4.2vh;
+    height: 4.2vh;
     background-color: grey;
     right: 9%;
-    margin-top: 0.7%;
+    margin-top: 0.5%;
     align-items: center;
     cursor: pointer;
     color: black;
@@ -108,7 +108,7 @@
     border-radius: 6px;
     border:none;
     width: 60%;
-    height: 12%;
+    height: 10%;
     cursor: pointer;
     padding: 5px;
     position: absolute;
@@ -291,7 +291,7 @@ h4{
 .editLogo {
   position: absolute;
   width: 56%;
-  height: 8%;
+  height: 7%;
   right: 5%;
 }
 
@@ -342,7 +342,8 @@ h4{
   cursor: pointer;
   padding: 5px;
   position: absolute;
-  bottom: 10%;
+  bottom: 18%;
+  right: 9%;
 }
 
 .backToHome {
@@ -357,8 +358,8 @@ h4{
   cursor: pointer;
   padding: 5px;
   position: absolute;
-  bottom: 7%;
-  right: 20%;
+  bottom: 10%;
+  right: 9%;
 }
 
 /* 마이페이지 */
