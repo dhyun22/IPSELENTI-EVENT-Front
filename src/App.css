@@ -111,6 +111,18 @@
   }
 }
 
+
+@keyframes slide-btn {
+  from {
+    bottom: 0%;
+    opacity: 0;
+  }
+  to {
+    bottom: 10%;
+    opacity: 1;
+  }
+}
+
 .homeText1 {
   opacity: 0;
   font-size: 27px;
@@ -179,6 +191,12 @@
 }
 
 .redbutton {
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-name: slide-btn;
+    animation-duration: 1.2s;
+    animation-delay: 3s;
+    animation-timing-function: ease-out;
     color: white;
     background-color: red;
     font-weight: 700;
