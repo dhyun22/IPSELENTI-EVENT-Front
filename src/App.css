@@ -795,7 +795,7 @@ h3 {
 .nameAndVoterate {
   display: flex;
   flex-direction: row;
-  margin-top: 5%;
+  margin-top: 12%;
 }
 
 .singerNameContainer {
@@ -804,7 +804,7 @@ h3 {
 
 .singerName {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
   width: 200%;
   margin-right: 20%;
 }
@@ -814,7 +814,7 @@ h3 {
 
 .voterate {
   color: red;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   margin-left: 100%;
 }
