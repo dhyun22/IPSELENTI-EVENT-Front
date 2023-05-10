@@ -9,7 +9,7 @@
     width: 100%;
     height: 22vh;
     text-align: center;
-    background-color: blue;
+    /* background-color: blue; */
     align-items: center;
     position: relative;
 }
@@ -93,11 +93,89 @@
 /*wiki*/
 .body {
     display: flex;
-    width: 100%;;
+    width: 100%;
     height: 78vh;
-    background-color: grey;
+    /* background-color: grey; */
     position: relative;
     justify-content: center;
+}
+
+@keyframes slide-in {
+  from {
+    margin-top: 0%;
+    opacity: 0;
+  }
+  to {
+    margin-top: 10%;
+    opacity: 1;
+  }
+}
+
+.homeText1 {
+  opacity: 0;
+  font-size: 27px;
+  font-weight: bold;
+  animation-name: slide-in;
+  animation-duration: 2s;
+  animation-delay: 1s;
+  animation-timing-function: ease-out;
+  /* animation-iteration-count: 3; */
+  position: absolute;
+  left: 10%;
+  top: -5%;
+  animation-fill-mode: forwards;
+}
+
+.homeText2 {
+  opacity: 0;
+  font-size: 22px;
+  font-weight: bold;
+  animation-name: slide-in;
+  animation-duration: 2s;
+  animation-delay: 1.6s;
+  animation-timing-function: ease-out;
+  /* animation-iteration-count: 3; */
+  position: absolute;
+  right: 3%;
+  top: 6%;
+  animation-fill-mode: forwards;
+}
+
+.homeText3 {
+  opacity: 0;
+  font-size: 22px;
+  font-weight: bold;
+  animation-name: slide-in;
+  animation-duration: 1.4s;
+  animation-delay: 2.2s;
+  animation-timing-function: ease-out;
+  /* animation-iteration-count: 3; */
+  position: absolute;
+  left: 7%;
+  top: 15%;
+  animation-fill-mode: forwards;
+}
+
+.homeText4 {
+  opacity: 0;
+  font-size: 18px;
+  font-weight: bold;
+  animation-name: slide-in;
+  animation-duration: 1.2s;
+  animation-delay: 2.8s;
+  animation-timing-function: ease-out;
+  /* animation-iteration-count: 3; */
+  position: absolute;
+  right: 2%;
+  top: 20%;
+  animation-fill-mode: forwards;
+}
+
+.homeCharacter {
+  position: absolute;
+  bottom: 25%;
+  width: 37%;
+  height: 22vh;
 }
 
 .redbutton {
@@ -112,7 +190,7 @@
     cursor: pointer;
     padding: 5px;
     position: absolute;
-    bottom: 20%;
+    bottom: 10%;
     right: 20%;
 }
 
@@ -258,7 +336,7 @@ h4{
     display: flex;
     width: 100%;
     height: 100%;
-    padding: 10px;
+    /* padding: 10px; */
     background-color: #ffffff;
     box-sizing: border-box;
   }
@@ -290,15 +368,15 @@ h4{
 
 .editLogo {
   position: absolute;
-  width: 56%;
+  width: 52%;
   height: 7%;
-  right: 5%;
+  right: 8%;
 }
 
 .editCharacter {
   position: absolute;
   margin-top: 35%;
-  width: 85%;
+  width: 80%;
   height: 35%;
   left: 25%;
 }
