@@ -781,6 +781,7 @@ h3 {
 .singerDetailContainer {
   display: flex;
   flex-direction: column;
+  
 }
 
 .profilePic {
@@ -822,27 +823,31 @@ h3 {
   display: flex;
   flex-direction: row;
   margin-top: -15%;
+  position: relative;
 }
 
 .betPoint {
   text-align: left;
   color: grey;
-  font-size: 13px;
+  font-size: 11px;
   width: 200%;
   margin-left: 0%;
+  position: absolute;
 }
 
 .betRank {
+  right: -25%;
   text-align: right;
   color: grey;
-  font-size: 13px;
+  font-size: 11px;
   width: 30px;
+  position: absolute;
 }
 
 hr {
   width: 80%;
   justify-content: center;
-  margin-top: 0%;
+  margin-top: 5%;
 }
 
 .betModalContainer {
@@ -850,6 +855,7 @@ hr {
 }
 
 .betContainer {
+  margin-top: 5%;
   display: flex;
   flex-direction: column;
   margin-left: 10%;
