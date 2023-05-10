@@ -845,13 +845,33 @@ hr {
   margin-top: 0%;
 }
 
-.betContainer {
-  display: flex;
-  flex-direction: row;
-  margin-left: 10%;
+.betModalContainer {
+  width: 20vw;
 }
 
-.betInfo {
+.betContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  width: 100%;
+}
+
+.betInfoContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.betText {
+  width: 20%;
+  font-size: 12px;
+  font-weight: bold;
+  height: 5%;
+}
+
+/* .betInfo {
   display: flex;
   flex-direction: column;
   margin-right: 20%;
@@ -866,15 +886,18 @@ hr {
   font-size: 14px;
 }
 
-.betInput {
-}
-
 .betInfo3 {
   display: flex;
   flex-direction: column;
   text-align: right;
   margin-right: 0%;
   font-size: 14px;
+} */
+
+.betInput {
+  width: 40%;
+  text-align: right;
+  height: 5%;
 }
 
 .betBtnContainer {
@@ -882,7 +905,7 @@ hr {
   position: absolute;
   left: 50%;
   transform: translate(-30%);
-  margin-top: 5%;
+  margin-top: 10%;
 }
 
 .betBtn {
