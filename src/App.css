@@ -84,7 +84,7 @@
 
 
 .banner {
-    width: 80%;
+    width: 75%;
     height: 6vh;
     margin-top: 20px;
     border-radius: 6px;
@@ -185,7 +185,7 @@
 
 .homeCharacter {
   position: absolute;
-  bottom: 25%;
+  bottom: 35%;
   width: 37%;
   height: 22vh;
 }
@@ -208,7 +208,7 @@
     cursor: pointer;
     padding: 5px;
     position: absolute;
-    bottom: 10%;
+    bottom: 15%;
     right: 20%;
 }
 
