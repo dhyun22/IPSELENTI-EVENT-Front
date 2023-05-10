@@ -8,8 +8,7 @@ import axios from 'axios';
 
 function BettingModal() {
     const [modalOpen, setModalOpen] = useState(false);
-
-    const[myPoint, setMyPoint] = useState('');
+    const[myPoint, setMyPoint] = useState('3000');
 
     // useEffect(()=> {
     //     axios.get('http//localhost:3000/').then((res)=>{
@@ -59,7 +58,7 @@ function BettingModal() {
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>잔여 포인트</p>
-                                    <input className='betInput' placeholder='200000' disabled/>
+                                    <input className='betInput' placeholder={myPoint} disabled/>
                                     <p className='betText'>P</p>
                                 </div>
                                 <div className='betInfoContainer'>
