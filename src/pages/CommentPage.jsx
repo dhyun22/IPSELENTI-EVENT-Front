@@ -1,6 +1,5 @@
 import React from 'react';
 import logo from '../img/logo.png';
-
 import CommentList from '../components/CommentList';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 

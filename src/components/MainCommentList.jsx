@@ -47,16 +47,12 @@ const MainCommentList = ({ comments }) => {
     }
   } else {
     // CommentPage를 새 창으로 열도록 코드를 추가합니다.
-    const commentPageWindow = window.open('', '_blank', 'noopener,noreferrer');
+    const commentPageWindow = window.open();
     commentPageWindow.document.title = '전체 댓글 보기';
-    commentPageWindow.document.body.innerHTML = '<div id="root"></div>';
-    ReactDOM.render(<CommentPage comments={comments} />, commentPageWindow.document.getElementById('root'));
+    ReactDOM.render(<CommentPage comments={comments} />, commentPageWindow.document.body);
     return null;
   }
-
-  
 };
-
 
 
 export default MainCommentList;

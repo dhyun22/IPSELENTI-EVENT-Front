@@ -5,10 +5,33 @@ import {FaRegSmile} from 'react-icons/fa';
 import {AiOutlineNumber} from 'react-icons/ai';
 import {TbCoin} from 'react-icons/tb';
 import logo from '../img/logo.png';
+import axios from 'axios';
+import {useState, useEffect} from 'react';
 
 
 function MyPage() {
+  const [user, setUser] = useState('');
+
+  const takeLineup = async () => {
+    try{
+      const login = await axios.post("localhost:8080/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true})
+      const response = await axios.get("localhost:8080/user/mypage/info", { withCredentials: true});
+      
+      if (response.data.success === true){
+        setUser(response.data.user)
+      }else{
+
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  } 
   return (
+     
+    
+      
+      
+  
     <div className='container'>
     <div className='mobile-view'>
       <div className='mypage_content'>
@@ -19,7 +42,7 @@ function MyPage() {
           <h2 className='mypage_text'>마이페이지</h2>
         </div>
         <div className='welcome_message'>
-          <span>정다현님 안녕하세요!</span>
+          <span>{user.name}님 안녕하세요!</span>
         </div>
         <div className='account_box' id='account_box'>
           <div className='title' id='account_title'>
@@ -110,6 +133,7 @@ function MyPage() {
     </div>
     </div>
   )
+    
 } 
     
     
