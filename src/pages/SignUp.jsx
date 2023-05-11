@@ -1,14 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import logo from '../img/logo.png';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom/dist';
 
 function SignUp() {
     const [userId, setUserId] = useState('');
     const [userName, setUserName] = useState('');
     const [userPw, setUserPw] = useState('');
+    const [checkUserPw, setCheckUserPw] = useState('')
     const [friendId, setFriendId] = useState('');
     const [phoneNum, setPhoneNum] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
+
+    const Navigate = useNavigate();
 
 
 
@@ -59,7 +63,7 @@ function SignUp() {
 
             if (response.data.success) {
                 setLoggedIn(true);
-                navigator('/signup_completed');
+                Navigate('/main');
             } else{
                 setLoggedIn(false);
             }
@@ -67,6 +71,17 @@ function SignUp() {
             console.error(error);
         }
     }
+
+    const onChangePwValid = (e) => {
+        setCheckUserPw(e.target.value);
+        if(userPw === checkUserPw){
+
+        };
+    };
+
+    useEffect (() => {
+        checkLoginStatus();
+    }, []);
 
     return(
         <div className='container'>
@@ -100,7 +115,10 @@ function SignUp() {
                                 <input 
                                     required type='password' 
                                     placeholder='숫자, 영문, 특수문자 조합 최소 6자' 
-                                    pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,16}$"/>
+                                    pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,16}$"
+                                    value={userPw}
+                                    onChange={e => setUserPw(e.target.value)}
+                                />
                                 <input 
                                 required type='password' 
                                 placeholder='비밀번호 재입력' 
@@ -131,7 +149,7 @@ function SignUp() {
                                 placeholder='ex.01012345678'
                                 name='phoneNum'
                                 value={phoneNum}
-                                onChange={e => setPhoneNum(e.target.value)}
+                                onChange={onChangePwValid}
                                 />
                                 <span>상품 수령 시 필요한 정보이니 정확하게 기입해주세요.</span>
                             </div>

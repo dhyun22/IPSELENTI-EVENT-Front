@@ -16,16 +16,40 @@ import WikiToHtml from "./components/Wiki/WikiToHtml";
 import { useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useState } from 'react';
-
+import { useNavigate } from "react-router-dom/dist";
 
 
 function App() {
     const [allText, setAllText] = useState('');
     const [allContent, setAllContent] = useState(null);
+    const [loggedIn, setLoggedIn] = useState(false);
+
+   // const Navigate = useNavigate();
     // const [index, setIndex] = useState(null);
     // const [wiki, setWiki] = useState(null);
     // const [html, setHtml] = useState(null);
+    const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
 
+            if (response.data.success) {
+                setLoggedIn(true);
+            } else{
+                setLoggedIn(false);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    
+
+    
     useEffect(() => {
         const getWiki = async () => {
             try{
@@ -50,15 +74,15 @@ function App() {
         return (
             <Router>
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/입실렌티" element={<WikiViewer allContent={allContent} />} />
-                    <Route path="/wiki_edit" element={<WikiEdit  allText={allText} allContent={allContent}/>} />
-                    <Route path="/wiki_edit_completed" element={<WikiEditCompleted />} />
-                    <Route path="/addindex_completed" element={<WikiEditCompleted/>} />
-                    <Route path="/signup_completed" element={<SignUpCompleted />} />
-                    <Route path="/lineup_event" element={<LineupEvent />} />
-                    <Route path="/signup" element={<SignUp />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/main" element={<Home checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
+                    <Route path="/입실렌티" element={<WikiViewer checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} allContent={allContent} />} />
+                    <Route path="/wiki_edit" element={<WikiEdit  checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} allText={allText} allContent={allContent}/>} />
+                    <Route path="/wiki_edit_completed" element={<WikiEditCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} />} />
+                    <Route path="/addindex_completed" element={<WikiEditCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
+                    <Route path="/signup_completed" element={<SignUpCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
+                    <Route path="/lineup_event" element={<LineupEvent checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
+                    <Route path="/signup" element={<SignUp checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
+                    <Route path="/login" element={<Login checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
 
                 </Routes>
             </Router>

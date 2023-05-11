@@ -2,11 +2,11 @@ import { Link } from "react-router-dom/dist";
 import temporaryLogo from '../img/temporaryLogo.png';
 import axios from "axios";
 import { useNavigate } from "react-router-dom/dist";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //import {Useform, useForm} from 'react-hook-form';
 
 
-function Login() {
+function Login(props) {
 
     // const {register} = useForm();
     // const { watch } = useForm();
@@ -19,6 +19,7 @@ function Login() {
     const [userId, setUserId] = useState('');
     const [userPw, setUserPw] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
+    const Navigate = useNavigate();
 
 
     const userLogin = async () => {
@@ -38,26 +39,21 @@ function Login() {
             console.error(error);
         }
     }
-    
-    const checkLoginStatus = async () => {
-        try {
-            const response = await axios.get(
-                "http://localhost:8080/user/auth/issignedin",
-                {
-                    withCredentials: true,
-                }
-            );
 
-            if (response.data.success) {
-                setLoggedIn(true);
-                navigator('/mypage');
-            } else{
-                setLoggedIn(false);
-            }
-        } catch (error) {
-            console.error(error);
+    const checkInitailLogin = () => {
+        const result = props.checkLoginStatus();
+        if (result == true){
+            Navigate('/main')
         }
-    }
+        
+    };
+
+    useEffect (() => {
+        checkInitailLogin();
+    }, [props.loggedIn]);
+    
+    
+    
 
     return (
 
@@ -65,7 +61,7 @@ function Login() {
             <div class="mobile-view">
                 <div className='auth'>
                     <img class="login-img"src={temporaryLogo} alt=""/>
-                    <form class="login-form" onSubmit={userLogin}>
+                    <form class="login-form">
                         <input 
                         type='text'
                         placeholder='ID' 
@@ -78,7 +74,7 @@ function Login() {
                         value={userPw} 
                         onChange={e => setUserPw(e.target.value)}
                         />
-                        <button type='submit' id='btn'>Login</button>
+                        <button type="button" id='btn' onClick={userLogin}>Login</button>
                         <span>가입하면 10000P 바로 지급 <Link to="/signup">회원가입</Link>
                         </span>
                     </form>
