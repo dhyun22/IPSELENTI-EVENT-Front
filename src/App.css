@@ -175,7 +175,7 @@ a {
 }
 .login-img{
     margin-left: 3px;
-    margin-top: 190px;
+    margin-top: 50px;
     margin-bottom: 20px;
     width: 250px;
     height: 250px;
@@ -216,7 +216,7 @@ a {
     flex-direction: column;
     align-items: center;
     padding: 30px;
-    padding-top: 100px;
+    padding-top: 50px;
 }
 .info img{
     margin-bottom: 30px;

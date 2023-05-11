@@ -123,19 +123,17 @@ function SignUp() {
                                 <span>가입자 본인은 30000P, 추천인은 20000P가 지급됩니다!</span>
                             </div>
                         </div>
-                        <div className="phone-auth">
-                            <h4>전화번호 인증</h4>
-                            <div className="phone-auth">
+                        <div className="signup-content">
+                            <h4>전화번호</h4>
+                            <div className="content-in">
                                 <input 
                                 required type='text' 
+                                placeholder='ex.01012345678'
                                 name='phoneNum'
                                 value={phoneNum}
-                                onChange={e => setPhoneNum(e.target.value)}/>
-                                <button>인증</button>
-                            </div>
-                            <div className="phone-auth hidden">
-                                <input required type='text' />
-                                <button>확인</button>
+                                onChange={e => setPhoneNum(e.target.value)}
+                                />
+                                <span>상품 수령 시 필요한 정보이니 정확하게 기입해주세요.</span>
                             </div>
                         </div>
                         <button id="signup-btn" type='submit' onClick={createUserApi}>회원가입</button>
