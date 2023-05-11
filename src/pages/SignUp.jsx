@@ -70,6 +70,7 @@ function SignUp() {
         } catch (error) {
             console.error(error);
         }
+
     }
 
     const onChangePwValid = (e) => {

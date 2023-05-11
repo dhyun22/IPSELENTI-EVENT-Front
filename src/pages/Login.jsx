@@ -42,8 +42,8 @@ function Login(props) {
 
     const checkInitailLogin = () => {
         const result = props.checkLoginStatus();
-        if (result == true){
-            Navigate('/main')
+        if (result === true){
+            Navigate('/main');
         }
         
     };

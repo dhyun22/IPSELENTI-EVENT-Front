@@ -76,7 +76,8 @@ function App() {
                 <Routes>
                     <Route path="/main" element={<Home checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
                     <Route path="/입실렌티" element={<WikiViewer checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} allContent={allContent} />} />
-                    <Route path="/wiki_edit" element={<WikiEdit  checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} allText={allText} allContent={allContent}/>} />
+                    <Route path="/wikiedit" element={<WikiEdit  checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} allText={allText} allContent={allContent}/>} />
+                    <Route path="/wikiedit/content" element={<WikiEdit  checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} allText={allText} allContent={allContent}/>} />
                     <Route path="/wiki_edit_completed" element={<WikiEditCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} />} />
                     <Route path="/addindex_completed" element={<WikiEditCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
                     <Route path="/signup_completed" element={<SignUpCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
