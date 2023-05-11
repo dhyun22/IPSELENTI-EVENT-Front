@@ -5,12 +5,42 @@ import {FaRegSmile} from 'react-icons/fa';
 import {AiOutlineNumber} from 'react-icons/ai';
 import {TbCoin} from 'react-icons/tb';
 import logo from '../img/logo.png';
+import axios from 'axios';
+import {useState, useEffect} from 'react';
 
 
 function MyPage() {
+  const [user, setUser] = useState('');
+  const [betting, setBetting]=useState('');
+
+  const takeuser = async () => {
+    try{
+      const login = await axios.post("http://localhost:8080/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true})
+      const response = await axios.get("http://localhost:8080/user/mypage/info", { withCredentials: true});
+      const bethistory= await axios.get("http://localhost:8080/user/mypage/bettinghistory", {withCredentials:true});
+      
+      if (response.data.success == true){
+        setUser(response.data.user)
+        setBetting(bethistory.data.bettingHistory)
+      }else{ navigator('/Login')
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  } 
+
+  useState(()=> {takeuser();}, []);
+
+
   return (
+     
+    
+      
+      
+  
     <div className='container'>
-      <div className='content'>
+    <div className='mobile-view'>
+      <div className='mypage_content'>
         <div className='myPageLogo'>
           <img className='logo' src={logo} alt='logo' />
         </div>
@@ -18,7 +48,7 @@ function MyPage() {
           <h2 className='mypage_text'>마이페이지</h2>
         </div>
         <div className='welcome_message'>
-          <span>정다현님 안녕하세요!</span>
+          <span>{user.name}님 안녕하세요!</span>
         </div>
         <div className='account_box' id='account_box'>
           <div className='title' id='account_title'>
@@ -28,7 +58,7 @@ function MyPage() {
             <li className='account_list'>
               <div className="row_itemname">
                 <FaRegUser />
-                  <span className="item_text"> &nbsp;정다현</span>
+                  <span className="item_text"> &nbsp;{user.name}</span>
               </div>
             </li>
 
@@ -36,15 +66,16 @@ function MyPage() {
             <li className='account_list'>
               <div className='row_nick'>
                 <FaRegSmile/>
-                  <span className='item_text'> &nbsp;정oo</span>
-              </div>
+                {user.name && user.name !== '' &&
+  <span className='item_text'> &nbsp;{user.name[0]}oo</span>
+}              </div>
             </li>
 
            
            <li className='account_list'>
               <div className="row_schoolid">
                 <AiOutlineNumber/>
-                  <span className='item_text'> &nbsp;2019140004</span>
+                  <span className='item_text'> &nbsp;{user.user_id}</span>
               </div>
            </li>
           </ul>  
@@ -73,53 +104,16 @@ function MyPage() {
           <div className='betting_list_box' id="betting_list_box">
             <ul className='betting_list' id='betting_list'>
               <li>
-                <span className='first' id='first_bet'>르세라핌 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='second' id='second_bet'>뉴진스 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='third' id='third_bet'>아이브 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='fourth' id='fourth_bet'>서동현 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='fifth' id='fifth_bet'>세븐틴 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='sixth' id='sixth_bet'>아이유 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='seventh' id='seventh_bet'>수지 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='eighth' id='eighth_bet'>박재범 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='nineth' id='nineth_bet'>싸이 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='nineth' id='nineth_bet'>최영섭 &nbsp;15000P</span>
+                {betting.celebrity_id}{betting.betting_point}
               </li>
             </ul>
           </div>
-          <div className='customer_box' id='customer_box'>
-            <div className="title" id='customer_title'>
-              <h3 className="title_text" id='customer_text'>고객센터</h3>
-            </div>
-          </div>
-
-          <div className='askupagemove_box' id='askupagemove_box'>
-            <div className="title" id='askupagemove_title'>
-              <h3 className="title_text" id='askupagemove_text'>ASKu페이지</h3>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
+    </div>
   )
+    
 } 
     
     
