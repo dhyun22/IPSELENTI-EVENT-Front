@@ -84,12 +84,12 @@ function WikiEdit(props) {
 
     
     useEffect(() => {
-        if (index === 0){
-            setWiki(props.allText);
-        } else {
-            const item = props.allContent[index];
-            setWiki(item.title + '\n' + item.body);
-        }
+        // if (index === 0){
+        //     setWiki(props.allText);
+        // } else {
+        //     const item = props.allContent[index];
+        //     setWiki(item.title + '\n' + item.body);
+        // }
 
         if (wiki) {
           const contentState = ContentState.createFromText(wiki);

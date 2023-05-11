@@ -8,7 +8,6 @@ function SignUp() {
     const [userPw, setUserPw] = useState('');
     const [friendId, setFriendId] = useState('');
     const [phoneNum, setPhoneNum] = useState('');
-    const [isJoinSuccess, setJoinSuccess] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
 
 
@@ -30,7 +29,7 @@ function SignUp() {
 
     const createUserApi = async () => {
         try{
-            const response = await axios.post('http://49.50.167.168:3000/user/auth/signup', {
+            const response = await axios.post('http://localhost:8080/user/auth/signup', {
                 user_id: userId,
                 user_name: userName,
                 password: userPw,
@@ -40,9 +39,9 @@ function SignUp() {
                 withCredentials: true
             });
             if (response.data.success) {
-                setJoinSuccess(true);
+                setLoggedIn(true);
             } else{
-                setJoinSuccess(false);
+                setLoggedIn(false);
             }
         } catch (error) {
             console.error(error);

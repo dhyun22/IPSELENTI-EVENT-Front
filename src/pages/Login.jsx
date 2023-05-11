@@ -18,22 +18,21 @@ function Login() {
 
     const [userId, setUserId] = useState('');
     const [userPw, setUserPw] = useState('');
-    const [isLoginSuccess, setLoginSuccess] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
 
 
     const userLogin = async () => {
         try{
-            const response = await axios.post('http://49.50.167.168:3000/user/auth/login', {
+            const response = await axios.post('http://localhost:8080/user/auth/login', {
                 user_id: userId,
                 password: userPw,
             }, {
                 withCredentials: true
             });
             if (response.data.success) {
-                setLoginSuccess(true);
+                setLoggedIn(true);
             } else{
-                setLoginSuccess(false);
+                setLoggedIn(false);
             }
         } catch (error) {
             console.error(error);

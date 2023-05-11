@@ -22,14 +22,14 @@ import { useState } from 'react';
 function App() {
     const [allText, setAllText] = useState('');
     const [allContent, setAllContent] = useState(null);
-    const [index, setIndex] = useState(null);
-    const [wiki, setWiki] = useState(null);
-    const [html, setHtml] = useState(null);
+    // const [index, setIndex] = useState(null);
+    // const [wiki, setWiki] = useState(null);
+    // const [html, setHtml] = useState(null);
 
     useEffect(() => {
         const getWiki = async () => {
             try{
-                const result = await axios.get('http://49.50.167.168:3000/wiki/contents/');
+                const result = await axios.get('http://localhost:8080/wiki/contents/');
                 setAllText(result.data['text']);
                 setAllContent(result.data['content']);
 
