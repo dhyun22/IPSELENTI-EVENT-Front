@@ -20,8 +20,8 @@ import { useNavigate } from "react-router-dom/dist";
 
 
 function App() {
-    const [allText, setAllText] = useState('');
-    const [allContent, setAllContent] = useState(null);
+    
+    // const [allContent, setAllContent] = useState(null);
     const [loggedIn, setLoggedIn] = useState(false);
 
    // const Navigate = useNavigate();
@@ -50,33 +50,15 @@ function App() {
     
 
     
-    useEffect(() => {
-        const getWiki = async () => {
-            try{
-                const result = await axios.get('http://localhost:8080/wiki/contents/');
-                setAllText(result.data['text']);
-                setAllContent(result.data['content']);
-
-                //console.log(result.data);
-                // setContent(result.data);
-                // setIndex(result.data[''])
-                // setWiki(result.data['title']+'\n'+result.data['content']['']);
-                //setHtml(WikiToHtml());
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        getWiki();
-        
-    }, []);
+    
 
         return (
             <Router>
                 <Routes>
                     <Route path="/main" element={<Home checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
-                    <Route path="/입실렌티" element={<WikiViewer checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} allContent={allContent} />} />
-                    <Route path="/wiki_edit" element={<WikiEdit  checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} allText={allText} allContent={allContent}/>} />
+                    <Route path="/입실렌티" element={<WikiViewer checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} />} />
+                    <Route path="/wikiedit/all" element={<WikiEdit  checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} />} />
+                    <Route path="/wikiedit/content" element={<WikiEdit  checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} />} />
                     <Route path="/wiki_edit_completed" element={<WikiEditCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} />} />
                     <Route path="/addindex_completed" element={<WikiEditCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
                     <Route path="/signup_completed" element={<SignUpCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />

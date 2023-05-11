@@ -37,6 +37,7 @@ import WikiToHtml from "../components/Wiki/WikiToHtml";
 
 function WikiViewer(props) {
     const myDivRef = useRef([]);
+    const [allText, setAllText] = useState('');
     
 
     function handleClick(index) {
@@ -50,22 +51,28 @@ function WikiViewer(props) {
     const [html, setHtml] = useState(null);
 
 
-    // useEffect(() => {
-    //     const getWiki = async () => {
-    //         try{
-    //             const result = await axios.get('http://49.50.167.168:3000/wiki/contents/5');
-    //             console.log(result.data);
-    //             setTitle(result.data['title']);
-    //             setContent(result.data['content']);
-    //             //setHtml(WikiToHtml(result.data['title']+'\n'+result.data['content']));
-    //             //setHtml(WikiToHtml());
-    //         } catch (error) {
-    //             console.error(error);
-    //         }
-    //     };
+    const getWiki = async () => {
+        try{
+            const result = await axios.get('http://localhost:8080/wiki/contents'); //{index} 가져올 방법 생각
+            setAllText(result.data.contents);
+            // setAllText(result.data['text']);
+            // setAllContent(result.data['content']);
 
-    //     getWiki();
+            //console.log(result.data);
+            // setContent(result.data);
+            // setIndex(result.data[''])
+            // 
+            //setHtml(WikiToHtml());
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+
+        getWiki();
         
+    }, []);
     // }, []);
     
 
@@ -80,7 +87,7 @@ function WikiViewer(props) {
                     <h1>입실렌티</h1> 
                     <div className='wiki-index'>
                         <ol>
-                            {props.allContent.map((item) => {
+                            {allText.map((item) => {
                                 return(
                                 <li onClick={() => handleClick(parseInt(item.index))}>{item.title}</li>
                                 );
@@ -88,7 +95,7 @@ function WikiViewer(props) {
                         </ol>
                     </div>
                     <div className='wiki-content'>
-                        {props.allContent.map((item) => {
+                        {allText.map((item) => {
                             return(
                                 <div ref={(el) => (myDivRef.current[parseInt(item.index)] = el)}>
                                     <WikiBox 

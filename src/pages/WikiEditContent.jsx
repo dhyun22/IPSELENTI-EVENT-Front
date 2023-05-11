@@ -22,7 +22,7 @@ const editorStyle = {
 
 
 
-function WikiEdit() {
+function WikiEdit(props) {
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [wiki, setWiki] = useState('');
@@ -39,20 +39,10 @@ function WikiEdit() {
         },
       };
 
-
-    const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-
-    const parser = new DOMParser();
-    const parsedHtml = parser.parseFromString(editorToHtml, 'text/html');
-      
-    const wikiMarkup = traverseHtml(parsedHtml.body);
-    
-    const navigate = useNavigate();
-
     const getWiki = async () => {
         try{
-            const result = await axios.get('http://localhost:8080/wiki/contents/'); //전체 텍스트를 가져옴.
-            setWiki(result.data['text']);
+            const result = await axios.get('http://localhost:8080/wiki/contents/5'); //{index} 가져올 방법 생각
+            setWiki(result.data['title']+'\n'+result.data['content']);
             // setAllText(result.data['text']);
             // setAllContent(result.data['content']);
 
@@ -66,22 +56,37 @@ function WikiEdit() {
         }
     };
 
+    useEffect(() => {
+
+        getWiki();
+        
+    }, []);
+
+
+    const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+
+    const parser = new DOMParser();
+    const parsedHtml = parser.parseFromString(editorToHtml, 'text/html');
+      
+    //const wikiMarkup = traverseHtml(parsedHtml.body);
+    
+    const navigate = useNavigate();
+
     const addWikiEdit = async (editContent) => {
         try {
-            const result = await axios.post('http://localhost:8080/wiki/contents/', editContent);
+            const result = await axios.post('http://49.50.167.168:3000/wiki/contents/5', {
+                version: "r2",
+                newContent: editContent,
+                editor_id: "2020171027"
+            });
             if (result.status === 200){
                 navigate('/입실렌티');
             }
         } catch(error){console.log(error)};
         
     };
-
-    //const [content, setContent] = useState(null);
-    
-
     
     useEffect(() => {
-
         if (wiki) {
           const contentState = ContentState.createFromText(wiki);
           const editorState = EditorState.createWithContent(contentState);
@@ -138,7 +143,7 @@ function WikiEdit() {
                             onEditorStateChange={onEditorStateChange}
                         />
                     </div>
-                    <button onClick={addWikiEdit}>submit</button>
+                    <button onClick={addWikiEdit(editorState)}>submit</button>
                     <div
                         // dangerouslySetInnerHTML={{__html: editorToHtml}}
                         
