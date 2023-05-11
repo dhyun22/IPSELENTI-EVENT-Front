@@ -9,6 +9,7 @@ function SignUp() {
     const [friendId, setFriendId] = useState('');
     const [phoneNum, setPhoneNum] = useState('');
     const [isJoinSuccess, setJoinSuccess] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(false);
 
 
 
