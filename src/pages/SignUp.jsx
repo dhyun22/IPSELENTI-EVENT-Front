@@ -12,54 +12,68 @@ function SignUp() {
 
 
 
-    const createUserApi = (user) => {
-        axios.post('http://49.50.167.168:3000/user/auth/signup', {
-            user_id: userId,
-            user_name: userName,
-            password: userPw,
-            phone_number: phoneNum,
-            recommender_id: friendId
-        }).then((res) => {
-            alert("회원가입 완료")
-        })
+    // const createUserApi = () => {
+    //     axios.post('http://localhost:8080/user/auth/signup', {
+    //         user_id: userId,
+    //         user_name: userName,
+    //         password: userPw,
+    //         phone_number: phoneNum,
+    //         recommender_id: friendId
+    //     }).then((res) => {
+    //         alert("회원가입 완료")
+    //     })
 
-        // const postUser = async () => {
-        //     try{
-        //         const result = await axios.post('http://49.50.167.168:3000/user/auth/signup', {
-        //         user_id: userId,
-        //         user_name: userName,
-        //         password: userPw,
-        //         phone_number: phoneNum,
-        //         recommender_id: friendId
-        //         }).then((res) => {
-        //             alert("회원가입 완료")
-        //         })
-
-        //     } catch (error) {
-        //         console.error(error);
-        //     }
-        // };
-    }
-
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     try{
-    //         const res = await createUserApi ({
-                
-    //         });
-    //     }
-
+        
     // }
 
+
+    const createUserApi = async () => {
+        try{
+            const response = await axios.post('http://49.50.167.168:3000/user/auth/signup', {
+                user_id: userId,
+                user_name: userName,
+                password: userPw,
+                phone_number: phoneNum,
+                recommender_id: friendId
+            }, {
+                withCredentials: true
+            });
+            if (response.data.success) {
+                setJoinSuccess(true);
+            } else{
+                setJoinSuccess(false);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
+
+            if (response.data.success) {
+                setLoggedIn(true);
+                navigator('/signup_completed');
+            } else{
+                setLoggedIn(false);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return(
         <div className='container'>
             <div className="mobile-view">
                 <div className="info">
                     <img src={logo} alt='' />
-                    <form className='sign-form' onSubmit={createUserApi}>
+                    <form className='sign-form'>
                         <div className="signup-content">
                             <h4>학번(아이디)</h4>
                             <input 
@@ -124,7 +138,7 @@ function SignUp() {
                                 <button>확인</button>
                             </div>
                         </div>
-                        <button id="signup-btn" type='submit' >회원가입</button>
+                        <button id="signup-btn" type='submit' onClick={createUserApi}>회원가입</button>
                     </form>
                 </div>
             </div>

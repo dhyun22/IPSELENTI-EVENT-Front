@@ -4,8 +4,10 @@ import WikiToHtml from './WikiToHtml';
 
 function WikiBox (props) {
 
-  const title = WikiToHtml(props.title);
+  //const title = WikiToHtml(props.title);
+  const title = props.title;
   const content = WikiToHtml(props.content);
+  const index = props.idx;
 
   return (
     <div className="wiki-contents content-one" >

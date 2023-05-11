@@ -15,17 +15,44 @@ import WikiViewer from "./pages/WikiViewer";
 import WikiToHtml from "./components/Wiki/WikiToHtml";
 import { useEffect, useRef } from 'react';
 import axios from 'axios';
+import { useState } from 'react';
 
 
 
 function App() {
+    const [allText, setAllText] = useState('');
+    const [allContent, setAllContent] = useState(null);
+    const [index, setIndex] = useState(null);
+    const [wiki, setWiki] = useState(null);
+    const [html, setHtml] = useState(null);
+
+    useEffect(() => {
+        const getWiki = async () => {
+            try{
+                const result = await axios.get('http://49.50.167.168:3000/wiki/contents/');
+                setAllText(result.data['text']);
+                setAllContent(result.data['content']);
+
+                //console.log(result.data);
+                // setContent(result.data);
+                // setIndex(result.data[''])
+                // setWiki(result.data['title']+'\n'+result.data['content']['']);
+                //setHtml(WikiToHtml());
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        getWiki();
+        
+    }, []);
 
         return (
             <Router>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/입실렌티" element={<WikiViewer/>} />
-                    <Route path="/wiki_edit" element={<WikiEdit  />} />
+                    <Route path="/입실렌티" element={<WikiViewer allContent={allContent} />} />
+                    <Route path="/wiki_edit" element={<WikiEdit  allText={allText} allContent={allContent}/>} />
                     <Route path="/wiki_edit_completed" element={<WikiEditCompleted />} />
                     <Route path="/addindex_completed" element={<WikiEditCompleted/>} />
                     <Route path="/signup_completed" element={<SignUpCompleted />} />

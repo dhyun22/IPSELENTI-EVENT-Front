@@ -19,24 +19,45 @@ function Login() {
     const [userId, setUserId] = useState('');
     const [userPw, setUserPw] = useState('');
     const [isLoginSuccess, setLoginSuccess] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(false);
 
 
-    const userLogin = () => {
-        axios.post('http://49.50.167.168:3000/user/auth/login', {
-            user_id: userId,
-            password: userPw,
-        }).then ((res) => {
-            setLoginSuccess(true);
-            if(res.data == true){
-                const isLoginResult = axios.get('http://49.50.167.168:3000/user/auth/islogin');
-                if(isLoginResult == true){
-                    navigator('/mypage');
-
-                }
+    const userLogin = async () => {
+        try{
+            const response = await axios.post('http://49.50.167.168:3000/user/auth/login', {
+                user_id: userId,
+                password: userPw,
+            }, {
+                withCredentials: true
+            });
+            if (response.data.success) {
+                setLoginSuccess(true);
+            } else{
+                setLoginSuccess(false);
             }
-        }).catch( (err) => console.error(err));
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    
+    const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
 
-        
+            if (response.data.success) {
+                setLoggedIn(true);
+                navigator('/mypage');
+            } else{
+                setLoggedIn(false);
+            }
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     return (

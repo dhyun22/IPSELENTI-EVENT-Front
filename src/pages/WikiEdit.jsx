@@ -22,7 +22,7 @@ const editorStyle = {
 
 
 
-function WikiEdit() {
+function WikiEdit(props) {
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
@@ -59,29 +59,38 @@ function WikiEdit() {
         
     };
 
-    const [sam, setSam] = useState(null);
-    const [wiki, setWiki] = useState(null);
-    const [html, setHtml] = useState(null);
+    //const [content, setContent] = useState(null);
+    const [wiki, setWiki] = useState('');
+    //const [html, setHtml] = useState(null);
+    
 
 
-    useEffect(() => {
-        const getWiki = async () => {
-            try{
-                const result = await axios.get('http://49.50.167.168:3000/wiki/contents/5');
-                console.log(result.data);
-                setSam(result.data);
-                setWiki(result.data['title']+'\n'+result.data['content']);
-                //setHtml(WikiToHtml());
-            } catch (error) {
-                console.error(error);
-            }
-        };
+    // useEffect(() => {
+    //     const getWiki = async () => {
+    //         try{
+    //             const result = await axios.get('http://49.50.167.168:3000/wiki/contents/5');
+    //             console.log(result.data);
+    //             setContent(result.data);
+    //             setWiki(result.data['title']+'\n'+result.data['content']);
+    //             //setHtml(WikiToHtml());
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    //     };
 
-        getWiki();
+    //     getWiki();
         
-    }, []);
+    // }, []);
+
     
     useEffect(() => {
+        if (index === 0){
+            setWiki(props.allText);
+        } else {
+            const item = props.allContent[index];
+            setWiki(item.title + '\n' + item.body);
+        }
+
         if (wiki) {
           const contentState = ContentState.createFromText(wiki);
           const editorState = EditorState.createWithContent(contentState);
