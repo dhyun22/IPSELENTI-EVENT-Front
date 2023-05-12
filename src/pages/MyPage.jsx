@@ -3,10 +3,13 @@ import {Link} from 'react-router-dom';
 import {FaRegUser} from 'react-icons/fa';
 import {FaRegSmile} from 'react-icons/fa';
 import {AiOutlineNumber} from 'react-icons/ai';
-import {TbCoin} from 'react-icons/tb';
 import logo from '../img/logo.png';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
+import BettingSum from '../components/BettingSum';
+import LeftPoint from '../components/LeftPoint';
+import {TbCoin} from 'react-icons/tb';
+
 
 
 function MyPage() {
@@ -29,7 +32,7 @@ function MyPage() {
     }
   } 
 
-  useState(()=> {takeuser();}, []);
+  useEffect(()=> {takeuser();}, []);
 
 
   return (
@@ -88,15 +91,13 @@ function MyPage() {
           <ul className="betting_row" id='betting_row'>
             <li>
               <div className="row_itemleft">
-                <TbCoin/>
-                  <span className="item_text" id="row_itemleft"> &nbsp;잔여 포인트 : 15000 P</span>
+                <TbCoin/><span className="item_text" id='row_itemleft'> &nbsp;잔여 포인트 : <LeftPoint/> P</span>
               </div>
-           </li>
+            </li>
 
             <li>
               <div className="row_itemused">
-                <TbCoin/>
-                 <span className="item_text" id='row_itemused'> &nbsp;배팅 포인트 : 15000 P</span>
+               <TbCoin/><span className="item_text" id='row_itemused'> &nbsp;배팅 포인트 : <BettingSum/> P</span>
               </div>
             </li>
           </ul> 
