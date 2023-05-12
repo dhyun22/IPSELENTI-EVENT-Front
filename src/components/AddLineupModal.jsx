@@ -11,8 +11,11 @@ function AddLineupModal() {
     const addLineupPost = () => {
         console.log(singerName);
         axios.post('http//localhost:3000/', {
-            singer_id: singerName,
-            apply_reason: applyReason,
+            celebrity_name: singerName,
+            request_reason: applyReason,
+            // request_time: 서버 등록된 시간으로 볼까?
+            // request_id:
+            // requester_id:
         }).then((res)=>{
             setModalOpen(false);
         }).catch( (err) => console.error(err));
