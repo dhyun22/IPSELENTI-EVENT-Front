@@ -12,6 +12,7 @@ import SignUpCompleted from "./pages/SignUpCompleted";
 import WikiEdit from "./pages/WikiEdit";
 import WikiEditCompleted from "./pages/WikiEditCompleted";
 import WikiViewer from "./pages/WikiViewer";
+import Admin from './pages/Admin';
 import { useEffect } from 'react';
 
 
@@ -29,6 +30,7 @@ function App() {
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/mypage" element={<MyPage />} />
+                    <Route path="/admin1905051312348998&" element={<Admin />} />
                 </Routes>
             </Router>
         )
