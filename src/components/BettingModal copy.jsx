@@ -46,7 +46,11 @@ function BettingModal() {
     
       const handleBettingPointChange = (e) => {
         const inputPoint = parseInt(e.target.value);
-        setBettingPoint(inputPoint);
+        if (isNaN(inputPoint)) {
+            setBettingPoint(0);
+        } else {
+            setBettingPoint(inputPoint);
+        }
       };
 
     // useEffect(()=> {

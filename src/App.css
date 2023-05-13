@@ -35,7 +35,8 @@
     position: absolute;
     right: 10%;
     top: 5%;
-    background-color: green;
+    background-color: white;
+    box-shadow: 1px black;
     width: 4vh;
     height: 4vh;
     cursor: pointer;
@@ -64,14 +65,23 @@
 
 .searchButton {
     position: absolute;
-    width: 4.2vh;
-    height: 4.2vh;
-    background-color: grey;
+    width: 4.5vh;
+    height: 4.5vh;
+    background-color: #ccc;
     right: 9%;
-    margin-top: 0.5%;
+    margin-top: 0%;
     align-items: center;
     cursor: pointer;
     color: black;
+    box-shadow: 2px 2px 2px black;
+    transition-duration: 0.05s;
+    border-radius: 20%;
+}
+
+.searchButton:active {
+  box-shadow:none;
+  margin-left:1px;
+  margin-top:1px;
 }
 
 .search {
@@ -195,7 +205,7 @@
     animation-fill-mode: forwards;
     animation-name: slide-btn;
     animation-duration: 1.2s;
-    animation-delay: 3s;
+    animation-delay: 1s;
     animation-timing-function: ease-out;
     color: white;
     background-color: red;
