@@ -76,7 +76,7 @@ function BettingModal(props) {
                             <div className='singerDetailcontainer'>
                                 <div className='nameAndVoterate'>
                                     <div className='singerNameContainer'>
-                                        <p className='singerName'>{props.singerName}</p>
+                                        <p className='singerName'>{props.celebName}</p>
                                     </div>
                                     <div>
                                         <p className='voterate'>{props.voteRate}</p>
