@@ -49,7 +49,7 @@ function BettingModal(props) {
             setBettingPoint(0);
         } else {
             setBettingPoint(inputPoint);
-            setPointLeft(parseInt(props.myPoint) - inputPoint);
+            setPointLeft(myPoint - bettingPoint);
         }
       };
 
