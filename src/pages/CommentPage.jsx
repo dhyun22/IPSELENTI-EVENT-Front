@@ -2,8 +2,47 @@ import React from 'react';
 import logo from '../img/logo.png';
 import CommentList from '../components/CommentList';
 import ScrollToTopButton from '../components/ScrollToTopButton';
+import axios from 'axios';
+import {useEffect} from "react";
+import {useState} from "react";
 
 function CommentPage() {
+
+    
+    const [user, setUser] = useState('');
+    const [comment, setComment] = useState([]);
+    
+    const takeuser = async () => {
+      try {
+        const login = await axios.post("http://localhost:8080/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true})
+        const response = await axios.get("http://localhost:8080/user/mypage/info", { withCredentials: true });
+                
+        if (response.data.success == true){
+          setUser(response.data.user)
+        } else {
+          navigator('/Login')
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    } 
+    
+    const takecomment = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/comment/bytime", {withCredentials: true});
+        const commenthis = response.data.map(comment => ({
+          id: comment.comment_id,
+          author: comment.author,
+          content: comment.comment_content,
+          time: comment.comment_time,
+          likes: comment.likes_count
+        }));
+        setComment(commenthis);
+      } catch (error) {
+        console.error(error);   
+      }
+    }
+    
 
     const comments = [
         { id: 1, comment_id: 'Alice', comment_text: 'HEllo', time: '4분 전', liked: 0},

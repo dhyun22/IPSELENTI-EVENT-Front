@@ -9,6 +9,7 @@ import {useState, useEffect} from 'react';
 import BettingSum from '../components/BettingSum';
 import LeftPoint from '../components/LeftPoint';
 import {TbCoin} from 'react-icons/tb';
+import BettingList from '../components/BettingList';
 
 
 
@@ -20,11 +21,9 @@ function MyPage() {
     try{
       const login = await axios.post("http://localhost:8080/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true})
       const response = await axios.get("http://localhost:8080/user/mypage/info", { withCredentials: true});
-      const bethistory= await axios.get("http://localhost:8080/user/mypage/bettinghistory", {withCredentials:true});
       
       if (response.data.success == true){
         setUser(response.data.user)
-        setBetting(bethistory.data.bettingHistory)
       }else{ navigator('/Login')
       }
     } catch (error) {
@@ -103,11 +102,7 @@ function MyPage() {
           </ul> 
 
           <div className='betting_list_box' id="betting_list_box">
-            <ul className='betting_list' id='betting_list'>
-              <li>
-                {betting.celebrity_id}{betting.betting_point}
-              </li>
-            </ul>
+            <BettingList/>
           </div>
         </div>
       </div>

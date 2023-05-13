@@ -25,9 +25,9 @@
 }
 
 .logo {
-    width: 20%;
-    height: 60%;
-    margin-top: 4%;
+    width: 25%;
+    height: 80%;
+    margin-top: 1vh;
     cursor: pointer;
 }
 
@@ -84,9 +84,10 @@
 
 
 .banner {
-    width: 80%;
+    width: 76%;
     height: 6vh;
     margin-top: 20px;
+    margin-left: 12%;
     background-color: grey;
     border-radius: 6px;
 }
@@ -339,7 +340,7 @@ h4{
 }
 
 /* 마이페이지 */
-.content{
+.mypage_content{
     padding: 0 20px;
     box-sizing: border-box;
   }
@@ -368,7 +369,7 @@ h4{
   
   
   #account_box{
-    height: 100%;
+  
     font-size: 1rem;
     font-family: Arial, Helvetica, sans-serif ;
     flex-direction: column;
@@ -443,11 +444,12 @@ h4{
   
   
   #betting_box{
-    height: 100%;
+   
     font-size: 1rem;
     font-family: Arial, Helvetica, sans-serif ;
     flex-direction: column;
     background-color: #ffffff;
+    position: relative;
   }
   
   #betting_title {
@@ -485,7 +487,6 @@ h4{
     letter-spacing: -.47px;
     color: #000000;
   }
-  
   .row_itemused{
     margin-left: 30px;
   }
@@ -543,14 +544,672 @@ h4{
     height: 75%;
     background-color: #c1c1c1;
   }
+
+/* 메인페이지 */
+.main_content{
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.main_head, .main_body{
+  position: relative;
+  min-height: 41px;
+  line-height: 41px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #c9c6c6;
+}
+.main_head{
+  padding-bottom: 18px;
+}
+
+
+.adding_mainpage{
+  font-size: 10px;
+  border : none;
+  background-color: white;
+  float: right;
+  margin-bottom: 1px;
+  color:rgb(122, 122, 122);
+}
+
+.main_head_title{
+  display: initial;
+  text-align: left;
+}
+
+.main_body {
+  display: flex;
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.left_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100%/6);
+  width: 50%;
+}
+
+
+
+.remaintime_text {
+  font-size: 16px;
+  font-weight: bold;
+  flex:1;
+}
+
+.remaintime {
+  font-size: 12px;
+  flex:1;
+}
+
+.ShareModal {
+  margin-top: 10px;
+  flex:1;
+}
+
+.rignt_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: calc(100%/6);
   
-  #customer_box{
-    height: 100%;
-    font-size: 1rem;
-    font-family: Arial, Helvetica, sans-serif ;
-    flex-direction: column;
-    background-color: #ffffff;
-  }
+}
+
+.Totalpoint_text {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.Totalpoint {
+  font-size: 12px;
+}
+
+
+
+.Totalpoint_text,
+.Totalpoint,
+.MovetoComment {
+  flex: 1;
+}
+
+.MovetoComment{
+  margin-top: 10px;
+}
+
+
+
+
+
+
+.info_box{
+  border-bottom: 1px solid #c9c6c6;
+  position: relative;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+
+}
+.celeb_rank {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#celeb_thumb {
+  float: left;
+  width: 60px;
+  height: 60px;
+  margin: 0 0 0 30px;
+  border-radius: 20px;
+  box-shadow: 0px 2px 4px 0 rgba(42, 55, 71, 0.15);
+  position: relative;
+}
+
+.celeb_info {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+#celeb_name, #celeb_betrate {
+  display: block;
+  margin-left: 10px;
+}
+#celeb_name{
+  font-size: 16px;
+  font-weight: bold;
+}
+#celeb_betrate{
+  margin-top: 5px;
+  font-size: 10px;
+  color:rgb(122, 122, 122);
+}
+.celeb_footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 10px;
+}
+#celeb_point {
+  margin-top: 20px;
+  margin-right: 10px;
+  font-size: 10px;
+  color: rgb(122, 122, 122);
+}
+
+.betting_btn{
+  font-weight: bold;
+}
+
+.celeb_graph{
+  margin : 0 15px 0 15px;
+  display: flex; 
+  align-items: center; 
+}
+
+#celeb_per{
+  clear: both;
+  display: block;
+  width: 100%;
+  height: 7px;
+  background: #eaeaea;
+  border-radius: 5px;
+  margin-top: 5px;
+  
+}
+
+#celeb_bg{
+  
+  display: block;
+  height: 7px;
+  border-radius: 5px;
+  background-image: linear-gradient(to right,#631917, crimson);
+}
+
+.celeb_per_text{
+  font-size: 12px;
+  margin-top: 5px;
+  margin-left: 5px;
+  color: #7A7A7A;
+}
+
+#celeb_showmore{
+  border: none;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  background: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+  margin-top: -15px;
+
+}
+
+.AddLineup{
+  display: flex;
+
+}
+
+.ranking_count{
+  padding-bottom: 20px;
+}
+
+/* 댓글창 */
+.comment_content{
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.comment_head{
+  position: relative;
+  min-height: 41px;
+  line-height: 41px;
+  border-bottom: 1px solid #c9c6c6;
+  margin-bottom: 20px;
+}
+
+.comment_head_title .comment_head_count .comment_head_tools{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.comment_head_title{
+  display: initial;
+  text-align: left;
+}
+
+.comment_head_count{
+  padding: 1px 0 0 5px;
+  font-size: 18px;
+  color: #000;
+}
+
+
+
+.comment_writing_area{
+  margin-top: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.comment_writing_name{
+  text-align: left;
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+#comment_writing_textarea{
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 13px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+  color: #000;
+  border:none;
+  
+}
+
+.comment_btn_wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.comment_btn{
+  margin: 5px 5px;
+  border: none;
+  background-color: #d0d0d0;
+  padding: 5px;
+  font-size: 13px;
+  border-radius: 4px;
+  color: #444;
+  float: right; 
+  cursor: pointer;
+}
+.comment_btn:hover{
+  color: white;
+  background-color: #444;
+}
+
+.comment_view {
+ 
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.comment_view .comment {
+  border-bottom: 1px solid #ccc;
+  font-size: 13px;
+}
+
+.comment_header{
+  display :flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.comment_id {
+  
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.comment_head_tools{
+  padding-top: 7px;
+  float: right;
+  margin: 0 10px 0 0;
+}
+
+.comment_text{
+  margin-left: 10px;
+}
+
+.comment_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment_time {
+  margin-left: 10px  ;
+  font-size: 10px;
+}
+
+.comment_liked {
+  margin-right: 15px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.more_btn {
+  border: none;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  background: none;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.scroll-to-top {
+
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  text-align: center;
+}
+
+.scroll-to-top button {
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 20%;
+  color: #9e9e9e;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: background-color 0.3s ease;
+  border: 1px solid #9e9e9e;
+  box-shadow: 1px 1px 10px 0 rgba(72,75,108,.08);
+
+}
+
+.scroll-to-top button:hover {
+  background-color: #eaeaea
+}
+
+
+
 /* 여기까지 다현이 css */
 
 /* modal */
+.lineupModal {
+  position: relative;
+  max-width: 330px;
+  max-height: 630px;
+  width: 70vw;
+  height: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  border: solid black 2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.modalClose {
+  position: absolute;
+  margin-top: 4%;
+  right: 5%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.singerContainer {
+  width: 100%;
+  height: 60%;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h3 {
+  margin-left: 3vw;
+  font-size: 16px;
+  margin-top: 8%;
+  margin-left: 10%;
+}
+
+.singerInput {
+  margin-left: 5%;
+  width: 75%;
+  height: 12%;
+  border: solid grey 1px;
+  border-radius: 3px;
+  margin-left: 10%;
+}
+
+.reasonInput {
+  margin-left: 5%;
+  width: 75%;
+  height: 32%;
+  border: solid grey 1px;
+  border-radius: 3px;
+  margin-left: 10%;
+  text-align: left;
+}
+
+.addLineupBtn {
+  position: absolute;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: white;
+  background-color: red;
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 6px;
+  border: none;
+  width: 40%;
+  height: 12%;
+  cursor: pointer;
+  padding: 5px;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bettingModal {
+  position: relative;
+  max-width: 330px;
+  max-height: 630px;
+  width: 70%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  border: solid black 2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.singerInfoContainer {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 20%;
+  margin-top: 15%;
+  margin-left: 10%;
+}
+
+.profileContainer {
+  height: 100%;
+  width: 30%;
+}
+
+.singerDetailContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.profilePic {
+  width: 5vh;
+  height: 5vh;
+  background-color: grey;
+  margin-top: 35%;
+  margin-left: 5%;
+}
+
+.nameAndVoterate {
+  display: flex;
+  flex-direction: row;
+  margin-top: 5%;
+}
+
+.singerNameContainer {
+  text-align: left;
+}
+
+.singerName {
+  font-weight: bold;
+  font-size: 18px;
+  width: 200%;
+  margin-right: 20%;
+}
+
+.voterateContainer {
+}
+
+.voterate {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 100%;
+}
+
+.pointAndRank {
+  display: flex;
+  flex-direction: row;
+  margin-top: -15%;
+}
+
+.betPoint {
+  text-align: left;
+  color: grey;
+  font-size: 13px;
+  width: 200%;
+  margin-left: 0%;
+}
+
+.betRank {
+  text-align: right;
+  color: grey;
+  font-size: 13px;
+  width: 30px;
+}
+
+hr {
+  width: 80%;
+  justify-content: center;
+  margin-top: 0%;
+}
+
+.betContainer {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10%;
+}
+
+.betInfo {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20%;
+  font-size: 14px;
+}
+
+.betInfo2 {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  margin-right: 3%;
+  font-size: 14px;
+}
+
+.betInput {
+}
+
+.betInfo3 {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  margin-right: 0%;
+  font-size: 14px;
+}
+
+.betBtnContainer {
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-30%);
+  margin-top: 5%;
+}
+
+.betBtn {
+    color: white;
+    background-color: red;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    width: 30%;
+    height: 8%;
+    cursor: pointer;
+    padding: 5px;
+    margin-right: 5%;
+}
+
+.betCanBtn {
+    color: white;
+    background-color: grey;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 6px;
+    border:none;
+    width: 30%;
+    height: 8%;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.shareModal {
+  position: relative;
+  max-width: 330px;
+  max-height: 630px;
+  width: 70vw;
+  height: 20%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  border: solid black 2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.shareContainer {
+  position: absolute;
+  width: 90%;
+  top: 8%;
+  left: 10%;
+}
+
+.shareLink {
+  width: 80%;
+  height: 3%;
+}
+
+.copyBtn {
+  color: white;
+  position: absolute;
+  right: 35%;
+  top: 75%;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  width: 30%;
+  height: 15%;
+  cursor: pointer;
+  padding: 5px;
+}
