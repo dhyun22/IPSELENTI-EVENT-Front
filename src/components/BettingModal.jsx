@@ -9,7 +9,7 @@ function BettingModal(props) {
     const[myPoint, setMyPoint] = useState(parseInt(props.myPoint));
     const[bettingPoint, setBettingPoint] = useState(parseInt(props.bettingAmount));
     const[pointLeft, setPointLeft] = useState(parseInt(props.myPoint));
-    const[dividend, setDividend] = useState(parseInt(props.myPoint) * parseFloat(props.dividendRate));
+    const[dividend, setDividend] = useState(parseInt(props.bettingAmount) * parseFloat(props.dividendRate));
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const checkSignIn = () => {
@@ -109,7 +109,7 @@ function BettingModal(props) {
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>예상 배당금</p>
-                                    <input defaultValue={parseInt(props.myPoint)*parseFloat(props.dividendRate)} placeholder={dividend} className='betInput' disabled/>
+                                    <input placeholder={dividend} className='betInput' disabled/>
                                     <p className='betText'>P</p>
                                 </div>
                         </div>
