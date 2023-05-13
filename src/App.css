@@ -687,6 +687,7 @@ h4{
   border-radius: 10px;
   border: solid black 2px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: white;
 }
 
 
@@ -763,6 +764,7 @@ h3 {
   border-radius: 10px;
   border: solid black 2px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: white;
 }
 
 .singerInfoContainer {
@@ -836,7 +838,7 @@ h3 {
 }
 
 .betRank {
-  right: -25%;
+  right: -50%;
   text-align: right;
   color: grey;
   font-size: 11px;
@@ -930,6 +932,7 @@ hr {
   border-radius: 10px;
   border: solid black 2px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: white;
 }
 
 .shareContainer {

@@ -6,15 +6,14 @@ import { Link } from 'react-router-dom';
 
 function BettingModal(props) {
     const[modalOpen, setModalOpen] = useState(false);
-    const[myPoint, setMyPoint] = useState('');
-    const[bettingPoint, setBettingPoint] = useState('');
-    let pointLeft = myPoint - bettingPoint;
-    if(pointLeft < 0) {
-        pointLeft = "보유 포인트 초과";
-    } 
-    // let dividendRate = 1.8;
-    // let dividendRate = celebrity_amount / celebrity_amount_sum;
-    // let dividend = bettingPoint * dividendRate;
+    const[myPoint, setMyPoint] = useState(parseInt(props.myPoint));
+    const[bettingPoint, setBettingPoint] = useState(parseInt(props.bettingAmount));
+    const[pointLeft, setPointLeft] = useState(parseInt(props.myPoint));
+
+    // useEffect(()=> {
+    //     let calculatedDividend = bettingPoint * parseFloat(props.dividendRate);
+    //     setDividend(calculatedDividend);
+    // }, [bettingPoint, props.dividendRate]);
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const checkSignIn = () => {
@@ -30,19 +29,19 @@ function BettingModal(props) {
         console.error(error);
         });
     };
-    const handleBetting = () => {
-        const betData = {
-        bettingPoint,
-        };
-        axios
-          .post('/betting', betData)
-          .then((response) => {
-            setMyPoint(response.data.myPoint);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      };
+    // const handleBetting = () => {
+    //     const betData = {
+    //     bettingPoint,
+    //     };
+    //     axios
+    //       .post('/betting', betData)
+    //       .then((response) => {
+    //         setMyPoint(response.data.myPoint);
+    //       })
+    //       .catch((error) => {
+    //         console.error(error);
+    //       });
+    //   };
     
       const handleBettingPointChange = (e) => {
         const inputPoint = parseInt(e.target.value);
@@ -50,6 +49,7 @@ function BettingModal(props) {
             setBettingPoint(0);
         } else {
             setBettingPoint(inputPoint);
+            setPointLeft(parseInt(props.myPoint) - inputPoint);
         }
       };
 
@@ -96,27 +96,27 @@ function BettingModal(props) {
                         <div className='betContainer'>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>포인트 베팅</p>
-                                    <input value={props.bettingAmount} className='betInput' onChange={handleBettingPointChange} />
+                                    <input value={bettingPoint} className='betInput' onChange={handleBettingPointChange} />
                                     <p className='betText'>P</p>
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>잔여 포인트</p>
-                                    <input value={props.myPoint} className='betInput' placeholder={pointLeft} disabled/>
+                                    <input value={parseInt(props.myPoint)} className='betInput' placeholder={pointLeft} disabled/>
                                     <p className='betText'>P</p>
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>현재 배당률</p>
-                                    <input value={props.dividendRate} className='betInput' disabled/>
+                                    <input value={parseFloat(props.dividendRate)} className='betInput' disabled/>
                                     <p className='betText'>%</p>
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>예상 배당금</p>
-                                    <input className='betInput' disabled/>
+                                    <input  className='betInput' disabled/>
                                     <p className='betText'>P</p>
                                 </div>
                         </div>
                         <div className='betBtnContainer'>
-                            <button className='betBtn' disabled={pointLeft = '보유 포인트 초과'} onClick={() => setModalOpen(false)}>베팅하기</button>
+                            <button className='betBtn' onClick={() => setModalOpen(false)}>베팅하기</button>
                             <button className='betCanBtn' onClick={() => setModalOpen(false)}>취소하기</button>
                         </div>
                     </div>

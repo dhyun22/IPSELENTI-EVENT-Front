@@ -14,15 +14,19 @@ function Celebrity() {
       point: '12345 ',
       graphWidth: '70%',
       percent: '70%',
+      myPoint: '20000',
+      bettingAmount: '1500',
     },
     {
       rank: 2,
       thumb: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202305021004012.jpg',
-      name: '르세라핌(LE SSERAFIM)',
+      name: '르세라핌',
       betRate: '1.1',
       point: '12345',
       graphWidth: '50%',
       percent: '50%',
+      myPoint: '20000',
+      bettingAmount: '2500'
     },
     {
       rank: 3,
@@ -32,6 +36,8 @@ function Celebrity() {
       point: '12345',
       graphWidth: '45%',
       percent: '45%',
+      myPoint: '20000',
+      bettingAmount: '2500',
     },
     {
       rank: 4,
@@ -41,6 +47,8 @@ function Celebrity() {
       point: '12345',
       graphWidth: '40%',
       percent: '40%',
+      myPoint: '20000',
+      bettingAmount: '2500',
     },
     {
       rank: 5,
@@ -50,6 +58,8 @@ function Celebrity() {
       point: '12345',
       graphWidth: '35%',
       percent: '35%',
+      myPoint: '20000',
+      bettingAmount: '2500',
     },
     {
         rank: 6,
@@ -59,6 +69,8 @@ function Celebrity() {
         point: '12345',
         graphWidth: '30%',
         percent: '30%',
+        myPoint: '20000',
+        bettingAmount: '2500',
     },
     {
         rank: 7,
@@ -68,6 +80,8 @@ function Celebrity() {
         point: '12345',
         graphWidth: '25%',
         percent: '25%',
+        myPoint: '20000',
+        bettingAmount: '2500',
     },
     {
         rank: 8,
@@ -77,15 +91,19 @@ function Celebrity() {
         point: '12345',
         graphWidth: '20%',
         percent: '20%',
+        myPoint: '20000',
+        bettingAmount: '2500',
     },
     {
         rank: 9,
         thumb: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202305021004012.jpg',
         name: '에스파',
-        betRate: '배당률 1.1%',
+        betRate: '1.1',
         point: '12345',
         graphWidth: '15%',
         percent: '15%',
+        myPoint: '20000',
+        bettingAmount: '2500',
       },
     {
         rank: 10,
@@ -95,6 +113,8 @@ function Celebrity() {
         point: '12345',
         graphWidth: '10%',
         percent: '10%',
+        myPoint: '20000',
+        bettingAmount: '2500',
     },
     {
         rank: 11,
@@ -104,6 +124,8 @@ function Celebrity() {
         point: '12345',
         graphWidth: '5%',
         percent: '5%',
+        myPoint: '20000',
+        bettingAmount: '2500',
       },
       {
         rank: 12,
@@ -113,6 +135,8 @@ function Celebrity() {
         point: '12345',
         graphWidth: '1%',
         percent: '1%',
+        myPoint: '20000',
+        bettingAmount: '2500',
       },
     // ... 랭킹 정보 데이터 배열
   ];
@@ -145,6 +169,8 @@ function Celebrity() {
             betPoint={celeb.point}
             betRank={celeb.rank}
             dividendRate={celeb.betRate}
+            myPoint={celeb.myPoint}
+            bettingAmount={celeb.bettingAmount}
             id='celeb_bet' />
           </div>
           <div className='celeb_graph'>
