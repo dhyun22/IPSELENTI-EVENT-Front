@@ -8,9 +8,48 @@ import {useState} from "react";
 
 function CommentPage() {
 
-    
+    const comments = [
+        { id: 1, comment_id: 'Alice', comment_text: 'HEllo', time: '4분 전', liked: 0},
+        { id: 2, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 3, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 4, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 5, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 6, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 7, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 8, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 9, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 10, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 11, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 12, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 13, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 14, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 15, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 16, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 17, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 18, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 19, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.' , time: '4분 전', liked: 0},
+        { id: 20, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 21, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 22, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 23, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 24, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 25, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 26, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 27, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 28, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 29, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 30, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 31, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 32, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        { id: 33, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
+        { id: 34, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
+        { id: 35, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
+        
+        //... more comments
+    ];
     const [user, setUser] = useState('');
-    
+    const [comment, setComment] = useState([]);
+
     const takeuser = async () => {
       try {
         const login = await axios.post("http://localhost:8080/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true})
@@ -26,61 +65,20 @@ function CommentPage() {
       }
     } 
     
-
-
-    const [comment, setComment] = useState([]);
-
-    const getCommentByTime = async () => {
-      try {
-        const response = await axios.get('http://localhost:8080/comment/bytime', { withCredentials: true });
-        const commentData = response.data.map(comment => ({
-          id: comment.comment_id,
-          author: comment.author,
-          content: comment.comment_content,
-          time: comment.comment_time,
-          likes: comment.likes_count,
-        }));
-    
-        if (commentData.length > 0) {
-          setComment(commentData);
-        } else {
-          // 댓글이 없는 경우 처리
+    const takeComment = async () => {
+        try {
+            const res  = await axios.get("http://localhost:8080/comment/bytime", {withCredentials:true})
+            if (res.data) {
+                setComment(res.data);
+            }
+        } catch(error) {
+            console.error(error);
         }
-      } catch (error) {
-        console.error(error);
-        // 오류 처리
-      }
-    };
+    }
+
     
-    const getCommentByLike = async () => {
-      try {
-        const response = await axios.get('http://localhost:8080/comment/bylike', { withCredentials: true });
-        const commentData = response.data.map(comment => ({
-          id: comment.comment_id,
-          author: comment.author,
-          content: comment.comment_content,
-          time: comment.comment_time,
-          likes: comment.likes_count,
-        }));
     
-        if (commentData.length > 0) {
-          setComment(commentData);
-        } else {
-          // 댓글이 없는 경우 처리
-        }
-      } catch (error) {
-        console.error(error);
-        // 오류 처리
-      }
-    };
     
-    const handleSortLatest = () => {
-      getCommentByTime();
-    };
-    
-    const handleSortPopular = () => {
-      getCommentByLike();
-    };
     
     
     
@@ -91,8 +89,8 @@ function CommentPage() {
         <div className='comment_head'>
             <h2 className='comment_head_title'>댓글</h2>
             <span className='comment_head_count'>899</span>
-            <button onClick={handleSortLatest} className='comment_bytime'>최신순</button>
-            <button onClick={handleSortPopular} className='comment_bylike'>인기순</button>
+            <button  className='comment_bytime'>최신순</button>
+            <button  className='comment_bylike'>인기순</button>
         </div>
         <div className='comment_writingbox'>
             <form className='comment_form'>
@@ -100,9 +98,10 @@ function CommentPage() {
                     <div className='comment_writing_inner' id='comment_writing_inner'>
                         <form className='comment_writing_area' id="comment_writing_area">
                             <div className='comment_writing_name'>
+                                {user.name && user.name !== '' && 
                                 <span className='comment_writing_name'>
-                                 &nbsp; 정ㅇㅇ
-                                 </span>
+                                 &nbsp; {user.name[0]}oo
+                                </span>}
                             </div>
                             <textarea rows="5" id='comment_writing_textarea' placeholder="댓글을 작성해주세요"></textarea>
                             <div className='comment_button' id='comment_button'>
@@ -120,7 +119,7 @@ function CommentPage() {
     </div>
 
     <div className='comment_view'>
-       <CommentList />
+        <CommentList comments={comment}/>
     </div>
     <div className='scrollup'>
         <ScrollToTopButton/>

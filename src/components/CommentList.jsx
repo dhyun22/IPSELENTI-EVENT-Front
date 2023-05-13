@@ -14,7 +14,7 @@ function CommentList({ comments }) {
   return (
     <div>
       {comments.slice(0, visibleComments).map((comment, index) => (
-        <Comment key={index} comment={comment}/>
+        <Comment key={index} comment_text={comment.comment_text} comment_id={comment.comment_id} time={comment.time} liked={comment.liked}/>
       ))}
       {visibleComments < comments.length && (
         <button className='more_btn' onClick={handleMoreButtonClick}>더보기<FiChevronDown/> </button>

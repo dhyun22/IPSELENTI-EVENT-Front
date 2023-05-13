@@ -112,18 +112,7 @@ function LineupEvent() {
                       </form>
                      </div>
                     </div>
-                    <div dangerouslySetInnerHTML={{__html: `<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>전체 댓글 보기</title>
-    <link rel="stylesheet" href="/path/to/comment-page.css">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script src="/path/to/bundle.js"></script>
-  </body>
-</html>`}}></div>
+                    
                 <div className='comment_main'>
                   <MainCommentList comments={comments} />
                 </div>
