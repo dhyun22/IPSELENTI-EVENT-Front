@@ -9,6 +9,7 @@ function BettingModal(props) {
     const[myPoint, setMyPoint] = useState(parseInt(props.myPoint));
     const[bettingPoint, setBettingPoint] = useState(parseInt(props.bettingAmount));
     const[pointLeft, setPointLeft] = useState(parseInt(props.myPoint));
+    const[dividend, setDividend] = useState(parseInt(props.myPoint) * parseFloat(props.dividendRate));
 
     // useEffect(()=> {
     //     let calculatedDividend = bettingPoint * parseFloat(props.dividendRate);
@@ -49,7 +50,8 @@ function BettingModal(props) {
             setBettingPoint(0);
         } else {
             setBettingPoint(inputPoint);
-            setPointLeft(myPoint - bettingPoint);
+            setPointLeft(myPoint - inputPoint);
+            setDividend(inputPoint * parseFloat(props.dividendRate));
         }
       };
 
@@ -111,7 +113,7 @@ function BettingModal(props) {
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>예상 배당금</p>
-                                    <input  className='betInput' disabled/>
+                                    <input value={parseInt(props.myPoint)*parseFloat(props.dividendRate)} className='betInput' disabled/>
                                     <p className='betText'>P</p>
                                 </div>
                         </div>
