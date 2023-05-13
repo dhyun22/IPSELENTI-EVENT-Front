@@ -26,6 +26,7 @@ function WikiEdit() {
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [wiki, setWiki] = useState('');
+    const [version, setVersion] = useState(null);
 
     const onEditorStateChange = (editorState) => {
     // editorState에 값 설정
@@ -42,10 +43,10 @@ function WikiEdit() {
 
     const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
 
-    const parser = new DOMParser();
-    const parsedHtml = parser.parseFromString(editorToHtml, 'text/html');
+    // const parser = new DOMParser();
+    // const parsedHtml = parser.parseFromString(editorToHtml, 'text/html');
       
-    const wikiMarkup = traverseHtml(parsedHtml.body);
+    const wikiMarkup = traverseHtml(editorToHtml);
     
     const navigate = useNavigate();
 
@@ -53,14 +54,7 @@ function WikiEdit() {
         try{
             const result = await axios.get('http://localhost:8080/wiki/contents/'); //전체 텍스트를 가져옴.
             setWiki(result.data['text']);
-            // setAllText(result.data['text']);
-            // setAllContent(result.data['content']);
-
-            //console.log(result.data);
-            // setContent(result.data);
-            // setIndex(result.data[''])
-            // 
-            //setHtml(WikiToHtml());
+            setVersion(result.data.version);
         } catch (error) {
             console.error(error);
         }
@@ -68,7 +62,10 @@ function WikiEdit() {
 
     const addWikiEdit = async (editContent) => {
         try {
-            const result = await axios.post('http://localhost:8080/wiki/contents/', editContent);
+            const result = await axios.post('http://localhost:8080/wiki/contents/', {
+                version: version,
+                newContent: editContent,
+            });
             if (result.status === 200){
                 navigate('/입실렌티');
             }
@@ -77,8 +74,6 @@ function WikiEdit() {
     };
 
     //const [content, setContent] = useState(null);
-    
-
     
     useEffect(() => {
 
@@ -119,7 +114,7 @@ function WikiEdit() {
                             onEditorStateChange={onEditorStateChange}
                         />
                     </div>
-                    <button onClick={addWikiEdit}>submit</button>
+                    <button onClick={() => addWikiEdit(wikiMarkup)}>submit</button>
                     <div
                         // dangerouslySetInnerHTML={{__html: editorToHtml}}
                         

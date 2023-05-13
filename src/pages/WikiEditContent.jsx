@@ -9,9 +9,7 @@ import { EditorState, convertToRaw, ContentState, convertFromRaw } from 'draft-j
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import axios from 'axios';
-import traverseHtml from '../components/Wiki/HtmlToWiki';
-import WikiToHtml from "../components/Wiki/WikiToHtml";
-import { useParams } from 'react-router-dom/dist';
+import HtmlToWiki from '../components/Wiki/HtmlToWiki';
 
 
 const editorStyle = {
@@ -27,7 +25,7 @@ function WikiEditContent() {
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [wiki, setWiki] = useState('');
-    const param = useParams();
+    const [version, setVersion] = useState(null);
 
     const onEditorStateChange = (editorState) => {
     // editorState에 값 설정
@@ -45,43 +43,34 @@ function WikiEditContent() {
 
     useEffect(() => {
         console.log("hi");
-        // const getWiki = async () => {
-        //     try{
-        //         const result = await axios.get('http://localhost:8080/wiki/contents/5'); //{index} 가져올 방법 생각
-        //         setWiki(result.data['title']+'\n'+result.data['content']);
-        //         // setAllText(result.data['text']);
-        //         // setAllContent(result.data['content']);
-    
-        //         //console.log(result.data);
-        //         // setContent(result.data);
-        //         // setIndex(result.data[''])
-        //         // 
-        //         //setHtml(WikiToHtml());
-        //     } catch (error) {
-        //         console.error(error);
-        //     }
-        // };
+        const getWiki = async () => {
+            try{
+                const result = await axios.get('http://localhost:8080/wiki/contents/5'); //{index} 가져올 방법 생각
+                setWiki(result.data['title']+'\n'+result.data['content']);
+                setVersion(result.data.version);
+            } catch (error) {
+                console.error(error);
+            }
+        };
 
-        // getWiki();
+        getWiki();
         
     }, []);
 
 
-    const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+    const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent())); //편집기에 담긴 내용을 html로 바꿈 
 
-    const parser = new DOMParser();
-    const parsedHtml = parser.parseFromString(editorToHtml, 'text/html');
-      
-    //const wikiMarkup = traverseHtml(parsedHtml.body);
+    // const parser = new DOMParser();
+    // const parsedHtml = parser.parseFromString(editorToHtml, 'text/html');
+    const wikiMarkup = HtmlToWiki(editorToHtml);
     
     const navigate = useNavigate();
 
     const addWikiEdit = async (editContent) => {
         try {
-            const result = await axios.post('http://49.50.167.168:3000/wiki/contents/5', {
-                version: "r2",
+            const result = await axios.post('http://localhost:8080/wiki/contents/5', {
+                version: version,
                 newContent: editContent,
-                editor_id: "2020171027"
             });
             if (result.status === 200){
                 navigate('/입실렌티');
@@ -97,26 +86,6 @@ function WikiEditContent() {
           setEditorState(editorState);
         }
       }, [wiki]);
-    
-    // if(wiki) {
-    //     console.log(wiki);
-    //     const originContent = wiki;
-    //     if (originContent) {
-    //         //const { contentBlocks, entityMap } = originContent;
-    //         // https://draftjs.org/docs/api-reference-content-state/#createfromblockarray
-    //         const contentState = ContentState.createFromText(originContent);
-    //         // ContentState를 EditorState기반으로 새 개체를 반환.
-    //         // https://draftjs.org/docs/api-reference-editor-state/#createwithcontent
-    //         const editorState = EditorState.createWithContent(contentState);
-    //         setEditorState(editorState);
-    //     };
-    // }
-    
-    // useEffect(() => {
-        
-    //     // 처음 마운트됬을 때만 실행되야 된다.
-    //     // eslint-disable-next-line
-    // }, []);
     
     return (
         <div className="container">
@@ -147,7 +116,7 @@ function WikiEditContent() {
                             onEditorStateChange={onEditorStateChange}
                         />
                     </div>
-                    <button onClick={addWikiEdit(editorState)}>submit</button>
+                    <button onClick={() => addWikiEdit(wikiMarkup)}>submit</button>
                     <div
                         // dangerouslySetInnerHTML={{__html: editorToHtml}}
                         
