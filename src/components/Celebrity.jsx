@@ -10,8 +10,8 @@ function Celebrity() {
       rank: 1,
       thumb: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202304111337030.jpg',
       name: 'IVE(아이브)',
-      betRate: '배당률 1.1%',
-      point: '모인 포인트 : 12345 P',
+      betRate: '1.1',
+      point: '12345 ',
       graphWidth: '70%',
       percent: '70%',
     },
@@ -19,8 +19,8 @@ function Celebrity() {
       rank: 2,
       thumb: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202305021004012.jpg',
       name: '르세라핌(LE SSERAFIM)',
-      betRate: '배당률 1.1%',
-      point: '모인 포인트 : 12345 P',
+      betRate: '1.1',
+      point: '12345',
       graphWidth: '50%',
       percent: '50%',
     },
@@ -28,8 +28,8 @@ function Celebrity() {
       rank: 3,
       thumb: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202212200942036.jpg',
       name: 'NewJeans',
-      betRate: '배당률 1.1%',
-      point: '모인 포인트 : 12345 P',
+      betRate: '1.1',
+      point: '12345',
       graphWidth: '45%',
       percent: '45%',
     },
@@ -37,8 +37,8 @@ function Celebrity() {
       rank: 4,
       thumb: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202305021004012.jpg',
       name: '박재범',
-      betRate: '배당률 1.1%',
-      point: '모인 포인트 : 12345 P',
+      betRate: '1.1',
+      point: '12345',
       graphWidth: '40%',
       percent: '40%',
     },
@@ -46,8 +46,8 @@ function Celebrity() {
       rank: 5,
       thumb: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202305021004012.jpg',
       name: '서동현',
-      betRate: '배당률 1.1%',
-      point: '모인 포인트 : 12345 P',
+      betRate: '1.1',
+      point: '12345',
       graphWidth: '35%',
       percent: '35%',
     },
@@ -55,8 +55,8 @@ function Celebrity() {
         rank: 6,
         thumb: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202305021004012.jpg',
         name: '10cm',
-        betRate: '배당률 1.1%',
-        point: '모인 포인트 : 12345 P',
+        betRate: '1.1',
+        point: '12345',
         graphWidth: '30%',
         percent: '30%',
     },
@@ -64,8 +64,8 @@ function Celebrity() {
         rank: 7,
         thumb: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202305021004012.jpg',
         name: '최영섭',
-        betRate: '배당률 1.1%',
-        point: '모인 포인트 : 12345 P',
+        betRate: '1.1',
+        point: '12345',
         graphWidth: '25%',
         percent: '25%',
     },
@@ -73,8 +73,8 @@ function Celebrity() {
         rank: 8,
         thumb: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202305021004012.jpg',
         name: '아이유',
-        betRate: '배당률 1.1%',
-        point: '모인 포인트 : 12345 P',
+        betRate: '1.1',
+        point: '12345',
         graphWidth: '20%',
         percent: '20%',
     },
@@ -83,7 +83,7 @@ function Celebrity() {
         thumb: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202305021004012.jpg',
         name: '에스파',
         betRate: '배당률 1.1%',
-        point: '모인 포인트 : 12345 P',
+        point: '12345',
         graphWidth: '15%',
         percent: '15%',
       },
@@ -91,8 +91,8 @@ function Celebrity() {
         rank: 10,
         thumb: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202305021004012.jpg',
         name: '세븐틴',
-        betRate: '배당률 1.1%',
-        point: '모인 포인트 : 12345 P',
+        betRate: '1.1',
+        point: '12345',
         graphWidth: '10%',
         percent: '10%',
     },
@@ -100,8 +100,8 @@ function Celebrity() {
         rank: 11,
         thumb: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202305021004012.jpg',
         name: '멜로망스',
-        betRate: '배당률 1.1%',
-        point: '모인 포인트 : 12345 P',
+        betRate: '1.1',
+        point: '12345',
         graphWidth: '5%',
         percent: '5%',
       },
@@ -109,15 +109,15 @@ function Celebrity() {
         rank: 12,
         thumb: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202305021004012.jpg',
         name: '최예나',
-        betRate: '배당률 1.1%',
-        point: '모인 포인트 : 12345 P',
+        betRate: '1.1',
+        point: '12345',
         graphWidth: '1%',
         percent: '1%',
       },
     // ... 랭킹 정보 데이터 배열
   ];
 
-  const [visibleCelebs, setVisibleCelebs] = useState(celebList.slice(0, 3)); 
+  const [visibleCelebs, setVisibleCelebs] = useState(/* celebList.slice(0, 3) */); 
 
 
   const handleShowMore = () => {setShowMore(true); 
@@ -138,7 +138,14 @@ function Celebrity() {
           </div>
           <div className='celeb_footer'>
             <span id='celeb_point'>{celeb.point}</span>
-            <BettingModal id='celeb_bet' />
+            <BettingModal
+            celebName={celeb.name}
+            voteRate={celeb.percent}
+            profilePic={celeb.thumb}
+            betPoint={celeb.point}
+            betRank={celeb.rank}
+            dividendRate={celeb.betRate}
+            id='celeb_bet' />
           </div>
           <div className='celeb_graph'>
             <span id='celeb_per'>
