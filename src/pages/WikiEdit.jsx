@@ -89,25 +89,6 @@ function WikiEdit() {
         }
       }, [wiki]);
     
-    // if(wiki) {
-    //     console.log(wiki);
-    //     const originContent = wiki;
-    //     if (originContent) {
-    //         //const { contentBlocks, entityMap } = originContent;
-    //         // https://draftjs.org/docs/api-reference-content-state/#createfromblockarray
-    //         const contentState = ContentState.createFromText(originContent);
-    //         // ContentState를 EditorState기반으로 새 개체를 반환.
-    //         // https://draftjs.org/docs/api-reference-editor-state/#createwithcontent
-    //         const editorState = EditorState.createWithContent(contentState);
-    //         setEditorState(editorState);
-    //     };
-    // }
-    
-    // useEffect(() => {
-        
-    //     // 처음 마운트됬을 때만 실행되야 된다.
-    //     // eslint-disable-next-line
-    // }, []);
     
     return (
         <div className="container">

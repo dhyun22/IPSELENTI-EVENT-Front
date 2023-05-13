@@ -17,6 +17,8 @@ import { useEffect, useRef } from 'react';
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom/dist";
+import WikiEditContent from './pages/WikiEditContent';
+import { useParams } from 'react-router-dom';
 
 
 function App() {
@@ -57,8 +59,8 @@ function App() {
                 <Routes>
                     <Route path="/main" element={<Home checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
                     <Route path="/입실렌티" element={<WikiViewer checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} />} />
-                    <Route path="/wikiedit/all" element={<WikiEdit  checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} />} />
-                    <Route path="/wikiedit/content" element={<WikiEdit  checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} />} />
+                    <Route path="/wikiedit" element={<WikiEdit />} />
+                    <Route path="/wikiedit/:id" element={<WikiEditContent />} />
                     <Route path="/wiki_edit_completed" element={<WikiEditCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} />} />
                     <Route path="/addindex_completed" element={<WikiEditCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
                     <Route path="/signup_completed" element={<SignUpCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />

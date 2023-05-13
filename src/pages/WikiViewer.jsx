@@ -4,32 +4,33 @@ import React, {useRef, useEffect, useState} from 'react';
 import WikiBox from '../components/Wiki/WikiBox';
 import axios from 'axios';
 import WikiToHtml from "../components/Wiki/WikiToHtml";
+import { useNavigate } from 'react-router-dom/dist';
 
 
 
 
-// const data = [
-//     {
-//         'index' : '0',
-//         'header': '일번항목',
-//         'content': "Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddNostrum, optio, assumenda distinctio autem, nimi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt! " 
-//     },
-//     {
-//         'index' : '1',
-//         'header': '이번항목',
-//         'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddddddddddostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
-//     },
-//     {
-//         'index' : '2',
-//         'header': '삼번항목',
-//         'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elitddddddddddddddddddddddddddddd. ostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
-//     },
-//     {
-//         'index': '3',
-//         'header': '사번항목',
-//         'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ostrum, odfkjs;fjskdjf;alskdjf;sdlkfj;alsdkjf;alskdjf;laksdjf;laskdjfaffffffffffffffffffffffffffptio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
-//     },
-// ]
+const data = [
+    {
+        'index' : '0',
+        'header': '일번항목',
+        'content': "Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddNostrum, optio, assumenda distinctio autem, nimi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt! " 
+    },
+    {
+        'index' : '1',
+        'header': '이번항목',
+        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddddddddddostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+    },
+    {
+        'index' : '2',
+        'header': '삼번항목',
+        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elitddddddddddddddddddddddddddddd. ostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+    },
+    {
+        'index': '3',
+        'header': '사번항목',
+        'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ostrum, odfkjs;fjskdjf;alskdjf;sdlkfj;alsdkjf;alskdjf;laksdjf;laskdjfaffffffffffffffffffffffffffptio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+    },
+]
 
 
 
@@ -37,7 +38,8 @@ import WikiToHtml from "../components/Wiki/WikiToHtml";
 
 function WikiViewer(props) {
     const myDivRef = useRef([]);
-    const [allText, setAllText] = useState('');
+    const [allText, setAllText] = useState([]);
+    const Navigate = useNavigate();
     
 
     function handleClick(index) {
@@ -68,15 +70,18 @@ function WikiViewer(props) {
         }
     };
 
-    useEffect(() => {
+    // useEffect(() => {
+    //     console.log("hi");
 
-        getWiki();
+    //     getWiki();
         
-    }, []);
     // }, []);
+    // // }, []);
     
 
-    
+    const linkToAllEdit = () =>{
+        Navigate('/wikiedit');
+    }
     return (
         <div className='container'>
             <div className="mobile-view">
@@ -84,22 +89,23 @@ function WikiViewer(props) {
                     <Header />
                 </div>
                 <div className='wiki-viewer'>
-                    <h1>입실렌티</h1> 
+                    <div className='wiki-title'>
+                        <h1>입실렌티</h1>
+                        <button onClick={linkToAllEdit} className='wikiedit-btn'>편집</button>
+                    </div>
                     <div className='wiki-index'>
-                        <ol>
-                            {allText.map((item) => {
-                                return(
-                                <li onClick={() => handleClick(parseInt(item.index))}>{item.title}</li>
-                                );
-                            })}
-                        </ol>
+                        {data.map((item) => {
+                            return(
+                            <li onClick={() => handleClick(parseInt(item.index))} key={item.index}>{parseInt(item.index)+1}. {item.header}</li>
+                            );
+                        })}    
                     </div>
                     <div className='wiki-content'>
-                        {allText.map((item) => {
+                        {data.map((item) => {
                             return(
-                                <div ref={(el) => (myDivRef.current[parseInt(item.index)] = el)}>
+                                <div ref={(el) => (myDivRef.current[parseInt(item.index)] = el)} key={item.index}>
                                     <WikiBox 
-                                    title={item.title} content={item.content} idx={item.index}
+                                    title={item.header} content={item.content} index={item.index}
                                     />
                                 </div>
                             );

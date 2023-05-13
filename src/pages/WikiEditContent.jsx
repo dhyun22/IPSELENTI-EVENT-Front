@@ -11,6 +11,7 @@ import htmlToDraft from 'html-to-draftjs';
 import axios from 'axios';
 import traverseHtml from '../components/Wiki/HtmlToWiki';
 import WikiToHtml from "../components/Wiki/WikiToHtml";
+import { useParams } from 'react-router-dom/dist';
 
 
 const editorStyle = {
@@ -22,10 +23,11 @@ const editorStyle = {
 
 
 
-function WikiEdit(props) {
+function WikiEditContent() {
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [wiki, setWiki] = useState('');
+    const param = useParams();
 
     const onEditorStateChange = (editorState) => {
     // editorState에 값 설정
@@ -39,26 +41,28 @@ function WikiEdit(props) {
         },
       };
 
-    const getWiki = async () => {
-        try{
-            const result = await axios.get('http://localhost:8080/wiki/contents/5'); //{index} 가져올 방법 생각
-            setWiki(result.data['title']+'\n'+result.data['content']);
-            // setAllText(result.data['text']);
-            // setAllContent(result.data['content']);
-
-            //console.log(result.data);
-            // setContent(result.data);
-            // setIndex(result.data[''])
-            // 
-            //setHtml(WikiToHtml());
-        } catch (error) {
-            console.error(error);
-        }
-    };
+    
 
     useEffect(() => {
+        console.log("hi");
+        // const getWiki = async () => {
+        //     try{
+        //         const result = await axios.get('http://localhost:8080/wiki/contents/5'); //{index} 가져올 방법 생각
+        //         setWiki(result.data['title']+'\n'+result.data['content']);
+        //         // setAllText(result.data['text']);
+        //         // setAllContent(result.data['content']);
+    
+        //         //console.log(result.data);
+        //         // setContent(result.data);
+        //         // setIndex(result.data[''])
+        //         // 
+        //         //setHtml(WikiToHtml());
+        //     } catch (error) {
+        //         console.error(error);
+        //     }
+        // };
 
-        getWiki();
+        // getWiki();
         
     }, []);
 
@@ -157,4 +161,4 @@ function WikiEdit(props) {
 }
 
 
-export default WikiEdit;
+export default WikiEditContent;
