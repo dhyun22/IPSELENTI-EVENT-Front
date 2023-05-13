@@ -11,11 +11,6 @@ function BettingModal(props) {
     const[pointLeft, setPointLeft] = useState(parseInt(props.myPoint));
     const[dividend, setDividend] = useState(parseInt(props.myPoint) * parseFloat(props.dividendRate));
 
-    // useEffect(()=> {
-    //     let calculatedDividend = bettingPoint * parseFloat(props.dividendRate);
-    //     setDividend(calculatedDividend);
-    // }, [bettingPoint, props.dividendRate]);
-
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const checkSignIn = () => {
         axios.get('http//localhost:3000/user/issignedin').then((response) => {
@@ -51,7 +46,8 @@ function BettingModal(props) {
         } else {
             setBettingPoint(inputPoint);
             setPointLeft(myPoint - inputPoint);
-            setDividend(inputPoint * parseFloat(props.dividendRate));
+            setDividend(inputPoint * parseFloat(props.dividendRate))
+            ;
         }
       };
 
@@ -98,22 +94,22 @@ function BettingModal(props) {
                         <div className='betContainer'>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>포인트 베팅</p>
-                                    <input value={bettingPoint} className='betInput' onChange={handleBettingPointChange} />
+                                    <input defaultValue={bettingPoint} className='betInput' onChange={handleBettingPointChange} />
                                     <p className='betText'>P</p>
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>잔여 포인트</p>
-                                    <input value={parseInt(props.myPoint)} className='betInput' placeholder={pointLeft} disabled/>
+                                    <input deFaultValue={parseInt(props.myPoint)} className='betInput' placeholder={pointLeft < 0 ? '보유 포인트 초과!' : pointLeft} disabled/>
                                     <p className='betText'>P</p>
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>현재 배당률</p>
-                                    <input value={parseFloat(props.dividendRate)} className='betInput' disabled/>
+                                    <input defaultValue={parseFloat(props.dividendRate)} className='betInput' disabled/>
                                     <p className='betText'>%</p>
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>예상 배당금</p>
-                                    <input value={parseInt(props.myPoint)*parseFloat(props.dividendRate)} className='betInput' disabled/>
+                                    <input defaultValue={parseInt(props.myPoint)*parseFloat(props.dividendRate)} placeholder={dividend} className='betInput' disabled/>
                                     <p className='betText'>P</p>
                                 </div>
                         </div>
