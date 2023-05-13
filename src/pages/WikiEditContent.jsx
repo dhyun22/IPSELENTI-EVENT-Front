@@ -9,8 +9,7 @@ import { EditorState, convertToRaw, ContentState, convertFromRaw } from 'draft-j
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import axios from 'axios';
-import traverseHtml from '../components/Wiki/HtmlToWiki';
-import WikiToHtml from "../components/Wiki/WikiToHtml";
+import HtmlToWiki from '../components/Wiki/HtmlToWiki';
 
 
 const editorStyle = {
@@ -22,7 +21,7 @@ const editorStyle = {
 
 
 
-function WikiEdit() {
+function WikiEditContent() {
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [wiki, setWiki] = useState('');
@@ -40,29 +39,36 @@ function WikiEdit() {
         },
       };
 
+    
 
-    const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+    useEffect(() => {
+        console.log("hi");
+        const getWiki = async () => {
+            try{
+                const result = await axios.get('http://localhost:8080/wiki/contents/5'); //{index} 가져올 방법 생각
+                setWiki(result.data['title']+'\n'+result.data['content']);
+                setVersion(result.data.version);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        getWiki();
+        
+    }, []);
+
+
+    const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent())); //편집기에 담긴 내용을 html로 바꿈 
 
     // const parser = new DOMParser();
     // const parsedHtml = parser.parseFromString(editorToHtml, 'text/html');
-      
-    const wikiMarkup = traverseHtml(editorToHtml);
+    const wikiMarkup = HtmlToWiki(editorToHtml);
     
     const navigate = useNavigate();
 
-    const getWiki = async () => {
-        try{
-            const result = await axios.get('http://localhost:8080/wiki/contents/'); //전체 텍스트를 가져옴.
-            setWiki(result.data['text']);
-            setVersion(result.data.version);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
     const addWikiEdit = async (editContent) => {
         try {
-            const result = await axios.post('http://localhost:8080/wiki/contents/', {
+            const result = await axios.post('http://localhost:8080/wiki/contents/5', {
                 version: version,
                 newContent: editContent,
             });
@@ -72,18 +78,14 @@ function WikiEdit() {
         } catch(error){console.log(error)};
         
     };
-
-    //const [content, setContent] = useState(null);
     
     useEffect(() => {
-
         if (wiki) {
           const contentState = ContentState.createFromText(wiki);
           const editorState = EditorState.createWithContent(contentState);
           setEditorState(editorState);
         }
       }, [wiki]);
-    
     
     return (
         <div className="container">
@@ -128,4 +130,4 @@ function WikiEdit() {
 }
 
 
-export default WikiEdit;
+export default WikiEditContent;
