@@ -27,10 +27,10 @@ function WikiBox (props) {
     }
 
   return (
-    <div className="wiki-contents content-one" >
+    <div className="wiki-contents" >
       <li onClick={toggleView}>{parseInt(index)+1}. {title}<button onClick={linkToWikiEdit} className='wikiedit-btn'>편집</button></li>
       <hr></hr>
-      <div className={isOpen ? "contents-content": "hidden"} >
+      <div className={isOpen ? "": "hidden"} >
         <div dangerouslySetInnerHTML={{ __html: content }} />
       </div>
     </div>

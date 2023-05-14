@@ -115,11 +115,10 @@ function WikiEditContent() {
                             onEditorStateChange={onEditorStateChange}
                         />
                     </div>
-                    <button onClick={() => addWikiEdit(wikiMarkup)}>submit</button>
-                    <div
-                        // dangerouslySetInnerHTML={{__html: editorToHtml}}
-                        
-                    ></div>
+                    
+                    <div className='wikiedit-submit'>
+                        <button classname="editsubmit-btn" onClick={() => addWikiEdit(wikiMarkup)}>submit</button>
+                    </div>
 
                 </div>
             </div>

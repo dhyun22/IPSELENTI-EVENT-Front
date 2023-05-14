@@ -16,7 +16,7 @@ import WikiToHtml from "../components/Wiki/WikiToHtml";
 const editorStyle = {
     cursor: "pointer",
 	width: "100%",
-	minHeight: "20rem",
+	minHeight: "30rem",
 	border: "2px solid rgba(209, 213, 219, 0.3)",
 };
 
@@ -120,11 +120,9 @@ function WikiEdit() {
                             onEditorStateChange={onEditorStateChange}
                         />
                     </div>
-                    <button onClick={() => addWikiEdit(wikiMarkup)}>submit</button>
-                    <div
-                        // dangerouslySetInnerHTML={{__html: editorToHtml}}
-                        
-                    ></div>
+                    <div className='wikiedit-submit'>
+                        <button classname="editsubmit-btn" onClick={() => addWikiEdit(wikiMarkup)}>submit</button>
+                    </div>
 
                 </div>
             </div>

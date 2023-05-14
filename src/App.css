@@ -292,6 +292,18 @@ h4{
     justify-content: space-between;
     align-items: center;
 }
+.wiki-title div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wiki-title button{
+    margin: 10px;
+}
+
+#history-link{
+    font-size: 10px;
+}
 .wiki-index{
     display: flex;
     flex-direction: column;
@@ -314,12 +326,14 @@ h4{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
+
 }
 
 
 /* 위키 편집기 */
 .wikiedit-btn{
-    margin-left: 100px;
+    justify-content: flex-end;
     width: 40px;
     height: 20px;
     border: none;
@@ -328,6 +342,21 @@ h4{
     border-radius: 6px;
     font-size: 10px;
 
+}
+.wikiedit-submit{
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wikiedit-submit button{
+    background-color: #c72f44;
+    border-radius: 6px;
+    color: white;
+    width: 60px;
+    height: 35px;
+    border: none;
+    
 }
 
 

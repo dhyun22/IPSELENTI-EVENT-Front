@@ -60,8 +60,11 @@ function WikiViewer(props) {
                 <div className='wiki-viewer'>
                     <div className='wiki-title'>
                         <h1>입실렌티</h1>
-                        <Link to="/wikihistory">History</Link>
-                        <button onClick={linkToAllEdit} className='wikiedit-btn'>편집</button>
+                        <div>
+                            <Link to="/wikihistory"><span id='history-link'>History</span></Link>
+                            <button onClick={linkToAllEdit} className='wikiedit-btn'>편집</button>
+                        </div>
+                        
                     </div>
                     <div className='wiki-index'>
                         {allText.map((item) => {
