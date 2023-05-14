@@ -42,7 +42,6 @@ function WikiEditContent() {
     
 
     useEffect(() => {
-        console.log("hi");
         const getWiki = async () => {
             try{
                 const result = await axios.get('http://localhost:8080/wiki/contents/5'); //{index} 가져올 방법 생각

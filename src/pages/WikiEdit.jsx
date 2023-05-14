@@ -60,6 +60,12 @@ function WikiEdit() {
         }
     };
 
+    useEffect(() => {
+        
+        getWiki();
+        
+    }, []);
+
     const addWikiEdit = async (editContent) => {
         try {
             const result = await axios.post('http://localhost:8080/wiki/contents/', {
