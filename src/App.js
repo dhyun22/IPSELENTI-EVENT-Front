@@ -20,6 +20,7 @@ import { useNavigate } from "react-router-dom/dist";
 import WikiEditContent from './pages/WikiEditContent';
 import { useParams } from 'react-router-dom';
 import WikiHistory from './pages/WikiHistory';
+import WikiShowVer from './pages/WikiShowVer';
 
 
 function App() {
@@ -63,6 +64,8 @@ function App() {
                     <Route path="/wikiedit" element={<WikiEdit />} />
                     <Route path="/wikiedit/:id" element={<WikiEditContent />} />
                     <Route path="/wikihistory" element={<WikiHistory />} />
+                    <Route path="/wikishowversion" element={<WikiShowVer />} />
+
                     <Route path="/wiki_edit_completed" element={<WikiEditCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} />} />
                     <Route path="/addindex_completed" element={<WikiEditCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
                     <Route path="/signup_completed" element={<SignUpCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />

@@ -46,7 +46,7 @@ const WikiHistory = () => {
                         {history.map((item) => {
                             return(
                                 <div key={historyId}>
-                                   <HistoryBox ver={version} time={timestamp} studentid={userid}/>
+                                   <HistoryBox ver={version} time={timestamp} studentid={userid} isrollback={isRollback}/>
                                 </div>
                             );
                         })}
