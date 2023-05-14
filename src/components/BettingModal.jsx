@@ -109,7 +109,7 @@ function BettingModal(props) {
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>예상 배당금</p>
-                                    <input placeholder={dividend} className='betInput' disabled/>
+                                    <input placeholder={Math.floor(dividend)} className='betInput' disabled/>
                                     <p className='betText'>P</p>
                                 </div>
                         </div>
