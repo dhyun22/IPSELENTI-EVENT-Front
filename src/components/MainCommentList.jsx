@@ -16,14 +16,9 @@ const MainCommentList = ({ comments }) => {
     if (comments.length > 5) {
       return (
         <div className="comment-list">
-          {comments.slice(0, 5).map(comment => (
+          {comments.slice(0, 5).map((comment, index) => (
             <Comment
-              key={comment.comment_id}
-              comment_id={comment.comment_id}
-              comment_text={comment.comment_text}
-              time={comment.time}
-              liked={comment.liked}
-            />
+              key={index} comments={comment}/>
           ))}
           <button onClick={handleShowAllComments}>전체 댓글 보기</button>
         </div>
@@ -33,13 +28,9 @@ const MainCommentList = ({ comments }) => {
     else {
       return (
         <div className="comment-list">
-          {comments.map(comment => (
+          {comments.map((comment, index) => (
             <Comment
-              key={comment.comment_id}
-              comment_id={comment.comment_id}
-              comment_text={comment.comment_text}
-              time={comment.time}
-              liked={comment.liked}
+              key={index} comments={comment}
             />
           ))}
         </div>

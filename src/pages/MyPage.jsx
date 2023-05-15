@@ -38,8 +38,7 @@ function MyPage() {
      
     
       
-      
-  
+    
     <div className='container'>
     <div className='mobile-view'>
       <div className='mypage_content'>
