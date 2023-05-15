@@ -30,7 +30,7 @@ function BettingModal(props) {
         console.log('문제 없음');
         axios.put('http://localhost:8080/event/user/:userid/artist/:artistid', {
             betting_point: bettingPoint,
-        }).then((res)=>{
+        }, {withCredentials: true}).then((res)=>{
             setModalOpen(false);
         }).catch( (err) => console.error(err));
     }

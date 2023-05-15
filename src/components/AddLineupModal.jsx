@@ -10,10 +10,10 @@ function AddLineupModal() {
 
     const addLineupPost = async() => {
         axios.post('http//localhost:8080/event/celebrityrequest', {
-            celebrity_name: singerName,
+            celebrity_name: singerName, 
             request_reason: applyReason,
-            request_id: '1234567890',
-        }).then((res)=>{
+            request_id: '1234567890', 
+        }, {withCredentials: true}).then((res)=>{
             setModalOpen(false);
         }).catch( (err) => console.error(err));
     }
