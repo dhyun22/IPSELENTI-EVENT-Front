@@ -9,9 +9,10 @@ function AddLineupModal() {
     const [applyReason, setApplyReason] = useState('');
 
     const addLineupPost = async() => {
-        axios.post('http//localhost:3000/event/celebrityrequest', {
+        axios.post('http//localhost:8080/event/celebrityrequest', {
             celebrity_name: singerName,
             request_reason: applyReason,
+            request_id: '1234567890',
         }).then((res)=>{
             setModalOpen(false);
         }).catch( (err) => console.error(err));

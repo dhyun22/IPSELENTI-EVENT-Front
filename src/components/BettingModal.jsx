@@ -13,7 +13,7 @@ function BettingModal(props) {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const checkSignIn = () => {
-        axios.get('http//localhost:3000/user/issignedin').then((response) => {
+        axios.get('http://localhost:8080/user/issignedin').then((response) => {
         if (response.data.isLoggedIn) {
             setIsLoggedIn(true);
             // axios.get('/user/mypage/bettinghistory');
@@ -25,6 +25,16 @@ function BettingModal(props) {
         console.error(error);
         });
     };
+
+    const betRequest = async() => {
+        console.log('문제 없음');
+        axios.put('http://localhost:8080/event/user/:userid/artist/:artistid', {
+            betting_point: bettingPoint,
+        }).then((res)=>{
+            setModalOpen(false);
+        }).catch( (err) => console.error(err));
+    }
+
     // const handleBetting = () => {
     //     const betData = {
     //     bettingPoint,
@@ -114,7 +124,10 @@ function BettingModal(props) {
                                 </div>
                         </div>
                         <div className='betBtnContainer'>
-                            <button className='betBtn' onClick={() => setModalOpen(false)}>베팅하기</button>
+                            <button className='betBtn'
+                            onClick={pointLeft < 0 ? console.log('잔액 부족') : betRequest}
+                            disabled={pointLeft < 0}>
+                                베팅하기</button>
                             <button className='betCanBtn' onClick={() => setModalOpen(false)}>취소하기</button>
                         </div>
                     </div>
