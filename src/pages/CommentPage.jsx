@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import logo from '../img/logo.png';
 import CommentList from '../components/CommentList';
@@ -49,7 +51,10 @@ function CommentPage() {
     ];
     const [user, setUser] = useState('');
     const [comment, setComment] = useState([]);
+    const [authorID, setAuthorID] = useState('');
+    const [commentContent, setCommentContent] = useState('');
 
+    
     const takeuser = async () => {
       try {
         const login = await axios.post("http://localhost:8080/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true})
@@ -76,12 +81,58 @@ function CommentPage() {
         }
     }
 
+    const takeCommentByLike = async () => {
+        try {
+            const res  = await axios.get("http://localhost:8080/comment/bylike", {withCredentials:true})
+            if (res.data) {
+                setComment(res.data);
+            }
+        } catch(error) {
+            console.error(error);
+        }
+    }
+
     
     
     
+    //맨처음 렌더링을 위한 데이터 가져오기, default-> bytime
+    useEffect(() => {
+        takeComment();
+    }, []);
+    //이후에 최신순, 인기순 버튼을 눌렀을때 해당 엑시오스를 실행하고 데이터가 바뀜을 감지하여 다시 렌더링하기 위함
+    useEffect(() => {
+    }, [comment])
+    //데이터 테스트용, 삭제해도 됨
+    useEffect(() => {
+        console.log(comment)
+    }, [comment]);
     
-    
-    
+    const postComment = async () => {
+        try{
+            const response = await axios.post('http://localhost:8080/comment', 
+                {author: authorID, comment_content: commentContent}
+            , {withCredentials: true});
+            if (response.status===200) {
+                console.log(response.data.message)
+                setAuthorID('');
+                setCommentContent('');
+            } 
+            if(response.status===400){
+                console.log(response.data.message)
+            }
+            if(response.status===404){
+                console.log(response.data.message)
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    useEffect(() => {
+        takeComment();
+    }, []);
+
+
     return (
 <div className='container'>
 <div className='mobile-view'>
@@ -89,8 +140,8 @@ function CommentPage() {
         <div className='comment_head'>
             <h2 className='comment_head_title'>댓글</h2>
             <span className='comment_head_count'>899</span>
-            <button  className='comment_bytime'>최신순</button>
-            <button  className='comment_bylike'>인기순</button>
+            <button  className='comment_bytime' onClick={takeComment}>최신순</button>
+            <button  className='comment_bylike' onClick={takeCommentByLike}>인기순</button>
         </div>
         <div className='comment_writingbox'>
             <form className='comment_form'>
@@ -103,10 +154,21 @@ function CommentPage() {
                                  &nbsp; {user.name[0]}oo
                                 </span>}
                             </div>
-                            <textarea rows="5" id='comment_writing_textarea' placeholder="댓글을 작성해주세요"></textarea>
+                            <textarea 
+                            
+                            rows="5" 
+                            id='comment_writing_textarea' 
+                            placeholder="댓글을 작성해주세요"
+                            value={commentContent}
+                            onChange={e => setCommentContent(e.target.value)}
+                            >
+                            </textarea>
                             <div className='comment_button' id='comment_button'>
                              <div className='comment_btn_wrapper'>
-                                <button type="submit" className="comment_btn">
+                                <button 
+                                type="submit" 
+                                className="comment_btn"
+                                onClick={postComment}>
                                  &nbsp; 작성 &nbsp;
                                 </button>
                              </div>
