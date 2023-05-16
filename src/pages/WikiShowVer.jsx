@@ -25,10 +25,39 @@ const editorStyle = {
 
 function WikiShowVer() {
     
-    const {thisver} = useLocation();
+    const {thisver} = useLocation().state;
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [thishis, setthishis] = useState(null);
     const [version, setVersion] = useState(null);
+
+    const [loggedIn, setLoggedIn] = useState(false);
+    const Navigate = useNavigate();
+
+    const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
+
+            if (response.data.success) {
+                setLoggedIn(true);
+            } else{
+                setLoggedIn(false);
+	    Navigate('/login');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
+
+
+    useEffect (() => {
+        checkLoginStatus();
+    }, []);
 
     const onEditorStateChange = (editorState) => {
     // editorState에 값 설정
@@ -48,7 +77,7 @@ function WikiShowVer() {
     const navigate = useNavigate();
     const getHistory = async () => {
         try{
-            const result = await axios.get(`http://localhost:8080//wiki/historys/${thisver}`); //전체 텍스트를 가져옴.
+            const result = await axios.get(`http://localhost:8080/wiki/historys/${thisver}`); //전체 텍스트를 가져옴.
             setthishis(result.data['text']);
             setVersion(result.data.version);
         } catch (error) {
@@ -61,7 +90,7 @@ function WikiShowVer() {
         getHistory();
         
     }, []);
-
+    
     
     useEffect(() => {
 
@@ -72,7 +101,15 @@ function WikiShowVer() {
         }
       }, [thishis]);
     
-    
+    const postRealRollback = async() => {
+        try{
+            const result = await axios.post(`http://localhost:8080/wiki/historys/${thisver}`); //전체 텍스트를 가져옴.
+            setthishis(result.data['text']);
+            setVersion(result.data.version);
+        } catch (error) {
+            console.error(error);
+        }
+    };
     return (
         <div className="container">
             <div className="mobile-view">
@@ -102,7 +139,10 @@ function WikiShowVer() {
                             onEditorStateChange={onEditorStateChange}
                         />
                     </div>
-
+                    <div className='wikiedit-submit'>
+                        <span>정말 롤백 하시겠습니까?</span>
+                        <button classname="editsubmit-btn" onClick={postRealRollback}>rollback</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -24,6 +24,8 @@ const editorStyle = {
 
 
 function WikiEdit() {
+    const [loggedIn, setLoggedIn] = useState(false);
+    const Navigate = useNavigate();
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [wiki, setWiki] = useState('');
@@ -41,6 +43,47 @@ function WikiEdit() {
         },
       };
 
+
+      const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
+
+            if (response.data.success) {
+                setLoggedIn(true);
+            } else{
+                setLoggedIn(false);
+                Navigate('/login');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
+
+
+    useEffect (() => {
+        checkLoginStatus();
+    }, []);
+
+    const pointRequest = async () => {
+        try{
+            const response = await axios.get('http://localhost:8080/user/point/wikiedit',{
+                withCredentials: true
+            });
+
+            if( response.status === 201){
+                alert("포인트 지급이 완료되었습니다.")
+            }
+            
+        }catch(err){
+            console.error(err)
+        }
+    }   
 
     const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
 
@@ -74,6 +117,7 @@ function WikiEdit() {
                 newContent: editContent,
             });
             if (result.status === 200){
+                pointRequest();
                 navigate('/wikiedit/completed');
             }
         } catch(error){console.log(error)};

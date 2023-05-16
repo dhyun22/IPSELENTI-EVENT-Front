@@ -40,11 +40,12 @@ function SignUp() {
 
     const Navigate = useNavigate();
 
-    const createUserApi = async () => {
+    const createUserApi = async (e) => {
         //event.preventDefault(); // 아무 동작 안하고 버튼만 눌러도 리프레쉬 되는 것을 막는다
 
         if(isPwValid === false){
-            return alert('비밀번호가 일치하지 않습니다.')
+            return alert('비밀번호를 다시 입력하세요.')
+            e.prevent.default();
         }
 
         try{

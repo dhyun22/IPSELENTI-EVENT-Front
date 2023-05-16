@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom/dist';
 import { useState } from 'react';
 import axios from 'axios';
 
-function WikiBox (props) {
+function HistoryBox (props) {
 
   //const title = WikiToHtml(props.title);
   const ver = props.ver;
@@ -33,4 +33,4 @@ function WikiBox (props) {
 }
 {/* <Link to="/wiki_edit"><button>편집</button></Link> */}
 
-export default WikiBox
+export default HistoryBox

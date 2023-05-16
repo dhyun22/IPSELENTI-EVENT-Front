@@ -21,6 +21,17 @@ function Login() {
     const [loggedIn, setLoggedIn] = useState(false);
     const Navigate = useNavigate();
 
+    const pointRequest = async () => {
+        try{
+            const response = await axios.get('http://localhost:8080/user/point/attend',{
+                withCredentials: true
+            });
+            
+        }catch(err){
+            console.error(err)
+        }
+    }   
+
 
     const userLogin = async () => {
         try{
@@ -32,6 +43,8 @@ function Login() {
             });
             if (response.data.success) {
                 setLoggedIn(true);
+                pointRequest();
+
             } else{
                 setLoggedIn(false);
             }

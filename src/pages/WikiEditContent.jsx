@@ -23,6 +23,8 @@ const editorStyle = {
 
 function WikiEditContent() {
     const {index} = useLocation();
+    const [loggedIn, setLoggedIn] = useState(false);
+    const Navigate = useNavigate();
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [wiki, setWiki] = useState('');
@@ -40,7 +42,46 @@ function WikiEditContent() {
         },
       };
 
-    
+      const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
+
+            if (response.data.success) {
+                setLoggedIn(true);
+            } else{
+                setLoggedIn(false);
+                Navigate('/login');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
+
+
+    useEffect (() => {
+        checkLoginStatus();
+    }, []);
+
+      const pointRequest = async () => {
+        try{
+            const response = await axios.get('http://localhost:8080/user/point/wikiedit',{
+                withCredentials: true
+            });
+
+            if( response.status === 201){
+                alert("포인트 지급이 완료되었습니다.")
+            }
+            
+        }catch(err){
+            console.error(err)
+        }
+    }   
 
     useEffect(() => {
         const getWiki = async () => {
@@ -64,7 +105,7 @@ function WikiEditContent() {
     // const parsedHtml = parser.parseFromString(editorToHtml, 'text/html');
     const wikiMarkup = HtmlToWiki(editorToHtml);
     
-    const navigate = useNavigate();
+    
 
     const addWikiEdit = async (editContent) => {
         try {
@@ -73,8 +114,8 @@ function WikiEditContent() {
                 newContent: editContent,
             });
             if (result.status === 200){
-
-                navigate('/wikiedit/completed');
+                pointRequest();
+                Navigate('/wikiedit/completed');
             }
         } catch(error){console.log(error)};
         

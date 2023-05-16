@@ -14,6 +14,29 @@ function WikiViewer(props) {
     const myDivRef = useRef([]);
     const [allText, setAllText] = useState([]);
     const Navigate = useNavigate();
+
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
+
+            if (response.data.success) {
+                setLoggedIn(true);
+            } else{
+                setLoggedIn(false);
+	            Navigate('/login');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
     
     
 
@@ -37,9 +60,26 @@ function WikiViewer(props) {
         }
     };
 
-    useEffect(() => {
+    const pointRequest = async () => {
+        try{
+            const response = await axios.get('http://localhost:8080/user/point/wikiaccess',{
+                withCredentials: true
+            });
 
+            if( response.status === 201){
+                alert("포인트 지급이 완료되었습니다.")
+            }
+            
+        }catch(err){
+            console.error(err)
+        }
+    }   
+
+    useEffect(() => {
+        checkLoginStatus();
         getWiki();
+        pointRequest();
+
         
     }, []);
     // }, []);
@@ -69,7 +109,7 @@ function WikiViewer(props) {
                     <div className='wiki-index'>
                         {allText.map((item) => {
                             return(
-                            <li onClick={() => handleClick(parseInt(item.index))} key={item.index}>{parseInt(item.index)+1}. {item.header}</li>
+                            <li onClick={() => handleClick(parseInt(item.index))} key={item.index}>{parseInt(item.index)}. {item.title}</li>
                             );
                         })}    
                     </div>
@@ -78,7 +118,7 @@ function WikiViewer(props) {
                             return(
                                 <div ref={(el) => (myDivRef.current[parseInt(item.index)] = el)} key={item.index}>
                                     <WikiBox 
-                                    title={item.header} content={item.content} index={item.index}
+                                    title={item.title} content={item.content} index={item.index}
                                     />
                                 </div>
                             );

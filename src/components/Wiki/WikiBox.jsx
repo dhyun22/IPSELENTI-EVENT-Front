@@ -16,7 +16,7 @@ function WikiBox (props) {
 
 
   const linkToWikiEdit = () => {
-      Navigator(`/wikiedit/${index}`, {status: index});
+      Navigator(`/wikiedit/${index}`, {state: index});
   
   }
 
@@ -28,7 +28,7 @@ function WikiBox (props) {
 
   return (
     <div className="wiki-contents" >
-      <li onClick={toggleView}>{parseInt(index)+1}. {title}<button onClick={linkToWikiEdit} className='wikiedit-btn'>편집</button></li>
+      <li onClick={toggleView}>{parseInt(index)}. {title}<button onClick={linkToWikiEdit} className='wikiedit-btn'>편집</button></li>
       <hr></hr>
       <div className={isOpen ? "": "hidden"} >
         <div dangerouslySetInnerHTML={{ __html: content }} />
