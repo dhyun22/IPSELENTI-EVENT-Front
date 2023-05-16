@@ -69,7 +69,7 @@ function WikiViewer(props) {
                     <div className='wiki-index'>
                         {allText.map((item) => {
                             return(
-                            <li onClick={() => handleClick(parseInt(item.index))} key={item.index}>{parseInt(item.index)+1}. {item.header}</li>
+                            <li onClick={() => handleClick(parseInt(item.index))} key={item.index}>{parseInt(item.index)}. {item.title}</li>
                             );
                         })}    
                     </div>
@@ -78,7 +78,7 @@ function WikiViewer(props) {
                             return(
                                 <div ref={(el) => (myDivRef.current[parseInt(item.index)] = el)} key={item.index}>
                                     <WikiBox 
-                                    title={item.header} content={item.content} index={item.index}
+                                    title={item.title} content={item.content} index={item.index}
                                     />
                                 </div>
                             );
