@@ -35,15 +35,13 @@ function MyPage() {
 
 
   return (
-     
-    
-      
-    
     <div className='container'>
     <div className='mobile-view'>
       <div className='mypage_content'>
         <div className='myPageLogo'>
-          <img className='logo' src={logo} alt='logo' />
+          <Link to='/'>
+            <img className='logo' src={logo} alt='logo' />
+          </Link >
         </div>
         <div className='mypage'>
           <h2 className='mypage_text'>마이페이지</h2>

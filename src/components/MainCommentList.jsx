@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Comment from './Comment';
 import CommentPage from '../pages/CommentPage';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
+
 
 
 const MainCommentList = ({ comments }) => {
@@ -20,7 +22,9 @@ const MainCommentList = ({ comments }) => {
             <Comment
               key={index} comments={comment}/>
           ))}
+          <Link to='/comment'>
           <button onClick={handleShowAllComments}>전체 댓글 보기</button>
+          </Link>
         </div>
       );
     }
@@ -36,13 +40,7 @@ const MainCommentList = ({ comments }) => {
         </div>
       );
     }
-  } else {
-    // CommentPage를 새 창으로 열도록 코드를 추가합니다.
-    const commentPageWindow = window.open();
-    commentPageWindow.document.title = '전체 댓글 보기';
-    ReactDOM.render(<CommentPage comments={comments} />, commentPageWindow.document.body);
-    return null;
-  }
+  } 
 };
 
 

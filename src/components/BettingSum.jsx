@@ -8,7 +8,7 @@ function BettingSum() {
 
   const takesum = async() => {
     try{
-      const response = await axios.get('http://localhost.8080/user/mypage/bettinghistory')
+      const response = await axios.get('http://localhost.8080/user/mypage/bettinghistory', {withCredentials:true})
      if (response.data){
       const bettingHistory = response.data.bettingHistory;
       const totalBettingPoint = bettingHistory.reduce((acc, curr) => acc + curr.betting_point, 0);
