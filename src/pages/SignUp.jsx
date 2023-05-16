@@ -16,17 +16,18 @@ function SignUp() {
     const [isPwValid, setisPwValid] = useState(true);
     const [errText, setErrText] = useState('');
 
-    const checkPwRegExp = () => {
-        
-    }
-    const checkPwValid = () => {
-
+    const checkPwRegExp = (e) => {
+        setForm({ ...form, password: e.target.value})
         let regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/
         setisPwValid(regExp.test(form.password));
         if(isPwValid === false){
             setErrText('숫자, 영문, 특수문자 조합 최소 6자이상 입력해주세요');
         } else {
             setErrText('')
+    }
+}
+    const checkPwValid = (e) => {
+        setForm({ ...form, checkPw: e.target.value})
             if (form.password === form.checkPw){
                 setisPwValid(true);
                 setErrText('');
@@ -34,13 +35,10 @@ function SignUp() {
                 setisPwValid(false);
                 setErrText('비밀번호가 일치하지 않습니다.')
             }
-        }
         
     }
 
     const Navigate = useNavigate();
-
-
 
     const createUserApi = async () => {
         //event.preventDefault(); // 아무 동작 안하고 버튼만 눌러도 리프레쉬 되는 것을 막는다
@@ -112,6 +110,8 @@ function SignUp() {
                                 name="studentId" 
                                 value={form.id} 
                                 onChange={e => setForm({ ...form, id: e.target.value})}
+                                minLength='10'
+                                maxLength='10'
                             />
                         </div>
                         <div className="signup-content">
@@ -132,7 +132,7 @@ function SignUp() {
                                     placeholder='숫자, 영문, 특수문자 조합 최소 6자' 
                                     pattern=""
                                     value={form.password}
-                                    onChange={e => setForm({ ...form, password: e.target.value})}
+                                    onChange={checkPwRegExp}
                                     onBlur={checkPwValid}
                                 />
                                 <input 
@@ -141,7 +141,7 @@ function SignUp() {
                                 id="password"
                                 name='checkUserPw'
                                 value={form.checkPw}
-                                onChange={e => setForm({ ...form, checkPw: e.target.value})}
+                                onChange={checkPwValid}
                                 onBlur={checkPwValid}
                                 />
                                 <span className={isPwValid ? 'hidden' : ''}>{errText}</span>
@@ -182,5 +182,6 @@ function SignUp() {
         </div>
     );
 }
+
 
 export default SignUp;

@@ -16,7 +16,7 @@ function WikiBox (props) {
 
 
   const linkToWikiEdit = () => {
-      Navigator(`/wikiedit/${index}`);
+      Navigator(`/wikiedit/${index}`, {status: index});
   
   }
 

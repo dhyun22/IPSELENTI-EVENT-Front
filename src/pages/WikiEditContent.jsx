@@ -1,6 +1,6 @@
 import Header from '../components/Header';
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom/dist';
+import { useNavigate, useLocation } from 'react-router-dom/dist';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 // convertToRaw: editorState 객체가 주어지면 원시 JS 구조로 변환.
@@ -22,6 +22,7 @@ const editorStyle = {
 
 
 function WikiEditContent() {
+    const {index} = useLocation();
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [wiki, setWiki] = useState('');
@@ -44,7 +45,7 @@ function WikiEditContent() {
     useEffect(() => {
         const getWiki = async () => {
             try{
-                const result = await axios.get('http://localhost:8080/wiki/contents/5'); //{index} 가져올 방법 생각
+                const result = await axios.get(`http://localhost:8080/wiki/contents/${index}`); //{index} 가져올 방법 생각
                 setWiki(result.data['title']+'\n'+result.data['content']);
                 setVersion(result.data.version);
             } catch (error) {
@@ -67,11 +68,12 @@ function WikiEditContent() {
 
     const addWikiEdit = async (editContent) => {
         try {
-            const result = await axios.post('http://localhost:8080/wiki/contents/5', {
+            const result = await axios.post(`http://localhost:8080/wiki/contents/${index}`, {
                 version: version,
                 newContent: editContent,
             });
             if (result.status === 200){
+
                 navigate('/wikiedit/completed');
             }
         } catch(error){console.log(error)};
