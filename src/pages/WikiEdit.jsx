@@ -15,8 +15,9 @@ import WikiToHtml from "../components/Wiki/WikiToHtml";
 
 const editorStyle = {
     cursor: "pointer",
-	width: "100%",
-	minHeight: "30rem",
+	width: "80%",
+	minHeight: "20rem",
+    marginLeft: "10%",
 	border: "2px solid rgba(209, 213, 219, 0.3)",
 };
 

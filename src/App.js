@@ -15,6 +15,7 @@ import WikiViewer from "./pages/WikiViewer";
 import WikiEditContent from './pages/WikiEditContent';
 import WikiHistory from './pages/WikiHistory';
 import WikiShowVer from './pages/WikiShowVer';
+import Admin from './pages/Admin';
 
 
 function App() {

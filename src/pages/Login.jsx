@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 //import {Useform, useForm} from 'react-hook-form';
 
 
-function Login(props) {
+function Login() {
 
     // const {register} = useForm();
     // const { watch } = useForm();
@@ -40,17 +40,6 @@ function Login(props) {
         }
     }
 
-    const checkInitailLogin = () => {
-        const result = props.checkLoginStatus();
-        if (result === true){
-            Navigate('/main');
-        }
-        
-    };
-
-    useEffect (() => {
-        checkInitailLogin();
-    }, [props.loggedIn]);
     
     
     

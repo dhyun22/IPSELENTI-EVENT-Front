@@ -25,7 +25,7 @@ function Header() {
                     </div>
                 </Link>
             </div>
-            <Link to='/lineup_event'>
+            <Link to='/lineupevent'>
                     <img src={banner} className='banner' alt='banner'/>
             </Link>
         </div>
