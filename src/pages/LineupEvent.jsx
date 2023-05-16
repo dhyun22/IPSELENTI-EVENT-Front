@@ -11,8 +11,13 @@ import Celebrity from '../components/Celebrity';
 import MovetoComment from '../components/MovetoComment';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 function LineupEvent() {
+    
+    const [loggedIn, setLoggedIn] = useState(false);
+    const Navigate = useNavigate();
+
     
    
     
@@ -87,7 +92,30 @@ function LineupEvent() {
           }
       }
 
+      const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
+
+            if (response.data.success) {
+                setLoggedIn(true);
+            } else{
+                setLoggedIn(false);
+                Navigate('/login');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
+
       const postComment = async () => {
+
+        checkLoginStatus();
         try{
             const response = await axios.post('http://localhost:8080/comment', 
                 {author: authorID, comment_content: commentContent}

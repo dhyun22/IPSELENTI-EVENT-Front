@@ -2,11 +2,41 @@ import Modal from 'react-modal';
 import { useState } from 'react';
 import { GrClose } from 'react-icons/gr';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 function AddLineupModal() {
     const [modalOpen, setModalOpen] = useState(false);
     const [singerName, setSingerName] = useState('');
     const [applyReason, setApplyReason] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
+const Navigate = useNavigate();
+
+const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
+
+            if (response.data.success) {
+                setLoggedIn(true);
+                
+            } else{
+                setLoggedIn(false);
+                Navigate('/login');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
+
+
+    useEffect (() => {
+        checkLoginStatus();
+    }, []);
 
     const addLineupPost = async() => {
         axios.post('http//localhost:8080/event/celebrityrequest', {

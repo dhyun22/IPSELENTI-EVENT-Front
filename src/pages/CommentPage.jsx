@@ -7,6 +7,7 @@ import ScrollToTopButton from '../components/ScrollToTopButton';
 import axios from 'axios';
 import {useEffect} from "react";
 import {useState} from "react";
+import { useNavigate } from 'react-router';
 
 function CommentPage() {
 
@@ -53,17 +54,19 @@ function CommentPage() {
     const [comment, setComment] = useState([]);
     const [authorID, setAuthorID] = useState('');
     const [commentContent, setCommentContent] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
+    const Navigate = useNavigate();
+
 
     
     const takeuser = async () => {
       try {
-        const login = await axios.post("http://localhost:8080/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true})
         const response = await axios.get("http://localhost:8080/user/mypage/info", { withCredentials: true });
                 
         if (response.data.success == true){
           setUser(response.data.user)
         } else {
-          navigator('/Login')
+          navigator('/login')
         }
       } catch (error) {
         console.error(error);
@@ -106,8 +109,33 @@ function CommentPage() {
     useEffect(() => {
         console.log(comment)
     }, [comment]);
+
+    const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
+
+            if (response.data.success) {
+                setLoggedIn(true);
+            } else{
+                setLoggedIn(false);
+                Navigate('/login');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
+
     
     const postComment = async () => {
+        
+        checkLoginStatus();
+        
         try{
             const response = await axios.post('http://localhost:8080/comment', 
                 {author: authorID, comment_content: commentContent}

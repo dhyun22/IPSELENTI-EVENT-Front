@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { GrClose } from 'react-icons/gr';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function BettingModal(props) {
     const[modalOpen, setModalOpen] = useState(false);
@@ -10,21 +11,34 @@ function BettingModal(props) {
     const[bettingPoint, setBettingPoint] = useState(parseInt(props.bettingAmount));
     const[pointLeft, setPointLeft] = useState(parseInt(props.myPoint));
     const[dividend, setDividend] = useState(parseInt(props.bettingAmount) * parseFloat(props.dividendRate));
+    const [loggedIn, setLoggedIn] = useState(false);
+const Navigate = useNavigate();
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const checkSignIn = () => {
-        axios.get('http://localhost:8080/user/issignedin').then((response) => {
-        if (response.data.isLoggedIn) {
-            setIsLoggedIn(true);
-            // axios.get('/user/mypage/bettinghistory');
-        } else {
-            setIsLoggedIn(false);
-            <Link to="/login">로그인 페이지로 이동</Link>;
+const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
+
+            if (response.data.success) {
+                setLoggedIn(true);
+            } else{
+                setLoggedIn(false);
+                Navigate('/login');
+            }
+        } catch (error) {
+            console.error(error);
         }
-        }).catch((error) => {
-        console.error(error);
-        });
-    };
+
+    }
+
+
+    useEffect (() => {
+        checkLoginStatus();
+    }, []);
 
     const betRequest = async() => {
         console.log('문제 없음');
@@ -34,20 +48,6 @@ function BettingModal(props) {
             setModalOpen(false);
         }).catch( (err) => console.error(err));
     }
-
-    // const handleBetting = () => {
-    //     const betData = {
-    //     bettingPoint,
-    //     };
-    //     axios
-    //       .post('/betting', betData)
-    //       .then((response) => {
-    //         setMyPoint(response.data.myPoint);
-    //       })
-    //       .catch((error) => {
-    //         console.error(error);
-    //       });
-    //   };
     
       const handleBettingPointChange = (e) => {
         const inputPoint = parseInt(e.target.value);
@@ -60,12 +60,6 @@ function BettingModal(props) {
             ;
         }
       };
-
-    // useEffect(()=> {
-    //     axios.get('http//localhost:3000/').then((res)=>{
-    //            setMyPoint(res.data['point']);
-    //     }).catch( (err) => console.error(err));
-    // }, []);  
 
 
     return (
