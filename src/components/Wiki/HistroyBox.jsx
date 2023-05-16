@@ -16,7 +16,7 @@ function WikiBox (props) {
   const { id } = useParams();
 
   const rollbackToThisVer = () => {
-    Navigator('/wikishowversion', {state:{ver}});
+    Navigator(`/wikihistory/${ver}`, {state:{ver}});
     
 };
 

@@ -73,7 +73,7 @@ function WikiEdit() {
                 newContent: editContent,
             });
             if (result.status === 200){
-                navigate('/입실렌티');
+                navigate('/wikiedit/completed');
             }
         } catch(error){console.log(error)};
         

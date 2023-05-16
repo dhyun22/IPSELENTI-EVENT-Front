@@ -46,31 +46,31 @@ function WikiShowVer() {
     const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
     //const wikiMarkup = traverseHtml(editorToHtml);
     const navigate = useNavigate();
-    // const getHistory = async () => {
-    //     try{
-    //         const result = await axios.get(`http://localhost:8080//wiki/historys/${thisver}`); //전체 텍스트를 가져옴.
-    //         setthishis(result.data['text']);
-    //         setVersion(result.data.version);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
+    const getHistory = async () => {
+        try{
+            const result = await axios.get(`http://localhost:8080//wiki/historys/${thisver}`); //전체 텍스트를 가져옴.
+            setthishis(result.data['text']);
+            setVersion(result.data.version);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
-    // useEffect(() => {
+    useEffect(() => {
         
-    //     getHistory();
+        getHistory();
         
-    // }, []);
+    }, []);
 
     
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     if (thishis) {
-    //       const contentState = ContentState.createFromText(thishis);
-    //       const editorState = EditorState.createWithContent(contentState);
-    //       setEditorState(editorState);
-    //     }
-    //   }, [thishis]);
+        if (thishis) {
+          const contentState = ContentState.createFromText(thishis);
+          const editorState = EditorState.createWithContent(contentState);
+          setEditorState(editorState);
+        }
+      }, [thishis]);
     
     
     return (

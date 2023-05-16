@@ -59,19 +59,21 @@ function App() {
         return (
             <Router>
                 <Routes>
-                    <Route path="/main" element={<Home checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
-                    <Route path="/입실렌티" element={<WikiViewer checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} />} />
+                    <Route path="/main" element={<Home />} />
+                    <Route path="/입실렌티" element={<WikiViewer />} />
+
                     <Route path="/wikiedit" element={<WikiEdit />} />
                     <Route path="/wikiedit/:id" element={<WikiEditContent />} />
                     <Route path="/wikihistory" element={<WikiHistory />} />
-                    <Route path="/wikishowversion" element={<WikiShowVer />} />
+                    <Route path="/wikihistory/:version" element={<WikiShowVer />} />
 
-                    <Route path="/wiki_edit_completed" element={<WikiEditCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn} />} />
-                    <Route path="/addindex_completed" element={<WikiEditCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
-                    <Route path="/signup_completed" element={<SignUpCompleted checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
-                    <Route path="/lineup_event" element={<LineupEvent checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
-                    <Route path="/signup" element={<SignUp checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
-                    <Route path="/login" element={<Login checkLoginStatus={checkLoginStatus} loggedIn={loggedIn}/>} />
+                    <Route path="/wikiedit/completed" element={<WikiEditCompleted />} />
+                    <Route path="/addindex/completed" element={<WikiEditCompleted />} />
+                    <Route path="/signup/completed" element={<SignUpCompleted />} />
+
+                    <Route path="/lineupevent" element={<LineupEvent />} />
+                    <Route path="/signup" element={<SignUp />} />
+                    <Route path="/login" element={<Login />} />
 
                 </Routes>
             </Router>

@@ -4,28 +4,28 @@ import HistoryBox from '../components/Wiki/HistroyBox';
 import axios from 'axios';
 import Header from '../components/Header';
 
-const his = [{
-  "wiki_history_id": 4,
-  "editor_id": "2020171027",
-  "text_pointer": "r3",
-  "edited_time": "2023-05-09T11:08:51.000Z",
-  "is_rollback": 1
- },
- {
-  "wiki_history_id": 3,
-  "editor_id": "202017102a7",
-  "text_pointer": "r2",
-  "edited_time": "2023-05-05T10:16:51.000Z",
-  "is_rollback": 0
- },
- {
-  "wiki_history_id": 2,
-  "editor_id": "2020171027",
-  "text_pointer": "r1",
-  "edited_time": "2023-05-05T10:16:20.000Z",
-  "is_rollback": 0
- }
-];
+// const his = [{
+//   "wiki_history_id": 4,
+//   "editor_id": "2020171027",
+//   "text_pointer": "r3",
+//   "edited_time": "2023-05-09T11:08:51.000Z",
+//   "is_rollback": 1
+//  },
+//  {
+//   "wiki_history_id": 3,
+//   "editor_id": "202017102a7",
+//   "text_pointer": "r2",
+//   "edited_time": "2023-05-05T10:16:51.000Z",
+//   "is_rollback": 0
+//  },
+//  {
+//   "wiki_history_id": 2,
+//   "editor_id": "2020171027",
+//   "text_pointer": "r1",
+//   "edited_time": "2023-05-05T10:16:20.000Z",
+//   "is_rollback": 0
+//  }
+// ];
 
 
 const WikiHistory = () => {
