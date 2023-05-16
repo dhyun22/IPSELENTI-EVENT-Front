@@ -31,6 +31,7 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/mypage" element={<MyPage />} />
                     <Route path="/admin1905051312348998&" element={<Admin />} />
+                    <Route path="/comment" element={<CommentPage/>}/>
                 </Routes>
             </Router>
         )

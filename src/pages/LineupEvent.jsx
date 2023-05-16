@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import AddLineupModal from '../components/AddLineupModal';
 import BettingModal from '../components/BettingModal';
 import ShareModal from '../components/ShareModal';
@@ -10,8 +10,11 @@ import MainCommentList from '../components/MainCommentList';
 import Celebrity from '../components/Celebrity';
 import MovetoComment from '../components/MovetoComment';
 import ScrollToTopButton from '../components/ScrollToTopButton';
+import axios from 'axios';
 
 function LineupEvent() {
+    
+   
     
     const comments = [
         { id: 1, comment_id: 'Alice', comment_text: 'HEllo', time: '4분 전', liked: 0},
@@ -53,6 +56,84 @@ function LineupEvent() {
         //... more comments
     ];
 
+    const [user, setUser] = useState('');
+    const [comment, setComment] = useState([]);
+    const [authorID, setAuthorID] = useState('');
+    const [commentContent, setCommentContent] = useState('');
+
+    const takeuser = async () => {
+        try {
+          const login = await axios.post("http://localhost:8080/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true})
+          const response = await axios.get("http://localhost:8080/user/mypage/info", { withCredentials: true });
+                  
+          if (response.data.success == true){
+            setUser(response.data.user)
+          } else {
+            navigator('/Login')
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      } 
+      
+      const takeComment = async () => {
+          try {
+              const res  = await axios.get("http://localhost:8080/comment/bytime", {withCredentials:true})
+              if (res.data) {
+                  setComment(res.data);
+              }
+          } catch(error) {
+              console.error(error);
+          }
+      }
+
+      const postComment = async () => {
+        try{
+            const response = await axios.post('http://localhost:8080/comment', 
+                {author: authorID, comment_content: commentContent}
+            , {withCredentials: true});
+            if (response.status===200) {
+                console.log(response.data.message)
+                setAuthorID('');
+                setCommentContent('');
+                takeComment();
+            } 
+            if(response.status===400){
+                console.log(response.data.message)
+            }
+            if(response.status===404){
+                console.log(response.data.message)
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+   
+      useEffect(() => {
+        takeComment();
+    }, []);
+
+
+
+    const[celebrities, setCelebrities] = useState([]);
+    const[bettingAmountSum, setBettingAmountSum] = useState([]);
+    const takeCelebrities = async() => {
+        try {
+            const response=await axios.get("http://localhost:8080/event/celebrities", {withCredentials: true})
+            if (response.status===200){
+                setCelebrities(response.data.celebrities);
+                setBettingAmountSum(response.data.betting_amount_sum)
+            }
+            if(response.status===400){
+                console.log(response.data.message);
+            }
+        }catch(error){
+            console.error(error);
+        }
+    }
+    
+    
+    
 
     return (
         <div className='container'>
@@ -73,7 +154,7 @@ function LineupEvent() {
                         </div>
                         <div className='rignt_body'>
                             <span className='Totalpoint_text'>누적 포인트</span>
-                            <span className='Totalpoint'>10000000P</span>
+                            <span className='Totalpoint'>{bettingAmountSum}P</span>
                            <div className='move_comment'>
                             <MovetoComment/>
                             </div> 
@@ -81,7 +162,7 @@ function LineupEvent() {
                     </div>
                 </div>
                     <div className='ranking_count'>
-                        <Celebrity/>
+                        <Celebrity celebList={celebrities}/>
                     </div>
                     <div className='comment_content'>
                      <div className='comment_head'>
@@ -93,27 +174,39 @@ function LineupEvent() {
                             <div className='comment_writing' id='comment_writing'>
                                 <div className='comment_writing_inner' id='comment_writing_inner'>
                                     <form className='comment_writing_area' id="comment_writing_area">
-                                         <div className='comment_writing_name'>
-                                             <span className='comment_writing_name'>
-                                                 &nbsp; 정ㅇㅇ
-                                             </span>
-                                         </div>
-                                          <textarea rows="5" id='comment_writing_textarea' placeholder="댓글을 작성해주세요"></textarea>
-                                         <div className='comment_button' id='comment_button'>
-                                            <div className='comment_btn_wrapper'>
-                                              <button type="submit" className="comment_btn">
-                                                   &nbsp; 작성 &nbsp;
-                                              </button>
-                                            </div>
-                                         </div>
+                                    <div className='comment_writing_name'>
+                                        {user.name && user.name !== '' && 
+                                        <span className='comment_writing_name'>
+                                            &nbsp; {user.name[0]}oo
+                                        </span>}
+                                    </div>
+                                    <textarea 
+                                     rows="5" 
+                                     id='comment_writing_textarea' 
+                                     placeholder="댓글을 작성해주세요"
+                                     value={commentContent}
+                                     onChange={e => setCommentContent(e.target.value)}
+                                    >
+                                    </textarea>
+                                    <div className='comment_button' id='comment_button'>
+                                         <div className='comment_btn_wrapper'>
+                                             <button 
+                                             type="submit" 
+                                             className="comment_btn"
+                                             onClick={postComment}>
+                                                &nbsp; 작성 &nbsp;
+                                             </button>
+                                        </div>
+                                    </div>
                                     </form>
                                 </div>
                             </div>
                       </form>
                      </div>
                     </div>
+                    
                 <div className='comment_main'>
-                  <MainCommentList comments={comments} />
+                  <MainCommentList comments={comment} />
                 </div>
 
                 <div className='go_to_celeb'>

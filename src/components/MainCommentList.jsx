@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Comment from './Comment';
 import CommentPage from '../pages/CommentPage';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
+
 
 
 const MainCommentList = ({ comments }) => {
@@ -16,16 +18,13 @@ const MainCommentList = ({ comments }) => {
     if (comments.length > 5) {
       return (
         <div className="comment-list">
-          {comments.slice(0, 5).map(comment => (
+          {comments.slice(0, 5).map((comment, index) => (
             <Comment
-              key={comment.comment_id}
-              comment_id={comment.comment_id}
-              comment_text={comment.comment_text}
-              time={comment.time}
-              liked={comment.liked}
-            />
+              key={index} comments={comment}/>
           ))}
+          <Link to='/comment'>
           <button onClick={handleShowAllComments}>전체 댓글 보기</button>
+          </Link>
         </div>
       );
     }
@@ -33,25 +32,15 @@ const MainCommentList = ({ comments }) => {
     else {
       return (
         <div className="comment-list">
-          {comments.map(comment => (
+          {comments.map((comment, index) => (
             <Comment
-              key={comment.comment_id}
-              comment_id={comment.comment_id}
-              comment_text={comment.comment_text}
-              time={comment.time}
-              liked={comment.liked}
+              key={index} comments={comment}
             />
           ))}
         </div>
       );
     }
-  } else {
-    // CommentPage를 새 창으로 열도록 코드를 추가합니다.
-    const commentPageWindow = window.open();
-    commentPageWindow.document.title = '전체 댓글 보기';
-    ReactDOM.render(<CommentPage comments={comments} />, commentPageWindow.document.body);
-    return null;
-  }
+  } 
 };
 
 
