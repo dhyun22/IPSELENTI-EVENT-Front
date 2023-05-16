@@ -247,7 +247,7 @@ a {
 }
 .login-img{
     margin-left: 3px;
-    margin-top: 190px;
+    margin-top: 50px;
     margin-bottom: 20px;
     width: 250px;
     height: 250px;
@@ -288,7 +288,7 @@ a {
     flex-direction: column;
     align-items: center;
     padding: 30px;
-    padding-top: 100px;
+    padding-top: 50px;
 }
 .info img{
     margin-bottom: 30px;
@@ -353,6 +353,98 @@ h4{
     border-radius: 6px;
 
 }
+/* 위키뷰어 */
+.wiki-viewer{
+    padding: 10px;
+}
+.wiki-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.wiki-title div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wiki-title button{
+    margin: 10px;
+}
+
+#history-link{
+    font-size: 10px;
+}
+.wiki-index{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    width: 60%;
+    font-size: 13px;
+}
+.wiki-index li{
+    cursor: pointer;
+    list-style-type: none;
+    padding: 5px;
+    
+}
+.wiki-contents{
+    margin: 10px 0px;
+    font-size: 12px;
+}
+.wiki-contents li{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+
+/* 위키 편집기 */
+.wikiedit-btn{
+    justify-content: flex-end;
+    width: 40px;
+    height: 20px;
+    border: none;
+    background-color: #c72f44;
+    color: white;
+    border-radius: 6px;
+    font-size: 10px;
+
+}
+.wikiedit-submit{
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wikiedit-submit button{
+    background-color: #c72f44;
+    border-radius: 6px;
+    color: white;
+    width: 60px;
+    height: 35px;
+    border: none;
+    
+}
+/* 위키 히스토리 */
+.rollback-box{
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 5px;
+}
+.rollback-btn{
+    font-size: 10px;
+    background-color: white;
+    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    border-radius: 6px;
+    /* cursor: pointer; */
+}
+
 
 
 

@@ -11,6 +11,7 @@ import htmlToDraft from 'html-to-draftjs';
 import axios from 'axios';
 import traverseHtml from '../components/Wiki/HtmlToWiki';
 import WikiToHtml from "../components/Wiki/WikiToHtml";
+import { useLocation } from 'react-router-dom/dist';
 
 
 const editorStyle = {
@@ -22,10 +23,11 @@ const editorStyle = {
 
 
 
-function WikiEdit() {
-
+function WikiShowVer() {
+    
+    const {thisver} = useLocation();
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
-    const [wiki, setWiki] = useState('');
+    const [thishis, setthishis] = useState(null);
     const [version, setVersion] = useState(null);
 
     const onEditorStateChange = (editorState) => {
@@ -42,18 +44,12 @@ function WikiEdit() {
 
 
     const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-
-    // const parser = new DOMParser();
-    // const parsedHtml = parser.parseFromString(editorToHtml, 'text/html');
-      
-    const wikiMarkup = traverseHtml(editorToHtml);
-    
+    //const wikiMarkup = traverseHtml(editorToHtml);
     const navigate = useNavigate();
-
-    const getWiki = async () => {
+    const getHistory = async () => {
         try{
-            const result = await axios.get('http://localhost:8080/wiki/contents/'); //전체 텍스트를 가져옴.
-            setWiki(result.data['text']);
+            const result = await axios.get(`http://localhost:8080//wiki/historys/${thisver}`); //전체 텍스트를 가져옴.
+            setthishis(result.data['text']);
             setVersion(result.data.version);
         } catch (error) {
             console.error(error);
@@ -62,33 +58,19 @@ function WikiEdit() {
 
     useEffect(() => {
         
-        getWiki();
+        getHistory();
         
     }, []);
 
-    const addWikiEdit = async (editContent) => {
-        try {
-            const result = await axios.post('http://localhost:8080/wiki/contents/', {
-                version: version,
-                newContent: editContent,
-            });
-            if (result.status === 200){
-                navigate('/wikiedit/completed');
-            }
-        } catch(error){console.log(error)};
-        
-    };
-
-    //const [content, setContent] = useState(null);
     
     useEffect(() => {
 
-        if (wiki) {
-          const contentState = ContentState.createFromText(wiki);
+        if (thishis) {
+          const contentState = ContentState.createFromText(thishis);
           const editorState = EditorState.createWithContent(contentState);
           setEditorState(editorState);
         }
-      }, [wiki]);
+      }, [thishis]);
     
     
     return (
@@ -98,7 +80,7 @@ function WikiEdit() {
                     <Header />
                 </div>
                 <div className="wikiedit">
-                    <h3>Wiki를 편집해주세요</h3>
+                    <h3>미리보기: {thisver}</h3>
                     <div style={editorStyle}>
                         <Editor
                             // 에디터와 툴바 모두에 적용되는 클래스
@@ -120,9 +102,6 @@ function WikiEdit() {
                             onEditorStateChange={onEditorStateChange}
                         />
                     </div>
-                    <div className='wikiedit-submit'>
-                        <button classname="editsubmit-btn" onClick={() => addWikiEdit(wikiMarkup)}>submit</button>
-                    </div>
 
                 </div>
             </div>
@@ -132,4 +111,4 @@ function WikiEdit() {
 }
 
 
-export default WikiEdit;
+export default WikiShowVer;

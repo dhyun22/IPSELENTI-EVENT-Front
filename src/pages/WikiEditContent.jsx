@@ -1,6 +1,6 @@
 import Header from '../components/Header';
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom/dist';
+import { useNavigate, useLocation } from 'react-router-dom/dist';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 // convertToRaw: editorState 객체가 주어지면 원시 JS 구조로 변환.
@@ -9,20 +9,20 @@ import { EditorState, convertToRaw, ContentState, convertFromRaw } from 'draft-j
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import axios from 'axios';
-import traverseHtml from '../components/Wiki/HtmlToWiki';
-import WikiToHtml from "../components/Wiki/WikiToHtml";
+import HtmlToWiki from '../components/Wiki/HtmlToWiki';
 
 
 const editorStyle = {
     cursor: "pointer",
 	width: "100%",
-	minHeight: "30rem",
+	minHeight: "20rem",
 	border: "2px solid rgba(209, 213, 219, 0.3)",
 };
 
 
 
-function WikiEdit() {
+function WikiEditContent() {
+    const {index} = useLocation();
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [wiki, setWiki] = useState('');
@@ -40,56 +40,53 @@ function WikiEdit() {
         },
       };
 
-
-    const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-
-    // const parser = new DOMParser();
-    // const parsedHtml = parser.parseFromString(editorToHtml, 'text/html');
-      
-    const wikiMarkup = traverseHtml(editorToHtml);
     
-    const navigate = useNavigate();
-
-    const getWiki = async () => {
-        try{
-            const result = await axios.get('http://localhost:8080/wiki/contents/'); //전체 텍스트를 가져옴.
-            setWiki(result.data['text']);
-            setVersion(result.data.version);
-        } catch (error) {
-            console.error(error);
-        }
-    };
 
     useEffect(() => {
-        
+        const getWiki = async () => {
+            try{
+                const result = await axios.get(`http://localhost:8080/wiki/contents/${index}`); //{index} 가져올 방법 생각
+                setWiki(result.data['title']+'\n'+result.data['content']);
+                setVersion(result.data.version);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
         getWiki();
         
     }, []);
 
+
+    const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent())); //편집기에 담긴 내용을 html로 바꿈 
+
+    // const parser = new DOMParser();
+    // const parsedHtml = parser.parseFromString(editorToHtml, 'text/html');
+    const wikiMarkup = HtmlToWiki(editorToHtml);
+    
+    const navigate = useNavigate();
+
     const addWikiEdit = async (editContent) => {
         try {
-            const result = await axios.post('http://localhost:8080/wiki/contents/', {
+            const result = await axios.post(`http://localhost:8080/wiki/contents/${index}`, {
                 version: version,
                 newContent: editContent,
             });
             if (result.status === 200){
+
                 navigate('/wikiedit/completed');
             }
         } catch(error){console.log(error)};
         
     };
-
-    //const [content, setContent] = useState(null);
     
     useEffect(() => {
-
         if (wiki) {
           const contentState = ContentState.createFromText(wiki);
           const editorState = EditorState.createWithContent(contentState);
           setEditorState(editorState);
         }
       }, [wiki]);
-    
     
     return (
         <div className="container">
@@ -120,6 +117,7 @@ function WikiEdit() {
                             onEditorStateChange={onEditorStateChange}
                         />
                     </div>
+                    
                     <div className='wikiedit-submit'>
                         <button classname="editsubmit-btn" onClick={() => addWikiEdit(wikiMarkup)}>submit</button>
                     </div>
@@ -132,4 +130,4 @@ function WikiEdit() {
 }
 
 
-export default WikiEdit;
+export default WikiEditContent;
