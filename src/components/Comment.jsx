@@ -2,20 +2,42 @@
 
 import React from 'react';
 import { useState } from 'react';
-import {FcLike} from 'react-icons/fc'
-import {BsThreeDotsVertical} from 'react-icons/bs'
+import {FcLike} from 'react-icons/fc';
+import {BsThreeDotsVertical} from 'react-icons/bs';
 
-const Comment = ({ comments }) => {
+
+
+function Comment ({ comments }) {
   const [likeCount, setLikeCount] = useState(comments.likes_count);
-  const handleLikeClick = () => {
-    setLikeCount(likeCount + 1);
-  };
+  const [commentID, setCommentID] = useState('');
+  const [likerID, setLikerID] = useState('');
   
+  const handleLikeClick = async () => {
+    setLikeCount(likeCount + 1);
+    try{
+      const response = await axios.post('http://localhost:8080/comment/like', 
+      {comment_id: commentID, liker_id: likerID},
+      {withCredentials: true});
+      if(response.status===200){
+        console.log(response.data.message)
+        setCommentID('');
+        setLikerID('');
+      }
+      if(response.status===404){
+        console.log(response.data.message)
+      }}
+      catch(error){
+        console.error(error);
+      }
+    }
+  
+
 
   return (
     <div className="comment">
       <div className="comment_header">
-        <p className="comment_id">{comments.author}</p>
+        {comments.author && comments.author !== '' && comments.name&&comments.name!==''&&
+        <p className="comment_id">{comments.author.slice(2, 4)}학번 &nbsp;{comments.name[0]}ㅇㅇ</p>}
         <div className='comment_head_tools'>
                 <BsThreeDotsVertical />
         </div>
