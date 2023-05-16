@@ -2,6 +2,30 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom/dist';
 import HistoryBox from '../components/Wiki/HistroyBox';
 import axios from 'axios';
+import Header from '../components/Header';
+
+const his = [{
+  "wiki_history_id": 4,
+  "editor_id": "2020171027",
+  "text_pointer": "r3",
+  "edited_time": "2023-05-09T11:08:51.000Z",
+  "is_rollback": 1
+ },
+ {
+  "wiki_history_id": 3,
+  "editor_id": "202017102a7",
+  "text_pointer": "r2",
+  "edited_time": "2023-05-05T10:16:51.000Z",
+  "is_rollback": 0
+ },
+ {
+  "wiki_history_id": 2,
+  "editor_id": "2020171027",
+  "text_pointer": "r1",
+  "edited_time": "2023-05-05T10:16:20.000Z",
+  "is_rollback": 0
+ }
+];
 
 
 const WikiHistory = () => {
@@ -23,7 +47,7 @@ const WikiHistory = () => {
             setTimestamp(result.data.edited_time);
             setUserid(result.data.editor_id);
             setIsRollback(result.data.is_rollback);
-            setVersion(result.data.is_rollback);
+            setVersion(result.data.text_pointer);
         } catch (error) {
             console.error(error);
         }
@@ -40,6 +64,9 @@ const WikiHistory = () => {
   return (
     <div class="container">
             <div class="mobile-view">
+                <div className="header">
+                    <Header />
+                </div>
                 <div className='wiki-history'>
                     <h2>History</h2>
                     <div className='history-content'>

@@ -15,23 +15,18 @@ function WikiBox (props) {
   const rollbacked = props.isrollback;
   const { id } = useParams();
 
-  const rollbackToThisVer = async () => {
-    try {
-        const result = await axios.post(`http://localhost:8080//wiki/historys/${ver}`);
-        if (result.status === 200){
-            Navigator('/wikishowversion', {state: {version: `${ver}`}});
-        }
-    } catch(error){console.log(error)};
+  const rollbackToThisVer = () => {
+    Navigator('/wikishowversion', {state:{ver}});
     
 };
 
 
   return (
     <div className="wiki-contents content-one" >
-      <li>
-        {ver} {time} {studentid}
-        <span className={rollbacked ? 'rollback-span' : 'hidden'}>{ver}로 되돌림</span>
-        <button onClick={rollbackToThisVer} className='rollback-btn'>rollback</button>
+      <li className='rollback-box'>
+        <span>{ver}&ensp;{time}&ensp;{studentid}</span>
+        <span className={rollbacked ? 'rollback-span' : 'hidden'}>(r{rollbacked}로 되돌림)</span>
+        <button onClick={rollbackToThisVer} className='rollback-btn'>롤백</button>
       </li>
     </div>
   )

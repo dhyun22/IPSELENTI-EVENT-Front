@@ -17,7 +17,7 @@ import { useLocation } from 'react-router-dom/dist';
 const editorStyle = {
     cursor: "pointer",
 	width: "100%",
-	minHeight: "20rem",
+	minHeight: "30rem",
 	border: "2px solid rgba(209, 213, 219, 0.3)",
 };
 
@@ -44,33 +44,33 @@ function WikiShowVer() {
 
 
     const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-    const wikiMarkup = traverseHtml(editorToHtml);
+    //const wikiMarkup = traverseHtml(editorToHtml);
     const navigate = useNavigate();
-    const getHistory = async () => {
-        try{
-            const result = await axios.get(`http://localhost:8080//wiki/historys/${thisver}`); //전체 텍스트를 가져옴.
-            setthishis(result.data['text']);
-            setVersion(result.data.version);
-        } catch (error) {
-            console.error(error);
-        }
-    };
+    // const getHistory = async () => {
+    //     try{
+    //         const result = await axios.get(`http://localhost:8080//wiki/historys/${thisver}`); //전체 텍스트를 가져옴.
+    //         setthishis(result.data['text']);
+    //         setVersion(result.data.version);
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
 
-    useEffect(() => {
+    // useEffect(() => {
         
-        getHistory();
+    //     getHistory();
         
-    }, []);
+    // }, []);
 
     
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (thishis) {
-          const contentState = ContentState.createFromText(thishis);
-          const editorState = EditorState.createWithContent(contentState);
-          setEditorState(editorState);
-        }
-      }, [thishis]);
+    //     if (thishis) {
+    //       const contentState = ContentState.createFromText(thishis);
+    //       const editorState = EditorState.createWithContent(contentState);
+    //       setEditorState(editorState);
+    //     }
+    //   }, [thishis]);
     
     
     return (
