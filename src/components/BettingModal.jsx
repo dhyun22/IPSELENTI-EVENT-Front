@@ -11,7 +11,7 @@ function BettingModal(props) {
     const[bettingPoint, setBettingPoint] = useState(parseInt(props.bettingAmount)); //새롭게 배팅하는 포인트
     const[pointLeft, setPointLeft] = useState(parseInt(props.myPoint)); //잔여 포인트
     const[dividend, setDividend] = useState(parseInt(props.bettingAmount) * parseFloat(props.dividendRate)); //새롭게 배팅하는 포인트 * 예상배당률 = 예상 배당금
-    const[celebId, setCelebId] = useState(props.celebrity_id);
+    const[celebId, setCelebId] = useState(props.celebId);
     const [loggedIn, setLoggedIn] = useState(false);
     const Navigate = useNavigate();
 
@@ -48,7 +48,8 @@ function BettingModal(props) {
                 withCredentials: true,
             }); 
             if (result.status === 200){
-                setMyPoint(parseInt(result.data.history[history.length -1].betting_point));
+                const len = result.data.history.length;
+                setMyPoint(parseInt(result.data.history[len-1].betting_point));
             } else if(result.status === 401){
                 alert(result.data.message);
                 Navigate('/login');

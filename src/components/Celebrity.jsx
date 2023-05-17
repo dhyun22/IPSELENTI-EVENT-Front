@@ -31,6 +31,7 @@ function Celebrity(props) {
           <div className='celeb_footer'>
             <span id='celeb_point'>{celeb.betting_amount}</span>
             <BettingModal
+            celebId={celeb.celebrity_id}
             celebName={celeb.celebrities_name}
             voteRate={celeb.percent}
             profilePic={celeb.celebrity_image}
