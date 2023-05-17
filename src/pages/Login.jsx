@@ -70,7 +70,7 @@ function Login() {
             if (response.status === 201) {
                 setLoggedIn(true);
                 pointRequest();
-
+                Navigate('/');
             } else if (response.status === 401){
                 setLoggedIn(false);
                 alert(response.data.message);
