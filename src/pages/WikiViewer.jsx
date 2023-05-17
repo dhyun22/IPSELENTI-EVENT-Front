@@ -45,11 +45,6 @@ function WikiViewer(props) {
         
     }
 
-    // const [title, setTitle] = useState(null);
-    // const [content, setContent] = useState(null);
-    // const [wiki, setWiki] = useState(null);
-    // const [html, setHtml] = useState(null);
-
 
     const getWiki = async () => {
         try{
@@ -111,16 +106,16 @@ function WikiViewer(props) {
                     <div className='wiki-index'>
                         {allText.map((item) => {
                             return(
-                            <li onClick={() => handleClick(parseInt(item.index))} key={item.index}>{parseInt(item.index)}. {item.title}</li>
+                            <li onClick={() => handleClick(item.section)} key={item.section}>{item.section} {item.title}</li>
                             );
                         })}    
                     </div>
                     <div className='wiki-content'>
                         {allText.map((item) => {
                             return(
-                                <div ref={(el) => (myDivRef.current[parseInt(item.index)] = el)} key={item.index}>
+                                <div ref={(el) => (myDivRef.current[item.section] = el)} key={item.section}>
                                     <WikiBox 
-                                    title={item.title} content={item.content} index={item.index}
+                                    title={item.title} content={item.content} section={item.section}
                                     />
                                 </div>
                             );

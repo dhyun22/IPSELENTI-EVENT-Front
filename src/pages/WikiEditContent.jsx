@@ -23,7 +23,7 @@ const editorStyle = {
 
 function WikiEditContent() {
     const location = useLocation();
-    const index = location.state;
+    const section = location.state;
     const [loggedIn, setLoggedIn] = useState(false);
     const Navigate = useNavigate();
 
@@ -87,7 +87,7 @@ function WikiEditContent() {
     useEffect(() => {
         const getWiki = async () => {
             try{
-                const result = await axios.get(`http://localhost:8080/wiki/contents/${index}`, {
+                const result = await axios.get(`http://localhost:8080/wiki/contents/${section}`, {
                     withCredentials: true,
                 }); 
                 if (result.status === 200){
@@ -119,7 +119,7 @@ function WikiEditContent() {
 
     const addWikiEdit = async (editContent) => {
         try {
-            const result = await axios.post(`http://localhost:8080/wiki/contents/${index}`, {
+            const result = await axios.post(`http://localhost:8080/wiki/contents/${section}`, {
                 version: version,
                 newContent: editContent,
             },{
