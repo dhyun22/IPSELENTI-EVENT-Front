@@ -25,7 +25,7 @@ function App() {
                     <Route path="/wiki_edit_completed" element={<WikiEditCompleted />} />
                     <Route path="/addindex_completed" element={<WikiEditCompleted/>} />
                     <Route path="/signup_completed" element={<SignUpCompleted />} />
-                    <Route path="/lineup_event" element={<LineupEvent />} />
+                    <Route path="/lineupevent" element={<LineupEvent />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/mypage" element={<MyPage />} />

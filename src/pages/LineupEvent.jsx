@@ -23,47 +23,10 @@ function LineupEvent() {
     
    
     
-    const comments = [
-        { id: 1, comment_id: 'Alice', comment_text: 'HEllo', time: '4분 전', liked: 0},
-        { id: 2, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 3, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 4, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 5, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 6, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 7, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 8, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 9, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 10, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 11, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 12, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 13, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 14, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 15, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 16, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 17, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 18, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 19, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.' , time: '4분 전', liked: 0},
-        { id: 20, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 21, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 22, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 23, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 24, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 25, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 26, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 27, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 28, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 29, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 30, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 31, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 32, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 33, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 34, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 35, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        
-        //... more comments
-    ];
+    
 
     const [user, setUser] = useState('');
+   
     const [comment, setComment] = useState([]);
     const [authorID, setAuthorID] = useState('');
     const [commentContent, setCommentContent] = useState('');
@@ -154,32 +117,35 @@ function LineupEvent() {
 
     const[celebrities, setCelebrities] = useState([]);
     const[bettingAmountSum, setBettingAmountSum] = useState([]);
-    const takeCelebrities = async() => {
-        try {
-            const response=await axios.get("http://localhost:8080/event/celebrities", {withCredentials: true})
-            if (response.status===200){
-                const data = response.data;
-                const celebritiesData = data.celebrities;
-                const bettingAmountSumData = parseFloat(data.betting_amount_sum);
-          
-                const newCelebrities = celebritiesData.map((celebrity) => {
-                  const bettingAmount = celebrity.betting_amount;
-                  const percent = (bettingAmount / bettingAmountSumData) * 100;
-                  const betRate = (bettingAmountSumData / bettingAmount)
-                  return { ...celebrity, percent, betRate };
-                });
-          
-                setCelebrities(newCelebrities);
-                setBettingAmountSum(bettingAmountSumData);
-              }
-            if(response.status===404){
-                console.log(response.data.message);
-            }
-        }catch(error){
-            console.error(error);
-        }
-    }
+    useEffect(() => {
+        const takeCelebrities = async () => {
+          try {
+            const response = await axios.get("http://localhost:8080/event/celebrities", { withCredentials: true });
+            if (response.status === 200) {
+              const data = response.data;
+              const celebritiesData = data.celebrities;
+              const bettingAmountSumData = parseFloat(data.betting_amount_sum);
     
+              const newCelebrities = celebritiesData.map((celebrity) => {
+                const bettingAmount = celebrity.betting_amount;
+                const percent = (bettingAmount / bettingAmountSumData) * 100;
+                const betRate = bettingAmountSumData / bettingAmount;
+                return { ...celebrity, percent, betRate };
+              });
+    
+              setCelebrities(newCelebrities);
+              setBettingAmountSum(bettingAmountSumData);
+            }
+            if (response.status === 404) {
+              console.log(response.data.message);
+            }
+          } catch (error) {
+            console.error(error);
+          }
+        };
+    
+        takeCelebrities();
+      }, []);
     
     
 
