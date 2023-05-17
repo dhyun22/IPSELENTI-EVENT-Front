@@ -8,26 +8,14 @@ import { useEffect } from 'react';
 
 
 
-function Comment ({ comments }) {
+function Comment ({ comments, changeLike, setChangeLike }) {
   const [likeCount, setLikeCount] = useState(comments.likes_count);
   const [commentID, setCommentID] = useState('');
   const [likerID, setLikerID] = useState('');
   const [comment, setComment] = useState([]);
-  const [changeLike, setChangeLike] = useState(0);
+ 
   
-  const takeComment = async () => {
-    try {
-        const res  = await axios.get("http://localhost:8080/comment/bytime", {withCredentials:true})
-        if (res.status===200) {
-            setComment(res.data);
-        }
-        if(res.status===404) {
-          console.log(res.data.message)
-        }
-    } catch(error) {
-        console.error(error);
-    }
-}
+
 
   const checkChangeLike = () => {
     if (changeLike === 0){
@@ -60,9 +48,7 @@ function Comment ({ comments }) {
       }
     }
   
-    useEffect(()=>{
-      takeComment();
-    }, [changeLike])
+    
 
 
   return (
