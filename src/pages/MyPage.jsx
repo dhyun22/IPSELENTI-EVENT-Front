@@ -10,7 +10,6 @@ import BettingSum from '../components/BettingSum';
 import LeftPoint from '../components/LeftPoint';
 import {TbCoin} from 'react-icons/tb';
 import BettingList from '../components/BettingList';
-import { useNavigate } from 'react-router-dom';
 
 
 
@@ -20,11 +19,12 @@ function MyPage() {
 
   const takeuser = async () => {
     try{
+      const login = await axios.post("http://localhost:8080/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true})
       const response = await axios.get("http://localhost:8080/user/mypage/info", { withCredentials: true});
       
       if (response.data.success == true){
         setUser(response.data.user)
-      }else{ navigator('/login')
+      }else{ navigator('/Login')
       }
     } catch (error) {
       console.error(error);
@@ -32,34 +32,7 @@ function MyPage() {
   } 
 
   useEffect(()=> {takeuser();}, []);
-  const [loggedIn, setLoggedIn] = useState(false);
-const Navigate = useNavigate();
 
-const checkLoginStatus = async () => {
-        try {
-            const response = await axios.get(
-                "http://localhost:8080/user/auth/issignedin",
-                {
-                    withCredentials: true,
-                }
-            );
-
-            if (response.data.success) {
-                setLoggedIn(true);
-            } else{
-                setLoggedIn(false);
-                Navigate('/login');
-            }
-        } catch (error) {
-            console.error(error);
-        }
-
-    }
-
-
-    useEffect (() => {
-        checkLoginStatus();
-    }, []);
 
   return (
     <div className='container'>
@@ -93,8 +66,9 @@ const checkLoginStatus = async () => {
               <div className='row_nick'>
                 <FaRegSmile/>
                 {user.name && user.name !== '' &&
-  <span className='item_text'> &nbsp;{user.name[0]}oo</span>
-}              </div>
+                <span className='item_text'> &nbsp;{user.name[0]}oo</span>
+                }              
+              </div>
             </li>
 
            

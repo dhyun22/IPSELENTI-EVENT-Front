@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { GrClose } from 'react-icons/gr';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { useEffect } from 'react';
 
 function AddLineupModal() {
     const [modalOpen, setModalOpen] = useState(false);

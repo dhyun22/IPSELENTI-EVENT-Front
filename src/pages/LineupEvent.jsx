@@ -12,80 +12,55 @@ import MovetoComment from '../components/MovetoComment';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
+import { FaUserAlt } from 'react-icons/fa';
+
 
 function LineupEvent() {
     
-    const [loggedIn, setLoggedIn] = useState(false);
-    const Navigate = useNavigate();
+
 
     
    
     
-    const comments = [
-        { id: 1, comment_id: 'Alice', comment_text: 'HEllo', time: '4분 전', liked: 0},
-        { id: 2, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 3, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 4, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 5, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 6, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 7, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 8, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 9, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 10, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 11, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 12, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 13, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 14, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 15, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 16, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 17, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 18, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 19, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.' , time: '4분 전', liked: 0},
-        { id: 20, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 21, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 22, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 23, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 24, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 25, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 26, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 27, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 28, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 29, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 30, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 31, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 32, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 33, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 34, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 35, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        
-        //... more comments
-    ];
+    
 
     const [user, setUser] = useState('');
+    
     const [comment, setComment] = useState([]);
     const [authorID, setAuthorID] = useState('');
     const [commentContent, setCommentContent] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
+    const Navigate = useNavigate();
 
+    //betting 내역 받아오는 useState 선언
+    const [userbetting, setUserbetting] = useState([]);]
+
+
+   
     const takeuser = async () => {
         try {
-          const login = await axios.post("http://localhost:8080/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true})
           const response = await axios.get("http://localhost:8080/user/mypage/info", { withCredentials: true });
                   
           if (response.data.success == true){
             setUser(response.data.user)
           } else {
-            navigator('/Login')
+            navigator('/login')
           }
         } catch (error) {
           console.error(error);
         }
-      } 
-      
+      }   
+
+
       const takeComment = async () => {
           try {
               const res  = await axios.get("http://localhost:8080/comment/bytime", {withCredentials:true})
-              if (res.data) {
+              if (res.status===200) {
                   setComment(res.data);
+              }
+              if(res.status===404) {
+                console.log(res.data.message)
               }
           } catch(error) {
               console.error(error);
@@ -145,21 +120,35 @@ function LineupEvent() {
 
     const[celebrities, setCelebrities] = useState([]);
     const[bettingAmountSum, setBettingAmountSum] = useState([]);
-    const takeCelebrities = async() => {
-        try {
-            const response=await axios.get("http://localhost:8080/event/celebrities", {withCredentials: true})
-            if (response.status===200){
-                setCelebrities(response.data.celebrities);
-                setBettingAmountSum(response.data.betting_amount_sum)
-            }
-            if(response.status===400){
-                console.log(response.data.message);
-            }
-        }catch(error){
-            console.error(error);
-        }
-    }
+    useEffect(() => {
+        const takeCelebrities = async () => {
+          try {
+            const response = await axios.get("http://localhost:8080/event/celebrities", { withCredentials: true });
+            if (response.status === 200) {
+              const data = response.data;
+              const celebritiesData = data.celebrities;
+              const bettingAmountSumData = parseFloat(data.betting_amount_sum);
     
+              const newCelebrities = celebritiesData.map((celebrity) => {
+                const bettingAmount = celebrity.betting_amount;
+                const percent = (bettingAmount / bettingAmountSumData) * 100;
+                const betRate = bettingAmountSumData / bettingAmount;
+                return { ...celebrity, percent, betRate };
+              });
+    
+              setCelebrities(newCelebrities);
+              setBettingAmountSum(bettingAmountSumData);
+            }
+            if (response.status === 404) {
+              console.log(response.data.message);
+            }
+          } catch (error) {
+            console.error(error);
+          }
+        };
+    
+        takeCelebrities();
+      }, []);
     
     
 
@@ -167,9 +156,22 @@ function LineupEvent() {
         <div className='container'>
            <div className='mobile-view'>
                 <div className='main_content'>
-                    <div className='myPageLogo'>
-                        <img className='logo' src={logo} alt='logo' />
+                    <div className="headerContainer">
+                   
+                    <div id="eventpagelogo"  className='logoContainer'>
+                        <Link to='/'>
+                        <img src={logo} alt='logo' className='logo'></img>
+                        </Link>
+                        <Link to='/mypage'>
+                        <div className='myPageButton'>
+                        <FaUserAlt className='myPageIcon' />
+                        </div>
+                        </Link>
                     </div>
+                    </div>
+                    
+                        
+                    
                     <div className='main_head'>
                         <h2 className='main_head_title'>입실렌티 라인업 예측</h2>
                         <AddLineupModal className='Adding_lineup'/>
@@ -178,7 +180,7 @@ function LineupEvent() {
                         <div className='left_body'>
                             <span className='remaintime_text'>남은 시간</span>
                             <TimeLeft/>
-                            <ShareModal/>
+                            <ShareModal className='ShareModal'/>
                         </div>
                         <div className='rignt_body'>
                             <span className='Totalpoint_text'>누적 포인트</span>
@@ -195,7 +197,6 @@ function LineupEvent() {
                     <div className='comment_content'>
                      <div className='comment_head'>
                         <h2 className='comment_head_title'>댓글</h2>
-                        <span className='comment_head_count'>899</span>
                      </div>
                      <div className='comment_writingbox'>
                          <form className='comment_form'>
