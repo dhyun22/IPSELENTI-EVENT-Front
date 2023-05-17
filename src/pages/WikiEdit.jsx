@@ -44,31 +44,31 @@ function WikiEdit() {
       };
 
 
-      const checkLoginStatus = async () => {
-        try {
-            const response = await axios.get(
-                "http://localhost:8080/user/auth/issignedin",
-                {
-                    withCredentials: true,
-                }
-            );
+    //   const checkLoginStatus = async () => {
+    //     try {
+    //         const response = await axios.get(
+    //             "http://localhost:8080/user/auth/issignedin",
+    //             {
+    //                 withCredentials: true,
+    //             }
+    //         );
 
-            if (response.data.success) {
-                setLoggedIn(true);
-            } else{
-                setLoggedIn(false);
-                Navigate('/login');
-            }
-        } catch (error) {
-            console.error(error);
-        }
+    //         if (response.data.success) {
+    //             setLoggedIn(true);
+    //         } else{
+    //             setLoggedIn(false);
+    //             Navigate('/login');
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
 
-    }
+    // }
 
 
-    useEffect (() => {
-        checkLoginStatus();
-    }, []);
+    // useEffect (() => {
+    //     checkLoginStatus();
+    // }, []);
 
     const pointRequest = async () => {
         try{
@@ -79,7 +79,6 @@ function WikiEdit() {
             if( response.status === 201){
                 alert("포인트 지급이 완료되었습니다.")
             }
-            
         }catch(err){
             console.error(err)
         }
@@ -91,14 +90,19 @@ function WikiEdit() {
     // const parsedHtml = parser.parseFromString(editorToHtml, 'text/html');
       
     const wikiMarkup = traverseHtml(editorToHtml);
-    
-    const navigate = useNavigate();
 
     const getWiki = async () => {
         try{
-            const result = await axios.get('http://localhost:8080/wiki/contents/'); //전체 텍스트를 가져옴.
-            setWiki(result.data['text']);
+            const result = await axios.get('http://localhost:8080/wiki/contents/',{
+                withCredentials: true,
+            }); //전체 텍스트를 가져옴.
+            if (result.status === 200){
+                setWiki(result.data['text']);
             setVersion(result.data.version);
+            } else if (response.status === 404) {
+                alert("response.data.message");
+            }
+
         } catch (error) {
             console.error(error);
         }
@@ -115,10 +119,12 @@ function WikiEdit() {
             const result = await axios.post('http://localhost:8080/wiki/contents/', {
                 version: version,
                 newContent: editContent,
+            },{
+                withCredentials: true,
             });
             if (result.status === 200){
                 pointRequest();
-                navigate('/wikiedit/completed');
+                Navigate('/wikiedit/completed');
             }
         } catch(error){console.log(error)};
         

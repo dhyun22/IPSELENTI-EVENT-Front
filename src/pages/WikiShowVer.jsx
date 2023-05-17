@@ -25,7 +25,8 @@ const editorStyle = {
 
 function WikiShowVer() {
     
-    const {thisver} = useLocation().state;
+    const location = useLocation();
+    const thisver = location.state;
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [thishis, setthishis] = useState(null);
     const [version, setVersion] = useState(null);
@@ -33,31 +34,31 @@ function WikiShowVer() {
     const [loggedIn, setLoggedIn] = useState(false);
     const Navigate = useNavigate();
 
-    const checkLoginStatus = async () => {
-        try {
-            const response = await axios.get(
-                "http://localhost:8080/user/auth/issignedin",
-                {
-                    withCredentials: true,
-                }
-            );
+    // const checkLoginStatus = async () => {
+    //     try {
+    //         const response = await axios.get(
+    //             "http://localhost:8080/user/auth/issignedin",
+    //             {
+    //                 withCredentials: true,
+    //             }
+    //         );
 
-            if (response.data.success) {
-                setLoggedIn(true);
-            } else{
-                setLoggedIn(false);
-	    Navigate('/login');
-            }
-        } catch (error) {
-            console.error(error);
-        }
+    //         if (response.data.success) {
+    //             setLoggedIn(true);
+    //         } else{
+    //             setLoggedIn(false);
+	//     Navigate('/login');
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
 
-    }
+    // }
 
 
-    useEffect (() => {
-        checkLoginStatus();
-    }, []);
+    // useEffect (() => {
+    //     checkLoginStatus();
+    // }, []);
 
     const onEditorStateChange = (editorState) => {
     // editorState에 값 설정
@@ -77,7 +78,9 @@ function WikiShowVer() {
     const navigate = useNavigate();
     const getHistory = async () => {
         try{
-            const result = await axios.get(`http://localhost:8080/wiki/historys/${thisver}`); //전체 텍스트를 가져옴.
+            const result = await axios.get(`http://localhost:8080/wiki/historys/${thisver}`,{
+                withCredentials: true,
+            }); //전체 텍스트를 가져옴.
             setthishis(result.data['text']);
             setVersion(result.data.version);
         } catch (error) {
@@ -103,7 +106,9 @@ function WikiShowVer() {
     
     const postRealRollback = async() => {
         try{
-            const result = await axios.post(`http://localhost:8080/wiki/historys/${thisver}`); //전체 텍스트를 가져옴.
+            const result = await axios.post(`http://localhost:8080/wiki/historys/${thisver}`, {
+                withCredentials: true,
+            }); //전체 텍스트를 가져옴.
             setthishis(result.data['text']);
             setVersion(result.data.version);
         } catch (error) {

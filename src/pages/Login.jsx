@@ -15,6 +15,32 @@ function Login() {
     //     console.log(data);
     // }
 
+    const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
+
+            if (response.data.success) {
+                setLoggedIn(true);
+                Navigate('/');
+            } else{
+                setLoggedIn(false);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
+
+
+    useEffect (() => {
+        checkLoginStatus();
+    }, []);
+
 
     const [userId, setUserId] = useState('');
     const [userPw, setUserPw] = useState('');
@@ -35,18 +61,19 @@ function Login() {
 
     const userLogin = async () => {
         try{
-            const response = await axios.post('http://localhost:8080/user/auth/login', {
+            const response = await axios.post('http://localhost:8080/user/auth/signin', {
                 user_id: userId,
                 password: userPw,
             }, {
                 withCredentials: true
             });
-            if (response.data.success) {
+            if (response.status === 201) {
                 setLoggedIn(true);
                 pointRequest();
 
-            } else{
+            } else if (response.status === 401){
                 setLoggedIn(false);
+                alert(response.data.message);
             }
         } catch (error) {
             console.error(error);

@@ -22,7 +22,8 @@ const editorStyle = {
 
 
 function WikiEditContent() {
-    const {index} = useLocation();
+    const location = useLocation();
+    const index = location.state;
     const [loggedIn, setLoggedIn] = useState(false);
     const Navigate = useNavigate();
 
@@ -42,31 +43,31 @@ function WikiEditContent() {
         },
       };
 
-      const checkLoginStatus = async () => {
-        try {
-            const response = await axios.get(
-                "http://localhost:8080/user/auth/issignedin",
-                {
-                    withCredentials: true,
-                }
-            );
+    //   const checkLoginStatus = async () => {
+    //     try {
+    //         const response = await axios.get(
+    //             "http://localhost:8080/user/auth/issignedin",
+    //             {
+    //                 withCredentials: true,
+    //             }
+    //         );
 
-            if (response.data.success) {
-                setLoggedIn(true);
-            } else{
-                setLoggedIn(false);
-                Navigate('/login');
-            }
-        } catch (error) {
-            console.error(error);
-        }
+    //         if (response.data.success) {
+    //             setLoggedIn(true);
+    //         } else{
+    //             setLoggedIn(false);
+    //             Navigate('/login');
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
 
-    }
+    // }
 
 
-    useEffect (() => {
-        checkLoginStatus();
-    }, []);
+    // useEffect (() => {
+    //     checkLoginStatus();
+    // }, []);
 
       const pointRequest = async () => {
         try{
@@ -86,7 +87,9 @@ function WikiEditContent() {
     useEffect(() => {
         const getWiki = async () => {
             try{
-                const result = await axios.get(`http://localhost:8080/wiki/contents/${index}`); //{index} 가져올 방법 생각
+                const result = await axios.get(`http://localhost:8080/wiki/contents/${index}`, {
+                    withCredentials: true,
+                }); //{index} 가져올 방법 생각
                 setWiki(result.data['title']+'\n'+result.data['content']);
                 setVersion(result.data.version);
             } catch (error) {
@@ -112,6 +115,8 @@ function WikiEditContent() {
             const result = await axios.post(`http://localhost:8080/wiki/contents/${index}`, {
                 version: version,
                 newContent: editContent,
+            },{
+                withCredentials: true,
             });
             if (result.status === 200){
                 pointRequest();

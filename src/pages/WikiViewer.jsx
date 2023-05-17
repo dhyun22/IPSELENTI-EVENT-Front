@@ -53,7 +53,7 @@ function WikiViewer(props) {
 
     const getWiki = async () => {
         try{
-            const result = await axios.get('http://localhost:8080/wiki/contents'); //{index} 가져올 방법 생각
+            const result = await axios.get('http://localhost:8080/wiki/contents');
             setAllText(result.data.contents);
         } catch (error) {
             console.error(error);

@@ -44,8 +44,9 @@ function SignUp() {
         //event.preventDefault(); // 아무 동작 안하고 버튼만 눌러도 리프레쉬 되는 것을 막는다
 
         if(isPwValid === false){
+            e.preventDefault();
             return alert('비밀번호를 다시 입력하세요.')
-            e.prevent.default();
+            
         }
 
         try{
@@ -81,7 +82,7 @@ function SignUp() {
 
             if (response.data.success) {
                 setLoggedIn(true);
-                Navigate('/main');
+                Navigate('/');
             } else{
                 setLoggedIn(false);
             }

@@ -41,7 +41,9 @@ const WikiHistory = () => {
 
     const getWiki = async () => {
     try{
-            const result = await axios.get('http://localhost:8080/wiki/historys');
+            const result = await axios.get('http://localhost:8080/wiki/historys', {
+                withCredentials: true
+            });
             setHistory(result.data);
 
         } catch (error) {
