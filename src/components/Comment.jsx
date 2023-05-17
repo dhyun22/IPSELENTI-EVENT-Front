@@ -12,7 +12,7 @@ function Comment ({ comments, changeLike, setChangeLike }) {
   const [likeCount, setLikeCount] = useState(comments.likes_count);
   const [commentID, setCommentID] = useState('');
   const [likerID, setLikerID] = useState('');
-  const [comment, setComment] = useState([]);
+  
  
   
 
@@ -38,7 +38,10 @@ function Comment ({ comments, changeLike, setChangeLike }) {
         setCommentID(comments.comment_id);
         setLikerID(comments.liker_id);
         checkChangeLike();
-
+      }
+      if(response.statue===400){
+        console.log(response.data.message)
+        alert(response.data.message)
       }
       if(response.status===404){
         console.log(response.data.message)
