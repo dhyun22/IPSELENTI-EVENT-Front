@@ -12,11 +12,13 @@ import MovetoComment from '../components/MovetoComment';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
+import { FaUserAlt } from 'react-icons/fa';
+
 
 function LineupEvent() {
     
-    const [loggedIn, setLoggedIn] = useState(false);
-    const Navigate = useNavigate();
+
 
     
    
@@ -65,27 +67,34 @@ function LineupEvent() {
     const [comment, setComment] = useState([]);
     const [authorID, setAuthorID] = useState('');
     const [commentContent, setCommentContent] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
+    const Navigate = useNavigate();
 
+
+   
     const takeuser = async () => {
         try {
-          const login = await axios.post("http://localhost:8080/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true})
           const response = await axios.get("http://localhost:8080/user/mypage/info", { withCredentials: true });
                   
           if (response.data.success == true){
             setUser(response.data.user)
           } else {
-            navigator('/Login')
+            navigator('/login')
           }
         } catch (error) {
           console.error(error);
         }
-      } 
-      
+      }   
+
+
       const takeComment = async () => {
           try {
               const res  = await axios.get("http://localhost:8080/comment/bytime", {withCredentials:true})
-              if (res.data) {
+              if (res.status===200) {
                   setComment(res.data);
+              }
+              if(res.status===404) {
+                console.log(res.data.message)
               }
           } catch(error) {
               console.error(error);
@@ -149,10 +158,21 @@ function LineupEvent() {
         try {
             const response=await axios.get("http://localhost:8080/event/celebrities", {withCredentials: true})
             if (response.status===200){
-                setCelebrities(response.data.celebrities);
-                setBettingAmountSum(response.data.betting_amount_sum)
-            }
-            if(response.status===400){
+                const data = response.data;
+                const celebritiesData = data.celebrities;
+                const bettingAmountSumData = parseFloat(data.betting_amount_sum);
+          
+                const newCelebrities = celebritiesData.map((celebrity) => {
+                  const bettingAmount = celebrity.betting_amount;
+                  const percent = (bettingAmount / bettingAmountSumData) * 100;
+                  const betRate = (bettingAmountSumData / bettingAmount)
+                  return { ...celebrity, percent, betRate };
+                });
+          
+                setCelebrities(newCelebrities);
+                setBettingAmountSum(bettingAmountSumData);
+              }
+            if(response.status===404){
                 console.log(response.data.message);
             }
         }catch(error){
@@ -167,9 +187,22 @@ function LineupEvent() {
         <div className='container'>
            <div className='mobile-view'>
                 <div className='main_content'>
-                    <div className='myPageLogo'>
-                        <img className='logo' src={logo} alt='logo' />
+                    <div className="headerContainer">
+                   
+                    <div id="eventpagelogo"  className='logoContainer'>
+                        <Link to='/'>
+                        <img src={logo} alt='logo' className='logo'></img>
+                        </Link>
+                        <Link to='/mypage'>
+                        <div className='myPageButton'>
+                        <FaUserAlt className='myPageIcon' />
+                        </div>
+                        </Link>
                     </div>
+                    </div>
+                    
+                        
+                    
                     <div className='main_head'>
                         <h2 className='main_head_title'>입실렌티 라인업 예측</h2>
                         <AddLineupModal className='Adding_lineup'/>
@@ -178,7 +211,7 @@ function LineupEvent() {
                         <div className='left_body'>
                             <span className='remaintime_text'>남은 시간</span>
                             <TimeLeft/>
-                            <ShareModal/>
+                            <ShareModal className='ShareModal'/>
                         </div>
                         <div className='rignt_body'>
                             <span className='Totalpoint_text'>누적 포인트</span>
@@ -195,7 +228,6 @@ function LineupEvent() {
                     <div className='comment_content'>
                      <div className='comment_head'>
                         <h2 className='comment_head_title'>댓글</h2>
-                        <span className='comment_head_count'>899</span>
                      </div>
                      <div className='comment_writingbox'>
                          <form className='comment_form'>

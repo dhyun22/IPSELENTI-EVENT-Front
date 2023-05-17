@@ -7,7 +7,6 @@ import ScrollToTopButton from '../components/ScrollToTopButton';
 import axios from 'axios';
 import {useEffect} from "react";
 import {useState} from "react";
-import { useNavigate } from 'react-router';
 
 function CommentPage() {
 
@@ -54,9 +53,6 @@ function CommentPage() {
     const [comment, setComment] = useState([]);
     const [authorID, setAuthorID] = useState('');
     const [commentContent, setCommentContent] = useState('');
-    const [loggedIn, setLoggedIn] = useState(false);
-    const Navigate = useNavigate();
-
 
     
     const takeuser = async () => {
@@ -66,7 +62,7 @@ function CommentPage() {
         if (response.data.success == true){
           setUser(response.data.user)
         } else {
-          navigator('/login')
+          navigator('/Login')
         }
       } catch (error) {
         console.error(error);
@@ -109,34 +105,10 @@ function CommentPage() {
     useEffect(() => {
         console.log(comment)
     }, [comment]);
-
-    const checkLoginStatus = async () => {
-        try {
-            const response = await axios.get(
-                "http://localhost:8080/user/auth/issignedin",
-                {
-                    withCredentials: true,
-                }
-            );
-
-            if (response.data.success) {
-                setLoggedIn(true);
-            } else{
-                setLoggedIn(false);
-                Navigate('/login');
-            }
-        } catch (error) {
-            console.error(error);
-        }
-
-    }
-
     
     const postComment = async () => {
-        
-        checkLoginStatus();
-        
         try{
+            //!!!!!!!!!!!!!!!여기서 set 써서 authorID를 loginID로 설정해야대!!!!!11
             const response = await axios.post('http://localhost:8080/comment', 
                 {author: authorID, comment_content: commentContent}
             , {withCredentials: true});
@@ -144,6 +116,7 @@ function CommentPage() {
                 console.log(response.data.message)
                 setAuthorID('');
                 setCommentContent('');
+                takeComment();
             } 
             if(response.status===400){
                 console.log(response.data.message)
@@ -156,9 +129,6 @@ function CommentPage() {
         }
     }
 
-    useEffect(() => {
-        takeComment();
-    }, []);
 
 
     return (
@@ -167,7 +137,6 @@ function CommentPage() {
     <div className='comment_content'>
         <div className='comment_head'>
             <h2 className='comment_head_title'>댓글</h2>
-            <span className='comment_head_count'>899</span>
             <button  className='comment_bytime' onClick={takeComment}>최신순</button>
             <button  className='comment_bylike' onClick={takeCommentByLike}>인기순</button>
         </div>
@@ -183,7 +152,6 @@ function CommentPage() {
                                 </span>}
                             </div>
                             <textarea 
-                            
                             rows="5" 
                             id='comment_writing_textarea' 
                             placeholder="댓글을 작성해주세요"

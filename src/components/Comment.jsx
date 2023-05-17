@@ -17,6 +17,7 @@ function Comment ({ comments }) {
     try{
       const response = await axios.post('http://localhost:8080/comment/like', 
       {comment_id: commentID, liker_id: likerID},
+      //likerID랑 authorID 일치시켜야 됨
       {withCredentials: true});
       if(response.status===200){
         console.log(response.data.message)
@@ -51,7 +52,7 @@ function Comment ({ comments }) {
           <FcLike/>&nbsp;{comments.likes_count}</p>      
       </div>
     </div>
-  );
+  )
 };
 
 export default Comment;
