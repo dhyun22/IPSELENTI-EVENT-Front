@@ -27,7 +27,8 @@ function Comment ({ comments, changeLike, setChangeLike }) {
   };
   
   const handleLikeClick = async () => {
-    setLikeCount(likeCount + 1);
+    const updatedLikeCount = likeCount +1
+    setLikeCount(updatedLikeCount);
     try{
       const response = await axios.post('http://localhost:8080/comment/like', 
       {comment_id: comments.comment_id, liker_id: comments.liker_id},
@@ -38,6 +39,7 @@ function Comment ({ comments, changeLike, setChangeLike }) {
         setCommentID(comments.comment_id);
         setLikerID(comments.liker_id);
         checkChangeLike();
+        setLikeCount(updatedLikeCount)
       }
       if(response.statue===400){
         console.log(response.data.message)

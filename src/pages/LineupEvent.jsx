@@ -26,12 +26,15 @@ function LineupEvent() {
     
 
     const [user, setUser] = useState('');
-   
+    
     const [comment, setComment] = useState([]);
     const [authorID, setAuthorID] = useState('');
     const [commentContent, setCommentContent] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
     const Navigate = useNavigate();
+
+    //betting 내역 받아오는 useState 선언
+    const [userbetting, setUserbetting] = useState([]);]
 
 
    
