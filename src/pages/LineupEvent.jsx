@@ -34,7 +34,7 @@ function LineupEvent() {
     const Navigate = useNavigate();
 
     //betting 내역 받아오는 useState 선언
-    const [userbetting, setUserbetting] = useState([]);]
+    //const [userbetting, setUserbetting] = useState([]);
 
 
    

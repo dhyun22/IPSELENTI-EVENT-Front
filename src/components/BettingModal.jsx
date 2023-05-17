@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 function BettingModal(props) {
     const[modalOpen, setModalOpen] = useState(false);
-    const[myPoint, setMyPoint] = useState(parseInt(props.myPoint)); //기존에 배팅했던 포인트
+    const[myPoint, setMyPoint] = useState(0); //기존에 배팅했던 포인트
     const[bettingPoint, setBettingPoint] = useState(parseInt(props.bettingAmount)); //새롭게 배팅하는 포인트
     const[pointLeft, setPointLeft] = useState(parseInt(props.myPoint)); //잔여 포인트
     const[dividend, setDividend] = useState(parseInt(props.bettingAmount) * parseFloat(props.dividendRate)); //새롭게 배팅하는 포인트 * 예상배당률 = 예상 배당금
@@ -15,7 +15,7 @@ function BettingModal(props) {
     const [loggedIn, setLoggedIn] = useState(false);
     const Navigate = useNavigate();
 
-const checkLoginStatus = async () => {
+    const checkLoginStatus = async () => {
         try {
             const response = await axios.get(
                 "http://localhost:8080/user/auth/issignedin",
@@ -40,6 +40,30 @@ const checkLoginStatus = async () => {
     useEffect (() => {
         checkLoginStatus();
     }, []);
+
+
+    const getBettedPoint = async () => {
+        try{
+            const result = await axios.get(`http://localhost:8080/event/artist/${celebId}`, {
+                withCredentials: true,
+            }); 
+            if (result.status === 200){
+                setMyPoint(parseInt(result.data.history[history.length -1].betting_point));
+            } else if(result.status === 401){
+                alert(result.data.message);
+                Navigate('/login');
+            }
+            
+        } catch (error) {
+            console.error(error);
+            //alert("result.data.message");
+        }
+    };
+
+    useEffect (() => {
+        getBettedPoint();
+    }, []);
+
 
     const betRequest = async() => {
         console.log('문제 없음');
