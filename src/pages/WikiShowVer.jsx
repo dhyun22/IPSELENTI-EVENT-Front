@@ -7,10 +7,7 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { EditorState, convertToRaw, ContentState, convertFromRaw } from 'draft-js';
 // convertToRaw로 변환시켜준 원시 JS 구조를 HTML로 변환.
 import draftToHtml from 'draftjs-to-html';
-import htmlToDraft from 'html-to-draftjs';
 import axios from 'axios';
-import traverseHtml from '../components/Wiki/HtmlToWiki';
-import WikiToHtml from "../components/Wiki/WikiToHtml";
 import { useLocation } from 'react-router-dom/dist';
 
 

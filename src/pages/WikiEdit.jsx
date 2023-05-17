@@ -7,10 +7,8 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { EditorState, convertToRaw, ContentState, convertFromRaw } from 'draft-js';
 // convertToRaw로 변환시켜준 원시 JS 구조를 HTML로 변환.
 import draftToHtml from 'draftjs-to-html';
-import htmlToDraft from 'html-to-draftjs';
 import axios from 'axios';
 import traverseHtml from '../components/Wiki/HtmlToWiki';
-import WikiToHtml from "../components/Wiki/WikiToHtml";
 
 
 const editorStyle = {
@@ -99,8 +97,8 @@ function WikiEdit() {
             if (result.status === 200){
                 setWiki(result.data['text']);
             setVersion(result.data.version);
-            } else if (response.status === 404) {
-                alert("response.data.message");
+            } else if (result.status === 404) {
+                alert("result.data.message");
             }
 
         } catch (error) {

@@ -1,9 +1,6 @@
 import React from 'react';
-import { Link } from "react-router-dom/dist";
 import { useNavigate } from 'react-router-dom/dist'
 import { useParams } from 'react-router-dom/dist';
-import { useState } from 'react';
-import axios from 'axios';
 
 function HistoryBox (props) {
 
