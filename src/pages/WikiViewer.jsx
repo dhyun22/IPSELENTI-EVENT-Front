@@ -3,8 +3,8 @@ import { Link } from "react-router-dom/dist";
 import React, {useRef, useEffect, useState} from 'react';
 import WikiBox from '../components/Wiki/WikiBox';
 import axios from 'axios';
-import WikiToHtml from "../components/Wiki/WikiToHtml";
 import { useNavigate } from 'react-router-dom/dist';
+import Signout from '../components/Signout';
 
 
 
@@ -96,6 +96,7 @@ function WikiViewer(props) {
             <div className="mobile-view">
                 <div className="header">
                     <Header />
+                    
                 </div>
                 <div className='wiki-viewer'>
                     <div className='wiki-title'>
@@ -125,6 +126,7 @@ function WikiViewer(props) {
                         })}
                     </div>    
                 </div>
+                <Signout />
             </div>
         </div>
         
