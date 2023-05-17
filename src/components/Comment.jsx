@@ -4,6 +4,7 @@ import React from 'react';
 import { useState } from 'react';
 import {FcLike} from 'react-icons/fc';
 import {BsThreeDotsVertical} from 'react-icons/bs';
+import { useEffect } from 'react';
 
 
 
@@ -12,7 +13,7 @@ function Comment ({ comments }) {
   const [commentID, setCommentID] = useState('');
   const [likerID, setLikerID] = useState('');
   const [comment, setComment] = useState([]);
-
+  const [changeLike, setChangeLike] = useState(0);
   
   const takeComment = async () => {
     try {
@@ -27,6 +28,15 @@ function Comment ({ comments }) {
         console.error(error);
     }
 }
+
+  const checkChangeLike = () => {
+    if (changeLike === 0){
+      setChangeLike(1);
+    }
+    else {
+      setChangeLike(0);
+    }
+  };
   
   const handleLikeClick = async () => {
     setLikeCount(likeCount + 1);
@@ -39,7 +49,8 @@ function Comment ({ comments }) {
         console.log(response.data.message)
         setCommentID(comments.comment_id);
         setLikerID(comments.liker_id);
-        takeComment();
+        checkChangeLike();
+
       }
       if(response.status===404){
         console.log(response.data.message)
@@ -49,6 +60,9 @@ function Comment ({ comments }) {
       }
     }
   
+    useEffect(()=>{
+      takeComment();
+    }, [changeLike])
 
 
   return (
