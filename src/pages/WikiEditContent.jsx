@@ -13,8 +13,9 @@ import HtmlToWiki from '../components/Wiki/HtmlToWiki';
 
 const editorStyle = {
     cursor: "pointer",
-	width: "100%",
-	minHeight: "20rem",
+	width: "90%",
+	minHeight: "20.5rem",
+    marginLeft: "5%",
 	border: "2px solid rgba(209, 213, 219, 0.3)",
 };
 
@@ -88,11 +89,18 @@ function WikiEditContent() {
             try{
                 const result = await axios.get(`http://localhost:8080/wiki/contents/${index}`, {
                     withCredentials: true,
-                }); //{index} 가져올 방법 생각
-                setWiki(result.data['title']+'\n'+result.data['content']);
-                setVersion(result.data.version);
+                }); 
+                if (result.status === 200){
+                    setWiki(result.data['title']+'\n'+result.data['content']);
+                    setVersion(result.data.version);
+                } else if(result.status === 401){
+                    alert(result.data.message);
+                    Navigate('/login');
+                }
+                
             } catch (error) {
                 console.error(error);
+                //alert("result.data.message");
             }
         };
 
@@ -120,6 +128,9 @@ function WikiEditContent() {
             if (result.status === 200){
                 pointRequest();
                 Navigate('/wikiedit/completed');
+            } else if(result.status === 401){
+                alert(result.data.message);
+                Navigate('/login');
             }
         } catch(error){console.log(error)};
         

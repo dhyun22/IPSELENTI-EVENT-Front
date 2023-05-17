@@ -45,10 +45,10 @@ function WikiViewer(props) {
         
     }
 
-    const [title, setTitle] = useState(null);
-    const [content, setContent] = useState(null);
-    const [wiki, setWiki] = useState(null);
-    const [html, setHtml] = useState(null);
+    // const [title, setTitle] = useState(null);
+    // const [content, setContent] = useState(null);
+    // const [wiki, setWiki] = useState(null);
+    // const [html, setHtml] = useState(null);
 
 
     const getWiki = async () => {
@@ -57,6 +57,7 @@ function WikiViewer(props) {
             setAllText(result.data.contents);
         } catch (error) {
             console.error(error);
+            //alert(result.data.message);
         }
     };
 

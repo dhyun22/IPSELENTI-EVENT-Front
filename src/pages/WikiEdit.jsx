@@ -97,12 +97,14 @@ function WikiEdit() {
             if (result.status === 200){
                 setWiki(result.data['text']);
             setVersion(result.data.version);
-            } else if (result.status === 404) {
-                alert("result.data.message");
+            } else if(result.status === 401){
+                alert(result.data.message);
+                Navigate('/login');
             }
 
         } catch (error) {
             console.error(error);
+            //alert("result.data.message");
         }
     };
 
@@ -123,6 +125,9 @@ function WikiEdit() {
             if (result.status === 200){
                 pointRequest();
                 Navigate('/wikiedit/completed');
+            } else if(result.status === 401){
+                alert(result.data.message);
+                Navigate('/login');
             }
         } catch(error){console.log(error)};
         

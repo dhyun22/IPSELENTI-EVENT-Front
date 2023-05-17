@@ -26,7 +26,7 @@ const WikiHistory = () => {
                 setLoggedIn(true);
             } else{
                 setLoggedIn(false);
-	    Navigate('/login');
+	            Navigate('/login');
             }
         } catch (error) {
             console.error(error);
@@ -40,12 +40,17 @@ const WikiHistory = () => {
     }, []);
 
     const getWiki = async () => {
-    try{
+        try{
             const result = await axios.get('http://localhost:8080/wiki/historys', {
                 withCredentials: true
             });
-            setHistory(result.data);
-
+            if(result.status === 200){
+                setHistory(result.data);
+            } else if(result.status === 401){
+                alert(result.data.message);
+                Navigate('/login');
+            }
+            
         } catch (error) {
             console.error(error);
         }
