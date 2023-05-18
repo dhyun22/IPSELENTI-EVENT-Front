@@ -37,12 +37,18 @@ function MyPage() {
   return (
     <div className='container'>
     <div className='mobile-view'>
-      <div className='mypage_content'>
-        <div className='myPageLogo'>
-          <Link to='/'>
-            <img className='logo' src={logo} alt='logo' />
-          </Link >
+       <div id='mypageheader'>
+                <div className='headerContainer'>
+                    <div className='logoContainer'>
+                        <Link to='/'>
+                         <img src={logo} alt='logo' id='mypagelogo'></img>
+                        </Link>
+                    </div>
+                </div>
         </div>
+
+      <div className='mypage_content'>
+       
         <div className='mypage'>
           <h2 className='mypage_text'>마이페이지</h2>
         </div>
@@ -86,15 +92,15 @@ function MyPage() {
            <h3 className="title_text" id='betting_text'>배팅현황</h3>
           </div>
           <ul className="betting_row" id='betting_row'>
-            <li>
+            <li className='betting_info'>
               <div className="row_itemleft">
-                <TbCoin/><span className="item_text" id='row_itemleft'> &nbsp;잔여 포인트 : <LeftPoint/> P</span>
+                <TbCoin/><span className="item_text" id='row_itemleft'> &nbsp;잔여 포인트 : &nbsp;<LeftPoint/> P</span>
               </div>
             </li>
 
-            <li>
+            <li className='betting_info'>
               <div className="row_itemused">
-               <TbCoin/><span className="item_text" id='row_itemused'> &nbsp;배팅 포인트 : <BettingSum/> P</span>
+               <TbCoin/><span className="item_text" id='row_itemused'> &nbsp;배팅 포인트 : &nbsp;<BettingSum/> P</span>
               </div>
             </li>
           </ul> 

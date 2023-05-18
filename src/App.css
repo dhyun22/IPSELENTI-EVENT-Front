@@ -525,8 +525,8 @@ h4{
 .editLogo {
   /* position: absolute; */
 
-  width: 100px;
-  height: 30px;
+  width: 110px;
+  height: 33px;
   object-fit: cover;
 }
 
@@ -595,6 +595,25 @@ h4{
 }
 
 /* 마이페이지 */
+#mypageheader{
+
+  width: 100%;
+  height: 7vh;
+  text-align: center;
+  /* background-color: blue; */
+  align-items: center;
+  position: relative;
+}
+
+#mypagelogo {
+width: 25%;
+height: 27px;
+margin-top: 1vh;
+cursor: pointer;
+}
+
+
+
 .mypage_content{
     padding: 0 20px;
     box-sizing: border-box;
@@ -630,7 +649,7 @@ h4{
   #account_title {
     position: relative;
     display: block;
-    padding: 1px 38px 1px 18px;
+    padding: 1px 38px 1px 0px;
     border-radius: 12px 12px 0 0;
     background-image: linear-gradient(98deg, rgb(89, 1, 1),crimson);
   }
@@ -689,6 +708,8 @@ h4{
     color: #000000;
   }
   
+
+  
   #betting_box{
    
     font-size: 1rem;
@@ -701,7 +722,7 @@ h4{
   #betting_title {
     position: relative;
     display: block;
-    padding: 1px 38px 1px 18px;
+    padding: 1px 38px 1px 0px;
     border-radius: 12px 12px 0 0;
     background-image: linear-gradient(98deg, rgb(89, 1, 1),crimson);
   }
@@ -723,19 +744,26 @@ h4{
     border: solid 1px #e3e9ed;
     background-color: #ffffff;
     box-sizing: border-box;
-    display: inline-flex;
+  }
+
+
+  .betting_info{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-bottom: 10px;
   }
   
-  #row_itemused, #row_itemleft{
-    font-size: 12px;
+  .row_itemleft, .row_itemused{
+    font-size: 15px;
     font-weight: 500;
     line-height: 15px;
     letter-spacing: -.47px;
     color: #000000;
   }
-  .row_itemused{
-    margin-left: 30px;
-  }
+  
+
+  
   
   #betting_list_box{
     position: relative;
@@ -786,6 +814,32 @@ h4{
   }
 
 /* 메인페이지 */
+
+#mainpageheader{
+
+    width: 100%;
+    height: 7vh;
+    text-align: center;
+    /* background-color: blue; */
+    align-items: center;
+    position: relative;
+}
+
+#mainpagelogo {
+  width: 25%;
+  height: 27px;
+  margin-top: 1vh;
+  cursor: pointer;
+}
+
+#mainmyPageIcon {
+  position: absolute;
+  font-size: 20px;
+  top: 38%;
+  left: 25%;
+}
+
+
 .main_content{
   padding: 0 20px;
   box-sizing: border-box;
@@ -803,18 +857,19 @@ h4{
 }
 
 
-.adding_mainpage{
-  font-size: 10px;
+.main_head_title{
+  display: initial;
+  text-align: left;
+}
+
+.adding_lineup{
+  font-size: 12px;
   border : none;
   background-color: white;
   float: right;
   margin-bottom: 1px;
   color:rgb(122, 122, 122);
-}
-
-.main_head_title{
-  display: initial;
-  text-align: left;
+  cursor: pointer;
 }
 
 .main_body {
@@ -850,6 +905,21 @@ h4{
   flex:1;
 }
 
+.sharing_button{
+  color: white;
+  background-color: red;
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  margin-top: 20px;
+}
+
 .rignt_body {
   display: flex;
   flex-direction: column;
@@ -881,6 +951,20 @@ h4{
   margin-top: 10px;
 }
 
+.moving_button{
+    color: white;
+    background-color: red;
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    margin-top: 20px;
+}
 
 
 

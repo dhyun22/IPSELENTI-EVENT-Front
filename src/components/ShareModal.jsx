@@ -13,7 +13,7 @@ function ShareModal() {
     }
     return (
         <div>
-            <button onClick={() => setModalOpen(true)}>친구에게 공유</button>
+            <button className='sharing_button' onClick={() => setModalOpen(true)}>친구에게 공유</button>
             <Modal
             className='shareModal'
             isOpen={modalOpen}

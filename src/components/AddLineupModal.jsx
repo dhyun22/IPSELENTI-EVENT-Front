@@ -50,7 +50,7 @@ const checkLoginStatus = async () => {
 
     return (
             <div>
-                <button onClick={() => setModalOpen(true)}>라인업 추가하기</button>
+                <button className='adding_lineup' onClick={() => setModalOpen(true)}>라인업 추가하기 &gt; </button>
                 <Modal 
                 className='lineupModal'
                 isOpen={modalOpen}

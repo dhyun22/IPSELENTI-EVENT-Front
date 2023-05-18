@@ -7,7 +7,7 @@ function MovetoComment() {
   };
 
   return (
-    <button onClick={handleClick}>댓글 보러가기</button>
+    <button className='moving_button' onClick={handleClick}>댓글 보러가기</button>
   );
 }
 

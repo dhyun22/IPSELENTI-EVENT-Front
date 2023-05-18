@@ -12,6 +12,7 @@ function Comment ({ comments, changeLike, setChangeLike }) {
   const [likeCount, setLikeCount] = useState(comments.likes_count);
   const [commentID, setCommentID] = useState('');
   const [likerID, setLikerID] = useState('');
+
   
  
   
@@ -27,7 +28,8 @@ function Comment ({ comments, changeLike, setChangeLike }) {
   };
   
   const handleLikeClick = async () => {
-    const updatedLikeCount = likeCount +1
+    const updatedLikeCount = likeCount +1;
+    comments.likes_count += 1;
     setLikeCount(updatedLikeCount);
     try{
       const response = await axios.post('http://localhost:8080/comment/like', 
@@ -41,7 +43,7 @@ function Comment ({ comments, changeLike, setChangeLike }) {
         checkChangeLike();
         setLikeCount(updatedLikeCount)
       }
-      if(response.statue===400){
+      if(response.status===400){
         console.log(response.data.message)
         alert(response.data.message)
       }
@@ -72,7 +74,7 @@ function Comment ({ comments, changeLike, setChangeLike }) {
       <div className='comment_footer'>
         <p className="comment_time">{comments.comment_time}</p>
         <p className='comment_liked' onClick={handleLikeClick}>
-          <FcLike/>&nbsp;{comments.likes_count}</p>      
+          <FcLike/>&nbsp;{comments.likes_count}</p>
       </div>
     </div>
   )
