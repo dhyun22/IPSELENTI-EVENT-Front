@@ -64,7 +64,7 @@ const checkLoginStatus = async () => {
 
     return (
             <div className=''>
-                <button onClick={() => setModalOpen(true)}>베팅</button>
+                <button className='betting_btn' onClick={() => setModalOpen(true)}>베팅</button>
                 <Modal
                 className='bettingModal'
                 isOpen={modalOpen}
