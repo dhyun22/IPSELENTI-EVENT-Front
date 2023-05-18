@@ -21,9 +21,9 @@ function ShareModal() {
                 <GrClose className='modalClose' onClick={() => setModalOpen(false)}/>
                 <div className='shareContainer'>
                     <h2>공유</h2>
-                    <input className='shareLink' placeholder='www.asku.wiki/lineup_event' disabled></input>
+                    <input className='shareLink' placeholder='www.asku.wiki/lineupevent' disabled></input>
                 </div>
-                <CopyToClipboard text='www.asku.wiki/lineup_event'>
+                <CopyToClipboard text='www.asku.wiki/lineupevent'>
                     <button
                     onClick={handleClick}
                     className='copyBtn'

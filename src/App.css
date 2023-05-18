@@ -25,9 +25,9 @@
 }
 
 .logo {
-    width: 25%;
-    height: 80%;
-    margin-top: 1vh;
+    width: 8vh;
+    height: 3vh;
+    margin-top: 1.5vh;
     cursor: pointer;
 }
 
@@ -101,14 +101,13 @@
 }
 
 /*wiki*/
-.body {
+.homeContainer {
     display: flex;
     width: 100%;
     height: 78vh;
-    /* background-color: grey; */
     position: relative;
     justify-content: center;
-}
+}  
 
 @keyframes slide-in {
   from {
@@ -214,7 +213,7 @@
     border-radius: 6px;
     border:none;
     width: 60%;
-    height: 10%;
+    height: 8%;
     cursor: pointer;
     padding: 5px;
     position: absolute;
@@ -244,8 +243,21 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin-top: 20%;
+    /* position: relative; */
+    /* width: 80%;
+    height: 90%; */
 }
-.login-img{
+.logoCharacter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20%;
+}
+
+/* .login-img{
     margin-left: 3px;
     margin-top: 50px;
     margin-bottom: 20px;
@@ -253,35 +265,38 @@ a {
     height: 250px;
     object-fit: cover;
     
-}
+} */
 .login-form{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 20px;
-    margin: 20px;
-
-    
+    bottom: 10%;
+    width: 90%;
 }
 .login-form input{
-    width: 260px;
-    height: 33px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
+    width: 240px;
+    height: 35px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 43px;
     margin: 7px;
+    padding-left: 10px;
+    background-color: rgba(0, 0, 0, 0.04);
 }
 .login-form #btn{
-    border-radius: 30px;
+    width: 250px;
+    border-radius: 12px;
     height: 40px;
-    background-color: #c72f44;
+    background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
     color: white;
     border: none;
-    margin-bottom: 10px;
+    margin: 10px 0px 10px 8px;
     cursor: pointer;
-
 }
 .login-form span{
     font-size: 11px;
-    margin-left: 45px;
+    /* margin-left: 22%; */
 }
 /* 회원가입 */
 .info{
@@ -323,14 +338,7 @@ h4{
     font-size: 7px;
     padding: 8px 0px;
 }
-.phone-auth input{
-    height: 30px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: none;
-    border-radius: 6px 0px 0px 6px;
-    margin-bottom: 5px;
 
-}
 .hidden{
     display: none;
 }
@@ -338,10 +346,10 @@ h4{
 #signup-btn{
     width: 150px;
     height: 40px;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: 35px;
     border: none;
-    background-color: #c72f44;
+    background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
     color: white;
     border-radius: 6px;
     cursor: pointer;
@@ -385,6 +393,7 @@ h4{
 .wiki-contents{
     margin: 10px 0px;
     font-size: 12px;
+    width: 100%;
 }
 .wiki-contents li{
     list-style-type: none;
@@ -468,7 +477,7 @@ h4{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: auto;
     background-color: #f5f5f5;
   }
   /* 모바일 뷰를 하나의 container로 잡고 제한 */
@@ -489,7 +498,9 @@ h4{
       display: flex;
       position: relative;
       width: 375px;
-      height: 667px;
+      min-height: 100vh;
+      height: auto;
+      background-color: #ffffff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
   }
@@ -497,42 +508,52 @@ h4{
 
 /* 위키 관련 페이지 */
 .editResult {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     white-space:pre-wrap;
     text-align: center;
     font-weight: bold;
     margin-top: 20%;
-    position: relative;
-    width: 80%;
-    height: 90%;
+    /* position: relative; */
+    /* width: 80%;
+    height: 90%; */
 }
 
 
 .editLogo {
-  position: absolute;
-  width: 52%;
-  height: 7%;
-  right: 8%;
+  /* position: absolute; */
+
+  width: 110px;
+  height: 33px;
+  object-fit: cover;
 }
 
 .editCharacter {
-  position: absolute;
-  margin-top: 35%;
-  width: 80%;
-  height: 35%;
-  left: 25%;
+  /* position: absolute; */
+  margin-top: 25%;
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
 }
 
 .textContainer {
-  position: absolute;
+  /* position: absolute; */
   width: 70%;
-  top: 57%;
-  left: 27%;
+  margin-top: 20px;
+  margin-bottom: 60px;
 }
 
 .editText {
   font-size: 16px;
 }
-
+.completed-btns{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .completedButton {
   color: white;
   background-color: red;
@@ -540,13 +561,10 @@ h4{
   font-size: 18px;
   border-radius: 6px;
   border:none;
-  width: 60%;
-  height: 8%;
+  width: 180px;
+  height: 10%;
   cursor: pointer;
   padding: 5px;
-  position: absolute;
-  bottom: 15%;
-  right: 5%;
 }
 
 .signUpCompleted{
@@ -556,29 +574,24 @@ h4{
   font-size: 18px;
   border-radius: 6px;
   border:none;
-  width: 60%;
-  height: 6%;
+  width: 180px;
+  height: 10%;
   cursor: pointer;
   padding: 5px;
-  position: absolute;
-  bottom: 18%;
-  right: 9%;
+  margin-bottom: 20px;
 }
 
 .backToHome {
   color: white;
-  background-color: rgb(163, 159, 159);
+  background-color: grey;
   font-weight: 700;
   font-size: 18px;
   border-radius: 6px;
   border:none;
-  width: 60%;
-  height: 6%;
+  width: 180px;
+  height: 10%;
   cursor: pointer;
   padding: 5px;
-  position: absolute;
-  bottom: 10%;
-  right: 9%;
 }
 
 /* 마이페이지 */
@@ -611,7 +624,10 @@ cursor: pointer;
     padding-bottom: 20px;
   }
   
- 
+  .myPageLogo {
+    text-align: center;
+    height: 4.4vh;
+  }
   .mypage_text{
     text-align: center;
   }
@@ -833,7 +849,7 @@ cursor: pointer;
   position: relative;
   min-height: 41px;
   line-height: 41px;
-  margin-bottom: 20px;
+  margin-bottom: 5%;
   border-bottom: 1px solid #c9c6c6;
 }
 .main_head{
@@ -953,7 +969,6 @@ cursor: pointer;
 
 
 
-
 .info_box{
   border-bottom: 1px solid #c9c6c6;
   position: relative;
@@ -1015,6 +1030,13 @@ cursor: pointer;
 
 .betting_btn{
   font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  background-color: red;
+  color: white;
+  padding: 3px;
+  width: 4vh;
+  height: 3vh;
 }
 
 .celeb_graph{

@@ -15,9 +15,12 @@ function WikiEditCompleted() {
                         <p className=''>{editText}</p>
                         <p className=''>{point}</p>
                     </div>
-                    <Link to='/wiki'>
-                        <button className="completedButton">문서로 돌아가기</button>
-                    </Link>
+                    <div className='completed-btns'>
+                        <Link to='/wiki'>
+                            <button className="completedButton">문서로 돌아가기</button>
+                        </Link>
+                    </div>
+                    
                 </div>
             </div>
         </div>

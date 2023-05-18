@@ -8,8 +8,8 @@ import { useNavigate } from 'react-router-dom';
 function BettingModal(props) {
     const[modalOpen, setModalOpen] = useState(false);
     const[myPoint, setMyPoint] = useState(0); //기존에 배팅했던 포인트
-    const[bettingPoint, setBettingPoint] = useState(parseInt(props.bettingAmount)); //새롭게 배팅하는 포인트
-    const[pointLeft, setPointLeft] = useState(parseInt(props.myPoint)); //잔여 포인트
+    const[bettingPoint, setBettingPoint] = useState(0); //새롭게 배팅하는 포인트
+    const[pointLeft, setPointLeft] = useState(0); //잔여 포인트
     const[dividend, setDividend] = useState(parseInt(props.bettingAmount) * parseFloat(props.dividendRate)); //새롭게 배팅하는 포인트 * 예상배당률 = 예상 배당금
     const[celebId, setCelebId] = useState(props.celebId);
     const [loggedIn, setLoggedIn] = useState(false);
@@ -48,8 +48,9 @@ function BettingModal(props) {
                 withCredentials: true,
             }); 
             if (result.status === 200){
-                const len = result.data.history.length;
-                setMyPoint(parseInt(result.data.history[len-1].betting_point));
+                setBettingPoint(parseInt(result.data.user_total_betting_amount));
+                setMyPoint(parseInt(result.data.user_point));
+                setPointLeft(myPoint);
             } else if(result.status === 401){
                 alert(result.data.message);
                 Navigate('/login');
@@ -100,7 +101,7 @@ function BettingModal(props) {
 
     return (
             <div className=''>
-                <button onClick={() => setModalOpen(true)}>베팅</button>
+                <button className='betting_btn' onClick={() => setModalOpen(true)}>베팅</button>
                 <Modal
                 className='bettingModal'
                 isOpen={modalOpen}
@@ -117,7 +118,7 @@ function BettingModal(props) {
                                         <p className='singerName'>{props.celebName}</p>
                                     </div>
                                     <div>
-                                        <p className='voterate'>{props.voteRate}</p>
+                                        <p className='voterate'>{Math.floor(parseInt(props.voteRate))}%</p>
                                     </div>
                                 </div>
                                 <div className='pointAndRank'>
@@ -134,12 +135,12 @@ function BettingModal(props) {
                         <div className='betContainer'>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>포인트 베팅</p>
-                                    <input defaultValue={bettingPoint} className='betInput' onChange={handleBettingPointChange} />
+                                    <input defaultValue={props.bettingAmount} className='betInput' onChange={handleBettingPointChange} />
                                     <p className='betText'>P</p>
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>잔여 포인트</p>
-                                    <input deFaultValue={parseInt(props.myPoint)} className='betInput' placeholder={pointLeft < 0 ? '보유 포인트 초과!' : pointLeft} disabled/>
+                                    <input deFaultValue={myPoint} className='betInput' placeholder={pointLeft < 0 ? '보유 포인트 초과!' : pointLeft} disabled/>
                                     <p className='betText'>P</p>
                                 </div>
                                 <div className='betInfoContainer'>

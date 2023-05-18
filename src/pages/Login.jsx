@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom/dist";
-import temporaryLogo from '../img/temporaryLogo.png';
 import axios from "axios";
 import { useNavigate } from "react-router-dom/dist";
 import { useState, useEffect } from "react";
+import logo from '../img/logo.png';
+import editCharacter from '../img/haho-head.png';
 //import {Useform, useForm} from 'react-hook-form';
 
 
@@ -89,24 +90,32 @@ function Login() {
         <div class="container">
             <div class="mobile-view">
                 <div className='auth'>
-                    <img class="login-img"src={temporaryLogo} alt=""/>
-                    <form class="login-form">
-                        <input 
-                        type='text'
-                        placeholder='ID' 
-                        value={userId} 
-                        onChange={e => setUserId(e.target.value)}
-                        />
-                        <input 
-                        type='password'  
-                        placeholder='PASSWORD'
-                        value={userPw} 
-                        onChange={e => setUserPw(e.target.value)}
-                        />
-                        <button type="button" id='btn' onClick={userLogin}>Login</button>
-                        <span>가입하면 10000P 바로 지급 <Link to="/signup">회원가입</Link>
-                        </span>
-                    </form>
+                    <div className="logoCharacter">
+                        <img src={logo} className="editLogo" alt="logo"/>
+                        <img src={editCharacter} className="editCharacter" alt="haho" />
+                    </div>
+                    
+                    {/* <img class="login-img"src={temporaryLogo} alt=""/> */}
+                    <div>
+                        <form class="login-form">
+                            <input 
+                            type='text'
+                            placeholder='ID' 
+                            value={userId} 
+                            onChange={e => setUserId(e.target.value)}
+                            />
+                            <input 
+                            type='password'  
+                            placeholder='PASSWORD'
+                            value={userPw} 
+                            onChange={e => setUserPw(e.target.value)}
+                            />
+                            <button type="button" id='btn' onClick={userLogin}>Login</button>
+                            <span>가입하면 10000P 바로 지급 <Link to="/signup">회원가입</Link>
+                            </span>
+                        </form>
+                    </div>
+                    
                 </div>
             </div>
         </div>
