@@ -32,7 +32,7 @@ function WikiViewer(props) {
         {
             'section': '3',
             'title': '사번항목',
-            'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ostrum, odfkjs;fjskdjf;alskdjf;sdlkfj;alsdkjf;alskdjf;laksdjf;laskdjfaffffffffffffffffffffffffffptio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+            'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ostrum, odfkjs;fjskdjf;alskdjf;sdlkfj;alsdkjf;alskdjf;laksssumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
         },
     ]
 
@@ -117,7 +117,6 @@ function WikiViewer(props) {
             <div className="mobile-view">
                 <div className="header">
                     <Header />
-                    
                 </div>
                 <div className='wiki-viewer'>
                     <div className='wiki-title'>
