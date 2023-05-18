@@ -101,14 +101,13 @@
 }
 
 /*wiki*/
-.body {
+.homeContainer {
     display: flex;
     width: 100%;
     height: 78vh;
-    /* background-color: grey; */
     position: relative;
     justify-content: center;
-}
+}  
 
 @keyframes slide-in {
   from {
@@ -214,7 +213,7 @@
     border-radius: 6px;
     border:none;
     width: 60%;
-    height: 10%;
+    height: 8%;
     cursor: pointer;
     padding: 5px;
     position: absolute;
@@ -243,12 +242,22 @@ a {
 .auth{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-top: 20%;
-    position: relative;
-    width: 80%;
-    height: 90%;
+    /* position: relative; */
+    /* width: 80%;
+    height: 90%; */
 }
-.login-img{
+.logoCharacter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20%;
+}
+
+/* .login-img{
     margin-left: 3px;
     margin-top: 50px;
     margin-bottom: 20px;
@@ -256,39 +265,38 @@ a {
     height: 250px;
     object-fit: cover;
     
-}
+} */
 .login-form{
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    margin: 20px;
-    position: absolute;
-    bottom: 10%;
-    width: 80%;
-    margin-left: 10%;
     justify-content: center;
+    align-items: center;
+    padding: 20px;
+    bottom: 10%;
+    width: 90%;
 }
 .login-form input{
-    width: 260px;
-    height: 33px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
+    width: 240px;
+    height: 35px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 43px;
     margin: 7px;
+    padding-left: 10px;
+    background-color: rgba(0, 0, 0, 0.04);
 }
 .login-form #btn{
-    border-radius: 30px;
+    width: 250px;
+    border-radius: 12px;
     height: 40px;
-    background-color: #c72f44;
+    background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
     color: white;
     border: none;
-    margin-bottom: 10px;
-    margin-left: 10%;
-    margin-top: 5%;
-
+    margin: 10px 0px 10px 8px;
+    cursor: pointer;
 }
 .login-form span{
     font-size: 11px;
-    margin-left: 22%;
+    /* margin-left: 22%; */
 }
 /* 회원가입 */
 .info{
@@ -342,14 +350,6 @@ h4{
     display: none;
 }
 
-.phone-auth button{
-    background-color: #d63d43;
-    border: none;
-    height: 32px;
-    width: 60px;
-    color: white;
-    border-radius: 0px 6px 6px 0px;
-}
 #signup-btn{
     width: 150px;
     height: 40px;
@@ -359,6 +359,7 @@ h4{
     background-color: #c72f44;
     color: white;
     border-radius: 6px;
+    cursor: pointer;
 
 }
 /* 위키뷰어 */
@@ -399,6 +400,7 @@ h4{
 .wiki-contents{
     margin: 10px 0px;
     font-size: 12px;
+    width: 100%;
 }
 .wiki-contents li{
     list-style-type: none;
@@ -408,7 +410,10 @@ h4{
     cursor: pointer;
 
 }
-
+.wiki-contents hr{
+  width: 100%;
+  margin: 1px;
+}
 
 /* 위키 편집기 */
 .wikiedit-btn{
@@ -420,6 +425,7 @@ h4{
     color: white;
     border-radius: 6px;
     font-size: 10px;
+    cursor: pointer;
 
 }
 .wikiedit-submit{
@@ -450,10 +456,26 @@ h4{
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 5px;
     border-radius: 6px;
-    /* cursor: pointer; */
+    cursor: pointer;
 }
 
-
+/* 로그아웃 */
+.logout-box{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.logout-btn{
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  background-color: white;
+  font-size: 13px;
+  width: 60px;
+  height: 25px;
+  cursor: pointer;
+  
+}
 
 
 
@@ -462,7 +484,7 @@ h4{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: auto;
     background-color: #f5f5f5;
   }
   /* 모바일 뷰를 하나의 container로 잡고 제한 */
@@ -470,7 +492,7 @@ h4{
     flex-direction: column;
     display: flex;
     width: 100%;
-    height: 100%;
+    height:auto;
     /* padding: 10px; */
     background-color: #ffffff;
     box-sizing: border-box;
@@ -483,7 +505,9 @@ h4{
       display: flex;
       position: relative;
       width: 375px;
-      height: 667px;
+      min-height: 100vh;
+      height: auto;
+      background-color: #ffffff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
   }
@@ -491,42 +515,52 @@ h4{
 
 /* 위키 관련 페이지 */
 .editResult {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     white-space:pre-wrap;
     text-align: center;
     font-weight: bold;
     margin-top: 20%;
-    position: relative;
-    width: 80%;
-    height: 90%;
+    /* position: relative; */
+    /* width: 80%;
+    height: 90%; */
 }
 
 
 .editLogo {
-  position: absolute;
-  width: 52%;
-  height: 7%;
-  right: 12%;
+  /* position: absolute; */
+
+  width: 100px;
+  height: 30px;
+  object-fit: cover;
 }
 
 .editCharacter {
-  position: absolute;
+  /* position: absolute; */
   margin-top: 25%;
-  width: 77%;
-  height: 35%;
-  left: 25%;
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
 }
 
 .textContainer {
-  position: absolute;
+  /* position: absolute; */
   width: 70%;
-  top: 57%;
-  left: 27%;
+  margin-top: 20px;
+  margin-bottom: 60px;
 }
 
 .editText {
   font-size: 16px;
 }
-
+.completed-btns{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .completedButton {
   color: white;
   background-color: red;
@@ -534,13 +568,10 @@ h4{
   font-size: 18px;
   border-radius: 6px;
   border:none;
-  width: 60%;
-  height: 8%;
+  width: 180px;
+  height: 10%;
   cursor: pointer;
   padding: 5px;
-  position: absolute;
-  bottom: 15%;
-  right: 5%;
 }
 
 .signUpCompleted{
@@ -550,29 +581,24 @@ h4{
   font-size: 18px;
   border-radius: 6px;
   border:none;
-  width: 60%;
-  height: 6%;
+  width: 180px;
+  height: 10%;
   cursor: pointer;
   padding: 5px;
-  position: absolute;
-  bottom: 18%;
-  right: 9%;
+  margin-bottom: 20px;
 }
 
 .backToHome {
   color: white;
-  background-color: rgb(163, 159, 159);
+  background-color: grey;
   font-weight: 700;
   font-size: 18px;
   border-radius: 6px;
   border:none;
-  width: 60%;
-  height: 6%;
+  width: 180px;
+  height: 10%;
   cursor: pointer;
   padding: 5px;
-  position: absolute;
-  bottom: 10%;
-  right: 9%;
 }
 
 /* 마이페이지 */
@@ -771,6 +797,7 @@ h4{
   padding: 0 20px;
   box-sizing: border-box;
 }
+
 .main_head, .main_body{
   position: relative;
   min-height: 41px;

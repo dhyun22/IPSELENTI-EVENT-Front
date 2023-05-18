@@ -26,8 +26,8 @@ function SignUp() {
             setErrText('')
     }
 }
-    const checkPwValid = (e) => {
-        setForm({ ...form, checkPw: e.target.value})
+    const checkPwValid = () => {
+
             if (form.password === form.checkPw){
                 setisPwValid(true);
                 setErrText('');
@@ -40,11 +40,13 @@ function SignUp() {
 
     const Navigate = useNavigate();
 
-    const createUserApi = async () => {
+    const createUserApi = async (e) => {
         //event.preventDefault(); // 아무 동작 안하고 버튼만 눌러도 리프레쉬 되는 것을 막는다
 
         if(isPwValid === false){
-            return alert('비밀번호가 일치하지 않습니다.')
+            e.preventDefault();
+            return alert('비밀번호를 다시 입력하세요.')
+            
         }
 
         try{
@@ -57,11 +59,13 @@ function SignUp() {
             }, {
                 withCredentials: true
             });
-            if (response.data.success) {
+            if (response.status === 201) {
                 setLoggedIn(true);
                 Navigate('/signup/completed');
-            } else{
-                setLoggedIn(false);
+            } else if(response.status === 409){
+                return alert(response.data.message);
+            } else if(response.status === 422) {
+                return alert(response.data.message);
             }
         } catch (error) {
             console.error(error);
@@ -80,7 +84,7 @@ function SignUp() {
 
             if (response.data.success) {
                 setLoggedIn(true);
-                Navigate('/main');
+                Navigate('/');
             } else{
                 setLoggedIn(false);
             }
@@ -100,7 +104,7 @@ function SignUp() {
         <div className='container'>
             <div className="mobile-view">
                 <div className="info">
-                    <img className='logo' src={logo} alt='logo' />
+                    <img src={logo} alt='' className='logo'/>
                     <form className='sign-form'>
                         <div className="signup-content">
                             <h4>학번(아이디)</h4>
@@ -130,7 +134,6 @@ function SignUp() {
                                 <input 
                                     required type='password' 
                                     placeholder='숫자, 영문, 특수문자 조합 최소 6자' 
-                                    pattern=""
                                     value={form.password}
                                     onChange={checkPwRegExp}
                                     onBlur={checkPwValid}
@@ -141,7 +144,7 @@ function SignUp() {
                                 id="password"
                                 name='checkUserPw'
                                 value={form.checkPw}
-                                onChange={checkPwValid}
+                                onChange={e => setForm({ ...form, checkPw: e.target.value})}
                                 onBlur={checkPwValid}
                                 />
                                 <span className={isPwValid ? 'hidden' : ''}>{errText}</span>

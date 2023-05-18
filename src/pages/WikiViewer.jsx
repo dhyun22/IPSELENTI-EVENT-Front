@@ -3,17 +3,62 @@ import { Link } from "react-router-dom/dist";
 import React, {useRef, useEffect, useState} from 'react';
 import WikiBox from '../components/Wiki/WikiBox';
 import axios from 'axios';
-import WikiToHtml from "../components/Wiki/WikiToHtml";
 import { useNavigate } from 'react-router-dom/dist';
+import Signout from '../components/Signout';
 
 
 
 
 
 function WikiViewer(props) {
+    const data = [
+        {
+            'section' : '0',
+            'title': '일번항목',
+            'content': "Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddNostrum, optio, assumenda distinctio autem, nimi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt! " 
+        },
+        {
+            'section' : '1',
+            'title': '이번항목',
+            'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddddddddddostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+        },
+        {
+            'section' : '2',
+            'title': '삼번항목',
+            'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elitddddddddddddddddddddddddddddd. ostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+        },
+        {
+            'section': '3',
+            'title': '사번항목',
+            'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ostrum, odfkjs;fjskdjf;alskdjf;sdlkfj;alsdkjf;alskdjf;laio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+        },
+    ]
     const myDivRef = useRef([]);
     const [allText, setAllText] = useState([]);
     const Navigate = useNavigate();
+
+    const [loggedIn, setLoggedIn] = useState(false);
+
+    const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
+
+            if (response.data.success) {
+                setLoggedIn(true);
+            } else{
+                setLoggedIn(false);
+	            Navigate('/login');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
     
     
 
@@ -22,24 +67,37 @@ function WikiViewer(props) {
         
     }
 
-    const [title, setTitle] = useState(null);
-    const [content, setContent] = useState(null);
-    const [wiki, setWiki] = useState(null);
-    const [html, setHtml] = useState(null);
-
 
     const getWiki = async () => {
         try{
-            const result = await axios.get('http://localhost:8080/wiki/contents'); //{index} 가져올 방법 생각
+            const result = await axios.get('http://localhost:8080/wiki/contents');
             setAllText(result.data.contents);
         } catch (error) {
             console.error(error);
+            //alert(result.data.message);
         }
     };
 
-    useEffect(() => {
+    const pointRequest = async () => {
+        try{
+            const response = await axios.get('http://localhost:8080/user/point/wikiaccess',{
+                withCredentials: true
+            });
 
+            if( response.status === 201){
+                alert("포인트 지급이 완료되었습니다.")
+            }
+            
+        }catch(err){
+            console.error(err)
+        }
+    }   
+
+    useEffect(() => {
+        checkLoginStatus();
         getWiki();
+        pointRequest();
+
         
     }, []);
     // }, []);
@@ -56,6 +114,7 @@ function WikiViewer(props) {
             <div className="mobile-view">
                 <div className="header">
                     <Header />
+                    
                 </div>
                 <div className='wiki-viewer'>
                     <div className='wiki-title'>
@@ -67,24 +126,25 @@ function WikiViewer(props) {
                         
                     </div>
                     <div className='wiki-index'>
-                        {allText.map((item) => {
+                        {data.map((item) => {
                             return(
-                            <li onClick={() => handleClick(parseInt(item.index))} key={item.index}>{parseInt(item.index)+1}. {item.header}</li>
+                            <li onClick={() => handleClick(item.section)} key={item.section}>{item.section} {item.title}</li>
                             );
                         })}    
                     </div>
                     <div className='wiki-content'>
-                        {allText.map((item) => {
+                        {data.map((item) => {
                             return(
-                                <div ref={(el) => (myDivRef.current[parseInt(item.index)] = el)} key={item.index}>
+                                <div ref={(el) => (myDivRef.current[item.section] = el)} key={item.section}>
                                     <WikiBox 
-                                    title={item.header} content={item.content} index={item.index}
+                                    title={item.title} content={item.content} section={item.section}
                                     />
                                 </div>
                             );
                         })}
                     </div>    
                 </div>
+                <Signout />
             </div>
         </div>
         

@@ -7,14 +7,15 @@ import { useNavigate } from 'react-router-dom';
 
 function BettingModal(props) {
     const[modalOpen, setModalOpen] = useState(false);
-    const[myPoint, setMyPoint] = useState(parseInt(props.myPoint));
-    const[bettingPoint, setBettingPoint] = useState(parseInt(props.bettingAmount));
-    const[pointLeft, setPointLeft] = useState(parseInt(props.myPoint));
-    const[dividend, setDividend] = useState(parseInt(props.bettingAmount) * parseFloat(props.dividendRate));
+    const[myPoint, setMyPoint] = useState(0); //기존에 배팅했던 포인트
+    const[bettingPoint, setBettingPoint] = useState(0); //새롭게 배팅하는 포인트
+    const[pointLeft, setPointLeft] = useState(0); //잔여 포인트
+    const[dividend, setDividend] = useState(parseInt(props.bettingAmount) * parseFloat(props.dividendRate)); //새롭게 배팅하는 포인트 * 예상배당률 = 예상 배당금
+    const[celebId, setCelebId] = useState(props.celebId);
     const [loggedIn, setLoggedIn] = useState(false);
-const Navigate = useNavigate();
+    const Navigate = useNavigate();
 
-const checkLoginStatus = async () => {
+    const checkLoginStatus = async () => {
         try {
             const response = await axios.get(
                 "http://localhost:8080/user/auth/issignedin",
@@ -40,15 +41,51 @@ const checkLoginStatus = async () => {
         checkLoginStatus();
     }, []);
 
+
+    const getBettedPoint = async () => {
+        try{
+            const result = await axios.get(`http://localhost:8080/event/artist/${celebId}`, {
+                withCredentials: true,
+            }); 
+            if (result.status === 200){
+                setBettingPoint(parseInt(result.data.user_total_betting_amount));
+                setMyPoint(parseInt(result.data.user_point));
+                setPointLeft(myPoint);
+            } else if(result.status === 401){
+                alert(result.data.message);
+                Navigate('/login');
+            }
+            
+        } catch (error) {
+            console.error(error);
+            //alert("result.data.message");
+        }
+    };
+
+    useEffect (() => {
+        getBettedPoint();
+    }, []);
+
+
     const betRequest = async() => {
         console.log('문제 없음');
-        axios.put('http://localhost:8080/event/user/:userid/artist/:artistid', {
+        try{
+            const response = await axios.put(`http://localhost:8080/event/artist/${celebId}`, {
             betting_point: bettingPoint,
-        }, {withCredentials: true}).then((res)=>{
-            setModalOpen(false);
-        }).catch( (err) => console.error(err));
+            }, {withCredentials: true});
+
+            if( response.status === 200){
+                alert(response.data.message)
+                setModalOpen(false);
+            } else if (response.status === 400){
+                alert(response.data.message);
+            } else if(response.status === 403){
+                alert(response.data.message);
+            }
+        }catch(err) { console.error(err)};
+
     }
-    
+
       const handleBettingPointChange = (e) => {
         const inputPoint = parseInt(e.target.value);
         if (isNaN(inputPoint)) {
@@ -103,7 +140,7 @@ const checkLoginStatus = async () => {
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>잔여 포인트</p>
-                                    <input deFaultValue={parseInt(props.myPoint)} className='betInput' placeholder={pointLeft < 0 ? '보유 포인트 초과!' : pointLeft} disabled/>
+                                    <input deFaultValue={myPoint} className='betInput' placeholder={pointLeft < 0 ? '보유 포인트 초과!' : pointLeft} disabled/>
                                     <p className='betText'>P</p>
                                 </div>
                                 <div className='betInfoContainer'>

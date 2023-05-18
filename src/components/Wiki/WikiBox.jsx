@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom/dist";
 import WikiToHtml from './WikiToHtml';
 import { useNavigate } from 'react-router-dom/dist'
 import { useParams } from 'react-router-dom/dist';
@@ -10,17 +9,17 @@ function WikiBox (props) {
   //const title = WikiToHtml(props.title);
   const title = props.title;
   const content = WikiToHtml(props.content);
-  const index = props.index;
+  const section = props.section;
   const Navigator = useNavigate();
   const { id } = useParams();
 
 
   const linkToWikiEdit = () => {
-      Navigator(`/wikiedit/${index}`, {status: index});
+      Navigator(`/wikiedit/${section}`, {state: section});
   
   }
 
-  const [isOpen, setView] = useState(false);  // 메뉴의 초기값을 false로 설정
+  const [isOpen, setView] = useState(true);  // 메뉴의 초기값을 false로 설정
   
   const toggleView = () => {
         setView(isOpen => !isOpen); // on,off 개념 boolean
@@ -28,7 +27,7 @@ function WikiBox (props) {
 
   return (
     <div className="wiki-contents" >
-      <li onClick={toggleView}>{parseInt(index)+1}. {title}<button onClick={linkToWikiEdit} className='wikiedit-btn'>편집</button></li>
+      <li onClick={toggleView}>{section} {title}<button onClick={linkToWikiEdit} className='wikiedit-btn'>편집</button></li>
       <hr></hr>
       <div className={isOpen ? "": "hidden"} >
         <div dangerouslySetInnerHTML={{ __html: content }} />

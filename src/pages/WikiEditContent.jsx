@@ -7,22 +7,25 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { EditorState, convertToRaw, ContentState, convertFromRaw } from 'draft-js';
 // convertToRaw로 변환시켜준 원시 JS 구조를 HTML로 변환.
 import draftToHtml from 'draftjs-to-html';
-import htmlToDraft from 'html-to-draftjs';
 import axios from 'axios';
 import HtmlToWiki from '../components/Wiki/HtmlToWiki';
 
 
 const editorStyle = {
     cursor: "pointer",
-	width: "100%",
-	minHeight: "20rem",
+	width: "90%",
+	minHeight: "20.5rem",
+    marginLeft: "5%",
 	border: "2px solid rgba(209, 213, 219, 0.3)",
 };
 
 
 
 function WikiEditContent() {
-    const {index} = useLocation();
+    const location = useLocation();
+    const section = location.state;
+    const [loggedIn, setLoggedIn] = useState(false);
+    const Navigate = useNavigate();
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [wiki, setWiki] = useState('');
@@ -40,16 +43,64 @@ function WikiEditContent() {
         },
       };
 
-    
+    //   const checkLoginStatus = async () => {
+    //     try {
+    //         const response = await axios.get(
+    //             "http://localhost:8080/user/auth/issignedin",
+    //             {
+    //                 withCredentials: true,
+    //             }
+    //         );
+
+    //         if (response.data.success) {
+    //             setLoggedIn(true);
+    //         } else{
+    //             setLoggedIn(false);
+    //             Navigate('/login');
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+
+    // }
+
+
+    // useEffect (() => {
+    //     checkLoginStatus();
+    // }, []);
+
+      const pointRequest = async () => {
+        try{
+            const response = await axios.get('http://localhost:8080/user/point/wikiedit',{
+                withCredentials: true
+            });
+
+            if( response.status === 201){
+                alert("포인트 지급이 완료되었습니다.")
+            }
+            
+        }catch(err){
+            console.error(err)
+        }
+    }   
 
     useEffect(() => {
         const getWiki = async () => {
             try{
-                const result = await axios.get(`http://localhost:8080/wiki/contents/${index}`); //{index} 가져올 방법 생각
-                setWiki(result.data['title']+'\n'+result.data['content']);
-                setVersion(result.data.version);
+                const result = await axios.get(`http://localhost:8080/wiki/contents/${section}`, {
+                    withCredentials: true,
+                }); 
+                if (result.status === 200){
+                    setWiki(result.data['title']+'\n'+result.data['content']);
+                    setVersion(result.data.version);
+                } else if(result.status === 401){
+                    alert(result.data.message);
+                    Navigate('/login');
+                }
+                
             } catch (error) {
                 console.error(error);
+                //alert("result.data.message");
             }
         };
 
@@ -64,17 +115,22 @@ function WikiEditContent() {
     // const parsedHtml = parser.parseFromString(editorToHtml, 'text/html');
     const wikiMarkup = HtmlToWiki(editorToHtml);
     
-    const navigate = useNavigate();
+    
 
     const addWikiEdit = async (editContent) => {
         try {
-            const result = await axios.post(`http://localhost:8080/wiki/contents/${index}`, {
+            const result = await axios.post(`http://localhost:8080/wiki/contents/${section}`, {
                 version: version,
                 newContent: editContent,
+            },{
+                withCredentials: true,
             });
             if (result.status === 200){
-
-                navigate('/wikiedit/completed');
+                pointRequest();
+                Navigate('/wikiedit/completed');
+            } else if(result.status === 401){
+                alert(result.data.message);
+                Navigate('/login');
             }
         } catch(error){console.log(error)};
         

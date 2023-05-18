@@ -7,17 +7,15 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { EditorState, convertToRaw, ContentState, convertFromRaw } from 'draft-js';
 // convertToRaw로 변환시켜준 원시 JS 구조를 HTML로 변환.
 import draftToHtml from 'draftjs-to-html';
-import htmlToDraft from 'html-to-draftjs';
 import axios from 'axios';
-import traverseHtml from '../components/Wiki/HtmlToWiki';
-import WikiToHtml from "../components/Wiki/WikiToHtml";
 import { useLocation } from 'react-router-dom/dist';
 
 
 const editorStyle = {
     cursor: "pointer",
-	width: "100%",
-	minHeight: "30rem",
+	width: "90%",
+	minHeight: "20.5rem",
+    marginLeft: "5%",
 	border: "2px solid rgba(209, 213, 219, 0.3)",
 };
 
@@ -25,10 +23,40 @@ const editorStyle = {
 
 function WikiShowVer() {
     
-    const {thisver} = useLocation();
+    const location = useLocation();
+    const thisver = location.state;
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
-    const [thishis, setthishis] = useState(null);
-    const [version, setVersion] = useState(null);
+    const [thishis, setthishis] = useState('');
+    const [version, setVersion] = useState('');
+
+    const [loggedIn, setLoggedIn] = useState(false);
+    const Navigate = useNavigate();
+
+    // const checkLoginStatus = async () => {
+    //     try {
+    //         const response = await axios.get(
+    //             "http://localhost:8080/user/auth/issignedin",
+    //             {
+    //                 withCredentials: true,
+    //             }
+    //         );
+
+    //         if (response.data.success) {
+    //             setLoggedIn(true);
+    //         } else{
+    //             setLoggedIn(false);
+	//     Navigate('/login');
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+
+    // }
+
+
+    // useEffect (() => {
+    //     checkLoginStatus();
+    // }, []);
 
     const onEditorStateChange = (editorState) => {
     // editorState에 값 설정
@@ -43,14 +71,22 @@ function WikiShowVer() {
       };
 
 
-    const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+    //const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
     //const wikiMarkup = traverseHtml(editorToHtml);
-    const navigate = useNavigate();
     const getHistory = async () => {
         try{
-            const result = await axios.get(`http://localhost:8080//wiki/historys/${thisver}`); //전체 텍스트를 가져옴.
-            setthishis(result.data['text']);
-            setVersion(result.data.version);
+            const result = await axios.get(`http://localhost:8080/wiki/historys/${thisver}`,{
+                withCredentials: true,
+            }); //전체 텍스트를 가져옴.
+
+            if(result.status === 200){
+                setthishis(result.data['text']);
+                setVersion(result.data.version);
+            } else if(result.status === 401){
+                alert(result.data.message);
+                Navigate('/login');
+            }
+            
         } catch (error) {
             console.error(error);
         }
@@ -61,7 +97,7 @@ function WikiShowVer() {
         getHistory();
         
     }, []);
-
+    
     
     useEffect(() => {
 
@@ -72,7 +108,24 @@ function WikiShowVer() {
         }
       }, [thishis]);
     
-    
+    const postRealRollback = async() => {
+        try{
+            const result = await axios.post(`http://localhost:8080/wiki/historys/${thisver}`, {
+                withCredentials: true,
+            }); //전체 텍스트를 가져옴.
+            if(result.status === 200){
+                alert(result.data.message);
+                Navigate('/wiki');
+            } else if(result.status === 401){
+                alert(result.data.message);
+                Navigate('/login');
+            } else if(result.status === 432){
+                alert(result.data.message);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
     return (
         <div className="container">
             <div className="mobile-view">
@@ -102,7 +155,10 @@ function WikiShowVer() {
                             onEditorStateChange={onEditorStateChange}
                         />
                     </div>
-
+                    <div className='wikiedit-submit'>
+                        <span>정말 롤백 하시겠습니까?</span>
+                        <button classname="editsubmit-btn" onClick={postRealRollback}>rollback</button>
+                    </div>
                 </div>
             </div>
         </div>

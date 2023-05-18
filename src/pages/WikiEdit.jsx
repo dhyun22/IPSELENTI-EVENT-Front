@@ -7,10 +7,8 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { EditorState, convertToRaw, ContentState, convertFromRaw } from 'draft-js';
 // convertToRaw로 변환시켜준 원시 JS 구조를 HTML로 변환.
 import draftToHtml from 'draftjs-to-html';
-import htmlToDraft from 'html-to-draftjs';
 import axios from 'axios';
 import traverseHtml from '../components/Wiki/HtmlToWiki';
-import WikiToHtml from "../components/Wiki/WikiToHtml";
 
 
 const editorStyle = {
@@ -24,6 +22,8 @@ const editorStyle = {
 
 
 function WikiEdit() {
+    const [loggedIn, setLoggedIn] = useState(false);
+    const Navigate = useNavigate();
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [wiki, setWiki] = useState('');
@@ -42,22 +42,69 @@ function WikiEdit() {
       };
 
 
+    //   const checkLoginStatus = async () => {
+    //     try {
+    //         const response = await axios.get(
+    //             "http://localhost:8080/user/auth/issignedin",
+    //             {
+    //                 withCredentials: true,
+    //             }
+    //         );
+
+    //         if (response.data.success) {
+    //             setLoggedIn(true);
+    //         } else{
+    //             setLoggedIn(false);
+    //             Navigate('/login');
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+
+    // }
+
+
+    // useEffect (() => {
+    //     checkLoginStatus();
+    // }, []);
+
+    const pointRequest = async () => {
+        try{
+            const response = await axios.get('http://localhost:8080/user/point/wikiedit',{
+                withCredentials: true
+            });
+
+            if( response.status === 201){
+                alert("포인트 지급이 완료되었습니다.")
+            }
+        }catch(err){
+            console.error(err)
+        }
+    }   
+
     const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
 
     // const parser = new DOMParser();
     // const parsedHtml = parser.parseFromString(editorToHtml, 'text/html');
       
     const wikiMarkup = traverseHtml(editorToHtml);
-    
-    const navigate = useNavigate();
 
     const getWiki = async () => {
         try{
-            const result = await axios.get('http://localhost:8080/wiki/contents/'); //전체 텍스트를 가져옴.
-            setWiki(result.data['text']);
+            const result = await axios.get('http://localhost:8080/wiki/contents/',{
+                withCredentials: true,
+            }); //전체 텍스트를 가져옴.
+            if (result.status === 200){
+                setWiki(result.data['text']);
             setVersion(result.data.version);
+            } else if(result.status === 401){
+                alert(result.data.message);
+                Navigate('/login');
+            }
+
         } catch (error) {
             console.error(error);
+            //alert("result.data.message");
         }
     };
 
@@ -72,9 +119,15 @@ function WikiEdit() {
             const result = await axios.post('http://localhost:8080/wiki/contents/', {
                 version: version,
                 newContent: editContent,
+            },{
+                withCredentials: true,
             });
             if (result.status === 200){
-                navigate('/wikiedit/completed');
+                pointRequest();
+                Navigate('/wikiedit/completed');
+            } else if(result.status === 401){
+                alert(result.data.message);
+                Navigate('/login');
             }
         } catch(error){console.log(error)};
         

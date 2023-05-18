@@ -16,25 +16,65 @@ function Login() {
     //     console.log(data);
     // }
 
+    const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
+
+            if (response.data.success) {
+                setLoggedIn(true);
+                Navigate('/');
+            } else{
+                setLoggedIn(false);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
+
+
+    useEffect (() => {
+        checkLoginStatus();
+    }, []);
+
 
     const [userId, setUserId] = useState('');
     const [userPw, setUserPw] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
     const Navigate = useNavigate();
 
+    const pointRequest = async () => {
+        try{
+            const response = await axios.get('http://localhost:8080/user/point/attend',{
+                withCredentials: true
+            });
+            
+        }catch(err){
+            console.error(err)
+        }
+    }   
+
 
     const userLogin = async () => {
         try{
-            const response = await axios.post('http://localhost:8080/user/auth/login', {
+            const response = await axios.post('http://localhost:8080/user/auth/signin', {
                 user_id: userId,
                 password: userPw,
             }, {
                 withCredentials: true
             });
-            if (response.data.success) {
+            if (response.status === 201) {
                 setLoggedIn(true);
-            } else{
+                pointRequest();
+                Navigate('/');
+            } else if (response.status === 401){
                 setLoggedIn(false);
+                alert(response.data.message);
             }
         } catch (error) {
             console.error(error);
@@ -50,26 +90,32 @@ function Login() {
         <div class="container">
             <div class="mobile-view">
                 <div className='auth'>
-                    <img src={logo} className="editLogo" alt="logo"/>
-                    <img src={editCharacter} className="editCharacter" alt="haho" />
+                    <div className="logoCharacter">
+                        <img src={logo} className="editLogo" alt="logo"/>
+                        <img src={editCharacter} className="editCharacter" alt="haho" />
+                    </div>
+                    
                     {/* <img class="login-img"src={temporaryLogo} alt=""/> */}
-                    <form class="login-form">
-                        <input 
-                        type='text'
-                        placeholder='ID' 
-                        value={userId} 
-                        onChange={e => setUserId(e.target.value)}
-                        />
-                        <input 
-                        type='password'  
-                        placeholder='PASSWORD'
-                        value={userPw} 
-                        onChange={e => setUserPw(e.target.value)}
-                        />
-                        <button type="button" id='btn' onClick={userLogin}>Login</button>
-                        <span>가입하면 10000P 바로 지급 <Link to="/signup">회원가입</Link>
-                        </span>
-                    </form>
+                    <div>
+                        <form class="login-form">
+                            <input 
+                            type='text'
+                            placeholder='ID' 
+                            value={userId} 
+                            onChange={e => setUserId(e.target.value)}
+                            />
+                            <input 
+                            type='password'  
+                            placeholder='PASSWORD'
+                            value={userPw} 
+                            onChange={e => setUserPw(e.target.value)}
+                            />
+                            <button type="button" id='btn' onClick={userLogin}>Login</button>
+                            <span>가입하면 10000P 바로 지급 <Link to="/signup">회원가입</Link>
+                            </span>
+                        </form>
+                    </div>
+                    
                 </div>
             </div>
         </div>
