@@ -13,12 +13,15 @@ function SignUpCompleted() {
                     <div className='textContainer'>
                         <p style={{fontSize: '14px'}}>{signUpText}</p>
                     </div>
-                    <Link to='/login'>
-                        <button className="signUpCompleted">로그인 하기</button>
-                    </Link>
-                    <Link to='/'>
-                        <button className="backToHome">홈 화면으로 이동</button>
-                    </Link>
+                    <div className='completed-btns'>
+                        <Link to='/login'>
+                            <button className="signUpCompleted">로그인 하기</button>
+                        </Link>
+                        <Link to='/'>
+                            <button className="backToHome">홈 화면으로 이동</button>
+                        </Link>
+                    </div>
+                    
                 </div>
             </div>
         </div>

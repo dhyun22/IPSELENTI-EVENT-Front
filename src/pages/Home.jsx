@@ -9,7 +9,7 @@ function Home() {
                     <div className="headerContainer"> 
                         <Header />
                     </div>
-                    <div className="body">
+                    <div className="homeContainer">
                         <p className="homeText1">올해는 누구 오려나..</p>
                         <p className="homeText2">입장은 몇시부터?</p>
                         <p className="homeText3">뭐 입고 가지?</p>

@@ -101,7 +101,7 @@ function BettingModal(props) {
 
     return (
             <div className=''>
-                <button onClick={() => setModalOpen(true)}>베팅</button>
+                <button className='betting_btn' onClick={() => setModalOpen(true)}>베팅</button>
                 <Modal
                 className='bettingModal'
                 isOpen={modalOpen}
@@ -118,7 +118,7 @@ function BettingModal(props) {
                                         <p className='singerName'>{props.celebName}</p>
                                     </div>
                                     <div>
-                                        <p className='voterate'>{props.voteRate}</p>
+                                        <p className='voterate'>{Math.floor(parseInt(props.voteRate))}%</p>
                                     </div>
                                 </div>
                                 <div className='pointAndRank'>
@@ -135,7 +135,7 @@ function BettingModal(props) {
                         <div className='betContainer'>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>포인트 베팅</p>
-                                    <input defaultValue={bettingPoint} className='betInput' onChange={handleBettingPointChange} />
+                                    <input defaultValue={props.bettingAmount} className='betInput' onChange={handleBettingPointChange} />
                                     <p className='betText'>P</p>
                                 </div>
                                 <div className='betInfoContainer'>

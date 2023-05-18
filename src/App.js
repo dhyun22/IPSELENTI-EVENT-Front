@@ -15,6 +15,7 @@ import WikiViewer from "./pages/WikiViewer";
 import WikiEditContent from './pages/WikiEditContent';
 import WikiHistory from './pages/WikiHistory';
 import WikiShowVer from './pages/WikiShowVer';
+import Admin from './pages/Admin';
 
 
 function App() {
@@ -46,8 +47,6 @@ function App() {
 //     };
 
     
-
-    
     
 
         return (
@@ -69,7 +68,7 @@ function App() {
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/mypage" element={<MyPage />} />
-                    {/* <Route path="/admin1905051312348998&" element={<Admin />} /> */}
+                    <Route path="/admin1905051312348998&" element={<Admin />} />
                     <Route path="/comment" element={<CommentPage/>}/>
 
                 </Routes>

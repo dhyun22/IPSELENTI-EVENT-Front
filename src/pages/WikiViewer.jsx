@@ -129,14 +129,14 @@ function WikiViewer(props) {
                         
                     </div>
                     <div className='wiki-index'>
-                        {allText.map((item) => {
+                        {data.map((item) => {
                             return(
                             <li onClick={() => handleClick(item.section)} key={item.section}>{item.section} {item.title}</li>
                             );
                         })}    
                     </div>
                     <div className='wiki-content'>
-                        {allText.map((item) => {
+                        {data.map((item) => {
                             return(
                                 <div ref={(el) => (myDivRef.current[item.section] = el)} key={item.section}>
                                     <WikiBox 

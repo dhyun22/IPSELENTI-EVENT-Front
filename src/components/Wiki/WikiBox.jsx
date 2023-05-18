@@ -19,7 +19,7 @@ function WikiBox (props) {
   
   }
 
-  const [isOpen, setView] = useState(false);  // 메뉴의 초기값을 false로 설정
+  const [isOpen, setView] = useState(true);  // 메뉴의 초기값을 false로 설정
   
   const toggleView = () => {
         setView(isOpen => !isOpen); // on,off 개념 boolean
