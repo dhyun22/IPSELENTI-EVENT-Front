@@ -11,6 +11,31 @@ import Signout from '../components/Signout';
 
 
 function WikiViewer(props) {
+
+
+    const data = [
+        {
+            'index' : '0',
+            'header': '일번항목',
+            'content': "Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddNostrum, optio, assumenda distinctio autem, nimi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt! " 
+        },
+        {
+            'index' : '1',
+            'header': '이번항목',
+            'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddddddddddostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+        },
+        {
+            'index' : '2',
+            'header': '삼번항목',
+            'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elitddddddddddddddddddddddddddddd. ostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+        },
+        {
+            'index': '3',
+            'header': '사번항목',
+            'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ostrum, odfkjs;fjskdjf;alskdjf;sdlkfj;alsdkjf;alskdjf;laksdjf;laskdjfaffffffffffffffffffffffffffptio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+        },
+    ]
+
     const myDivRef = useRef([]);
     const [allText, setAllText] = useState([]);
     const Navigate = useNavigate();

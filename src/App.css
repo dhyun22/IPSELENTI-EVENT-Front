@@ -101,14 +101,14 @@
 }
 
 /*wiki*/
-/* .body {
+ .body {
     display: flex;
     width: 100%;
-    height: auto;
+    height: 100%;
     /* background-color: grey; */
-    /* position: relative;
+    position: relative;
     justify-content: center;
-} */ 
+} 
 
 @keyframes slide-in {
   from {
@@ -326,14 +326,7 @@ h4{
     font-size: 7px;
     padding: 8px 0px;
 }
-.phone-auth input{
-    height: 30px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: none;
-    border-radius: 6px 0px 0px 6px;
-    margin-bottom: 5px;
 
-}
 .hidden{
     display: none;
 }
@@ -341,10 +334,10 @@ h4{
 #signup-btn{
     width: 150px;
     height: 40px;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: 35px;
     border: none;
-    background-color: #c72f44;
+    background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
     color: white;
     border-radius: 6px;
     cursor: pointer;
@@ -479,7 +472,7 @@ h4{
     flex-direction: column;
     display: flex;
     width: 100%;
-    height:auto;
+    height: 100%;
     /* padding: 10px; */
     background-color: #ffffff;
     box-sizing: border-box;
