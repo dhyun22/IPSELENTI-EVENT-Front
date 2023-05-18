@@ -14,6 +14,7 @@ function Header() {
                 <Link to='/mypage'>
                     <div className='myPageButton'>
                         <FaUserAlt className='myPageIcon' />
+                        {/* <span>마이페이지</span> */}
                     </div>
                 </Link>
             </div>
@@ -24,6 +25,14 @@ function Header() {
                         <BsSearch className='search' />
                     </div>
                 </Link>
+                {/* <div className='searchBar'>
+                    <span>입실렌티</span>
+                    <Link to='/wiki'>
+                        <div className='searchButton'>
+                            <BsSearch className='search' />
+                        </div>
+                    </Link>
+                </div> */}
             </div>
             <Link to='/lineupevent'>
                     <img src={banner} className='banner' alt='banner'/>
