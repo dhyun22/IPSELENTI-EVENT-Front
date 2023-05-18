@@ -20,11 +20,14 @@ function LeftPoint() {
       }
   };
 
+  useEffect(()=>{takeminus();}, []);
+
   return (
-    <div>
-      {leftbetpoint}
-    </div>
-  );
+  <span> {leftbetpoint} </span>
+  )
+ 
+     
+
 }
 
 

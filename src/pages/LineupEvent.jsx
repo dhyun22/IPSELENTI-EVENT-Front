@@ -174,7 +174,7 @@ function LineupEvent() {
                     
                     <div className='main_head'>
                         <h2 className='main_head_title'>입실렌티 라인업 예측</h2>
-                        <AddLineupModal className='Adding_lineup'/>
+                        <AddLineupModal />
                     </div>
                     <div className='main_body'>
                         <div className='left_body'>

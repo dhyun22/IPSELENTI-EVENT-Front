@@ -595,6 +595,7 @@ h4{
   .myPageLogo {
     text-align: center;
   }
+  
   .mypage_text{
     text-align: center;
   }
@@ -616,7 +617,7 @@ h4{
   #account_title {
     position: relative;
     display: block;
-    padding: 1px 38px 1px 18px;
+    padding: 1px 38px 1px 0px;
     border-radius: 12px 12px 0 0;
     background-image: linear-gradient(98deg, rgb(89, 1, 1),crimson);
   }
@@ -675,6 +676,8 @@ h4{
     color: #000000;
   }
   
+
+  
   #betting_box{
    
     font-size: 1rem;
@@ -687,7 +690,7 @@ h4{
   #betting_title {
     position: relative;
     display: block;
-    padding: 1px 38px 1px 18px;
+    padding: 1px 38px 1px 0px;
     border-radius: 12px 12px 0 0;
     background-image: linear-gradient(98deg, rgb(89, 1, 1),crimson);
   }
@@ -709,19 +712,26 @@ h4{
     border: solid 1px #e3e9ed;
     background-color: #ffffff;
     box-sizing: border-box;
-    display: inline-flex;
+  }
+
+
+  .betting_info{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-bottom: 10px;
   }
   
-  #row_itemused, #row_itemleft{
-    font-size: 12px;
+  .row_itemleft, .row_itemused{
+    font-size: 15px;
     font-weight: 500;
     line-height: 15px;
     letter-spacing: -.47px;
     color: #000000;
   }
-  .row_itemused{
-    margin-left: 30px;
-  }
+  
+
+  
   
   #betting_list_box{
     position: relative;
@@ -789,18 +799,19 @@ h4{
 }
 
 
-.adding_mainpage{
-  font-size: 10px;
+.main_head_title{
+  display: initial;
+  text-align: left;
+}
+
+.adding_lineup{
+  font-size: 12px;
   border : none;
   background-color: white;
   float: right;
   margin-bottom: 1px;
   color:rgb(122, 122, 122);
-}
-
-.main_head_title{
-  display: initial;
-  text-align: left;
+  cursor: pointer;
 }
 
 .main_body {
