@@ -157,7 +157,7 @@ function WikiShowVer() {
                     </div>
                     <div className='wikiedit-submit'>
                         <span>정말 롤백 하시겠습니까?</span>
-                        <button classname="editsubmit-btn" onClick={postRealRollback}>rollback</button>
+                        <button classname="rollbacksubmit-btn" onClick={postRealRollback}>rollback</button>
                     </div>
                 </div>
             </div>
