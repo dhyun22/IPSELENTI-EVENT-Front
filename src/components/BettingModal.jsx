@@ -10,7 +10,7 @@ function BettingModal(props) {
     const[myPoint, setMyPoint] = useState(parseInt(props.myPoint));
     const[bettingPoint, setBettingPoint] = useState(parseInt(props.bettingAmount));
     const[pointLeft, setPointLeft] = useState(parseInt(props.myPoint));
-    const[dividend, setDividend] = useState('0');
+    const[dividend, setDividend] = useState(parseInt(props.bettingAmount) * parseFloat(props.dividendRate));
     const [loggedIn, setLoggedIn] = useState(false);
 const Navigate = useNavigate();
 
@@ -98,7 +98,7 @@ const checkLoginStatus = async () => {
                         <div className='betContainer'>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>포인트 베팅</p>
-                                    <input defaultValue={0} className='betInput' onChange={handleBettingPointChange} />
+                                    <input defaultValue={props.bettingAmount} className='betInput' onChange={handleBettingPointChange} />
                                     <p className='betText'>P</p>
                                 </div>
                                 <div className='betInfoContainer'>
