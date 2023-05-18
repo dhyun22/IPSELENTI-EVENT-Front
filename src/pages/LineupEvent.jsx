@@ -14,6 +14,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
+import Header from '../components/Header';
 
 
 function LineupEvent() {
@@ -155,20 +156,23 @@ function LineupEvent() {
     return (
         <div className='container'>
            <div className='mobile-view'>
-                <div className='main_content'>
-                    <div className="headerContainer">
-                   
-                    <div id="eventpagelogo"  className='logoContainer'>
+           <div id='mainpageheader'>
+                <div className='headerContainer'>
+                    <div className='logoContainer'>
                         <Link to='/'>
-                        <img src={logo} alt='logo' className='logo'></img>
+                         <img src={logo} alt='logo' id='mainpagelogo'></img>
                         </Link>
                         <Link to='/mypage'>
-                        <div className='myPageButton'>
-                        <FaUserAlt className='myPageIcon' />
-                        </div>
+                            <div className='myPageButton'>
+                             <FaUserAlt id='mainmyPageIcon' />
+                            </div>
                         </Link>
                     </div>
-                    </div>
+                </div>
+            </div>
+            
+                <div className='main_content'>
+                    
                     
                         
                     
@@ -180,7 +184,7 @@ function LineupEvent() {
                         <div className='left_body'>
                             <span className='remaintime_text'>남은 시간</span>
                             <TimeLeft/>
-                            <ShareModal className='ShareModal'/>
+                            <ShareModal/>
                         </div>
                         <div className='rignt_body'>
                             <span className='Totalpoint_text'>누적 포인트</span>

@@ -582,6 +582,25 @@ h4{
 }
 
 /* 마이페이지 */
+#mypageheader{
+
+  width: 100%;
+  height: 7vh;
+  text-align: center;
+  /* background-color: blue; */
+  align-items: center;
+  position: relative;
+}
+
+#mypagelogo {
+width: 25%;
+height: 27px;
+margin-top: 1vh;
+cursor: pointer;
+}
+
+
+
 .mypage_content{
     padding: 0 20px;
     box-sizing: border-box;
@@ -592,10 +611,7 @@ h4{
     padding-bottom: 20px;
   }
   
-  .myPageLogo {
-    text-align: center;
-  }
-  
+ 
   .mypage_text{
     text-align: center;
   }
@@ -782,6 +798,32 @@ h4{
   }
 
 /* 메인페이지 */
+
+#mainpageheader{
+
+    width: 100%;
+    height: 7vh;
+    text-align: center;
+    /* background-color: blue; */
+    align-items: center;
+    position: relative;
+}
+
+#mainpagelogo {
+  width: 25%;
+  height: 27px;
+  margin-top: 1vh;
+  cursor: pointer;
+}
+
+#mainmyPageIcon {
+  position: absolute;
+  font-size: 20px;
+  top: 38%;
+  left: 25%;
+}
+
+
 .main_content{
   padding: 0 20px;
   box-sizing: border-box;
@@ -847,6 +889,21 @@ h4{
   flex:1;
 }
 
+.sharing_button{
+  color: white;
+  background-color: red;
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  margin-top: 20px;
+}
+
 .rignt_body {
   display: flex;
   flex-direction: column;
@@ -878,6 +935,20 @@ h4{
   margin-top: 10px;
 }
 
+.moving_button{
+    color: white;
+    background-color: red;
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    margin-top: 20px;
+}
 
 
 
