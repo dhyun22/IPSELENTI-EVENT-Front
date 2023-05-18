@@ -10,7 +10,7 @@ function BettingModal(props) {
     const[myPoint, setMyPoint] = useState(parseInt(props.myPoint));
     const[bettingPoint, setBettingPoint] = useState(parseInt(props.bettingAmount));
     const[pointLeft, setPointLeft] = useState(parseInt(props.myPoint));
-    const[dividend, setDividend] = useState(parseInt(props.bettingAmount) * parseFloat(props.dividendRate));
+    const[dividend, setDividend] = useState('0');
     const [loggedIn, setLoggedIn] = useState(false);
 const Navigate = useNavigate();
 
