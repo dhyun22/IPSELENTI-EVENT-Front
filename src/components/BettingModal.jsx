@@ -81,7 +81,7 @@ const checkLoginStatus = async () => {
                                         <p className='singerName'>{props.celebName}</p>
                                     </div>
                                     <div>
-                                        <p className='voterate'>{props.voteRate}</p>
+                                        <p className='voterate'>{Math.floor(parseInt(props.voteRate))}%</p>
                                     </div>
                                 </div>
                                 <div className='pointAndRank'>
@@ -98,7 +98,7 @@ const checkLoginStatus = async () => {
                         <div className='betContainer'>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>포인트 베팅</p>
-                                    <input defaultValue={bettingPoint} className='betInput' onChange={handleBettingPointChange} />
+                                    <input defaultValue={0} className='betInput' onChange={handleBettingPointChange} />
                                     <p className='betText'>P</p>
                                 </div>
                                 <div className='betInfoContainer'>

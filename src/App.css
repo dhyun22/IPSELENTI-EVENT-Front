@@ -25,9 +25,9 @@
 }
 
 .logo {
-    width: 25%;
-    height: 80%;
-    margin-top: 1vh;
+    width: 8vh;
+    height: 3vh;
+    margin-top: 1.5vh;
     cursor: pointer;
 }
 
@@ -243,7 +243,10 @@ a {
 .auth{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin-top: 20%;
+    position: relative;
+    width: 80%;
+    height: 90%;
 }
 .login-img{
     margin-left: 3px;
@@ -259,8 +262,11 @@ a {
     flex-direction: column;
     padding: 20px;
     margin: 20px;
-
-    
+    position: absolute;
+    bottom: 10%;
+    width: 80%;
+    margin-left: 10%;
+    justify-content: center;
 }
 .login-form input{
     width: 260px;
@@ -276,11 +282,13 @@ a {
     color: white;
     border: none;
     margin-bottom: 10px;
+    margin-left: 10%;
+    margin-top: 5%;
 
 }
 .login-form span{
     font-size: 11px;
-    margin-left: 45px;
+    margin-left: 22%;
 }
 /* 회원가입 */
 .info{
@@ -497,13 +505,13 @@ h4{
   position: absolute;
   width: 52%;
   height: 7%;
-  right: 8%;
+  right: 12%;
 }
 
 .editCharacter {
   position: absolute;
-  margin-top: 35%;
-  width: 80%;
+  margin-top: 25%;
+  width: 77%;
   height: 35%;
   left: 25%;
 }
@@ -580,6 +588,7 @@ h4{
   
   .myPageLogo {
     text-align: center;
+    height: 4.4vh;
   }
   .mypage_text{
     text-align: center;
@@ -766,7 +775,7 @@ h4{
   position: relative;
   min-height: 41px;
   line-height: 41px;
-  margin-bottom: 20px;
+  margin-bottom: 5%;
   border-bottom: 1px solid #c9c6c6;
 }
 .main_head{

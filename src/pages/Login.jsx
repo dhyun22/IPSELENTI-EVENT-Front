@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom/dist";
-import temporaryLogo from '../img/temporaryLogo.png';
 import axios from "axios";
 import { useNavigate } from "react-router-dom/dist";
 import { useState, useEffect } from "react";
+import logo from '../img/logo.png';
+import editCharacter from '../img/haho-head.png';
 //import {Useform, useForm} from 'react-hook-form';
 
 
@@ -49,7 +50,9 @@ function Login() {
         <div class="container">
             <div class="mobile-view">
                 <div className='auth'>
-                    <img class="login-img"src={temporaryLogo} alt=""/>
+                    <img src={logo} className="editLogo" alt="logo"/>
+                    <img src={editCharacter} className="editCharacter" alt="haho" />
+                    {/* <img class="login-img"src={temporaryLogo} alt=""/> */}
                     <form class="login-form">
                         <input 
                         type='text'

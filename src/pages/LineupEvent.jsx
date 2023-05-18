@@ -12,6 +12,7 @@ import MovetoComment from '../components/MovetoComment';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 function LineupEvent() {
     
@@ -168,7 +169,9 @@ function LineupEvent() {
            <div className='mobile-view'>
                 <div className='main_content'>
                     <div className='myPageLogo'>
-                        <img className='logo' src={logo} alt='logo' />
+                        <Link to='/'>
+                            <img className='logo' src={logo} alt='logo' />
+                        </Link>
                     </div>
                     <div className='main_head'>
                         <h2 className='main_head_title'>입실렌티 라인업 예측</h2>
