@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 function BettingModal(props) {
     const[modalOpen, setModalOpen] = useState(false);
     const[myPoint, setMyPoint] = useState(0); //기존에 배팅했던 포인트
-    const[bettingPoint, setBettingPoint] = useState(parseInt(props.bettingAmount)); //새롭게 배팅하는 포인트
+    const[bettingPoint, setBettingPoint] = useState(0); //새롭게 배팅하는 포인트
     const[pointLeft, setPointLeft] = useState(parseInt(props.myPoint)); //잔여 포인트
     const[dividend, setDividend] = useState(parseInt(props.bettingAmount) * parseFloat(props.dividendRate)); //새롭게 배팅하는 포인트 * 예상배당률 = 예상 배당금
     const[celebId, setCelebId] = useState(props.celebId);
@@ -48,8 +48,8 @@ function BettingModal(props) {
                 withCredentials: true,
             }); 
             if (result.status === 200){
-                const len = result.data.history.length;
-                setMyPoint(parseInt(result.data.history[len-1].betting_point));
+                setBettingPoint(result.data.user_total_betting_amount);
+                setMyPoint(result.data.user_point);
             } else if(result.status === 401){
                 alert(result.data.message);
                 Navigate('/login');
