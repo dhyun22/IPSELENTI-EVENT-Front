@@ -104,7 +104,7 @@ function SignUp() {
         <div className='container'>
             <div className="mobile-view">
                 <div className="info">
-                    <img src={logo} alt='' />
+                    <img src={logo} alt='' className='logo'/>
                     <form className='sign-form'>
                         <div className="signup-content">
                             <h4>학번(아이디)</h4>
