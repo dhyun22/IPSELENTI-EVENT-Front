@@ -129,9 +129,9 @@ function LineupEvent() {
               const bettingAmountSumData = parseFloat(data.betting_amount_sum);
     
               const newCelebrities = celebritiesData.map((celebrity) => {
-                const bettingAmount = celebrity.betting_amount;
-                const percent = (bettingAmount / bettingAmountSumData) * 100;
-                const betRate = bettingAmountSumData / bettingAmount;
+                const bettingAmount = parseFloat(celebrity.betting_amount);
+                const percent = Math.round((bettingAmount / bettingAmountSumData) * 100);
+                const betRate = parseFloat((bettingAmountSumData / bettingAmount).toFixed(2));
                 return { ...celebrity, percent, betRate };
               });
     
