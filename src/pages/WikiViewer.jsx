@@ -120,10 +120,12 @@ function WikiViewer(props) {
                 </div>
                 <div className='wiki-viewer'>
                     <div className='wiki-title'>
-                        <h1>입실렌티</h1>
                         <div>
+                            <h1>입실렌티</h1>
+                        </div>
+                        <div className='alledit-btn'>
                             <Link to="/wikihistory"><span id='history-link'>History</span></Link>
-                            <button onClick={linkToAllEdit} className='wikiedit-btn'>편집</button>
+                            <button onClick={linkToAllEdit} className='wikiedit-btn' >편집</button>
                         </div>
                         
                     </div>

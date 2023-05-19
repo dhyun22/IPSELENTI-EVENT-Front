@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import logo from '../img/logo.png';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom/dist';
+import { Link } from 'react-router-dom/dist';
 
 function SignUp() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -104,7 +105,9 @@ function SignUp() {
         <div className='container'>
             <div className="mobile-view">
                 <div className="info">
-                    <img src={logo} alt='' className='logo'/>
+                    <Link to='/'>
+                        <img src={logo} alt='logo' className='logo'/>
+                    </Link>
                     <form className='sign-form'>
                         <div className="signup-content">
                             <h4>학번(아이디)</h4>
