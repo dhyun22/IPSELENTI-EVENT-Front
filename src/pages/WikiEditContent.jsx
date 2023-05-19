@@ -16,7 +16,8 @@ const editorStyle = {
 	width: "90%",
 	minHeight: "22rem",
 	border: "2px solid rgba(209, 213, 219, 0.3)",
-    fontSize: "15px",
+    fontSize: "14.6px",
+    padding: "0px 5px 0px 5px",
 };
 
 
