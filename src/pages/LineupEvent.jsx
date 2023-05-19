@@ -11,7 +11,7 @@ import Celebrity from '../components/Celebrity';
 import MovetoComment from '../components/MovetoComment';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import axios from 'axios';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 import Header from '../components/Header';
@@ -34,8 +34,6 @@ function LineupEvent() {
     const [loggedIn, setLoggedIn] = useState(false);
     const Navigate = useNavigate();
 
-    //betting 내역 받아오는 useState 선언
-    //const [userbetting, setUserbetting] = useState([]);
 
 
    
