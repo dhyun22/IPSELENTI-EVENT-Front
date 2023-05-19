@@ -29,7 +29,8 @@ function WikiEditContent() {
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [wiki, setWiki] = useState('');
-    const [version, setVersion] = useState(null);
+    const [version, setVersion] = useState('');
+    const [copy, setCopy] = useState(false);
 
     const onEditorStateChange = (editorState) => {
     // editorState에 값 설정
@@ -126,11 +127,19 @@ function WikiEditContent() {
                 withCredentials: true,
             });
             if (result.status === 200){
-                pointRequest();
                 Navigate('/wikiedit/completed');
             } else if(result.status === 401){
                 alert(result.data.message);
                 Navigate('/login');
+            } else if(result.status === 210){
+                alert("수정에 기여해주셔서 감사합니다.");
+                Navigate('/wiki');
+            }else if(result.status === 432){
+                alert("제출해 실패했습니다. 다시 시도해주세요.");
+                setWiki(result.data.newContent);
+            }else if(result.status === 426){
+                alert("기존 글이 수정되었습니다. 새로고침 후 다시 제출해주세요.");
+                setCopy(true);
             }
         } catch(error){console.log(error)};
         
@@ -175,9 +184,9 @@ function WikiEditContent() {
                     </div>
                     
                     <div className='wikiedit-submit'>
-                        <button classname="editsubmit-btn" onClick={() => addWikiEdit(wikiMarkup)}>submit</button>
+                        <button classname={copy ? "hidden": "editsubmit-btn"} onClick={() => addWikiEdit(wikiMarkup)}>submit</button>
+                        <p className={copy ? '': 'hidden'}>기존 글이 수정되었습니다. 수정 내용 복사 후 다시 제출해주세요.</p>
                     </div>
-
                 </div>
             </div>
         </div>

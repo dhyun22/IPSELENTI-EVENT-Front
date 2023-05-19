@@ -463,6 +463,7 @@ h4{
 .wikiedit-submit{
     margin: 35px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -474,6 +475,10 @@ h4{
     height: 35px;
     border: none;
     
+}
+.wikiedit-submit p{
+  font-size: 12px;
+  color: rgba(222, 58, 88, 1);
 }
 /* 위키 히스토리 */
 .rollback-box{
