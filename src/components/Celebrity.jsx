@@ -20,9 +20,11 @@ function Celebrity(props) {
 
   return (
     <div className='ranking_list'>
-      {visibleCelebs.map((celeb, index) => (
+      {visibleCelebs.map((celeb, index) => {
+        const celeb_rank=index+1;
+        return(
         <div className='info_box' key={celeb.celebrity_id}>
-          <span className='celeb_rank'>{celeb.celebrity_id}</span>
+          <span className='celeb_rank'>{celeb_rank}</span>
           <div className='celeb_thumb'>
             <img id='celeb_thumb'src={celeb.celebrity_image} alt={celeb.celebrities_name} />
           </div>
@@ -51,7 +53,8 @@ function Celebrity(props) {
             <span className='celeb_per_text'>{celeb.percent} %</span>
           </div>
         </div>
-      ))}
+        );
+      })}
     
     {!showMore && (
         <div className='show_more' onClick={handleShowMore}>
