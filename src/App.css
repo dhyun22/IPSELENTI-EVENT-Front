@@ -240,7 +240,7 @@
     background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
     font-weight: 700;
     font-size: 18px;
-    border-radius: 6px;
+    border-radius: 2rem;
     border:none;
     width: 60%;
     height: 8%;
@@ -943,13 +943,13 @@ cursor: pointer;
 
 
 .remaintime_text {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   flex:1;
 }
 
 .remaintime {
-  font-size: 12px;
+  font-size: 14px;
   flex:1;
 }
 
@@ -963,7 +963,7 @@ cursor: pointer;
   background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
   font-weight: 700;
   font-size: 13px;
-  border-radius: 6px;
+  border-radius: 2rem;
   border: none;
   cursor: pointer;
   padding-top: 10px;
@@ -984,12 +984,12 @@ cursor: pointer;
 }
 
 .Totalpoint_text {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
 }
 
 .Totalpoint {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 
@@ -1009,7 +1009,7 @@ cursor: pointer;
     background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
     font-weight: 700;
     font-size: 13px;
-    border-radius: 6px;
+    border-radius: 2rem;
     border: none;
     cursor: pointer;
     padding-top: 10px;
