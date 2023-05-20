@@ -35,7 +35,7 @@ function WikiShowVer() {
     const checkLoginStatus = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:8080/user/auth/issignedin",
+                process.env.REACT_APP_HOST+"/user/auth/issignedin",
                 {
                     withCredentials: true,
                 }
