@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import BettingModal from './BettingModal';
 import {FiChevronDown} from 'react-icons/fi'
 import { useEffect } from 'react';
-
 function Celebrity(props) {
   const{celebList}=props;
   const [showMore, setShowMore] = useState(false); // 더보기 버튼 클릭 여부 상태값

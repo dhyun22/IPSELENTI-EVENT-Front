@@ -1337,7 +1337,7 @@ cursor: pointer;
 
 .modalClose {
   position: absolute;
-  margin-top: 4%;
+  top: 3%;
   right: 5%;
   cursor: pointer;
   font-size: 16px;
@@ -1566,25 +1566,122 @@ hr {
 
 .shareModal {
   position: relative;
-  max-width: 330px;
-  max-height: 630px;
-  width: 70vw;
-  height: 20%;
+  max-width: 350px;
+  max-height: 900px;
+  width: 95%;
+  height: 95%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
-  border: solid black 2px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  background-color: white;
+ /*  border: solid green 2px; */
+/*   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+  background-color: transparent;
 }
 
-.shareContainer {
-  position: absolute;
-  width: 90%;
-  top: 8%;
-  left: 10%;
+.shareInfo{
+  background-color: transparent;
+  position: relative;
+  width: 80%;
+  height: 30%;
+  top: 23.5%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
+.picDiv{
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  width: auto;
+  aspect-ratio: 1419 / 2889;
+}
+
+.shareContainer1 {
+  width: 100%;
+  height: 100%;
+  background-image: url('../src/img/bettingComplete1.png');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+}
+.shareContainer2 {
+  width: 100%;
+  height: 100%;
+  background-image: url('../src/img/bettingComplete2.png');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+}
+.shareContainer3 {
+  width: 100%;
+  height: 100%;
+  background-image: url('../src/img/bettingComplete3.png');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+}
+.shareContainer4 {
+  width: 100%;
+  height: 100%;
+  background-image: url('../src/img/bettingComplete4.png');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+}
+.shareContainer5 {
+  width: 100%;
+  height: 100%;
+  background-image: url('../src/img/bettingComplete5.png');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+}
+
+
 
 .shareLink {
   width: 80%;
@@ -1594,14 +1691,15 @@ hr {
 .copyBtn {
   color: white;
   position: absolute;
-  right: 35%;
-  top: 75%;
+  background: linear-gradient( to right, #DE3A58, #9F132E );
+  top: 90%;
   font-weight: 700;
   font-size: 14px;
-  border-radius: 6px;
+  border-radius: 30px;
   border: none;
-  width: 30%;
-  height: 15%;
+  width: 55%;
+  height: 5%;
   cursor: pointer;
   padding: 5px;
+  align-items: center;
 }
