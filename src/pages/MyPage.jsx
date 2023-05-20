@@ -128,7 +128,7 @@ useEffect (() => {
           <ul className="betting_row" id='betting_row'>
             <li className='betting_info'>
               <div className="row_itemleft">
-                <TbCoin/><span className="item_text" id='row_itemleft'> &nbsp;잔여 포인트 : &nbsp;<LeftPoint/> P</span>
+                <TbCoin/><span className="item_text" id='row_itemleft'> &nbsp;잔여 포인트 : &nbsp;{user.point} P</span>
               </div>
             </li>
 

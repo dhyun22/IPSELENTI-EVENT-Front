@@ -63,7 +63,6 @@ function Comment ({ comments, changeLike, setChangeLike }) {
       <div className="comment_header">
         {comments.author && comments.author !== '' && comments.name&&comments.name!==''&&
         <p className="comment_id">{comments.author.slice(2, 4)}학번 &nbsp;{comments.name[0]}ㅇㅇ</p>}
-        <span className='comment_id2'>{comments.comment_id}</span>
         <div className='comment_head_tools'>
                 <BsThreeDotsVertical />
         </div>

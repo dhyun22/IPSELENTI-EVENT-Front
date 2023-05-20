@@ -1191,6 +1191,8 @@ cursor: pointer;
   line-height: 41px;
   border-bottom: 1px solid #c9c6c6;
   margin-bottom: 20px;
+  display: flex;
+
 }
 
 .comment_head_title .comment_head_count .comment_head_tools{
@@ -1203,7 +1205,13 @@ cursor: pointer;
   text-align: left;
 }
 
-
+.comment_bylike, .comment_bytime {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 10px;
+}
 
 
 
