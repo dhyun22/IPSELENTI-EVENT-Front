@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BettingModal from './BettingModal';
 import {FiChevronDown} from 'react-icons/fi'
+import { useEffect } from 'react';
 
 function Celebrity(props) {
   const{celebList}=props;
