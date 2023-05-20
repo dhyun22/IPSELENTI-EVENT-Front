@@ -16,7 +16,7 @@ function BettingList() {
       }
     } catch (error) {
       console.error(error);
-    } 
+    }
   }
  
   useEffect(()=> {takebet();}, []);

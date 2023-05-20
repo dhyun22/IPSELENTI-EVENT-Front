@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 function Celebrity(props) {
   const{celebList}=props;
   const [showMore, setShowMore] = useState(false); // 더보기 버튼 클릭 여부 상태값
+  // const [celebrank, setCelebrank] = useState(0); // 셀럽 등수
 
 
   
@@ -19,7 +20,7 @@ function Celebrity(props) {
 
   return (
     <div className='ranking_list'>
-      {visibleCelebs.map((celeb) => (
+      {visibleCelebs.map((celeb, index) => (
         <div className='info_box' key={celeb.celebrity_id}>
           <span className='celeb_rank'>{celeb.celebrity_id}</span>
           <div className='celeb_thumb'>
