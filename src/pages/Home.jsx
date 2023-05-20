@@ -15,12 +15,11 @@ function Home() {
                         <p className="homeText3">뭐 입고 가지?</p>
                         <p className="homeText4">점심은 어떡하지?</p>
                         <img className='homeCharacter' src={homeCharacter} alt="haho" />
-                    
-                        <Link to='/wiki'>
-                            <button className="redbutton">위키로 이동하기!</button>
-                        </Link>
                         <Link to='/lineupevent'>
-                            <button className="redbutton">라인업 배팅하기!</button>
+                            <button className="redbutton2">입실위키</button>
+                        </Link>
+                        <Link to='/wiki'>
+                            <button className="redbutton">라인업 예측</button>
                         </Link>
                     </div>
             </div>
