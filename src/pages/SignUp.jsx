@@ -157,7 +157,7 @@ function SignUp() {
                             <h4>추천인 학번(선택)</h4>
                             <div className="content-in">
                                 <input  
-                                required type='text' 
+                                type='text' 
                                 placeholder='추천인의 고려대 학번을 입력해주세요!' 
                                 name='friendId'
                                 value={form.friendId}
