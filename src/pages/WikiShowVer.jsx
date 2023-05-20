@@ -32,31 +32,31 @@ function WikiShowVer() {
     const [loggedIn, setLoggedIn] = useState(false);
     const Navigate = useNavigate();
 
-    // const checkLoginStatus = async () => {
-    //     try {
-    //         const response = await axios.get(
-    //             "http://localhost:8080/user/auth/issignedin",
-    //             {
-    //                 withCredentials: true,
-    //             }
-    //         );
+    const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
 
-    //         if (response.data.success) {
-    //             setLoggedIn(true);
-    //         } else{
-    //             setLoggedIn(false);
-	//     Navigate('/login');
-    //         }
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
+            if (response.data.success) {
+                setLoggedIn(true);
+            } else{
+                setLoggedIn(false);
+	    Navigate('/login');
+            }
+        } catch (error) {
+            console.error(error);
+        }
 
-    // }
+    }
 
 
-    // useEffect (() => {
-    //     checkLoginStatus();
-    // }, []);
+    useEffect (() => {
+        checkLoginStatus();
+    }, []);
 
     const onEditorStateChange = (editorState) => {
     // editorState에 값 설정
