@@ -23,7 +23,7 @@ const MainCommentList = ({ comments }) => {
               key={index} comments={comment}/>
           ))}
           <Link to='/comment'>
-          <button onClick={handleShowAllComments}>전체 댓글 보기</button>
+            <button className='every_btn' onClick={handleShowAllComments}>전체 댓글 보기</button>
           </Link>
         </div>
       );
