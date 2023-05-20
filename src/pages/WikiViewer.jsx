@@ -15,24 +15,24 @@ function WikiViewer(props) {
 
     const data = [
         {
-            'index' : '0',
-            'header': '일번항목',
+            'section' : '0',
+            'title': '일번항목',
             'content': "Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddNostrum, optio, assumenda distinctio autem, nimi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt! " 
         },
         {
-            'index' : '1',
-            'header': '이번항목',
+            'section' : '1',
+            'title': '이번항목',
             'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddddddddddostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
         },
         {
-            'index' : '2',
-            'header': '삼번항목',
+            'section' : '2',
+            'title': '삼번항목',
             'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elitddddddddddddddddddddddddddddd. ostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
         },
         {
-            'index': '3',
-            'header': '사번항목',
-            'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ostrum, odfkjs;fjskdjf;alskdjf;sdlkfj;alsdkjf;alskdjf;laksdjf;laskdjfaffffffffffffffffffffffffffptio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+            'section': '3',
+            'title': '사번항목',
+            'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ostrum, odfkjs;fjskdjf;alskdjf;sdlkfj;alsdkjf;alskdjf;laksssumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
         },
     ]
 
@@ -45,7 +45,7 @@ function WikiViewer(props) {
     const checkLoginStatus = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:8080/user/auth/issignedin",
+                process.env.REACT_APP_HOST+"/user/auth/issignedin",
                 {
                     withCredentials: true,
                 }
@@ -73,7 +73,7 @@ function WikiViewer(props) {
 
     const getWiki = async () => {
         try{
-            const result = await axios.get('http://localhost:8080/wiki/contents');
+            const result = await axios.get(process.env.REACT_APP_HOST+'/wiki/contents');
             setAllText(result.data.contents);
         } catch (error) {
             console.error(error);
@@ -83,7 +83,7 @@ function WikiViewer(props) {
 
     const pointRequest = async () => {
         try{
-            const response = await axios.get('http://localhost:8080/user/point/wikiaccess',{
+            const response = await axios.get(process.env.REACT_APP_HOST+'/user/point/wikiaccess',{
                 withCredentials: true
             });
 
@@ -117,14 +117,15 @@ function WikiViewer(props) {
             <div className="mobile-view">
                 <div className="header">
                     <Header />
-                    
                 </div>
                 <div className='wiki-viewer'>
                     <div className='wiki-title'>
-                        <h1>입실렌티</h1>
                         <div>
+                            <h1>입실렌티</h1>
+                        </div>
+                        <div className='alledit-btn'>
                             <Link to="/wikihistory"><span id='history-link'>History</span></Link>
-                            <button onClick={linkToAllEdit} className='wikiedit-btn'>편집</button>
+                            <button onClick={linkToAllEdit} className='wikiedit-btn' >편집</button>
                         </div>
                         
                     </div>

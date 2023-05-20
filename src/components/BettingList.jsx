@@ -9,7 +9,7 @@ function BettingList() {
   const takebet=async() => {
     try{
  
-      const historylist= await axios.get("http://localhost:8080/user/mypage/bettinghistory", {withCredentials:true});
+      const historylist= await axios.get(process.env.REACT_APP_HOST+"/user/mypage/bettinghistory", {withCredentials:true});
 
       if (historylist.data){ 
         setbetHistory(historylist.data.bettingHistory)

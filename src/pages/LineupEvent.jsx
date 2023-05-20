@@ -39,7 +39,7 @@ function LineupEvent() {
    
     const takeuser = async () => {
         try {
-          const response = await axios.get("http://localhost:8080/user/mypage/info", { withCredentials: true });
+          const response = await axios.get(process.env.REACT_APP_HOST+"/user/mypage/info", { withCredentials: true });
                   
           if (response.data.success == true){
             setUser(response.data.user)
@@ -54,7 +54,7 @@ function LineupEvent() {
 
       const takeComment = async () => {
           try {
-              const res  = await axios.get("http://localhost:8080/comment/bytime", {withCredentials:true})
+              const res  = await axios.get(process.env.REACT_APP_HOST+"/comment/bytime", {withCredentials:true})
               if (res.status===200) {
                   setComment(res.data);
               }
@@ -69,7 +69,7 @@ function LineupEvent() {
       const checkLoginStatus = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:8080/user/auth/issignedin",
+                process.env.REACT_APP_HOST+"/user/auth/issignedin",
                 {
                     withCredentials: true,
                 }
@@ -91,7 +91,7 @@ function LineupEvent() {
 
         checkLoginStatus();
         try{
-            const response = await axios.post('http://localhost:8080/comment', 
+            const response = await axios.post(process.env.REACT_APP_HOST+'/comment', 
                 {author: authorID, comment_content: commentContent}
             , {withCredentials: true});
             if (response.status===200) {
@@ -122,7 +122,7 @@ function LineupEvent() {
     useEffect(() => {
         const takeCelebrities = async () => {
           try {
-            const response = await axios.get("http://localhost:8080/event/celebrities", { withCredentials: true });
+            const response = await axios.get(process.env.REACT_APP_HOST+"/event/celebrities", { withCredentials: true });
             if (response.status === 200) {
               const data = response.data;
               const celebritiesData = data.celebrities;
@@ -162,7 +162,7 @@ function LineupEvent() {
                         </Link>
                         <Link to='/mypage'>
                             <div className='myPageButton'>
-                             <FaUserAlt id='mainmyPageIcon' />
+                                <FaUserAlt className='myPageIcon' />
                             </div>
                         </Link>
                     </div>

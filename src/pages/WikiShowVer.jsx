@@ -75,7 +75,7 @@ function WikiShowVer() {
     //const wikiMarkup = traverseHtml(editorToHtml);
     const getHistory = async () => {
         try{
-            const result = await axios.get(`http://localhost:8080/wiki/historys/${thisver}`,{
+            const result = await axios.get(process.env.REACT_APP_HOST+`/wiki/historys/${thisver}`,{
                 withCredentials: true,
             }); //전체 텍스트를 가져옴.
 
@@ -110,7 +110,7 @@ function WikiShowVer() {
     
     const postRealRollback = async() => {
         try{
-            const result = await axios.post(`http://localhost:8080/wiki/historys/${thisver}`, {
+            const result = await axios.post(process.env.REACT_APP_HOST+`/wiki/historys/${thisver}`, {
                 withCredentials: true,
             }); //전체 텍스트를 가져옴.
             if(result.status === 200){
@@ -157,7 +157,7 @@ function WikiShowVer() {
                     </div>
                     <div className='wikiedit-submit'>
                         <span>정말 롤백 하시겠습니까?</span>
-                        <button classname="editsubmit-btn" onClick={postRealRollback}>rollback</button>
+                        <button classname="rollbacksubmit-btn" onClick={postRealRollback}>rollback</button>
                     </div>
                 </div>
             </div>

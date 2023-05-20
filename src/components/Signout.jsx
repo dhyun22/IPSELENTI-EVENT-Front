@@ -7,7 +7,7 @@ const Signout = () => {
 
     const getLoggedOut = async() => {
         try{
-            const response = await axios.get('http://localhost:8080/user/auth/signout', {
+            const response = await axios.get(process.env.REACT_APP_HOST+'/user/auth/signout', {
                 withCredentials: true
             });
             if (response.status === 200) {

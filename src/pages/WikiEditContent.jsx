@@ -14,9 +14,10 @@ import HtmlToWiki from '../components/Wiki/HtmlToWiki';
 const editorStyle = {
     cursor: "pointer",
 	width: "90%",
-	minHeight: "20.5rem",
-    marginLeft: "5%",
+	minHeight: "22rem",
 	border: "2px solid rgba(209, 213, 219, 0.3)",
+    fontSize: "14.6px",
+    padding: "0px 5px 0px 5px",
 };
 
 
@@ -29,7 +30,8 @@ function WikiEditContent() {
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [wiki, setWiki] = useState('');
-    const [version, setVersion] = useState(null);
+    const [version, setVersion] = useState('');
+    const [copy, setCopy] = useState(false);
 
     const onEditorStateChange = (editorState) => {
     // editorState에 값 설정
@@ -71,7 +73,7 @@ function WikiEditContent() {
 
       const pointRequest = async () => {
         try{
-            const response = await axios.get('http://localhost:8080/user/point/wikiedit',{
+            const response = await axios.get(process.env.REACT_APP_HOST+'/user/point/wikiedit',{
                 withCredentials: true
             });
 
@@ -87,7 +89,7 @@ function WikiEditContent() {
     useEffect(() => {
         const getWiki = async () => {
             try{
-                const result = await axios.get(`http://localhost:8080/wiki/contents/${section}`, {
+                const result = await axios.get(process.env.REACT_APP_HOST+`/wiki/contents/${section}`, {
                     withCredentials: true,
                 }); 
                 if (result.status === 200){
@@ -119,18 +121,26 @@ function WikiEditContent() {
 
     const addWikiEdit = async (editContent) => {
         try {
-            const result = await axios.post(`http://localhost:8080/wiki/contents/${section}`, {
+            const result = await axios.post(process.env.REACT_APP_HOST+`/wiki/contents/${section}`, {
                 version: version,
                 newContent: editContent,
             },{
                 withCredentials: true,
             });
             if (result.status === 200){
-                pointRequest();
                 Navigate('/wikiedit/completed');
             } else if(result.status === 401){
                 alert(result.data.message);
                 Navigate('/login');
+            } else if(result.status === 210){
+                alert("수정에 기여해주셔서 감사합니다.");
+                Navigate('/wiki');
+            }else if(result.status === 432){
+                alert("제출해 실패했습니다. 다시 시도해주세요.");
+                setWiki(result.data.newContent);
+            }else if(result.status === 426){
+                alert("기존 글이 수정되었습니다. 새로고침 후 다시 제출해주세요.");
+                setCopy(true);
             }
         } catch(error){console.log(error)};
         
@@ -175,9 +185,9 @@ function WikiEditContent() {
                     </div>
                     
                     <div className='wikiedit-submit'>
-                        <button classname="editsubmit-btn" onClick={() => addWikiEdit(wikiMarkup)}>submit</button>
+                        <button classname={copy ? "hidden": "editsubmit-btn"} onClick={() => addWikiEdit(wikiMarkup)}>submit</button>
+                        <p className={copy ? '': 'hidden'}>기존 글이 수정되었습니다. 수정 내용 복사 후 다시 제출해주세요.</p>
                     </div>
-
                 </div>
             </div>
         </div>
