@@ -23,7 +23,7 @@ function CommentPage() {
     
     const takeuser = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/user/mypage/info", { withCredentials: true });
+        const response = await axios.get(process.env.REACT_APP_HOST+"/user/mypage/info", { withCredentials: true });
                 
         if (response.data.success == true){
           setUser(response.data.user)
@@ -37,7 +37,7 @@ function CommentPage() {
     
     const takeComment = async () => {
         try {
-            const res  = await axios.get("http://localhost:8080/comment/bytime", {withCredentials:true})
+            const res  = await axios.get(process.env.REACT_APP_HOST+"/comment/bytime", {withCredentials:true})
             if (res.data) {
                 setComment(res.data);
             }
@@ -48,7 +48,7 @@ function CommentPage() {
 
     const takeCommentByLike = async () => {
         try {
-            const res  = await axios.get("http://localhost:8080/comment/bylike", {withCredentials:true})
+            const res  = await axios.get(process.env.REACT_APP_HOST+"/comment/bylike", {withCredentials:true})
             if (res.data) {
                 setComment(res.data);
             }
@@ -102,7 +102,8 @@ function CommentPage() {
         checkLoginStatus();
 
         try{
-            const response = await axios.post('http://localhost:8080/comment', 
+            //!!!!!!!!!!!!!!!여기서 set 써서 authorID를 loginID로 설정해야대!!!!!11
+            const response = await axios.post(process.env.REACT_APP_HOST+'/comment', 
                 {author: authorID, comment_content: commentContent}
             , {withCredentials: true});
             if (response.status===200) {

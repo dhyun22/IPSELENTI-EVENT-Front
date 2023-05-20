@@ -73,7 +73,7 @@ function WikiEdit() {
 
     const pointRequest = async () => {
         try{
-            const response = await axios.get('http://localhost:8080/user/point/wikiedit',{
+            const response = await axios.get(process.env.REACT_APP_HOST+'/user/point/wikiedit',{
                 withCredentials: true
             });
 
@@ -94,7 +94,7 @@ function WikiEdit() {
 
     const getWiki = async () => {
         try{
-            const result = await axios.get('http://localhost:8080/wiki/contents/',{
+            const result = await axios.get(process.env.REACT_APP_HOST+'/wiki/contents/',{
                 withCredentials: true,
             }); //전체 텍스트를 가져옴.
             if (result.status === 200){
@@ -121,7 +121,7 @@ function WikiEdit() {
 
     const addWikiEdit = async (editContent) => {
         try {
-            const result = await axios.post('http://localhost:8080/wiki/contents/', {
+            const result = await axios.post(process.env.REACT_APP_HOST+'/wiki/contents/', {
                 version: version,
                 newContent: editContent,
             },{

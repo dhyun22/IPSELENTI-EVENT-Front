@@ -45,7 +45,7 @@ function WikiViewer(props) {
     const checkLoginStatus = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:8080/user/auth/issignedin",
+                process.env.REACT_APP_HOST+"/user/auth/issignedin",
                 {
                     withCredentials: true,
                 }
@@ -73,7 +73,7 @@ function WikiViewer(props) {
 
     const getWiki = async () => {
         try{
-            const result = await axios.get('http://localhost:8080/wiki/contents');
+            const result = await axios.get(process.env.REACT_APP_HOST+'/wiki/contents');
             setAllText(result.data.contents);
         } catch (error) {
             console.error(error);
@@ -83,7 +83,7 @@ function WikiViewer(props) {
 
     const pointRequest = async () => {
         try{
-            const response = await axios.get('http://localhost:8080/user/point/wikiaccess',{
+            const response = await axios.get(process.env.REACT_APP_HOST+'/user/point/wikiaccess',{
                 withCredentials: true
             });
 

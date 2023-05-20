@@ -14,7 +14,7 @@ const Navigate = useNavigate();
 const checkLoginStatus = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:8080/user/auth/issignedin",
+                process.env.REACT_APP_HOST+"/user/auth/issignedin",
                 {
                     withCredentials: true,
                 }
@@ -39,7 +39,7 @@ const checkLoginStatus = async () => {
     }, []);
 
     const addLineupPost = async() => {
-        axios.post('http//localhost:8080/event/celebrityrequest', {
+        axios.post(process.env.REACT_APP_HOST+'/event/celebrityrequest', {
             celebrity_name: singerName, 
             request_reason: applyReason,
             request_id: '1234567890', 

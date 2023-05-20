@@ -51,7 +51,7 @@ function SignUp() {
         }
 
         try{
-            const response = await axios.post('http://localhost:8080/user/auth/signup', {
+            const response = await axios.post(process.env.REACT_APP_HOST+'/user/auth/signup', {
                 user_id: form.id,
                 user_name: form.name,
                 password: form.password,
@@ -77,7 +77,7 @@ function SignUp() {
     const checkLoginStatus = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:8080/user/auth/issignedin",
+                process.env.REACT_APP_HOST+"/user/auth/issignedin",
                 {
                     withCredentials: true,
                 }

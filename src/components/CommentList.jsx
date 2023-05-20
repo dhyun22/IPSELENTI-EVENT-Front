@@ -16,7 +16,7 @@ function CommentList({ comments }) {
 
   const takeComment = async () => {
     try {
-        const res  = await axios.get("http://localhost:8080/comment/bytime", {withCredentials:true})
+        const res  = await axios.get(process.env.REACT_APP_HOST+"/comment/bytime", {withCredentials:true})
         if (res.status===200) {
             setComment(res.data);
         }
