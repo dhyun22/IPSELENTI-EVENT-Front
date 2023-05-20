@@ -1,11 +1,9 @@
 /*header*/
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 * {
     font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
-
 
 .header {
     width: 100%;
@@ -28,8 +26,8 @@
 }
 
 .logo {
-    width: 10vh;
-    height: 5vh;
+    width: 8vh;
+    height: 3vh;
     margin-top: 1.5vh;
     cursor: pointer;
     object-fit: contain;
@@ -58,9 +56,9 @@
 }
 
 .searchBarContainer {
-    margin-top: 10%;
+    margin-top: 4%;
     display: flex;
-    width: 87%;
+    width: 90%;
     margin-left: 5%;
 }
 
@@ -77,7 +75,7 @@
   width: 70%;
   height: 25px;
   border-radius: 2rem;
-  margin-left: 7%;
+  margin-left: 5%;
   margin-right: 5%;
   color: rgb(0, 0, 0, 0.4);
   /* box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.1); */
@@ -124,7 +122,7 @@
 
 
 .banner{
-  width: 78%;
+  width: 71%;
   height: 6vh;
   margin-top: 20px;
   margin-bottom: 0px;
@@ -139,9 +137,7 @@
     height: 78vh;
     position: relative;
     justify-content: center;
-    margin-top: 30px;
-} 
-
+}  
 
 @keyframes slide-in {
   from {
@@ -157,11 +153,11 @@
 
 @keyframes slide-btn {
   from {
-    bottom: 5%;
+    bottom: 0%;
     opacity: 0;
   }
   to {
-    bottom: 17%;
+    bottom: 10%;
     opacity: 1;
   }
 }
@@ -169,8 +165,7 @@
 .homeText1 {
   opacity: 0;
   font-size: 27px;
-  /* font-weight: bold; */
-  font-family: 'Jua', sans-serif;
+  font-weight: bold;
   animation-name: slide-in;
   animation-duration: 2s;
   animation-delay: 1s;
@@ -185,8 +180,7 @@
 .homeText2 {
   opacity: 0;
   font-size: 22px;
-  /* font-weight: bold; */
-  font-family: 'Jua', sans-serif;
+  font-weight: bold;
   animation-name: slide-in;
   animation-duration: 2s;
   animation-delay: 1.6s;
@@ -201,8 +195,7 @@
 .homeText3 {
   opacity: 0;
   font-size: 22px;
-  /* font-weight: bold; */
-  font-family: 'Jua', sans-serif;
+  font-weight: bold;
   animation-name: slide-in;
   animation-duration: 1.4s;
   animation-delay: 2.2s;
@@ -217,8 +210,7 @@
 .homeText4 {
   opacity: 0;
   font-size: 18px;
-  /* font-weight: bold; */
-  font-family: 'Jua', sans-serif;
+  font-weight: bold;
   animation-name: slide-in;
   animation-duration: 1.2s;
   animation-delay: 2.8s;
@@ -246,44 +238,19 @@
     animation-timing-function: ease-out;
     color: white;
     background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
-    
     font-weight: 700;
     font-size: 18px;
-    border-radius: 2rem;
+    border-radius: 6px;
     border:none;
-    width: 37%;
+    width: 60%;
     height: 8%;
     cursor: pointer;
     padding: 5px;
     position: absolute;
-    right: 8%;
+    bottom: 15%;
+    right: 20%;
     /* box-shadow: 0px 8px 8px -8px black;
     transition-duration: 0.1s; */
-}
-.redbutton2 {
-  opacity: 0;
-  animation-fill-mode: forwards;
-  animation-name: slide-btn;
-  animation-duration: 1.2s;
-  animation-delay: 1s;
-  animation-timing-function: ease-out;
-  color: rgba(159, 19, 46, 1);
-  /* background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1)); */
-  background-color: white;
-  /* box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1) inset; */
-  font-weight: 700;
-  font-size: 18px;
-  border-radius: 2rem;
-  border: 2px solid rgba(159, 19, 46, 1);
-  width: 38%;
-  height: 8%;
-  cursor: pointer;
-  padding: 5px;
-  position: absolute;
-  bottom: 15%;
-  right: 52%;
-  /* box-shadow: 0px 8px 8px -8px black;
-  transition-duration: 0.1s; */
 }
 
 .redbutton:active {
@@ -567,9 +534,7 @@ h4{
     flex-direction: column;
     display: flex;
     width: 100%;
-    height: 40vh;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+    height: 100%;
     /* padding: 10px; */
     background-color: #ffffff;
     box-sizing: border-box;
@@ -581,9 +546,7 @@ h4{
     .mobile-view {
       display: flex;
       position: relative;
-      height: 40vh;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+      height: 100%;
       width: 375px;
       min-height: 100vh;
       height: auto;
@@ -602,7 +565,7 @@ h4{
     white-space:pre-wrap;
     text-align: center;
     font-weight: bold;
-    margin-top: 24%;
+    margin-top: 20%;
     /* position: relative; */
     /* width: 80%;
     height: 90%; */
@@ -638,44 +601,43 @@ h4{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
 }
 .completedButton {
   color: white;
-  background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));;
+  background-color: red;
   font-weight: 700;
   font-size: 18px;
-  border-radius: 2rem;
+  border-radius: 6px;
   border:none;
-  width: 200px;
-  height: 50px;
+  width: 180px;
+  height: 10%;
   cursor: pointer;
   padding: 5px;
 }
 
 .signUpCompleted{
   color: white;
-  background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
+  background-color: red;
   font-weight: 700;
   font-size: 18px;
-  border-radius: 2rem;
+  border-radius: 6px;
   border:none;
-  width: 200px;
-  height: 50px;
+  width: 180px;
+  height: 10%;
   cursor: pointer;
   padding: 5px;
   margin-bottom: 20px;
 }
 
 .backToHome {
-  color: rgba(159, 19, 46, 1);
-  background-color: white;
+  color: white;
+  background-color: grey;
   font-weight: 700;
   font-size: 18px;
-  border-radius: 2rem;
-  border: 2px solid rgba(159, 19, 46, 1);
-  width: 200px;
-  height: 50px;
+  border-radius: 6px;
+  border:none;
+  width: 180px;
+  height: 10%;
   cursor: pointer;
   padding: 5px;
 }
@@ -982,13 +944,13 @@ cursor: pointer;
 
 
 .remaintime_text {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   flex:1;
 }
 
 .remaintime {
-  font-size: 14px;
+  font-size: 12px;
   flex:1;
 }
 
@@ -1002,7 +964,7 @@ cursor: pointer;
   background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
   font-weight: 700;
   font-size: 13px;
-  border-radius: 2rem;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
   padding-top: 10px;
@@ -1023,12 +985,12 @@ cursor: pointer;
 }
 
 .Totalpoint_text {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
 }
 
 .Totalpoint {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 
@@ -1048,7 +1010,7 @@ cursor: pointer;
     background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
     font-weight: 700;
     font-size: 13px;
-    border-radius: 2rem;
+    border-radius: 6px;
     border: none;
     cursor: pointer;
     padding-top: 10px;
@@ -1376,7 +1338,7 @@ cursor: pointer;
 
 .modalClose {
   position: absolute;
-  top: 3%;
+  margin-top: 4%;
   right: 5%;
   cursor: pointer;
   font-size: 16px;
@@ -1421,16 +1383,16 @@ h3 {
   position: absolute;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: white;
-  background: linear-gradient( to right, #DE3A58, #9F132E );
+  background-color: red;
   font-weight: 700;
   font-size: 12px;
-  border-radius: 2rem;
+  border-radius: 6px;
   border: none;
   width: 40%;
   height: 12%;
   cursor: pointer;
   padding: 5px;
-  top: 88%;
+  top: 85%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -1605,122 +1567,25 @@ hr {
 
 .shareModal {
   position: relative;
-  max-width: 350px;
-  max-height: 900px;
-  width: 95%;
-  height: 95%;
+  max-width: 330px;
+  max-height: 630px;
+  width: 70vw;
+  height: 20%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
- /*  border: solid green 2px; */
-/*   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
-  background-color: transparent;
+  border: solid black 2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: white;
 }
 
-.shareInfo{
-  background-color: transparent;
-  position: relative;
-  width: 80%;
-  height: 30%;
-  top: 23.5%;
-  margin-left: 5%;
-  margin-right: 5%;
+.shareContainer {
+  position: absolute;
+  width: 90%;
+  top: 8%;
+  left: 10%;
 }
-.picDiv{
-  background-color: transparent;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  height: 100%;
-  width: auto;
-  aspect-ratio: 1419 / 2889;
-}
-
-.shareContainer1 {
-  width: 100%;
-  height: 100%;
-  background-image: url('../src/img/bettingComplete1.png');
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  background-color: transparent;
-}
-.shareContainer2 {
-  width: 100%;
-  height: 100%;
-  background-image: url('../src/img/bettingComplete2.png');
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  background-color: transparent;
-}
-.shareContainer3 {
-  width: 100%;
-  height: 100%;
-  background-image: url('../src/img/bettingComplete3.png');
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  background-color: transparent;
-}
-.shareContainer4 {
-  width: 100%;
-  height: 100%;
-  background-image: url('../src/img/bettingComplete4.png');
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  background-color: transparent;
-}
-.shareContainer5 {
-  width: 100%;
-  height: 100%;
-  background-image: url('../src/img/bettingComplete5.png');
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  background-color: transparent;
-}
-
-
 
 .shareLink {
   width: 80%;
@@ -1730,15 +1595,14 @@ hr {
 .copyBtn {
   color: white;
   position: absolute;
-  background: linear-gradient( to right, #DE3A58, #9F132E );
-  top: 90%;
+  right: 35%;
+  top: 75%;
   font-weight: 700;
   font-size: 14px;
-  border-radius: 30px;
+  border-radius: 6px;
   border: none;
-  width: 55%;
-  height: 5%;
+  width: 30%;
+  height: 15%;
   cursor: pointer;
   padding: 5px;
-  align-items: center;
 }
