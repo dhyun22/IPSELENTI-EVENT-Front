@@ -218,7 +218,7 @@ function LineupEvent() {
                                      value={commentContent}
                                      onChange={e => setCommentContent(e.target.value)}
                                     >
-                                    </textarea>
+                                    </textarea >
                                     <div className='comment_button' id='comment_button'>
                                          <div className='comment_btn_wrapper'>
                                              <button 

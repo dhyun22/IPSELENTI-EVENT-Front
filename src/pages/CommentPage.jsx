@@ -150,7 +150,7 @@ function CommentPage() {
                                  &nbsp; {user.name[0]}oo
                                 </span>}
                             </div>
-                            <textarea 
+                            <textarea
                             rows="5" 
                             id='comment_writing_textarea' 
                             placeholder="댓글을 작성해주세요"
