@@ -162,7 +162,7 @@ function LineupEvent() {
                         </Link>
                         <Link to='/mypage'>
                             <div className='myPageButton'>
-                             <FaUserAlt id='mainmyPageIcon' />
+                                <FaUserAlt className='myPageIcon' />
                             </div>
                         </Link>
                     </div>
