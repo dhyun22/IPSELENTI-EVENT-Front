@@ -32,9 +32,10 @@ function LineupEvent() {
     const [authorID, setAuthorID] = useState('');
     const [commentContent, setCommentContent] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
+   
     const Navigate = useNavigate();
 
-
+    
 
    
     const takeuser = async () => {
@@ -110,6 +111,7 @@ function LineupEvent() {
             console.error(error);
         }
     }
+
    
       useEffect(() => {
         takeComment();
@@ -182,7 +184,7 @@ function LineupEvent() {
                         <div className='left_body'>
                             <span className='remaintime_text'>남은 시간</span>
                             <TimeLeft/>
-                            <ShareModal/>
+                            <ShareModal />
                         </div>
                         <div className='rignt_body'>
                             <span className='Totalpoint_text'>누적 포인트</span>
