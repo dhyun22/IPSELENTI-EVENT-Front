@@ -19,7 +19,7 @@ function Login() {
     const checkLoginStatus = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:8080/user/auth/issignedin",
+                process.env.REACT_APP_HOST+"/user/auth/issignedin",
                 {
                     withCredentials: true,
                 }
@@ -50,7 +50,7 @@ function Login() {
 
     const pointRequest = async () => {
         try{
-            const response = await axios.get('http://localhost:8080/user/point/attend',{
+            const response = await axios.get(process.env.REACT_APP_HOST+'/user/point/attend',{
                 withCredentials: true
             });
             
@@ -62,7 +62,7 @@ function Login() {
 
     const userLogin = async () => {
         try{
-            const response = await axios.post('http://localhost:8080/user/auth/signin', {
+            const response = await axios.post(process.env.REACT_APP_HOST+'/user/auth/signin', {
                 user_id: userId,
                 password: userPw,
             }, {

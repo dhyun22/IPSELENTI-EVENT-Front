@@ -18,7 +18,7 @@ function BettingModal(props) {
     const checkLoginStatus = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:8080/user/auth/issignedin",
+                process.env.REACT_APP_HOST+"/user/auth/issignedin",
                 {
                     withCredentials: true,
                 }
@@ -44,7 +44,7 @@ function BettingModal(props) {
 
     const getBettedPoint = async () => {
         try{
-            const result = await axios.get(`http://localhost:8080/event/artist/${celebId}`, {
+            const result = await axios.get(process.env.REACT_APP_HOST+`/event/artist/${celebId}`, {
                 withCredentials: true,
             }); 
             if (result.status === 200){
@@ -70,7 +70,7 @@ function BettingModal(props) {
     const betRequest = async() => {
         console.log('문제 없음');
         try{
-            const response = await axios.put(`http://localhost:8080/event/artist/${celebId}`, {
+            const response = await axios.put(process.env.REACT_APP_HOST+`/event/artist/${celebId}`, {
             betting_point: bettingPoint,
             }, {withCredentials: true});
 

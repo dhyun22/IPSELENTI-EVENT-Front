@@ -10,7 +10,7 @@ function LeftPoint() {
 
   const takeminus = async() => {
     try{
-      const response = await axios.get('http://localhost.8080/user/mypage/info')
+      const response = await axios.get(process.env.REACT_APP_HOST+'/user/mypage/info', {withCredentials:true});
      if (response.data){
       const leftbetpoint = response.data.user.point - <BettingSum/>;
       setleftbetpoint(leftbetpoint);

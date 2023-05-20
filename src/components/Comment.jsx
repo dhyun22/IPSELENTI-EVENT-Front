@@ -32,7 +32,7 @@ function Comment ({ comments, changeLike, setChangeLike }) {
     comments.likes_count += 1;
     setLikeCount(updatedLikeCount);
     try{
-      const response = await axios.post('http://localhost:8080/comment/like', 
+      const response = await axios.post(process.env.REACT_APP_HOST+'/comment/like', 
       {comment_id: comments.comment_id, liker_id: comments.liker_id},
       {withCredentials: true});
       
