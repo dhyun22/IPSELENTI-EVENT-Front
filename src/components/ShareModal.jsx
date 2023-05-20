@@ -5,11 +5,11 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 function ShareModal() {
     const [modalOpen, setModalOpen] = useState(false);
     const [buttonText, setButtonText] = useState('url 복사하기');
-
-
-const randomNumber = Math.floor(Math.random() * 5) + 1; // 1부터 5까지의 랜덤한 숫자 생성
-const className = `shareContainer${randomNumber}` // 랜덤한 숫자를 이미지 경로에 적용
-
+    const [buttonColor, setButtonColor] = useState({backgroundColor: "#9F132E"});
+    
+    const randomNumber = Math.floor(Math.random() * 5) + 1; // 1부터 5까지의 랜덤한 숫자 생성
+    const className = `shareContainer${randomNumber}` // 랜덤한 숫자를 이미지 경로에 적용
+    
     const handleClick = () => {
         setButtonText('복사완료');
         setButtonColor({backgroundColor: "grey"})
