@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BettingModal from './BettingModal';
 import {FiChevronDown} from 'react-icons/fi'
+import { useEffect } from 'react';
 
 function Celebrity(props) {
   const{celebList}=props;
@@ -9,7 +10,8 @@ function Celebrity(props) {
 
   
 
-  const [visibleCelebs, setVisibleCelebs] = useState(celebList.slice(0, 3)); 
+  const [visibleCelebs, setVisibleCelebs] = useState(celebList.slice(0, 3));
+  useEffect(() => {setVisibleCelebs(celebList.slice(0,3));}, [celebList]); 
 
 
   const handleShowMore = () => {setShowMore(true); 
@@ -29,7 +31,7 @@ function Celebrity(props) {
             <span id='celeb_betrate'>{celeb.betRate}</span>
           </div>
           <div className='celeb_footer'>
-            <span id='celeb_point'>{celeb.betting_amount}</span>
+            <span id='celeb_point'>{celeb.betting_amount} P</span>
             <BettingModal
             celebId={celeb.celebrity_id}
             celebName={celeb.celebrities_name}
@@ -46,7 +48,7 @@ function Celebrity(props) {
             <span id='celeb_per'>
               <span id='celeb_bg' style={{ width: celeb.percent }}></span>
             </span>
-            <span className='celeb_per_text'>{celeb.percent}</span>
+            <span className='celeb_per_text'>{celeb.percent} %</span>
           </div>
         </div>
       ))}

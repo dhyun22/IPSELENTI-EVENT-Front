@@ -7,52 +7,18 @@ import ScrollToTopButton from '../components/ScrollToTopButton';
 import axios from 'axios';
 import {useEffect} from "react";
 import {useState} from "react";
+import { useNavigate } from 'react-router-dom';
+
 
 function CommentPage() {
 
-    const comments = [
-        { id: 1, comment_id: 'Alice', comment_text: 'HEllo', time: '4분 전', liked: 0},
-        { id: 2, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 3, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 4, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 5, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 6, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 7, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 8, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 9, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 10, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 11, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 12, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 13, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 14, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 15, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 16, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 17, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 18, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 19, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.' , time: '4분 전', liked: 0},
-        { id: 20, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 21, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 22, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 23, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 24, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 25, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 26, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 27, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 28, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 29, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 30, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 31, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 32, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        { id: 33, comment_id: 'Alice', comment_text: 'Lorem ipsum dolor sit amet.', time: '4분 전', liked: 0 },
-        { id: 34, comment_id: 'Bob', comment_text: 'Consectetur adipiscing elit.', time: '4분 전', liked: 0 },
-        { id: 35, comment_id: 'Charlie', comment_text: 'Pellentesque cursus euismod mauris.', time: '4분 전', liked: 0 },
-        
-        //... more comments
-    ];
+   
     const [user, setUser] = useState('');
     const [comment, setComment] = useState([]);
     const [authorID, setAuthorID] = useState('');
     const [commentContent, setCommentContent] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
+    const Navigate = useNavigate();
 
     
     const takeuser = async () => {
@@ -106,9 +72,36 @@ function CommentPage() {
         console.log(comment)
     }, [comment]);
     
+
+    const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:8080/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
+
+            if (response.data.success) {
+                setLoggedIn(true);
+            } else{
+                setLoggedIn(false);
+                Navigate('/login');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
+
+
+
+
     const postComment = async () => {
+
+        checkLoginStatus();
+
         try{
-            //!!!!!!!!!!!!!!!여기서 set 써서 authorID를 loginID로 설정해야대!!!!!11
             const response = await axios.post('http://localhost:8080/comment', 
                 {author: authorID, comment_content: commentContent}
             , {withCredentials: true});
@@ -128,6 +121,11 @@ function CommentPage() {
             console.error(error);
         }
     }
+
+
+    useEffect(() => {
+        takeComment();
+    }, []);
 
 
 
