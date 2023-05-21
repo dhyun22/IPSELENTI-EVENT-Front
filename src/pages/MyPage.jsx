@@ -34,18 +34,17 @@ function MyPage() {
                   withCredentials: true,
               }
           );
-  
-          if (response.data.success) {
-              // setLoggedIn(true);
-              takeuser();
-          } else{
-              // setLoggedIn(false);
-              navRef.current('/login');
+
+          if (response.status === 201) {
+              setLoggedIn(true);
+              getWiki(); //로그인 성공 시에만 불러옴
+          } else if (response.status === 403){
+              setLoggedIn(false);
+              Navigate('/login');
           }
       } catch (error) {
           console.error(error);
       }
-  
     }
 
     const takeuser = async () => {

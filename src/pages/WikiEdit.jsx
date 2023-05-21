@@ -105,10 +105,10 @@ function WikiEdit() {
                     }
                 );
     
-                if (response.data.success) {
+                if (response.status === 201) {
                     setLoggedIn(true);
                     getWiki(); //로그인 성공 시에만 불러옴
-                } else{
+                } else if (response.status === 403){
                     setLoggedIn(false);
                     Navigate('/login');
                 }

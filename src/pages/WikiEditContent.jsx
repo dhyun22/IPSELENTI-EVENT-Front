@@ -25,7 +25,7 @@ const editorStyle = {
 function WikiEditContent() {
     const location = useLocation();
     const section = location.state;
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(true);
     const navRef = useRef(useNavigate());
     const Navigate = useNavigate();
 
@@ -78,7 +78,7 @@ function WikiEditContent() {
                     getWiki(); //로그인 성공시에만 불러옴
                 } else{
                     setLoggedIn(false);
-                    navRef.current('/login');
+                    Navigate('/login')
                 }
             } catch (error) {
                 console.error(error);
@@ -112,6 +112,12 @@ function WikiEditContent() {
         setCopy(false);
         
     }, []);
+
+    useEffect(() => {
+        if (loggedIn === false) {
+          Navigate("/login");
+        }
+      }, [loggedIn]);
 
 
     const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent())); //편집기에 담긴 내용을 html로 바꿈 
