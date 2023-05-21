@@ -150,7 +150,7 @@ function BettingModal(props) {
                                 <div className='betInfoContainer'>
                                     <p className='betText'>현재 배당률</p>
                                     <input defaultValue={parseFloat(props.dividendRate)} className='betInput' disabled/>
-                                    <p className='betText'>%</p>
+                                    <p className='betText'></p>
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>예상 배당금</p>
