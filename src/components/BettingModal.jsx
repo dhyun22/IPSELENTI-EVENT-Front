@@ -7,9 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 function BettingModal(props) {
     const[modalOpen, setModalOpen] = useState(false);
-    const[myPoint, setMyPoint] = useState(props.myPoint); //기존에 배팅했던 포인트
+    const[myPoint, setMyPoint] = useState(0); //기존에 배팅했던 포인트
     const[bettingPoint, setBettingPoint] = useState(0); //새롭게 배팅하는 포인트
-    const[pointLeft, setPointLeft] = useState(0); //잔여 포인트
+    const[pointLeft, setPointLeft] = useState(parseInt(result.data.user_point) + parseInt(result.data.user_total_betting_amount)); //잔여 포인트
     const[dividend, setDividend] = useState(parseInt(props.bettingAmount) * parseFloat(props.dividendRate)); //새롭게 배팅하는 포인트 * 예상배당률 = 예상 배당금
     const[celebId, setCelebId] = useState(props.celebId);
     const [loggedIn, setLoggedIn] = useState(false);
@@ -150,7 +150,7 @@ function BettingModal(props) {
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>현재 배당률</p>
-                                    <input defaultValue={props.dividendRate ? parseFloat(props.dividendRate) : '첫 베팅을 해보세요!'} className='betInput' disabled/>
+                                    <input defaultValue={parseFloat(props.dividendRate) > 0 ? parseFloat(props.dividendRate) : '첫 베팅을 해보세요!'} className='betInput' disabled/>
                                     <p className='betText'></p>
                                 </div>
                                 <div className='betInfoContainer'>
