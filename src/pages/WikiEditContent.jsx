@@ -78,7 +78,7 @@ function WikiEditContent() {
                     getWiki(); //로그인 성공시에만 불러옴
                 } else{
                     setLoggedIn(false);
-                    <Navigate to='/login'></Navigate>
+                    return <Navigate to='/login'></Navigate>
                 }
             } catch (error) {
                 console.error(error);
