@@ -32,13 +32,13 @@ function BettingList() {
       {betHistory.map((historylist) => {
         const matchedCelebrity = celebrities.find(celebrity => celebrity.celebrity_id === historylist.celebrity_id);
         const time = new Date(historylist.betting_time);
-        const formattedTime = `${time.toLocaleDateString()} ${time.getHours()}:${time.getMinutes() < 10 ? '0' : ''}${time.getMinutes()}`;
+        const formattedTime = `${time.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })} ${time.getHours()}:${time.getMinutes() < 10 ? '0' : ''}${time.getMinutes()}`;
 
         return (
           <li key={historylist.betting_id}>
             {matchedCelebrity && <span>{matchedCelebrity.celebrities_name}</span>}
-            <span>{historylist.betting_point}</span>
-            <span>{formattedTime}</span>
+            <span>&nbsp;{historylist.betting_point}</span>
+            <span>&nbsp;{formattedTime}</span>
           </li>
         );
       })}
