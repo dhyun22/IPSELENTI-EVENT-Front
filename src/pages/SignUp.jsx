@@ -16,6 +16,32 @@ function SignUp() {
     });
     const [isPwValid, setisPwValid] = useState(true);
     const [errText, setErrText] = useState('');
+    const [checkIdNum, setCheckIdNum] = useState(false);
+    const [checkFIdNum, setCheckFIdNum] = useState(false);
+    const [checkPhoneNum, setCheckPhoneNum] = useState(false);
+    // const [isNumText, setIsNumText] = useState('')
+    const checkFIdIsNum = (e) => {
+        if (isNaN(e.target.value)){
+            setCheckFIdNum(true);
+        } else{
+            setCheckFIdNum(false);
+        }
+    }
+
+    const checkIdIsNum = (e) => {
+        if (isNaN(e.target.value)){
+            setCheckIdNum(true);
+        } else{
+            setCheckIdNum(false);
+        }
+    }
+    const checkPhoneIsNum = (e) => {
+        if (isNaN(e.target.value)){
+            setCheckPhoneNum(true);
+        } else{
+            setCheckPhoneNum(false);
+        }
+    }
 
     const checkPwRegExp = (e) => {
         setForm({ ...form, password: e.target.value})
@@ -110,16 +136,21 @@ function SignUp() {
                     </Link>
                     <form className='sign-form'>
                         <div className="signup-content">
-                            <h4>학번(아이디)</h4>
-                            <input 
-                                required type='text' 
-                                placeholder='본인의 고려대 학번을 입력해주세요!' 
-                                name="studentId" 
-                                value={form.id} 
-                                onChange={e => setForm({ ...form, id: e.target.value})}
-                                minLength='10'
-                                maxLength='10'
-                            />
+                            <div className='content-in'>
+                                <h4>학번(아이디)</h4>
+                                <input 
+                                   required type='text' 
+                                   placeholder='본인의 고려대 학번을 입력해주세요!' 
+                                   name="studentId" 
+                                   value={form.id} 
+                                   onChange={e => setForm({ ...form, id: e.target.value})}
+                                   minLength='10'
+                                   maxLength='10'
+                                   onBlur={e => checkIdIsNum(e)}
+                                />
+                                <span className={checkIdNum ? 'spans' : 'hidden'}>학번을 제대로 입력해주세요</span>
+                            </div>
+                            
                         </div>
                         <div className="signup-content">
                             <h4>이름</h4>
@@ -150,7 +181,7 @@ function SignUp() {
                                 onChange={e => setForm({ ...form, checkPw: e.target.value})}
                                 onBlur={checkPwValid}
                                 />
-                                <span className={isPwValid ? 'hidden' : ''}>{errText}</span>
+                                <span className={isPwValid ? 'hidden' : 'spans'}>{errText}</span>
                             </div>
                         </div>
                         <div className="signup-content">
@@ -161,8 +192,10 @@ function SignUp() {
                                 placeholder='추천인의 고려대 학번을 입력해주세요!' 
                                 name='friendId'
                                 value={form.friendId}
-                                onChange={e => setForm({ ...form, friendId: e.target.value})}/>
-                                <span>가입자 본인은 30000P, 추천인은 20000P가 지급됩니다!</span>
+                                onChange={e => setForm({ ...form, friendId: e.target.value})}
+                                onBlur={e => checkFIdIsNum(e)}/>
+                                <span className='spans'>가입자 본인은 30000P, 추천인은 20000P가 지급됩니다!</span>
+                                <span className={checkFIdNum ? 'spans' : 'hidden'}>학번을 제대로 입력해주세요</span>
                             </div>
                         </div>
                         <div className="signup-content">
@@ -174,14 +207,14 @@ function SignUp() {
                                 name='phoneNum'
                                 value={form.phoneNum}
                                 onChange={e => setForm({ ...form, phoneNum: e.target.value})}
+                                onBlur={e => checkPhoneIsNum(e)}
                                 />
-                                <span>상품 수령 시 필요한 정보이니 정확하게 기입해주세요.</span>
+                                <span className='spans'>상품 수령 시 필요한 정보이니 정확하게 기입해주세요.</span>
+                                <span className={checkPhoneNum ? 'spans' : 'hidden'}>전화번호를 제대로 입력해주세요</span>
                             </div>
                         </div>
-                        
-                        
                     </form>
-                    <div>
+                        <div>
                             <button id="signup-btn" type='submit' onClick={createUserApi}>회원가입</button>
                         </div>
                 </div>
