@@ -20,7 +20,7 @@ import Signout from '../components/Signout';
 function MyPage() {
   const [user, setUser] = useState('');
   const [betting, setBetting]=useState('');
-  // const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
   const navRef = useRef(useNavigate());
   const Navigate = useNavigate();
 
@@ -37,7 +37,7 @@ function MyPage() {
 
           if (response.status === 201) {
               setLoggedIn(true);
-              getWiki(); //로그인 성공 시에만 불러옴
+              takeuser(); //로그인 성공 시에만 불러옴
           } else if (response.status === 403){
               setLoggedIn(false);
               Navigate('/login');
