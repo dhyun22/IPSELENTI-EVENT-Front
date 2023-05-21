@@ -11,6 +11,8 @@ import LeftPoint from '../components/LeftPoint';
 import {TbCoin} from 'react-icons/tb';
 import BettingList from '../components/BettingList';
 import { useNavigate } from 'react-router-dom';
+import Signout from '../components/Signout';
+
 
 
 
@@ -143,6 +145,7 @@ function MyPage() {
           </div>
         </div>
       </div>
+      <Signout />
     </div>
     </div>
   )
