@@ -17,56 +17,55 @@ import { useNavigate } from 'react-router-dom';
 function MyPage() {
   const [user, setUser] = useState('');
   const [betting, setBetting]=useState('');
-
-  const takeuser = async () => {
-    try{
-      //const login = await axios.post(process.env.REACT_APP_HOST+"/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true});
-      const response = await axios.get(process.env.REACT_APP_HOST+"/user/mypage/info", {withCredentials: true});
-      
-      if (response.data.success === true){
-        setUser(response.data.user)
-      }else{ navigator('/login')
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  } 
-
-  useEffect(()=> {takeuser();}, []);
-
-
-  
   const [loggedIn, setLoggedIn] = useState(false);
   const Navigate = useNavigate();
-  
-  
-  const checkLoginStatus = async () => {
-    try {
-        const response = await axios.get(
-            process.env.REACT_APP_HOST+"/user/auth/issignedin",
-            {
-                withCredentials: true,
-            }
-        );
 
-        if (response.data.success) {
-            setLoggedIn(true);
-        } else{
-            setLoggedIn(false);
-            Navigate('/login');
-        }
-    } catch (error) {
-        console.error(error);
+
+  useEffect(()=> {
+    const checkLoginStatus = async () => {
+      try {
+          const response = await axios.get(
+              process.env.REACT_APP_HOST+"/user/auth/issignedin",
+              {
+                  withCredentials: true,
+              }
+          );
+  
+          if (response.data.success) {
+              setLoggedIn(true);
+          } else{
+              setLoggedIn(false);
+              Navigate('/login');
+          }
+      } catch (error) {
+          console.error(error);
+      }
+  
     }
 
-}
+    const takeuser = async () => {
+      try{
+        //const login = await axios.post(process.env.REACT_APP_HOST+"/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true});
+        await checkLoginStatus();
+        
+        const response = await axios.get(process.env.REACT_APP_HOST+"/user/mypage/info", {withCredentials: true});
+        
+        if (response.data.success === true){
+          setUser(response.data.user)
+        }else{ navigator('/login')
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    } 
+      
+      takeuser();
+
+  }, []);
 
 
-useEffect (() => {
-    checkLoginStatus();
-}, []);
-
-
+  
+  
 
   return (
     <div className='container'>

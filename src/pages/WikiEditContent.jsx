@@ -45,31 +45,6 @@ function WikiEditContent() {
         },
       };
 
-      const checkLoginStatus = async () => {
-        try {
-            const response = await axios.get(
-                process.env.REACT_APP_HOST+"/user/auth/issignedin",
-                {
-                    withCredentials: true,
-                }
-            );
-
-            if (response.data.success) {
-                setLoggedIn(true);
-            } else{
-                setLoggedIn(false);
-                Navigate('/login');
-            }
-        } catch (error) {
-            console.error(error);
-        }
-
-    }
-
-
-    useEffect (() => {
-        checkLoginStatus();
-    }, []);
 
       const pointRequest = async () => {
         try{
@@ -87,8 +62,34 @@ function WikiEditContent() {
     }   
 
     useEffect(() => {
+
+        const checkLoginStatus = async () => {
+            try {
+                const response = await axios.get(
+                    process.env.REACT_APP_HOST+"/user/auth/issignedin",
+                    {
+                        withCredentials: true,
+                    }
+                );
+    
+                if (response.data.success) {
+                    setLoggedIn(true);
+                    getWiki(); //로그인 성공시에만 불러옴
+                } else{
+                    setLoggedIn(false);
+                    Navigate('/login');
+                }
+            } catch (error) {
+                console.error(error);
+            }
+    
+        }
+
         const getWiki = async () => {
             try{
+
+                // await checkLoginStatus();
+
                 const result = await axios.get(process.env.REACT_APP_HOST+`/wiki/contents/${section}`, {
                     withCredentials: true,
                 }); 
@@ -106,7 +107,8 @@ function WikiEditContent() {
             }
         };
 
-        getWiki();
+        checkLoginStatus();
+        setCopy(false);
         
     }, []);
 
@@ -157,7 +159,7 @@ function WikiEditContent() {
     return (
         <div className="container">
             <div className="mobile-view">
-                <div className="header">
+                <div className="headerContainer">
                     <Header />
                 </div>
                 <div className="wikiedit">
