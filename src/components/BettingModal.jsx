@@ -65,8 +65,12 @@ function BettingModal(props) {
     useEffect (() => {
         getBettedPoint();
     }, []);
-
-
+    useEffect(() => {
+        if (modalOpen) {
+          getBettedPoint();
+        }
+      }, [modalOpen]);
+    
     const betRequest = async() => {
         console.log('문제 없음');
         try{
