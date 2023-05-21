@@ -30,7 +30,7 @@ function Celebrity(props) {
           </div>
           <div className='celeb_info'>
             <span id='celeb_name'>{celeb.celebrities_name}</span>
-            <span id='celeb_betrate'>{celeb.betRate}</span>
+            <span id='celeb_betrate'>배당률&nbsp;{celeb.betRate}</span>
           </div>
           <div className='celeb_footer'>
             <span id='celeb_point'>{celeb.betting_amount} P</span>
