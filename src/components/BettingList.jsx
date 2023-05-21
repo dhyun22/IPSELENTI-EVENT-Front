@@ -27,13 +27,12 @@ function BettingList() {
     takeBet();
   }, []);
 
-  const time = new Date(historylist.betting_time);
-    const formattedTime = `${time.toLocaleDateString()} ${time.getHours()}:${time.getMinutes() < 10 ? '0' : ''}${time.getMinutes()}`;
-
   return (
     <ul className='betting_list' id='betting_list'>
       {betHistory.map((historylist) => {
         const matchedCelebrity = celebrities.find(celebrity => celebrity.celebrity_id === historylist.celebrity_id);
+        const time = new Date(historylist.betting_time);
+        const formattedTime = `${time.toLocaleDateString()} ${time.getHours()}:${time.getMinutes() < 10 ? '0' : ''}${time.getMinutes()}`;
 
         return (
           <li key={historylist.betting_id}>
