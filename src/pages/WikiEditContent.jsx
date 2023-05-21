@@ -9,6 +9,7 @@ import { EditorState, convertToRaw, ContentState, convertFromRaw } from 'draft-j
 import draftToHtml from 'draftjs-to-html';
 import axios from 'axios';
 import HtmlToWiki from '../components/Wiki/HtmlToWiki';
+import { Navigate } from 'react-router-dom/dist';
 
 
 const editorStyle = {
@@ -77,7 +78,7 @@ function WikiEditContent() {
                     getWiki(); //로그인 성공시에만 불러옴
                 } else{
                     setLoggedIn(false);
-                    Navigate('/login');
+                    <Navigate to='/login'></Navigate>
                 }
             } catch (error) {
                 console.error(error);

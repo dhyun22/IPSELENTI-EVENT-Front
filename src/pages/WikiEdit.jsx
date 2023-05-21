@@ -1,6 +1,6 @@
 import Header from '../components/Header';
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom/dist';
+import { Navigate, useNavigate } from 'react-router-dom/dist';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 // convertToRaw: editorState 객체가 주어지면 원시 JS 구조로 변환.
@@ -9,6 +9,7 @@ import { EditorState, convertToRaw, ContentState, convertFromRaw } from 'draft-j
 import draftToHtml from 'draftjs-to-html';
 import axios from 'axios';
 import traverseHtml from '../components/Wiki/HtmlToWiki';
+import { Navigate } from 'react-router-dom/dist';
 
 
 const editorStyle = {
@@ -110,7 +111,7 @@ function WikiEdit() {
                     getWiki(); //로그인 성공 시에만 불러옴
                 } else{
                     setLoggedIn(false);
-                    Navigate('/login');
+                    return <Navigate to="/login"></Navigate>
                 }
             } catch (error) {
                 console.error(error);
