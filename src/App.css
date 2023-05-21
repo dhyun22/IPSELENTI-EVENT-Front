@@ -908,6 +908,10 @@ cursor: pointer;
     background-color: #c1c1c1;
   }
 
+  #bettingtime {
+    font-size: 8px;
+  }
+
 /* 메인페이지 */
 
 #mainpageheader{
