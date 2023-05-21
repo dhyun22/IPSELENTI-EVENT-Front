@@ -48,7 +48,7 @@ function Celebrity(props) {
           </div>
           <div className='celeb_graph'>
             <span id='celeb_per'>
-              <span id='celeb_bg' style={{ width: celeb.percent }}></span>
+              <span id='celeb_bg' style={{ width: `${celeb.percent}%` }}></span>
             </span>
             <span className='celeb_per_text'>{celeb.percent}%</span>
           </div>
