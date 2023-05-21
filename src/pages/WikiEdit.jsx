@@ -45,31 +45,32 @@ function WikiEdit() {
       };
 
 
-      const checkLoginStatus = async () => {
-        try {
-            const response = await axios.get(
-                process.env.REACT_APP_HOST+"/user/auth/issignedin",
-                {
-                    withCredentials: true,
-                }
-            );
-
-            if (response.data.success) {
-                setLoggedIn(true);
-            } else{
-                setLoggedIn(false);
-                Navigate('/login');
-            }
-        } catch (error) {
-            console.error(error);
-        }
-
-    }
+    // 
 
 
-    useEffect (() => {
-        checkLoginStatus();
-    }, []);
+    // useEffect (() => {
+    //     const checkLoginStatus = async () => {
+    //         try {
+    //             const response = await axios.get(
+    //                 process.env.REACT_APP_HOST+"/user/auth/issignedin",
+    //                 {
+    //                     withCredentials: true,
+    //                 }
+    //             );
+    
+    //             if (response.data.success) {
+    //                 setLoggedIn(true);
+    //             } else{
+    //                 setLoggedIn(false);
+    //                 Navigate('/login');
+    //             }
+    //         } catch (error) {
+    //             console.error(error);
+    //         }
+    
+    //     }
+    //     checkLoginStatus();
+    // }, []);
 
     const pointRequest = async () => {
         try{
@@ -92,26 +93,52 @@ function WikiEdit() {
       
     const wikiMarkup = traverseHtml(editorToHtml);
 
-    const getWiki = async () => {
-        try{
-            const result = await axios.get(process.env.REACT_APP_HOST+'/wiki/contents/',{
-                withCredentials: true,
-            }); //전체 텍스트를 가져옴.
-            if (result.status === 200){
-                setWiki(result.data['text']);
-            setVersion(result.data.version);
-            } else if(result.status === 401){
-                alert(result.data.message);
-                Navigate('/login');
-            }
-
-        } catch (error) {
-            console.error(error);
-            //alert("result.data.message");
-        }
-    };
 
     useEffect(() => {
+
+        const checkLoginStatus = async () => {
+            try {
+                const response = await axios.get(
+                    process.env.REACT_APP_HOST+"/user/auth/issignedin",
+                    {
+                        withCredentials: true,
+                    }
+                );
+    
+                if (response.data.success) {
+                    setLoggedIn(true);
+                } else{
+                    setLoggedIn(false);
+                    Navigate('/login');
+                }
+            } catch (error) {
+                console.error(error);
+            }
+    
+        }
+
+        const getWiki = async () => {
+            try{
+
+                await checkLoginStatus(); // 로그인 상태 확인 완료 후에 getWiki 호출
+                
+                const result = await axios.get(process.env.REACT_APP_HOST+'/wiki/contents/',{
+                    withCredentials: true,
+                }); //전체 텍스트를 가져옴.
+                if (result.status === 200){
+                    setWiki(result.data['text']);
+                setVersion(result.data.version);
+                } else if(result.status === 401){
+                    alert(result.data.message);
+                    Navigate('/login');
+                }
+    
+            } catch (error) {
+                console.error(error);
+                //alert("result.data.message");
+            }
+        };
+        
         
         getWiki();
         setCopy(false);
