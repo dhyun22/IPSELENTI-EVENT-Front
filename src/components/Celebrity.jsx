@@ -3,7 +3,40 @@ import BettingModal from './BettingModal';
 import {FiChevronDown} from 'react-icons/fi'
 import { useEffect } from 'react';
 function Celebrity(props) {
-  const{celebList}=props;
+  const celebList = [
+    {
+      rank: 1,
+      celebrity_image: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202304111337030.jpg',
+      celebrities_name: 'IVE(아이브)',
+      betRate: '1.1',
+      point: '12345 ',
+      graphWidth: '70%',
+      percent: '70%',
+      myPoint: '20000',
+      betting_Amount: '1500',
+    },
+    {
+      rank: 2,
+      celebrity_image: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202305021004012.jpg',
+      celebrities_name: '르세라핌',
+      betRate: '1.1',
+      point: '12345',
+      graphWidth: '50%',
+      percent: '50%',
+      myPoint: '20000',
+      betting_Amount: '2500'
+    },
+    {
+      rank: 3,
+      celebrity_image: 'https://www.akbobada.com/home/akbobada/archive/akbo/img/202212200942036.jpg',
+      celebrities_name: 'NewJeans',
+      betRate: '1.1',
+      point: '12345',
+      graphWidth: '45%',
+      percent: '45%',
+      myPoint: '20000',
+      betting_Amount: '2500',
+    },] 
   const [showMore, setShowMore] = useState(false); // 더보기 버튼 클릭 여부 상태값
   // const [celebrank, setCelebrank] = useState(0); // 셀럽 등수
 
@@ -37,11 +70,10 @@ function Celebrity(props) {
             celebName={celeb.celebrities_name}
             voteRate={celeb.percent}
             profilePic={celeb.celebrity_image}
-            betPoint={celeb.betting_amount}
-            betRank={celeb.celebrity_id}
+            betPoint={celeb.betting_Amount}
+            betRank={celeb.rank}
             dividendRate={celeb.betRate}
-           // myPoint={celeb.myPoint} //
-           // bettingAmount={c.betting_amount}//
+            myPoint={celeb.myPoint}
             id='celeb_bet' />
           </div>
           <div className='celeb_graph'>
