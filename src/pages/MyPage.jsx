@@ -40,12 +40,15 @@ function MyPage() {
               takeuser(); //로그인 성공 시에만 불러옴
           } else if (response.status === 401){
               setLoggedIn(false);
-              Navigate('/login');
+              navRef.current.navigate('/login');
           }
       } catch (error) {
           console.error(error);
       }
     }
+
+    checkLoginStatus();
+  }, []);
 
     const takeuser = async () => {
       try{
@@ -62,9 +65,7 @@ function MyPage() {
       }
     } 
       
-    checkLoginStatus();
-
-  }, []);
+    
 
 
   
