@@ -111,7 +111,7 @@ function Login() {
                             onChange={e => setUserPw(e.target.value)}
                             />
                             <button type="button" id='btn' onClick={userLogin}>Login</button>
-                            <span>가입하면 10000P 바로 지급 <Link to="/signup">회원가입</Link>
+                            <span>가입하면 30000P 바로 지급 <Link to="/signup">회원가입</Link>
                             </span>
                         </form>
                     </div>
