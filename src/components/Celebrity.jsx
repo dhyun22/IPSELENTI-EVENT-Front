@@ -40,7 +40,7 @@ function Celebrity(props) {
             voteRate={celeb.percent}
             profilePic={celeb.celebrity_image}
             betPoint={celeb.betting_amount}
-            betRank={celeb.celebrity_id}
+            betRank={celeb_rank}
             dividendRate={celeb.betRate}
            // myPoint={celeb.myPoint} //
            // bettingAmount={c.betting_amount}//
