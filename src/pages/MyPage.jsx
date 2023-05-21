@@ -38,7 +38,7 @@ function MyPage() {
           if (response.status === 201) {
               setLoggedIn(true);
               takeuser(); //로그인 성공 시에만 불러옴
-          } else if (response.status === 403){
+          } else if (response.status === 401){
               setLoggedIn(false);
               Navigate('/login');
           }
