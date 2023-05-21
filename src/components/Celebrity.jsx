@@ -30,7 +30,7 @@ function Celebrity(props) {
           </div>
           <div className='celeb_info'>
             <span id='celeb_name'>{celeb.celebrities_name}</span>
-            <span id='celeb_betrate'>{celeb.betRate}</span>
+            <span id='celeb_betrate'>배당률&nbsp;{celeb.betRate}</span>
           </div>
           <div className='celeb_footer'>
             <span id='celeb_point'>{celeb.betting_amount} P</span>
@@ -40,7 +40,7 @@ function Celebrity(props) {
             voteRate={celeb.percent}
             profilePic={celeb.celebrity_image}
             betPoint={celeb.betting_amount}
-            betRank={celeb.celebrity_id}
+            betRank={celeb_rank}
             dividendRate={celeb.betRate}
            // myPoint={celeb.myPoint} //
            // bettingAmount={c.betting_amount}//
@@ -48,9 +48,9 @@ function Celebrity(props) {
           </div>
           <div className='celeb_graph'>
             <span id='celeb_per'>
-              <span id='celeb_bg' style={{ width: celeb.percent }}></span>
+              <span id='celeb_bg' style={{ width: `${celeb.percent}%` }}></span>
             </span>
-            <span className='celeb_per_text'>{celeb.percent} %</span>
+            <span className='celeb_per_text'>{celeb.percent}%</span>
           </div>
         </div>
         );

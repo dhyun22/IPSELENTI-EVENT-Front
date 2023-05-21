@@ -1083,12 +1083,15 @@ cursor: pointer;
 
 #celeb_thumb {
   float: left;
-  width: 60px;
+/*   width: 60px; */
   height: 60px;
+  width: 60px; 
+  overflow: hidden;  /* 사진 찌그러짐수정 */
   margin: 0 0 0 30px;
   border-radius: 20px;
   box-shadow: 0px 2px 4px 0 rgba(42, 55, 71, 0.15);
   position: relative;
+  object-fit: cover; /* 사진 찌그러짐수정 */
 }
 
 .celeb_info {
@@ -1160,7 +1163,7 @@ cursor: pointer;
 }
 
 .celeb_per_text{
-  font-size: 12px;
+  font-size: 10px;
   margin-top: 5px;
   margin-left: 5px;
   color: #7A7A7A;
@@ -1276,9 +1279,14 @@ cursor: pointer;
  
   padding: 0 10px;
   box-sizing: border-box;
+} 
+
+.comment_main{
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
-.comment_view .comment {
+.comment {
   border-bottom: 1px solid #ccc;
   font-size: 13px;
 }

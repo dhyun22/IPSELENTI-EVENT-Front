@@ -178,11 +178,12 @@ function SignUp() {
                                 <span>상품 수령 시 필요한 정보이니 정확하게 기입해주세요.</span>
                             </div>
                         </div>
-                        <div>
-                            <button id="signup-btn" type='submit' onClick={createUserApi}>회원가입</button>
-                        </div>
+                        
                         
                     </form>
+                    <div>
+                            <button id="signup-btn" type='submit' onClick={createUserApi}>회원가입</button>
+                        </div>
                 </div>
             </div>
         </div>

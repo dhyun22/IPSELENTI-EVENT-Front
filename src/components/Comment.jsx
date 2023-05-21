@@ -49,6 +49,7 @@ function Comment ({ comments, changeLike, setChangeLike }) {
       }
       if(response.status===404){
         console.log(response.data.message)
+        alert(response.data.message)
       }}
       catch(error){
         console.error(error);
