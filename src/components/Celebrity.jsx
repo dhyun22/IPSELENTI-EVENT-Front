@@ -22,6 +22,7 @@ function Celebrity(props) {
     <div className='ranking_list'>
       {visibleCelebs.map((celeb, index) => {
         const celeb_rank=index+1;
+        console.log(user_point);
         return(
         <div className='info_box' key={celeb.celebrity_id}>
           <span className='celeb_rank'>{celeb_rank}</span>
