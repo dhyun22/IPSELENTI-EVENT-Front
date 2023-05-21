@@ -6,6 +6,7 @@ function Home() {
 
         <div className="container">
             <div className="mobile-view">
+                <div className="home-main">
                     <div className="headerContainer"> 
                         <Header />
                     </div>
@@ -22,6 +23,8 @@ function Home() {
                             <button className="redbutton2">입실위키</button>
                         </Link>
                     </div>
+                </div>
+                    
             </div>
         </div>
 

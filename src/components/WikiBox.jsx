@@ -1,5 +1,5 @@
 import React from 'react';
-import WikiToHtml from './WikiToHtml';
+import WikiToHtml from './Wiki/WikiToHtml';
 import { useNavigate } from 'react-router-dom/dist'
 import { useParams } from 'react-router-dom/dist';
 import { useState } from 'react';
