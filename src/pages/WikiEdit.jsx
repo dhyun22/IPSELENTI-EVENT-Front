@@ -121,7 +121,7 @@ function WikiEdit() {
             try{
 
                 await checkLoginStatus(); // 로그인 상태 확인 완료 후에 getWiki 호출
-                
+
                 const result = await axios.get(process.env.REACT_APP_HOST+'/wiki/contents/',{
                     withCredentials: true,
                 }); //전체 텍스트를 가져옴.
@@ -187,7 +187,7 @@ function WikiEdit() {
     return (
         <div className="container">
             <div className="mobile-view">
-                <div className="header">
+                <div className="headerContainer">
                     <Header />
                 </div>
                 <div className="wikiedit">

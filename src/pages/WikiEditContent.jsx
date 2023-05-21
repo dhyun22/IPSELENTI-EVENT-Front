@@ -157,7 +157,7 @@ function WikiEditContent() {
     return (
         <div className="container">
             <div className="mobile-view">
-                <div className="header">
+                <div className="headerContainer">
                     <Header />
                 </div>
                 <div className="wikiedit">

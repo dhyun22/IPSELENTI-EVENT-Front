@@ -68,7 +68,7 @@ const WikiHistory = () => {
   return (
     <div class="container">
             <div class="mobile-view">
-                <div className="header">
+                <div className="headerContainer">
                     <Header />
                 </div>
                 <div className='wiki-history'>
