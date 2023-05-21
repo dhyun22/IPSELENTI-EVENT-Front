@@ -74,6 +74,7 @@ function WikiEditContent() {
     
                 if (response.data.success) {
                     setLoggedIn(true);
+                    getWiki(); //로그인 성공시에만 불러옴
                 } else{
                     setLoggedIn(false);
                     Navigate('/login');
@@ -87,7 +88,7 @@ function WikiEditContent() {
         const getWiki = async () => {
             try{
 
-                await checkLoginStatus();
+                // await checkLoginStatus();
 
                 const result = await axios.get(process.env.REACT_APP_HOST+`/wiki/contents/${section}`, {
                     withCredentials: true,
@@ -106,7 +107,7 @@ function WikiEditContent() {
             }
         };
 
-        getWiki();
+        checkLoginStatus();
         setCopy(false);
         
     }, []);

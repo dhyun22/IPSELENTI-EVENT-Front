@@ -107,6 +107,7 @@ function WikiEdit() {
     
                 if (response.data.success) {
                     setLoggedIn(true);
+                    getWiki(); //로그인 성공 시에만 불러옴
                 } else{
                     setLoggedIn(false);
                     Navigate('/login');
@@ -120,7 +121,7 @@ function WikiEdit() {
         const getWiki = async () => {
             try{
 
-                await checkLoginStatus(); // 로그인 상태 확인 완료 후에 getWiki 호출
+                // await checkLoginStatus(); // 로그인 상태 확인 완료 후에 getWiki 호출
 
                 const result = await axios.get(process.env.REACT_APP_HOST+'/wiki/contents/',{
                     withCredentials: true,
@@ -140,7 +141,7 @@ function WikiEdit() {
         };
         
         
-        getWiki();
+        checkLoginStatus();
         setCopy(false);
         
     }, []);
