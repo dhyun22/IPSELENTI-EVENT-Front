@@ -149,7 +149,11 @@ function BettingModal(props) {
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>현재 배당률</p>
+
+                                    <input defaultValue={parseFloat(props.dividendRate) ? parseFloat(props.dividendRate) : '첫 베팅의 주인공이 되어보세요!'} className='betInput' disabled/>
+
                                     <input defaultValue={parseFloat(props.dividendRate)} className='betInput' disabled/>
+
                                     <p className='betText'></p>
                                 </div>
                                 <div className='betInfoContainer'>
