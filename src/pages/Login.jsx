@@ -73,8 +73,8 @@ function Login() {
                 pointRequest();
                 Navigate('/');
             } else if (response.status === 401){
+                alert("아이디 또는 비밀번호를 잘못입력하였습니다.");
                 setLoggedIn(false);
-                alert(response.data.message);
             }
         } catch (error) {
             console.error(error);

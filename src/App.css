@@ -442,6 +442,9 @@ h4{
 .wiki-title button{
     margin: 10px;
 }
+.wiki-history{
+  padding: 0px 10px;
+}
 
 #history-link{
     font-size: 10px;

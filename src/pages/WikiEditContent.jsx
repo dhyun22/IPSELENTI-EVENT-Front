@@ -9,7 +9,6 @@ import { EditorState, convertToRaw, ContentState, convertFromRaw } from 'draft-j
 import draftToHtml from 'draftjs-to-html';
 import axios from 'axios';
 import HtmlToWiki from '../components/Wiki/HtmlToWiki';
-import { Navigate } from 'react-router-dom/dist';
 
 
 const editorStyle = {
@@ -27,7 +26,8 @@ function WikiEditContent() {
     const location = useLocation();
     const section = location.state;
     const [loggedIn, setLoggedIn] = useState(false);
-    const navigate = useNavigate();
+    const navRef = useRef(useNavigate());
+    const Navigate = useNavigate();
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [wiki, setWiki] = useState('');
@@ -78,7 +78,7 @@ function WikiEditContent() {
                     getWiki(); //로그인 성공시에만 불러옴
                 } else{
                     setLoggedIn(false);
-                    return <Navigate to='/login'></Navigate>
+                    navRef.current('/login');
                 }
             } catch (error) {
                 console.error(error);
@@ -99,7 +99,7 @@ function WikiEditContent() {
                     setVersion(result.data.version);
                 } else if(result.status === 401){
                     alert(result.data.message);
-                    navigate('/login');
+                    Navigate('/login');
                 }
                 
             } catch (error) {
@@ -131,13 +131,13 @@ function WikiEditContent() {
                 withCredentials: true,
             });
             if (result.status === 200){
-                navigate('/wikiedit/completed');
+                Navigate('/wikiedit/completed');
             } else if(result.status === 401){
                 alert(result.data.message);
-                navigate('/login');
+                Navigate('/login');
             } else if(result.status === 210){
                 alert("수정에 기여해주셔서 감사합니다.");
-                navigate('/wiki');
+                Navigate('/wiki');
             }else if(result.status === 432){
                 alert("제출해 실패했습니다. 다시 시도해주세요.");
                 setWiki(result.data.newContent);

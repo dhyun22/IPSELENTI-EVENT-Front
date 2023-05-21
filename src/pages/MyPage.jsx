@@ -11,13 +11,15 @@ import LeftPoint from '../components/LeftPoint';
 import {TbCoin} from 'react-icons/tb';
 import BettingList from '../components/BettingList';
 import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 
 
 
 function MyPage() {
   const [user, setUser] = useState('');
   const [betting, setBetting]=useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
+  // const [loggedIn, setLoggedIn] = useState(false);
+  const navRef = useRef(useNavigate());
   const Navigate = useNavigate();
 
 
@@ -32,10 +34,11 @@ function MyPage() {
           );
   
           if (response.data.success) {
-              setLoggedIn(true);
+              // setLoggedIn(true);
+              takeuser();
           } else{
-              setLoggedIn(false);
-              Navigate('/login');
+              // setLoggedIn(false);
+              navRef.current('/login');
           }
       } catch (error) {
           console.error(error);
@@ -46,20 +49,19 @@ function MyPage() {
     const takeuser = async () => {
       try{
         //const login = await axios.post(process.env.REACT_APP_HOST+"/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true});
-        await checkLoginStatus();
         
         const response = await axios.get(process.env.REACT_APP_HOST+"/user/mypage/info", {withCredentials: true});
         
         if (response.data.success === true){
           setUser(response.data.user)
-        }else{ navigator('/login')
+        } else{ Navigate('/login');
         }
       } catch (error) {
         console.error(error);
       }
     } 
       
-      takeuser();
+    checkLoginStatus();
 
   }, []);
 
