@@ -25,7 +25,8 @@ const editorStyle = {
 function WikiEditContent() {
     const location = useLocation();
     const section = location.state;
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(true);
+    const navRef = useRef(useNavigate());
     const Navigate = useNavigate();
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -45,31 +46,6 @@ function WikiEditContent() {
         },
       };
 
-      const checkLoginStatus = async () => {
-        try {
-            const response = await axios.get(
-                "http://localhost:8080/user/auth/issignedin",
-                {
-                    withCredentials: true,
-                }
-            );
-
-            if (response.data.success) {
-                setLoggedIn(true);
-            } else{
-                setLoggedIn(false);
-                Navigate('/login');
-            }
-        } catch (error) {
-            console.error(error);
-        }
-
-    }
-
-
-    useEffect (() => {
-        checkLoginStatus();
-    }, []);
 
       const pointRequest = async () => {
         try{
@@ -87,8 +63,34 @@ function WikiEditContent() {
     }   
 
     useEffect(() => {
+
+        const checkLoginStatus = async () => {
+            try {
+                const response = await axios.get(
+                    process.env.REACT_APP_HOST+"/user/auth/issignedin",
+                    {
+                        withCredentials: true,
+                    }
+                );
+    
+                if (response.data.success) {
+                    setLoggedIn(true);
+                    getWiki(); //로그인 성공시에만 불러옴
+                } else{
+                    setLoggedIn(false);
+                    Navigate('/login')
+                }
+            } catch (error) {
+                console.error(error);
+            }
+    
+        }
+
         const getWiki = async () => {
             try{
+
+                // await checkLoginStatus();
+
                 const result = await axios.get(process.env.REACT_APP_HOST+`/wiki/contents/${section}`, {
                     withCredentials: true,
                 }); 
@@ -106,9 +108,16 @@ function WikiEditContent() {
             }
         };
 
-        getWiki();
+        checkLoginStatus();
+        setCopy(false);
         
     }, []);
+
+    useEffect(() => {
+        if (loggedIn === false) {
+          Navigate("/login");
+        }
+      }, [loggedIn]);
 
 
     const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent())); //편집기에 담긴 내용을 html로 바꿈 
@@ -157,7 +166,7 @@ function WikiEditContent() {
     return (
         <div className="container">
             <div className="mobile-view">
-                <div className="header">
+                <div className="headerContainer">
                     <Header />
                 </div>
                 <div className="wikiedit">

@@ -39,7 +39,7 @@ function BettingModal(props) {
 
     useEffect (() => {
         checkLoginStatus();
-    }, []);
+    }, []); 
 
 
     const getBettedPoint = async () => {
@@ -49,7 +49,7 @@ function BettingModal(props) {
             }); 
             if (result.status === 200){
                 setBettingPoint(parseInt(result.data.user_total_betting_amount));
-                setMyPoint(parseInt(result.data.user_point));
+                setMyPoint(parseInt(result.data.user_point) + parseInt(result.data.user_total_betting_amount)); //이 부분만 영섭 수정 뒤에 현재 연예인에게 베팅한 금액 더해줌
                 setPointLeft(myPoint);
             } else if(result.status === 401){
                 alert(result.data.message);
@@ -149,7 +149,11 @@ function BettingModal(props) {
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>현재 배당률</p>
+
                                     <input defaultValue={parseFloat(props.dividendRate) ? parseFloat(props.dividendRate) : '첫 베팅의 주인공이 되어보세요!'} className='betInput' disabled/>
+
+                                    <input defaultValue={parseFloat(props.dividendRate)} className='betInput' disabled/>
+
                                     <p className='betText'></p>
                                 </div>
                                 <div className='betInfoContainer'>

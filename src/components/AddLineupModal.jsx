@@ -71,6 +71,7 @@ const checkLoginStatus = async () => {
                         value={applyReason}
                         onChange={e => setApplyReason(e.target.value)}
                         />
+                        <p className='lineupAlert'>관리자 검토 후 등록됩니다!</p>
                     </div>
                     <button className='addLineupBtn' onClick={addLineupPost}>라인업 추가</button>
                 </Modal>
