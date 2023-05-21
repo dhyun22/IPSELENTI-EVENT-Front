@@ -38,7 +38,7 @@ function BettingList() {
           <li key={historylist.betting_id}>
             {matchedCelebrity && <span>{matchedCelebrity.celebrities_name}</span>}
             <span>&nbsp;{historylist.betting_point}P</span>
-            <span className="bettingtime">&nbsp;{formattedTime}</span>
+            <span id="bettingtime">&nbsp;{formattedTime}</span>
           </li>
         );
       })}
