@@ -1,7 +1,7 @@
 import Header from '../components/Header';
 import { Link } from "react-router-dom/dist";
 import React, {useRef, useEffect, useState} from 'react';
-import WikiBox from '../components/Wiki/WikiBox';
+import WikiBox from '../components/WikiBox';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom/dist';
 import Signout from '../components/Signout';
@@ -13,28 +13,28 @@ import Signout from '../components/Signout';
 function WikiViewer(props) {
 
 
-    // const data = [
-    //     {
-    //         'section' : '0',
-    //         'title': '일번항목',
-    //         'content': "Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddNostrum, optio, assumenda distinctio autem, nimi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt! " 
-    //     },
-    //     {
-    //         'section' : '1',
-    //         'title': '이번항목',
-    //         'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddddddddddostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
-    //     },
-    //     {
-    //         'section' : '2',
-    //         'title': '삼번항목',
-    //         'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elitddddddddddddddddddddddddddddd. ostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
-    //     },
-    //     {
-    //         'section': '3',
-    //         'title': '사번항목',
-    //         'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ostrum, odfkjs;fjskdjf;alskdjf;sdlkfj;alsdkjf;alskdjf;laksssumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
-    //     },
-    // ]
+    const data = [
+        {
+            'section' : '0',
+            'title': '일번항목',
+            'content': "Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddNostrum, optio, assumenda distinctio autem, nimi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt! " 
+        },
+        {
+            'section' : '1',
+            'title': '이번항목',
+            'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddddddddddostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+        },
+        {
+            'section' : '2',
+            'title': '삼번항목',
+            'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elitddddddddddddddddddddddddddddd. ostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+        },
+        {
+            'section': '3',
+            'title': '사번항목',
+            'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ostrum, odfkjs;fjskdjf;alskdjf;sdlkfj;alsdkjf;alskdjf;laksssumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+        },
+    ]
 
     const myDivRef = useRef([]);
     const [allText, setAllText] = useState([]);
@@ -42,26 +42,26 @@ function WikiViewer(props) {
 
     const [loggedIn, setLoggedIn] = useState(false);
 
-    const checkLoginStatus = async () => {
-        try {
-            const response = await axios.get(
-                process.env.REACT_APP_HOST+"/user/auth/issignedin",
-                {
-                    withCredentials: true,
-                }
-            );
+    // const checkLoginStatus = async () => {
+    //     try {
+    //         const response = await axios.get(
+    //             process.env.REACT_APP_HOST+"/user/auth/issignedin",
+    //             {
+    //                 withCredentials: true,
+    //             }
+    //         );
 
-            if (response.data.success) {
-                setLoggedIn(true);
-            } else{
-                setLoggedIn(false);
-	            Navigate('/login');
-            }
-        } catch (error) {
-            console.error(error);
-        }
+    //         if (response.data.success) {
+    //             setLoggedIn(true);
+    //         } else{
+    //             setLoggedIn(false);
+	//             Navigate('/login');
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
 
-    }
+    // }
     
     
 
@@ -97,7 +97,6 @@ function WikiViewer(props) {
     }   
 
     useEffect(() => {
-        checkLoginStatus();
         getWiki();
         pointRequest();
 
@@ -130,14 +129,14 @@ function WikiViewer(props) {
                         
                     </div>
                     <div className='wiki-index'>
-                        {allText.map((item) => {
+                        {data.map((item) => {
                             return(
                             <li onClick={() => handleClick(item.section)} key={item.section}>{item.section} {item.title}</li>
                             );
                         })}    
                     </div>
                     <div className='wiki-content'>
-                        {allText.map((item) => {
+                        {data.map((item) => {
                             return(
                                 <div ref={(el) => (myDivRef.current[item.section] = el)} key={item.section}>
                                     <WikiBox 

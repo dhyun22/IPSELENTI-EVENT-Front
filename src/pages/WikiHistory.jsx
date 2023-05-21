@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom/dist';
-import HistoryBox from '../components/Wiki/HistroyBox';
+import HistoryBox from '../components/HistroyBox';
 import axios from 'axios';
 import Header from '../components/Header';
 
