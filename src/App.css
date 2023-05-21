@@ -1373,7 +1373,7 @@ cursor: pointer;
   max-width: 330px;
   max-height: 630px;
   width: 70vw;
-  height: 40%;
+  height: 370px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -1427,6 +1427,11 @@ h3 {
   text-align: left;
 }
 
+.lineupAlert {
+  display: block;
+  width: 200px;
+  margin-left: 22%;
+}
 .addLineupBtn {
   position: absolute;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
