@@ -1271,9 +1271,14 @@ cursor: pointer;
  
   padding: 0 10px;
   box-sizing: border-box;
+} 
+
+.comment_main{
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
-.comment_view .comment {
+.comment {
   border-bottom: 1px solid #ccc;
   font-size: 13px;
 }
