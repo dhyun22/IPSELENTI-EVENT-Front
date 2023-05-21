@@ -19,11 +19,9 @@ import Signout from '../components/Signout';
 
 function MyPage() {
   const [user, setUser] = useState('');
-  const [betting, setBetting]=useState('');
+  const [betting, setBetting] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
-  const navRef = useRef(useNavigate());
   const Navigate = useNavigate();
-
 
   useEffect(() => {
     const checkLoginStatus = async () => {
@@ -45,10 +43,10 @@ function MyPage() {
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     checkLoginStatus();
-  }, []);
+  }, [Navigate]);
 
   if (!loggedIn) {
     Navigate('/login');
