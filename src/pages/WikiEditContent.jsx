@@ -45,31 +45,6 @@ function WikiEditContent() {
         },
       };
 
-      const checkLoginStatus = async () => {
-        try {
-            const response = await axios.get(
-                process.env.REACT_APP_HOST+"/user/auth/issignedin",
-                {
-                    withCredentials: true,
-                }
-            );
-
-            if (response.data.success) {
-                setLoggedIn(true);
-            } else{
-                setLoggedIn(false);
-                Navigate('/login');
-            }
-        } catch (error) {
-            console.error(error);
-        }
-
-    }
-
-
-    useEffect (() => {
-        checkLoginStatus();
-    }, []);
 
       const pointRequest = async () => {
         try{
@@ -87,8 +62,33 @@ function WikiEditContent() {
     }   
 
     useEffect(() => {
+
+        const checkLoginStatus = async () => {
+            try {
+                const response = await axios.get(
+                    process.env.REACT_APP_HOST+"/user/auth/issignedin",
+                    {
+                        withCredentials: true,
+                    }
+                );
+    
+                if (response.data.success) {
+                    setLoggedIn(true);
+                } else{
+                    setLoggedIn(false);
+                    Navigate('/login');
+                }
+            } catch (error) {
+                console.error(error);
+            }
+    
+        }
+
         const getWiki = async () => {
             try{
+
+                await checkLoginStatus();
+
                 const result = await axios.get(process.env.REACT_APP_HOST+`/wiki/contents/${section}`, {
                     withCredentials: true,
                 }); 
@@ -107,6 +107,7 @@ function WikiEditContent() {
         };
 
         getWiki();
+        setCopy(false);
         
     }, []);
 
