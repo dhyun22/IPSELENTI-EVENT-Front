@@ -27,7 +27,7 @@ function WikiEditContent() {
     const location = useLocation();
     const section = location.state;
     const [loggedIn, setLoggedIn] = useState(false);
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
     const [wiki, setWiki] = useState('');
@@ -99,7 +99,7 @@ function WikiEditContent() {
                     setVersion(result.data.version);
                 } else if(result.status === 401){
                     alert(result.data.message);
-                    Navigate('/login');
+                    navigate('/login');
                 }
                 
             } catch (error) {
@@ -131,13 +131,13 @@ function WikiEditContent() {
                 withCredentials: true,
             });
             if (result.status === 200){
-                Navigate('/wikiedit/completed');
+                navigate('/wikiedit/completed');
             } else if(result.status === 401){
                 alert(result.data.message);
-                Navigate('/login');
+                navigate('/login');
             } else if(result.status === 210){
                 alert("수정에 기여해주셔서 감사합니다.");
-                Navigate('/wiki');
+                navigate('/wiki');
             }else if(result.status === 432){
                 alert("제출해 실패했습니다. 다시 시도해주세요.");
                 setWiki(result.data.newContent);

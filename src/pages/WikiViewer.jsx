@@ -13,28 +13,28 @@ import Signout from '../components/Signout';
 function WikiViewer(props) {
 
 
-    const data = [
-        {
-            'section' : '0',
-            'title': '일번항목',
-            'content': "Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddNostrum, optio, assumenda distinctio autem, nimi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt! " 
-        },
-        {
-            'section' : '1',
-            'title': '이번항목',
-            'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddddddddddostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
-        },
-        {
-            'section' : '2',
-            'title': '삼번항목',
-            'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elitddddddddddddddddddddddddddddd. ostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
-        },
-        {
-            'section': '3',
-            'title': '사번항목',
-            'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ostrum, odfkjs;fjskdjf;alskdjf;sdlkfj;alsdkjf;alskdjf;laksssumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
-        },
-    ]
+    // const data = [
+    //     {
+    //         'section' : '0',
+    //         'title': '일번항목',
+    //         'content': "Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddNostrum, optio, assumenda distinctio autem, nimi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt! " 
+    //     },
+    //     {
+    //         'section' : '1',
+    //         'title': '이번항목',
+    //         'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ddddddddddddddddddddddddddddddddddddddddostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+    //     },
+    //     {
+    //         'section' : '2',
+    //         'title': '삼번항목',
+    //         'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elitddddddddddddddddddddddddddddd. ostrum, optio, assumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+    //     },
+    //     {
+    //         'section': '3',
+    //         'title': '사번항목',
+    //         'content': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ostrum, odfkjs;fjskdjf;alskdjf;sdlkfj;alsdkjf;alskdjf;laksssumenda distinctio autem, animi dolore velit nam vel impedit porro ad earum! Similique aperiam eaque aliquam ratione earum, unde sunt!'    
+    //     },
+    // ]
 
     const myDivRef = useRef([]);
     const [allText, setAllText] = useState([]);
@@ -129,14 +129,14 @@ function WikiViewer(props) {
                         
                     </div>
                     <div className='wiki-index'>
-                        {data.map((item) => {
+                        {allText.map((item) => {
                             return(
                             <li onClick={() => handleClick(item.section)} key={item.section}>{item.section} {item.title}</li>
                             );
                         })}    
                     </div>
                     <div className='wiki-content'>
-                        {data.map((item) => {
+                        {allText.map((item) => {
                             return(
                                 <div ref={(el) => (myDivRef.current[item.section] = el)} key={item.section}>
                                     <WikiBox 
