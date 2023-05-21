@@ -887,6 +887,7 @@ cursor: pointer;
     columns: 2;
     -webkit-columns: 2;
     -moz-columns: 2;
+    margin-bottom: 20px;
   }
   
   
@@ -915,6 +916,10 @@ cursor: pointer;
     width: 1px;
     height: 75%;
     background-color: #c1c1c1;
+  }
+
+  #bettingtime {
+    font-size: 8px;
   }
 
 /* 메인페이지 */
