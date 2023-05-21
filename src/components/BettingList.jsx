@@ -5,6 +5,7 @@ import axios from 'axios';
 function BettingList() {
 
   const [betHistory, setbetHistory] = useState([]);
+  const [celebrities, setCelebrities]=useState([]);
 
   const takebet=async() => {
     try{
@@ -13,7 +14,13 @@ function BettingList() {
 
       if (historylist.data){ 
         setbetHistory(historylist.data.bettingHistory)
+        const celebrityIds = historylist.data.bettingHistory.map(history => history.celebrity_id);
+        const celebritiesResponse = await axios.get(process.env.REACT_APP_HOST + "/event/celebrities");
+        const matchedCelebrities = celebritiesResponse.data.celebrities.filter(celebrity => celebrityIds.includes(celebrity.celebrity_id));
+  
+        setCelebrities(matchedCelebrities);
       }
+
     } catch (error) {
       console.error(error);
     }
@@ -24,10 +31,15 @@ function BettingList() {
 
   return(
       <ul className='betting_list' id='betting_list'>
-        {betHistory.map((historylist) => (
-          <li>
+        {betHistory.map((historylist, index) => (
+          <li key={index}>
              <span>{historylist.celebrity_id}</span>
-             <span>&nbsp;&nbsp;&nbsp;&nbsp;{historylist.betting_point}P</span>   
+             {celebrities.map(celebrity => {
+              if (celebrity.celebrity_id === historylist.celebrity_id) {
+              return <span>&nbsp;&nbsp;&nbsp;&nbsp;{celebrity.celebrities_name}</span>;
+             }
+              return null;
+              })}         
           </li>
           ))
         }
