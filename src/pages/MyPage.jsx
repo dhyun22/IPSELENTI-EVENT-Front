@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import {FaRegUser} from 'react-icons/fa';
 import {FaRegSmile} from 'react-icons/fa';
 import {AiOutlineNumber} from 'react-icons/ai';
-import logo from '../img/logo.png';
+// import logo from '../img/logo.png';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
 import BettingSum from '../components/BettingSum';
@@ -84,7 +84,7 @@ useEffect(()=> {
                 <div className='headerContainer'>
                     <div className='logoContainer'>
                         <Link to='/'>
-                         <img src={logo} alt='logo' className='logo' />
+                         <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt='logo' className='logo' />
                         </Link>
                     </div>
                 </div>

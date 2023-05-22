@@ -2,7 +2,7 @@ import { Link } from "react-router-dom/dist";
 import axios from "axios";
 import { useNavigate } from "react-router-dom/dist";
 import { useState, useEffect } from "react";
-import logo from '../img/logo.png';
+// import logo from '../img/logo.png';
 import editCharacter from '../img/haho-head.png';
 //import {Useform, useForm} from 'react-hook-form';
 
@@ -92,9 +92,9 @@ function Login() {
                     
                     <div className="logoCharacter">
                         <Link to='/'>
-                            <img src={logo} className="editLogo" alt="logo"/>
+                            <img src={process.env.PUBLIC_URL + '/images/logo.png'} className="editLogo" alt="logo"/>
                         </Link>
-                        <img src={editCharacter} className="editCharacter" alt="haho" />
+                        <img src={process.env.PUBLIC_URL + '/images/haho-head.png'} className="editCharacter" alt="haho" />
                     </div>
                     
                     

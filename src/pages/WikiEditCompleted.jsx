@@ -10,9 +10,9 @@ function WikiEditCompleted() {
                 <div className='editResult'>
                     <div className="logoCharacter">
                         <Link to='/'>
-                            <img src={require('../img/logo.png').default} className="editLogo" alt="logo"/>
+                            <img src={process.env.PUBLIC_URL + '/images/logo.png'} className="editLogo" alt="logo"/>
                         </Link>
-                        <img src={require('../img/haho-head.png').default} className="editCharacter" alt="haho" />
+                        <img src={process.env.PUBLIC_URL + '/images/haho-head.png'} className="editCharacter" alt="haho" />
                     </div>
                     <div className='textContainer'>
                         <p className=''>{editText}</p>
