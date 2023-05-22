@@ -462,7 +462,7 @@ h4{
     display: flex;
     flex-direction: column;
     border: 1px solid rgba(0, 0, 0, 0.3);
-    width: 43%;
+    width: 46%;
     font-size: 13px;
 }
 .wiki-index li{
@@ -499,6 +499,9 @@ h4{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.wikiedit h2{
+  font-weight: bold;
 }
 .wikiedit-btn{
     justify-content: flex-end;
@@ -690,6 +693,26 @@ h4{
   height: 50px;
   cursor: pointer;
   padding: 5px;
+}
+
+.notion-box{
+  width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: 1%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.notion-box a:visited{
+  color: grey;
+}
+.notion-links{
+  cursor: pointer;
+  font-size: 5px;
+  border: none;
+  color: grey;
 }
 
 /* 마이페이지 */
@@ -1620,7 +1643,7 @@ hr {
 
 .betBtn {
     color: white;
-    background-color: red;
+    background-color: linear-gradient( to right, #DE3A58, #9F132E );
     font-weight: 700;
     font-size: 14px;
     border-radius: 6px;

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import homeCharacter from '../img/haho_standing.png';
 import axios from 'axios';
 import {useState, useEffect} from 'react';
+import Notion from "../components/Notion"
+
 function Home({loggedIn, setLoggedIn}) {
 
     
@@ -53,7 +55,7 @@ function Home({loggedIn, setLoggedIn}) {
                         </Link>
                     </div>
                 </div>
-                    
+                <Notion/>
             </div>
         </div>
 

@@ -14,8 +14,6 @@ const Signout = () => {
 
                 alert(response.data.message);
                 Navigate('/');
-            }else if (response.status === 401){
-                alert(response.data.message);
             }
             //     setLoggedIn(false);
             // }
