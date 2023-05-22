@@ -1265,7 +1265,7 @@ cursor: pointer;
   color: #000;
   border:none;
   
-}
+}n
 
 .comment_btn_wrapper {
   display: flex;
@@ -1402,7 +1402,7 @@ cursor: pointer;
   max-width: 330px;
   max-height: 630px;
   width: 70vw;
-  height: 40%;
+  height: 370px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -1456,6 +1456,11 @@ h3 {
   text-align: left;
 }
 
+.lineupAlert {
+  display: block;
+  width: 200px;
+  margin-left: 22%;
+}
 .addLineupBtn {
   position: absolute;
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -1478,8 +1483,8 @@ h3 {
   position: relative;
   max-width: 330px;
   max-height: 630px;
+  height: 400px;
   width: 70%;
-  height: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -1540,14 +1545,13 @@ h3 {
   color: red;
   font-size: 14px;
   font-weight: bold;
-  margin-left: 100%;
+  margin-left: 52px;
 }
 
 .pointAndRank {
   display: flex;
   flex-direction: row;
   margin-top: -15%;
-  position: relative;
 }
 
 .betPoint {
@@ -1555,17 +1559,14 @@ h3 {
   color: grey;
   font-size: 11px;
   width: 200%;
-  margin-left: 0%;
-  position: absolute;
 }
 
 .betRank {
-  right: -50%;
   text-align: right;
   color: grey;
   font-size: 11px;
   width: 30px;
-  position: absolute;
+  margin-left: 30px;
 }
 
 hr {
