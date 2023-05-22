@@ -157,7 +157,7 @@ function BettingModal(props) {
                                     <p className='betText'>P</p>
                                 </div>
                                 <div className='betInfoContainer'>
-                                    <p className='betText'>잔여 포인트</p>
+                                    <p className='betText'>가용 포인트</p>
                                     <input deFaultValue={myPoint} className='betInput' placeholder={pointLeft < 0 ? '보유 포인트 초과!' : pointLeft} disabled/>
                                     <p className='betText'>P</p>
                                 </div>
