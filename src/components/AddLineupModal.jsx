@@ -4,11 +4,11 @@ import { GrClose } from 'react-icons/gr';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 
-function AddLineupModal() {
+function AddLineupModal({loggedIn, setLoggedIn}) {
     const [modalOpen, setModalOpen] = useState(false);
     const [singerName, setSingerName] = useState('');
     const [applyReason, setApplyReason] = useState('');
-    const [loggedIn, setLoggedIn] = useState(false);
+
 const Navigate = useNavigate();
 
 const checkLoginStatus = async () => {
@@ -33,10 +33,20 @@ const checkLoginStatus = async () => {
 
     }
 
+    const isLoggined = async () => {
+        if (loggedIn) {
+            console.log('hihi');
+            setModalOpen(true)
+        }
+        else{
+            Navigate('/login');
+        }
+    };
 
     useEffect (() => {
         checkLoginStatus();
     }, []);
+
 
     const addLineupPost = async() => {
         axios.post(process.env.REACT_APP_HOST+'/event/celebrityrequest', {
@@ -50,7 +60,7 @@ const checkLoginStatus = async () => {
 
     return (
             <div>
-                <button className='adding_lineup' onClick={() => setModalOpen(true)}>라인업 추가하기 &gt; </button>
+                <button className='adding_lineup' onClick={() => {isLoggined()}}>라인업 추가하기 &gt; </button>
                 <Modal 
                 className='lineupModal'
                 isOpen={modalOpen}
