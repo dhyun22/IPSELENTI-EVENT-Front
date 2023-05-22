@@ -22,7 +22,7 @@ function HistoryBox (props) {
     <div className="wiki-contents content-one" >
       <li className='rollback-box'>
         <span>{ver}&ensp;{time}&ensp;{studentid}</span>
-        <span className={rollbacked ? 'rollback-span' : 'hidden'}>(r{rollbacked}로 되돌림)</span>
+        <span className={rollbacked ? 'rollback-span' : 'hidden'}>({rollbacked}로 되돌림)</span>
         <button onClick={rollbackToThisVer} className='rollback-btn'>롤백</button>
       </li>
     </div>
