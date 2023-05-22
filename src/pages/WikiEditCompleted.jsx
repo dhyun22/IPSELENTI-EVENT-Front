@@ -1,6 +1,5 @@
-import logo from '../../img/logo.png';
+import logo from '../img/logo.png';
 import { Link } from 'react-router-dom';
-import editCharacter from '../../img/haho-head.png'
 
 function WikiEditCompleted() {
     const editText = "문서가 수정되었습니다!\n기여해주셔서 감사합니다 :)"
@@ -11,9 +10,9 @@ function WikiEditCompleted() {
                 <div className='editResult'>
                     <div className="logoCharacter">
                         <Link to='/'>
-                            <img src={logo} className="editLogo" alt="logo"/>
+                            <img src={require('../img/logo.png').default} className="editLogo" alt="logo"/>
                         </Link>
-                        <img src={editCharacter} className="editCharacter" alt="haho" />
+                        <img src={require('../img/haho-head.png').default} className="editCharacter" alt="haho" />
                     </div>
                     <div className='textContainer'>
                         <p className=''>{editText}</p>
