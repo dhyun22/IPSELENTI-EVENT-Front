@@ -132,16 +132,16 @@ function WikiViewer({loggedIn, setLoggedIn}) {
                     <div className='wiki-index'>
                         {allText.map((item) => {
                             return(
-                            <li onClick={() => handleClick(item.section)} key={item.section}>{item.section} {item.title}</li>
+                            <li onClick={() => handleClick(item.index)} key={item.index}>{item.index} {item.title}</li>
                             );
                         })}    
                     </div>
                     <div className='wiki-content'>
                         {allText.map((item) => {
                             return(
-                                <div ref={(el) => (myDivRef.current[item.section] = el)} key={item.section}>
+                                <div ref={(el) => (myDivRef.current[item.index] = el)} key={item.index}>
                                     <WikiBox 
-                                    title={item.title} content={item.content} section={item.section}
+                                    title={item.title} content={item.content} index={item.index} section={item.section}
                                     />
                                 </div>
                             );
