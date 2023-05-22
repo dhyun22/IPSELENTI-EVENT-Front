@@ -31,6 +31,7 @@ function LineupEvent({loggedIn, setLoggedIn}) {
     const [comment, setComment] = useState([]);
     const [authorID, setAuthorID] = useState('');
     const [commentContent, setCommentContent] = useState('');
+    
 /*     const [loggedIn, setLoggedIn] = useState(false); */
    
     const Navigate = useNavigate();
@@ -206,7 +207,7 @@ function LineupEvent({loggedIn, setLoggedIn}) {
                     
                     <div className='main_head'>
                         <h2 className='main_head_title'>입실렌티 라인업 예측</h2>
-                        <AddLineupModal />
+                        <AddLineupModal loggedIn = {loggedIn} setLoggedIn = {setLoggedIn} />
                     </div>
                     <div className='main_body'>
                         <div className='left_body'>

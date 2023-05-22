@@ -70,7 +70,7 @@ function ShareModal() {
                     </div>
                 </div>
                 </div>
-                <CopyToClipboard text='www.asku.wiki/lineupevent'>
+                <CopyToClipboard text='https://asku.wiki'>
                     <button
                     onClick={handleClick}
                     className='copyBtn'
