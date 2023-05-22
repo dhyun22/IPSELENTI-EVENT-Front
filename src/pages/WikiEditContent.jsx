@@ -97,13 +97,14 @@ function WikiEditContent() {
                 if (result.status === 200){
                     setWiki(result.data['title']+'\n'+result.data['content']);
                     setVersion(result.data.version);
-                } else if(result.status === 401){
-                    alert(result.data.message);
-                    Navigate('/login');
                 }
                 
             } catch (error) {
                 console.error(error);
+                if(error.response.status === 401){
+                    alert("login이 필요합니다.");
+                    Navigate('/login');
+                }
                 //alert("result.data.message");
             }
         };
@@ -138,20 +139,22 @@ function WikiEditContent() {
             });
             if (result.status === 200){
                 Navigate('/wikiedit/completed');
-            } else if(result.status === 401){
-                alert(result.data.message);
-                Navigate('/login');
             } else if(result.status === 210){
                 alert("수정에 기여해주셔서 감사합니다.");
                 Navigate('/wiki');
-            }else if(result.status === 432){
+            }
+        } catch(error){
+            if(error.response.status === 401){
+                alert("login이 필요합니다.");
+                Navigate('/login');
+            } else if(error.response.status === 432){
                 alert("제출해 실패했습니다. 다시 시도해주세요.");
-                setWiki(result.data.newContent);
-            }else if(result.status === 426){
+                // setWiki(error.response.data.newContent);
+            }else if(error.response.status === 426){
                 alert("기존 글이 수정되었습니다. 새로고침 후 다시 제출해주세요.");
                 setCopy(true);
             }
-        } catch(error){console.log(error)};
+        }
         
     };
     

@@ -9,7 +9,7 @@ function Header() {
         <div className='header'>
             <div className='logoContainer'>
                 <Link to='/'>
-                    <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt='logo' className='logo'></img>
+                    <img src="https://asku.wiki/images/logo.png" alt='logo' className='logo'></img>
                 </Link>
                 <Link to='/mypage'>
                     <div className='myPageButton'>
@@ -36,7 +36,7 @@ function Header() {
             </div >
             <div>
                 <Link to='/lineupevent'>
-                    <img src={process.env.PUBLIC_URL + '/images/newBanner2.png'}  className='banner' alt='banner'/>
+                    <img src="https://asku.wiki/images/newBanner2.png"  className='banner' alt='banner'/>
                 </Link>
             </div>
             
