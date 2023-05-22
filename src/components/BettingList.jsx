@@ -43,7 +43,7 @@ function BettingList() {
         return (
           <li key={historylist.celebrity_id}>
             {matchedCelebrity && <span>{matchedCelebrity.celebrities_name}</span>}
-            <span>&nbsp;{historylist.bettingHistorySum.total_betting}P</span>
+            <span>&nbsp;{historylist.total_betting}P</span>
           </li>
         );
       })}
