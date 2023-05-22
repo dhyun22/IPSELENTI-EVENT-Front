@@ -72,7 +72,7 @@ function SignUp() {
 
         if(isPwValid === false || checkFIdIsNum === true || checkIdNum === true || checkPhoneNum === true){
             e.preventDefault();
-            return alert('비밀번호를 다시 입력하세요.')
+            return alert('형식이 올바르지 않습니다.')
             
         }
 

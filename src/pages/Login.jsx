@@ -68,14 +68,12 @@ function Login() {
             }, {
                 withCredentials: true
             });
-            if (response.status === 201) {
+            if (response.data.success) {
                 setLoggedIn(true);
                 pointRequest();
                 Navigate('/');
-            } else if (response.status === 401){
-                setLoggedIn(false);
-                return alert("아이디 또는 비밀번호를 잘못입력하였습니다.");
-                
+            } else {
+                alert("아이디 또는 비밀번호가 올바르지 않습니다.");
             }
         } catch (error) {
             console.error(error);
