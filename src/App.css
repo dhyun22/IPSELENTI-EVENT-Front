@@ -1146,9 +1146,10 @@ cursor: pointer;
   border-radius: 6px;
   background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
   color: white;
-  padding: 3px;
-  width: 4vh;
-  height: 3vh;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  padding-right: 20px;
 }
 
 .celeb_graph{

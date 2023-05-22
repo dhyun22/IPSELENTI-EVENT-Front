@@ -12,8 +12,9 @@ function BettingModal(props) {
     const[pointLeft, setPointLeft] = useState(0); //잔여 포인트
     const[dividend, setDividend] = useState(parseInt(props.bettingAmount) * parseFloat(props.dividendRate)); //새롭게 배팅하는 포인트 * 예상배당률 = 예상 배당금
     const[celebId, setCelebId] = useState(props.celebId);
-    /* const [loggedIn, setLoggedIn] = useState(false); */
+  /*  const [loggedIn, setLoggedIn] = useState(false); */
     const Navigate = useNavigate();
+
     const isCanBetting = async () => {
         try {
             if (props.loggedIn) {
@@ -26,6 +27,7 @@ function BettingModal(props) {
             console.error(error);
         }
       }  
+   
     const checkLoginStatus = async () => {
         try {
             const response = await axios.get(
@@ -50,7 +52,7 @@ function BettingModal(props) {
 
     useEffect (() => {
         checkLoginStatus();
-    }, []);
+    }, []); 
 
 
     const getBettedPoint = async () => {
@@ -76,12 +78,13 @@ function BettingModal(props) {
     useEffect (() => {
         getBettedPoint();
     }, []);
+
     useEffect(() => {
         if (modalOpen) {
           getBettedPoint();
         }
       }, [modalOpen]);
-
+    
     const betRequest = async() => {
         console.log('문제 없음');
         try{

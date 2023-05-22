@@ -104,7 +104,11 @@ function CommentPage() {
         checkLoginStatus();
 
         try{
-            //!!!!!!!!!!!!!!!여기서 set 써서 authorID를 loginID로 설정해야대!!!!!11
+            
+                if (commentContent === '') {
+                    alert('댓글을 입력하세요');
+                    return;
+                }
             const response = await axios.post(process.env.REACT_APP_HOST+'/comment', 
                 {author: authorID, comment_content: commentContent}
             , {withCredentials: true});

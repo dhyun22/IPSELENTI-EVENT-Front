@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 
+
 function BettingList() {
   const [betHistory, setBetHistory] = useState([]);
   const [celebrities, setCelebrities] = useState([]);
+
+
 
   const takeBet = async () => {
     try {
@@ -26,6 +29,11 @@ function BettingList() {
   useEffect(() => {
     takeBet();
   }, []);
+
+  
+
+
+
 
   return (
     <ul className='betting_list' id='betting_list'>
