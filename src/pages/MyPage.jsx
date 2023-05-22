@@ -17,58 +17,65 @@ import Signout from '../components/Signout';
 
 
 
-function MyPage() {
-  const [user, setUser] = useState('');
-  const [betting, setBetting]=useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
-  const navRef = useRef(useNavigate());
+function MyPage({loggedIn, setLoggedIn}) {
   const Navigate = useNavigate();
+/*   const [loggedIn, setLoggedIn] = useState(false); */
+  
+  const [user, setUser] = useState(''); 
+  const [betting, setBetting]=useState('');
+  const checkLoginStatus = async () => {
+    try {
+        const response = await axios.get(
+          process.env.REACT_APP_HOST+"/user/auth/issignedin",
+            {
+                withCredentials: true,
+            }
+        );
 
-
-  useEffect(()=> {
-    const checkLoginStatus = async () => {
-      try {
-          const response = await axios.get(
-              process.env.REACT_APP_HOST+"/user/auth/issignedin",
-              {
-                  withCredentials: true,
-              }
-          );
-
-          if (response.status === 201) {
-              setLoggedIn(true);
-              takeuser(); //로그인 성공 시에만 불러옴
-          } else if (response.status === 401){
-              setLoggedIn(false);
-              Navigate('/login');
-          }
-      } catch (error) {
-          console.error(error);
-      }
+        if (response.data.success) {
+            setLoggedIn(true);
+        } else{
+            setLoggedIn(false);
+               Navigate('/login');
+        }
+    } catch (error) {
+        console.error(error);
     }
 
-    const takeuser = async () => {
-      try{
-        //const login = await axios.post(process.env.REACT_APP_HOST+"/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true});
-        
-        const response = await axios.get(process.env.REACT_APP_HOST+"/user/mypage/info", {withCredentials: true});
-        
-        if (response.data.success === true){
-          setUser(response.data.user)
-        } else{ Navigate('/login');
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    } 
+};
+
+
+  const takeuser = async () => {
+    try{
+      //const login = await axios.post(process.env.REACT_APP_HOST+"/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true});
+      const response = await axios.get(process.env.REACT_APP_HOST+"/user/mypage/info", {withCredentials: true});
       
+      if (response.data.success === true){
+        setUser(response.data.user)
+      }else{ navigator('/login')
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  } 
+
+  useEffect(()=> {takeuser();}, []);
+
+
+
+
+  
+  
+
+useEffect (() => {
     checkLoginStatus();
+}, []);
+useEffect(()=> {
+  if (loggedIn === false){
+    Navigate('/login');
+  }
+}, [])
 
-  }, []);
-
-
-  
-  
 
   return (
     <div className='container'>
@@ -86,7 +93,7 @@ function MyPage() {
       <div className='mypage_content'>
        
         <div className='mypage'>
-          <h2 className='mypage_text'>마이페이지</h2>
+          <h2 className='mypage_text'><Link to="/signup">마이페이지</Link></h2>
         </div>
         <div className='welcome_message'>
           <span>{user.name}님 안녕하세요!</span>

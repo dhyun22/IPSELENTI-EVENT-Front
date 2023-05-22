@@ -1,7 +1,36 @@
 import Header from "../components/Header";
 import { Link } from 'react-router-dom';
 import homeCharacter from '../img/haho_standing.png';
-function Home() {
+import axios from 'axios';
+import {useState, useEffect} from 'react';
+function Home({loggedIn, setLoggedIn}) {
+
+    
+
+    const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+              process.env.REACT_APP_HOST+"/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
+    
+            if (response.data.success) {
+                setLoggedIn(true);
+            } else{
+                setLoggedIn(false);
+ /*                Navigate('/login'); */
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    
+    };
+
+    useEffect(() => {
+        checkLoginStatus();
+    },[]);    
     return (
 
         <div className="container">

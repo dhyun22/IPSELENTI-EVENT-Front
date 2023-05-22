@@ -12,9 +12,20 @@ function BettingModal(props) {
     const[pointLeft, setPointLeft] = useState(0); //잔여 포인트
     const[dividend, setDividend] = useState(parseInt(props.bettingAmount) * parseFloat(props.dividendRate)); //새롭게 배팅하는 포인트 * 예상배당률 = 예상 배당금
     const[celebId, setCelebId] = useState(props.celebId);
-    const [loggedIn, setLoggedIn] = useState(false);
+    /* const [loggedIn, setLoggedIn] = useState(false); */
     const Navigate = useNavigate();
-
+    const isCanBetting = async () => {
+        try {
+            if (props.loggedIn) {
+                setModalOpen(true)
+            }
+            else{
+                Navigate('/login');
+            }
+        } catch(error) {
+            console.error(error);
+        }
+      }  
     const checkLoginStatus = async () => {
         try {
             const response = await axios.get(
@@ -25,9 +36,9 @@ function BettingModal(props) {
             );
 
             if (response.data.success) {
-                setLoggedIn(true);
+                props.setLoggedIn(true);
             } else{
-                setLoggedIn(false);
+                props.setLoggedIn(false);
                 Navigate('/login');
             }
         } catch (error) {
@@ -39,7 +50,7 @@ function BettingModal(props) {
 
     useEffect (() => {
         checkLoginStatus();
-    }, []); 
+    }, []);
 
 
     const getBettedPoint = async () => {
@@ -65,13 +76,12 @@ function BettingModal(props) {
     useEffect (() => {
         getBettedPoint();
     }, []);
-
     useEffect(() => {
         if (modalOpen) {
           getBettedPoint();
         }
       }, [modalOpen]);
-    
+
     const betRequest = async() => {
         console.log('문제 없음');
         try{
@@ -106,7 +116,7 @@ function BettingModal(props) {
 
     return (
             <div className=''>
-                <button className='betting_btn' onClick={() => setModalOpen(true)}>베팅</button>
+                <button className='betting_btn' onClick={() => isCanBetting()}>베팅</button>
                 <Modal
                 className='bettingModal'
                 isOpen={modalOpen}
@@ -150,8 +160,8 @@ function BettingModal(props) {
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>현재 배당률</p>
-                                    <input defaultValue={parseFloat(props.dividendRate) > 0 ? parseFloat(props.dividendRate) : '첫 베팅을 해보세요!'} className='betInput' disabled/>
-                                    <p className='betText'></p>
+                                    <input defaultValue={parseFloat(props.dividendRate)} className='betInput' disabled/>
+                                    <p className='betText'>%</p>
                                 </div>
                                 <div className='betInfoContainer'>
                                     <p className='betText'>예상 배당금</p>

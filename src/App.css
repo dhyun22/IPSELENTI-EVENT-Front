@@ -183,7 +183,7 @@
   /* font-weight: bold; */
   font-family: 'Jua', sans-serif;
   animation-name: slide-in;
-  animation-duration: 2s;
+  animation-duration: 1.5s;
   animation-delay: 1s;
   animation-timing-function: ease-out;
   /* animation-iteration-count: 3; */
@@ -199,7 +199,7 @@
   /* font-weight: bold; */
   font-family: 'Jua', sans-serif;
   animation-name: slide-in;
-  animation-duration: 2s;
+  animation-duration: 1.5s;
   animation-delay: 1.6s;
   animation-timing-function: ease-out;
   /* animation-iteration-count: 3; */
@@ -215,7 +215,7 @@
   /* font-weight: bold; */
   font-family: 'Jua', sans-serif;
   animation-name: slide-in;
-  animation-duration: 1.4s;
+  animation-duration: 0.9s;
   animation-delay: 2.2s;
   animation-timing-function: ease-out;
   /* animation-iteration-count: 3; */
@@ -231,7 +231,7 @@
   /* font-weight: bold; */
   font-family: 'Jua', sans-serif;
   animation-name: slide-in;
-  animation-duration: 1.2s;
+  animation-duration: 0.7s;
   animation-delay: 2.8s;
   animation-timing-function: ease-out;
   /* animation-iteration-count: 3; */
@@ -252,7 +252,7 @@
     opacity: 0;
     animation-fill-mode: forwards;
     animation-name: slide-btn;
-    animation-duration: 1.2s;
+    animation-duration: 0.7s;
     animation-delay: 1s;
     animation-timing-function: ease-out;
     color: white;
@@ -275,7 +275,7 @@
   opacity: 0;
   animation-fill-mode: forwards;
   animation-name: slide-btn;
-  animation-duration: 1.2s;
+  animation-duration: 0.7s;
   animation-delay: 1s;
   animation-timing-function: ease-out;
   color: rgba(159, 19, 46, 1);

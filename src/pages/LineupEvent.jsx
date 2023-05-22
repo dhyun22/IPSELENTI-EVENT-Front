@@ -17,7 +17,7 @@ import { FaUserAlt } from 'react-icons/fa';
 import Header from '../components/Header';
 
 
-function LineupEvent() {
+function LineupEvent({loggedIn, setLoggedIn}) {
     
 
 
@@ -31,10 +31,32 @@ function LineupEvent() {
     const [comment, setComment] = useState([]);
     const [authorID, setAuthorID] = useState('');
     const [commentContent, setCommentContent] = useState('');
-    const [loggedIn, setLoggedIn] = useState(false);
+/*     const [loggedIn, setLoggedIn] = useState(false); */
+   
     const Navigate = useNavigate();
+    const checkLoginStatus = async () => {
+        try {
+            const response = await axios.get(
+              process.env.REACT_APP_HOST+"/user/auth/issignedin",
+                {
+                    withCredentials: true,
+                }
+            );
+    
+            if (response.data.success) {
+                setLoggedIn(true);
+            } else{
+                setLoggedIn(false);
 
-
+            }
+        } catch (error) {
+            setLoggedIn(false)
+            console.error(error);
+        }
+    
+    };
+    
+    
 
    
     const takeuser = async () => {
@@ -50,7 +72,7 @@ function LineupEvent() {
           console.error(error);
         }
       }   
-
+      
 
       const takeComment = async () => {
           try {
@@ -66,26 +88,7 @@ function LineupEvent() {
           }
       }
 
-      const checkLoginStatus = async () => {
-        try {
-            const response = await axios.get(
-                process.env.REACT_APP_HOST+"/user/auth/issignedin",
-                {
-                    withCredentials: true,
-                }
-            );
 
-            if (response.data.success) {
-                setLoggedIn(true);
-            } else{
-                setLoggedIn(false);
-                Navigate('/login');
-            }
-        } catch (error) {
-            console.error(error);
-        }
-
-    }
 
       const postComment = async () => {
 
@@ -110,12 +113,17 @@ function LineupEvent() {
             console.error(error);
         }
     }
+
    
       useEffect(() => {
         takeComment();
     }, []);
 
-
+    useEffect (() => {
+  
+  
+        checkLoginStatus();
+      }, []);
 
     const[celebrities, setCelebrities] = useState([]);
     const[bettingAmountSum, setBettingAmountSum] = useState([]);
@@ -182,7 +190,7 @@ function LineupEvent() {
                         <div className='left_body'>
                             <span className='remaintime_text'>남은 시간</span>
                             <TimeLeft/>
-                            <ShareModal/>
+                            <ShareModal />
                         </div>
                         <div className='rignt_body'>
                             <span className='Totalpoint_text'>누적 포인트</span>
@@ -194,7 +202,7 @@ function LineupEvent() {
                     </div>
                 </div>
                     <div className='ranking_count'>
-                        <Celebrity celebList={celebrities}/>
+                        <Celebrity loggedIn={loggedIn} setLoggedIn={setLoggedIn} celebList={celebrities}/>
                     </div>
                     <div className='comment_content'>
                      <div className='comment_head'>
