@@ -1,8 +1,7 @@
-import logo from '../img/logo.png';
+import logo from '../img/logo.png'
 import { BsSearch } from 'react-icons/bs';
 import { FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import newBanner3 from '../img/newBanner3.png';
 import newBanner2 from '../img/newBanner2.png';
 
 function Header() {

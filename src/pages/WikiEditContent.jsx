@@ -1,4 +1,4 @@
-import Header from '../components/Header';
+import Header from '../../components/Header';
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom/dist';
 import { Editor } from 'react-draft-wysiwyg';

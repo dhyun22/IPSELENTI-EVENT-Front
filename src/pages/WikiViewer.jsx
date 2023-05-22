@@ -148,7 +148,6 @@ function WikiViewer({loggedIn, setLoggedIn}) {
                         })}
                     </div>    
                 </div>
-                <Signout />
             </div>
         </div>
         

@@ -94,6 +94,11 @@ function LineupEvent({loggedIn, setLoggedIn}) {
 
         checkLoginStatus();
         try{
+            if (commentContent === '') {
+                alert('댓글을 입력하세요');
+                return;
+            }
+            
             const response = await axios.post(process.env.REACT_APP_HOST+'/comment', 
                 {author: authorID, comment_content: commentContent}
             , {withCredentials: true});
@@ -134,6 +139,12 @@ function LineupEvent({loggedIn, setLoggedIn}) {
   
   
         checkLoginStatus();
+      }, []);
+
+      useEffect (() => {
+  
+  
+        takeuser();
       }, []);
 
     const[celebrities, setCelebrities] = useState([]);
