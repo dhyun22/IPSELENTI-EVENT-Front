@@ -39,14 +39,11 @@ function BettingList() {
     <ul className='betting_list' id='betting_list'>
       {betHistory.map((historylist) => {
         const matchedCelebrity = celebrities.find(celebrity => celebrity.celebrity_id === historylist.celebrity_id);
-        const time = new Date(historylist.betting_time);
-        const formattedTime = `${time.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })} ${time.getHours()}:${time.getMinutes() < 10 ? '0' : ''}${time.getMinutes()}`;
 
         return (
-          <li key={historylist.betting_id}>
+          <li >
             {matchedCelebrity && <span>{matchedCelebrity.celebrities_name}</span>}
-            <span>&nbsp;{historylist.betting_point}P</span>
-            <span id="bettingtime">&nbsp;{formattedTime}</span>
+            <span>&nbsp;{historylist.total_betting}P</span>
           </li>
         );
       })}
