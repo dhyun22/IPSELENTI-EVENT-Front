@@ -77,7 +77,7 @@ function MyPage() {
                 <div className='headerContainer'>
                     <div className='logoContainer'>
                         <Link to='/'>
-                         <img src={logo} alt='logo' id='mypagelogo'></img>
+                         <img src={logo} alt='logo' className='logo' />
                         </Link>
                     </div>
                 </div>

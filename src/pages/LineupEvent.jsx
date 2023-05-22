@@ -158,7 +158,7 @@ function LineupEvent() {
                 <div className='headerContainer'>
                     <div className='logoContainer'>
                         <Link to='/'>
-                         <img src={logo} alt='logo' id='mainpagelogo'></img>
+                         <img src={logo} alt='logo' className='logo'></img>
                         </Link>
                         <Link to='/mypage'>
                             <div className='myPageButton'>

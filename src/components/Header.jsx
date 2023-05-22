@@ -20,7 +20,7 @@ function Header() {
                 </Link>
             </div>
             <div className='searchBarContainer'>
-                <input className='searchBar' placeholder='입실렌티'/>
+                <input className='searchBar' placeholder='입실렌티' disabled={true}/>
                 <Link to='/wiki'>
                     <div className='searchButton'>
                         <BsSearch className='search' />
