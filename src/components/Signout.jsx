@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom/dist';
 
-const Signout = () => {
+const Signout = ({loggedIn, setLoggedIn}) => {
     const Navigate = useNavigate();
 
     const getLoggedOut = async() => {
@@ -10,8 +10,9 @@ const Signout = () => {
             const response = await axios.get(process.env.REACT_APP_HOST+'/user/auth/signout', {
                 withCredentials: true
             });
+            
             if (response.status === 200) {
-
+                setLoggedIn(false);
                 alert(response.data.message);
                 Navigate('/');
             }else if (response.status === 401){

@@ -153,7 +153,7 @@ useEffect(()=> {
           </div>
         </div>
       </div>
-      <Signout />
+      <Signout loggedIn= {loggedIn} setLoggedIn={setLoggedIn}/>
     </div>
     </div>
   )
