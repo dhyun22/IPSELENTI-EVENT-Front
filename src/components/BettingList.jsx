@@ -13,9 +13,9 @@ function BettingList() {
       const historylist = await axios.get(process.env.REACT_APP_HOST + "/user/mypage/bettinghistory", { withCredentials: true });
 
       if (historylist.data) {
-        setBetHistory(historylist.data.bettingHistory);
+        setBetHistory(historylist.data.bettingHistorySum);
 
-        const celebrityIds = historylist.data.bettingHistory.map(history => history.celebrity_id);
+        const celebrityIds = historylist.data.bettingHistorySum.map(history => history.celebrity_id);
         const celebritiesResponse = await axios.get(process.env.REACT_APP_HOST + "/event/celebrities");
         const matchedCelebrities = celebritiesResponse.data.celebrities.filter(celebrity => celebrityIds.includes(celebrity.celebrity_id));
 
@@ -43,7 +43,7 @@ function BettingList() {
         return (
           <li key={historylist.celebrity_id}>
             {matchedCelebrity && <span>{matchedCelebrity.celebrities_name}</span>}
-            <span>&nbsp;{historylist.total_betting}P</span>
+            <span>&nbsp;{historylist.bettingHistorySum.total_betting}P</span>
           </li>
         );
       })}
