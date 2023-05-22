@@ -12,7 +12,7 @@ function WikiEditCompleted() {
                         <Link to='/'>
                             <img src="https://asku.wiki/images/logo.png" className="editLogo" alt="logo"/>
                         </Link>
-                        <img src={process.env.PUBLIC_URL + '/images/haho-head.png'} className="editCharacter" alt="haho" />
+                        <img src="https://asku.wiki/images/haho-head.png" className="editCharacter" alt="haho" />
                     </div>
                     <div className='textContainer'>
                         <p className=''>{editText}</p>
