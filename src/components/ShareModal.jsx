@@ -20,7 +20,7 @@ function ShareModal() {
     const randomNumber = Math.floor(Math.random() * 5) + 1; // 1부터 5까지의 랜덤한 숫자 생성
     const className = `shareContainer${randomNumber}` // 랜덤한 숫자를 이미지 경로에 적용
     const getInfo = async () => {
-        const result = await axios.get("http://localhost:8080/user/shareInfo/most", {withCredentials:true});
+        const result = await axios.get(REACT_APP_HOST+"/user/shareInfo/most", {withCredentials:true});
         console.log('hear0')
         console.log(result);
         if (result.data.success === true){

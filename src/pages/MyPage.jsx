@@ -14,9 +14,34 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-function MyPage() {
+function MyPage({loggedIn, setLoggedIn}) {
+  const Navigate = useNavigate();
+/*   const [loggedIn, setLoggedIn] = useState(false); */
+  
   const [user, setUser] = useState(''); 
   const [betting, setBetting]=useState('');
+
+  const checkLoginStatus = async () => {
+    try {
+        const response = await axios.get(
+          process.env.REACT_APP_HOST+"/user/auth/issignedin",
+            {
+                withCredentials: true,
+            }
+        );
+
+        if (response.data.success) {
+            setLoggedIn(true);
+        } else{
+            setLoggedIn(false);
+               Navigate('/login');
+        }
+    } catch (error) {
+        console.error(error);
+    }
+
+};
+
 
   const takeuser = async () => {
     try{
@@ -36,37 +61,22 @@ function MyPage() {
 
 
   
-  const [loggedIn, setLoggedIn] = useState(false);
-  const Navigate = useNavigate();
   
   
-  const checkLoginStatus = async () => {
-    try {
-        const response = await axios.get(
-          process.env.REACT_APP_HOST+"/user/auth/issignedin",
-            {
-                withCredentials: true,
-            }
-        );
-
-        if (response.data.success) {
-            setLoggedIn(true);
-        } else{
-            setLoggedIn(false);
-            Navigate('/login');
-        }
-    } catch (error) {
-        console.error(error);
-    }
-
-}
-
+  
+  
 
 useEffect (() => {
-    checkLoginStatus();
+  
+  
+  checkLoginStatus();
 }, []);
 
-
+useEffect(()=> {
+  if (loggedIn === false){
+    Navigate('/login');
+  }
+}, [])
 
   return (
     <div className='container'>
@@ -84,7 +94,7 @@ useEffect (() => {
       <div className='mypage_content'>
        
         <div className='mypage'>
-          <h2 className='mypage_text'>마이페이지</h2>
+          <h2 className='mypage_text'><Link to="/signup">마이페이지</Link></h2>
         </div>
         <div className='welcome_message'>
           <span>{user.name}님 안녕하세요!</span>

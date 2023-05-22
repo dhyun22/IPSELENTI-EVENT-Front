@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import BettingModal from './BettingModal';
 import {FiChevronDown} from 'react-icons/fi'
 import { useEffect } from 'react';
-function Celebrity(props) {
-  const{celebList}=props;
+
+
+
+function Celebrity({loggedIn, setLoggedIn, celebList}) {
+  /* const{celebList}=props; */
   const [showMore, setShowMore] = useState(false); // 더보기 버튼 클릭 여부 상태값
   // const [celebrank, setCelebrank] = useState(0); // 셀럽 등수
 
@@ -35,6 +38,7 @@ function Celebrity(props) {
           <div className='celeb_footer'>
             <span id='celeb_point'>{celeb.betting_amount} P</span>
             <BettingModal
+            loggedIn={loggedIn} setLoggedIn={setLoggedIn}
             celebId={celeb.celebrity_id}
             celebName={celeb.celebrities_name}
             voteRate={celeb.percent}
