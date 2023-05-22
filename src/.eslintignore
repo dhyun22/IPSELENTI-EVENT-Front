@@ -1,1 +1,2 @@
-src\components\WikiBox.jsx
+src\components\Wiki\WikiBox.jsx
+src\components\Wiki\HistoryBox.jsx

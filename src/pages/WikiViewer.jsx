@@ -147,7 +147,6 @@ function WikiViewer(props) {
                         })}
                     </div>    
                 </div>
-                <Signout />
             </div>
         </div>
         
