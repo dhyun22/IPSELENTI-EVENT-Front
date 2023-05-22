@@ -41,7 +41,7 @@ function BettingList() {
         const matchedCelebrity = celebrities.find(celebrity => celebrity.celebrity_id === historylist.celebrity_id);
 
         return (
-          <li >
+          <li key={historylist.celebrity_id}>
             {matchedCelebrity && <span>{matchedCelebrity.celebrities_name}</span>}
             <span>&nbsp;{historylist.total_betting}P</span>
           </li>
