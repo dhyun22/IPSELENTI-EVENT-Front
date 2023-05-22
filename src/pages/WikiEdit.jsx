@@ -45,32 +45,7 @@ function WikiEdit() {
       };
 
 
-    // 
 
-
-    // useEffect (() => {
-    //     const checkLoginStatus = async () => {
-    //         try {
-    //             const response = await axios.get(
-    //                 process.env.REACT_APP_HOST+"/user/auth/issignedin",
-    //                 {
-    //                     withCredentials: true,
-    //                 }
-    //             );
-    
-    //             if (response.data.success) {
-    //                 setLoggedIn(true);
-    //             } else{
-    //                 setLoggedIn(false);
-    //                 Navigate('/login');
-    //             }
-    //         } catch (error) {
-    //             console.error(error);
-    //         }
-    
-    //     }
-    //     checkLoginStatus();
-    // }, []);
 
     const pointRequest = async () => {
         try{
@@ -87,9 +62,6 @@ function WikiEdit() {
     }   
 
     const editorToHtml = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-
-    // const parser = new DOMParser();
-    // const parsedHtml = parser.parseFromString(editorToHtml, 'text/html');
       
     const wikiMarkup = traverseHtml(editorToHtml);
 
@@ -121,8 +93,6 @@ function WikiEdit() {
         const getWiki = async () => {
             try{
 
-                // await checkLoginStatus(); // 로그인 상태 확인 완료 후에 getWiki 호출
-
                 const result = await axios.get(process.env.REACT_APP_HOST+'/wiki/contents/',{
                     withCredentials: true,
                 }); //전체 텍스트를 가져옴.
@@ -134,7 +104,7 @@ function WikiEdit() {
             } catch (error) {
                 console.error(error);
                 if(error.response.status === 401){
-                    alert(result.data.message);
+                    alert("login이 필요합니다.");
                     Navigate('/login');
                 }
                 //alert("result.data.message");
@@ -157,17 +127,17 @@ function WikiEdit() {
             });
             if (result.status === 200){
                 Navigate('/wikiedit/completed');
-            } else if(error.status === 210){
+            } else if(result.status === 210){
                 alert("수정에 기여해주셔서 감사합니다.");
                 Navigate('/wiki');
             }
         } catch(error){
             if(error.response.status === 401){
-                alert(result.data.message);
+                alert("login이 필요합니다.");
                 Navigate('/login');
             } else if(error.response.status === 432){
                 alert("제출해 실패했습니다. 다시 시도해주세요.");
-                setWiki(result.data.newContent);
+                // setWiki(error.response.data.newContent);
             }else if(error.response.status === 426){
                 alert("기존 글이 수정되었습니다. 새로고침 후 다시 제출해주세요.");
                 setCopy(true);
