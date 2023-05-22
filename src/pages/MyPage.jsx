@@ -93,7 +93,7 @@ useEffect(()=> {
       <div className='mypage_content'>
        
         <div className='mypage'>
-          <h2 className='mypage_text'><Link to="/signup">마이페이지</Link></h2>
+          <h2 className='mypage_text'>마이페이지</h2>
         </div>
         <div className='welcome_message'>
           <span>{user.name}님 안녕하세요!</span>
