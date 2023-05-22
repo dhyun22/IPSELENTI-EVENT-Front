@@ -8,6 +8,8 @@ import axios from 'axios';
 import {useEffect} from "react";
 import {useState} from "react";
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { FaUserAlt } from 'react-icons/fa';
 
 
 function CommentPage() {
@@ -76,7 +78,7 @@ function CommentPage() {
     const checkLoginStatus = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:8080/user/auth/issignedin",
+                process.env.REACT_APP_HOST+"/user/auth/issignedin",
                 {
                     withCredentials: true,
                 }
@@ -133,6 +135,22 @@ function CommentPage() {
     return (
 <div className='container'>
 <div className='mobile-view'>
+            <div id='mainpageheader'>
+                <div className='headerContainer'>
+                    <div className='logoContainer'>
+                        <Link to='/'>
+                         <img src={logo} alt='logo' id='mainpagelogo'></img>
+                        </Link>
+                        <Link to='/mypage'>
+                            <div className='myPageButton'>
+                                <FaUserAlt className='myPageIcon' />
+                            </div>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+    
+    
     <div className='comment_content'>
         <div className='comment_head'>
             <h2 className='comment_head_title'>댓글</h2>

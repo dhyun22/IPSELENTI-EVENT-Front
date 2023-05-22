@@ -49,6 +49,7 @@ function Comment ({ comments, changeLike, setChangeLike }) {
       }
       if(response.status===404){
         console.log(response.data.message)
+        alert(response.data.message)
       }}
       catch(error){
         console.error(error);
@@ -56,7 +57,8 @@ function Comment ({ comments, changeLike, setChangeLike }) {
     }
   
     
-
+    const time = new Date(comments.comment_time);
+    const formattedTime = `${time.toLocaleDateString()} ${time.getHours()}:${time.getMinutes() < 10 ? '0' : ''}${time.getMinutes()}`;
 
   return (
     <div className="comment">
@@ -71,7 +73,7 @@ function Comment ({ comments, changeLike, setChangeLike }) {
         <p className="comment_text">{comments.comment_content}</p>
       </div>
       <div className='comment_footer'>
-        <p className="comment_time">{comments.comment_time}</p>
+        <p className="comment_time">{formattedTime}</p>
         <p className='comment_liked' onClick={handleLikeClick}>
           <FcLike/>&nbsp;{comments.likes_count}</p>
       </div>

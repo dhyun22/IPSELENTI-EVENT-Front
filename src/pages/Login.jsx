@@ -74,7 +74,8 @@ function Login() {
                 Navigate('/');
             } else if (response.status === 401){
                 setLoggedIn(false);
-                alert(response.data.message);
+                return alert("아이디 또는 비밀번호를 잘못입력하였습니다.");
+                
             }
         } catch (error) {
             console.error(error);
@@ -111,7 +112,7 @@ function Login() {
                             onChange={e => setUserPw(e.target.value)}
                             />
                             <button type="button" id='btn' onClick={userLogin}>Login</button>
-                            <span>가입하면 10000P 바로 지급 <Link to="/signup">회원가입</Link>
+                            <span>가입하면 30000P 바로 지급 <Link to="/signup">회원가입</Link>
                             </span>
                         </form>
                     </div>

@@ -1,7 +1,7 @@
 import Header from '../components/Header';
 import { Link } from "react-router-dom/dist";
 import React, {useRef, useEffect, useState} from 'react';
-import WikiBox from '../components/Wiki/WikiBox';
+import WikiBox from '../components/WikiBox';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom/dist';
 import Signout from '../components/Signout';
@@ -42,26 +42,26 @@ function WikiViewer(props) {
 
     const [loggedIn, setLoggedIn] = useState(false);
 
-    const checkLoginStatus = async () => {
-        try {
-            const response = await axios.get(
-                process.env.REACT_APP_HOST+"/user/auth/issignedin",
-                {
-                    withCredentials: true,
-                }
-            );
+    // const checkLoginStatus = async () => {
+    //     try {
+    //         const response = await axios.get(
+    //             process.env.REACT_APP_HOST+"/user/auth/issignedin",
+    //             {
+    //                 withCredentials: true,
+    //             }
+    //         );
 
-            if (response.data.success) {
-                setLoggedIn(true);
-            } else{
-                setLoggedIn(false);
-	            Navigate('/login');
-            }
-        } catch (error) {
-            console.error(error);
-        }
+    //         if (response.data.success) {
+    //             setLoggedIn(true);
+    //         } else{
+    //             setLoggedIn(false);
+	//             Navigate('/login');
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
 
-    }
+    // }
     
     
 
@@ -97,7 +97,6 @@ function WikiViewer(props) {
     }   
 
     useEffect(() => {
-        checkLoginStatus();
         getWiki();
         pointRequest();
 
@@ -115,7 +114,7 @@ function WikiViewer(props) {
     return (
         <div className='container'>
             <div className="mobile-view">
-                <div className="header">
+                <div className="headerContainer">
                     <Header />
                 </div>
                 <div className='wiki-viewer'>

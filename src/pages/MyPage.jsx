@@ -11,6 +11,9 @@ import LeftPoint from '../components/LeftPoint';
 import {TbCoin} from 'react-icons/tb';
 import BettingList from '../components/BettingList';
 import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
+import Signout from '../components/Signout';
+
 
 
 
@@ -20,7 +23,6 @@ function MyPage({loggedIn, setLoggedIn}) {
   
   const [user, setUser] = useState(''); 
   const [betting, setBetting]=useState('');
-
   const checkLoginStatus = async () => {
     try {
         const response = await axios.get(
@@ -47,7 +49,7 @@ function MyPage({loggedIn, setLoggedIn}) {
     try{
       //const login = await axios.post(process.env.REACT_APP_HOST+"/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true});
       const response = await axios.get(process.env.REACT_APP_HOST+"/user/mypage/info", {withCredentials: true});
-
+      
       if (response.data.success === true){
         setUser(response.data.user)
       }else{ navigator('/login')
@@ -60,23 +62,20 @@ function MyPage({loggedIn, setLoggedIn}) {
   useEffect(()=> {takeuser();}, []);
 
 
-  
-  
-  
+
+
   
   
 
 useEffect (() => {
-  
-  
-  checkLoginStatus();
+    checkLoginStatus();
 }, []);
-
 useEffect(()=> {
   if (loggedIn === false){
     Navigate('/login');
   }
 }, [])
+
 
   return (
     <div className='container'>
@@ -154,6 +153,7 @@ useEffect(()=> {
           </div>
         </div>
       </div>
+      <Signout />
     </div>
     </div>
   )
