@@ -357,7 +357,7 @@ a {
     width: 250px;
     border-radius: 12px;
     height: 40px;
-    background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
+    background: linear-gradient(to left, rgba(0, 19, 46, 1), rgba(222, 58, 88, 1));
     color: white;
     border: none;
     margin: 10px 0px 10px 0px;
