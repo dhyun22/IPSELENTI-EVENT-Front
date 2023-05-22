@@ -90,7 +90,7 @@ function BettingModal(props) {
         }catch(err) { console.error(err)};
 
     }
-z
+
       const handleBettingPointChange = (e) => {
         const inputPoint = parseInt(e.target.value);
         if (isNaN(inputPoint)) {
