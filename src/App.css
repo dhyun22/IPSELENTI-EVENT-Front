@@ -328,7 +328,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 16.5%;
+  margin-bottom: 16%;
 }
 
 .login-form{
@@ -613,7 +613,7 @@ h4{
     white-space:pre-wrap;
     text-align: center;
     font-weight: bold;
-    margin-top: 24%;
+    margin-top: 20px
     /* position: relative; */
     /* width: 80%;
     height: 90%; */
@@ -622,13 +622,13 @@ h4{
 
 .editLogo {
 
-  width: 25%;
-  height: 1%;
+  width: 100px;
+  height: 70px;
   object-fit: contain;
 }
 
 .editCharacter {
-  margin-top: 20%;
+  margin-top: 30px;
   width: 55%;
   height: 55%;
   object-fit: contain;
@@ -637,8 +637,8 @@ h4{
 .textContainer {
   /* position: absolute; */
   width: 70%;
-  margin-top: 20px;
-  margin-bottom: 60px;
+  margin-top: 0px;
+  margin-bottom: 10px;
 }
 
 .editText {
@@ -649,7 +649,7 @@ h4{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 8%;
 }
 .completedButton {
   color: white;

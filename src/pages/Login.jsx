@@ -89,10 +89,14 @@ function Login() {
         <div class="container">
             <div class="mobile-view">
                 <div className='auth'>
+                    
                     <div className="logoCharacter">
-                        <img src={logo} className="editLogo" alt="logo"/>
+                        <Link to='/'>
+                            <img src={logo} className="editLogo" alt="logo"/>
+                        </Link>
                         <img src={editCharacter} className="editCharacter" alt="haho" />
                     </div>
+                    
                     
                     {/* <img class="login-img"src={temporaryLogo} alt=""/> */}
                     <div>

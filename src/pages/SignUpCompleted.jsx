@@ -8,8 +8,12 @@ function SignUpCompleted() {
         <div className='container'>
             <div className='mobile-view'>
                 <div className='editResult'>
-                    <img className='editLogo' src={logo} alt='logo' />
-                    <img className='editCharacter' src={editCharacter} alt='haho' />
+                    <div className="logoCharacter">
+                        <Link to='/'>
+                            <img src={logo} className="editLogo" alt="logo"/>
+                        </Link>
+                        <img src={editCharacter} className="editCharacter" alt="haho" />
+                    </div>
                     <div className='textContainer'>
                         <p style={{fontSize: '14px'}}>{signUpText}</p>
                     </div>
