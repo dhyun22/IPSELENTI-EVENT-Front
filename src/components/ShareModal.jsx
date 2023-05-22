@@ -10,7 +10,7 @@ function ShareModal() {
     const [buttonText, setButtonText] = useState('url 복사하기');
     const [buttonColor, setButtonColor] = useState({backgroundColor: "#9F132E"});
     const [shareInfo, setShareInfo] = useState({
-        "user_name": "로그인이 필요합니다.",
+        "user_name": "000",
         "celebrity_amount": 0,
         "celebrity_name": "로그인이 필요합니다.",
         "betting_amount": 0,
