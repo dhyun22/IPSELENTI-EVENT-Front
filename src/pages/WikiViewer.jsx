@@ -10,7 +10,7 @@ import Signout from '../components/Signout';
 
 
 
-function WikiViewer(props) {
+function WikiViewer({loggedIn, setLoggedIn}) {
 
 
     // const data = [
@@ -39,8 +39,7 @@ function WikiViewer(props) {
     const myDivRef = useRef([]);
     const [allText, setAllText] = useState([]);
     const Navigate = useNavigate();
-
-    const [loggedIn, setLoggedIn] = useState(false);
+    
 
     // const checkLoginStatus = async () => {
     //     try {
@@ -95,6 +94,8 @@ function WikiViewer(props) {
             console.error(err)
         }
     }   
+
+   
 
     useEffect(() => {
         getWiki();

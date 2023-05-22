@@ -88,7 +88,7 @@ function LineupEvent({loggedIn, setLoggedIn}) {
           }
       }
 
-
+      
 
       const postComment = async () => {
 
@@ -114,7 +114,18 @@ function LineupEvent({loggedIn, setLoggedIn}) {
         }
     }
 
-   
+    const isCanCommet = async () => {
+        try {
+            if (loggedIn) {
+                postComment();
+            }
+            else{
+                Navigate('/login');
+            }
+        } catch(error) {
+            console.error(error);
+        }
+      }
       useEffect(() => {
         takeComment();
     }, []);
@@ -232,7 +243,7 @@ function LineupEvent({loggedIn, setLoggedIn}) {
                                              <button 
                                              type="submit" 
                                              className="comment_btn"
-                                             onClick={postComment}>
+                                             onClick={isCanCommet}>
                                                 &nbsp; 작성 &nbsp;
                                              </button>
                                         </div>
