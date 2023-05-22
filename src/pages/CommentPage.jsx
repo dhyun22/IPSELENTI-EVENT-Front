@@ -12,14 +12,14 @@ import { Link } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 
 
-function CommentPage() {
+function CommentPage({loggedIn, setLoggedIn}) {
 
    
     const [user, setUser] = useState('');
     const [comment, setComment] = useState([]);
     const [authorID, setAuthorID] = useState('');
     const [commentContent, setCommentContent] = useState('');
-    const [loggedIn, setLoggedIn] = useState(false);
+
     const Navigate = useNavigate();
 
     

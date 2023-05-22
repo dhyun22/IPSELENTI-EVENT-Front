@@ -51,12 +51,33 @@ function App() {
           path="/"
           element={<Home loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
         />
-        <Route path="/wiki" element={<WikiViewer />} />
+        <Route
+          path="/wiki"
+          element={<WikiViewer loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+        />
 
-        <Route path="/wikiedit" element={<WikiEdit />} />
-        <Route path="/wikiedit/:id" element={<WikiEditContent />} />
-        <Route path="/wikihistory" element={<WikiHistory />} />
-        <Route path="/wikihistory/:version" element={<WikiShowVer />} />
+        <Route
+          path="/wikiedit"
+          element={<WikiEdit loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+        />
+        <Route
+          path="/wikiedit/:id"
+          element={
+            <WikiEditContent loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+          }
+        />
+        <Route
+          path="/wikihistory"
+          element={
+            <WikiHistory loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+          }
+        />
+        <Route
+          path="/wikihistory/:version"
+          element={
+            <WikiShowVer loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+          }
+        />
 
         <Route path="/wikiedit/completed" element={<WikiEditCompleted />} />
         <Route path="/addindex/completed" element={<WikiEditCompleted />} />
@@ -75,7 +96,12 @@ function App() {
           element={<MyPage loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
         />
         <Route path="/admin1905051312348998&" element={<Admin />} />
-        <Route path="/comment" element={<CommentPage />} />
+        <Route
+          path="/comment"
+          element={<CommentPage />}
+          loggedIn={loggedIn}
+          setLoggedIn={setLoggedIn}
+        />
       </Routes>
     </Router>
   );
