@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+
 
 function BettingList() {
   const [betHistory, setBetHistory] = useState([]);
   const [celebrities, setCelebrities] = useState([]);
-  const[bettingPoint, setBettingPoint] = useState(0); 
-  const Navigate = useNavigate();
 
 
 
@@ -32,27 +30,8 @@ function BettingList() {
     takeBet();
   }, []);
 
-  const getBettedPoint = async (historylist) => {
-    try{
-        const result = await axios.get(process.env.REACT_APP_HOST+`/event/artist/${historylist.celebrity_id}`, {
-            withCredentials: true,
-        }); 
-        if (result.status === 200){
-            setBettingPoint(parseInt(result.data.user_total_betting_amount));
-        } else if(result.status === 401){
-            alert(result.data.message);
-            Navigate('/login');
-        }
-        
-    } catch (error) {
-        console.error(error);
-        //alert("result.data.message");
-    }
-};
+  
 
-useEffect(() => {
-  betHistory.forEach(historylist => getBettedPoint(historylist));
-}, [betHistory]);
 
 
 
@@ -66,7 +45,7 @@ useEffect(() => {
         return (
           <li key={historylist.betting_id}>
             {matchedCelebrity && <span>{matchedCelebrity.celebrities_name}</span>}
-            <span>&nbsp;{bettingPoint}P</span>
+            <span>&nbsp;{historylist.betting_point}P</span>
             <span id="bettingtime">&nbsp;{formattedTime}</span>
           </li>
         );
