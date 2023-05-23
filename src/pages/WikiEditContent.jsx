@@ -173,7 +173,7 @@ function WikiEditContent() {
                     <Header />
                 </div>
                 <div className="wikiedit">
-                    <h3>Wiki를 편집해주세요</h3>
+                    <h2>Wiki를 편집해주세요</h2>
                     <div style={editorStyle}>
                         <Editor
                             // 에디터와 툴바 모두에 적용되는 클래스
@@ -197,7 +197,7 @@ function WikiEditContent() {
                     </div>
                     
                     <div className='wikiedit-submit'>
-                        <button classname={copy ? 'hidden': 'editsubmit-btn'} onClick={() => addWikiEdit(wikiMarkup)}>submit</button>
+                        <button classname={copy ? 'hidden': "editsubmit-btn"} onClick={() => addWikiEdit(wikiMarkup)}>submit</button>
                         <p className={copy ? '': 'hidden'}>기존 글이 수정되었습니다. 새로고침 후 다시 제출해주세요.<br></br>수정한 내용은 메모장에 복사해둔 후 새로고침 후 저장해주세요</p>
                     </div>
                 </div>
