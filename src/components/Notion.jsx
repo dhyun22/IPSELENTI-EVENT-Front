@@ -12,7 +12,7 @@ const Signout = () => {
         <a href='https://open.kakao.com/o/s74JtHlf' className='notion-links'> 
             <span>&#124;&nbsp;&nbsp;&nbsp;고객센터&nbsp;&nbsp;&nbsp;</span>
         </a>
-        <a href='https://www.notion.so/ASKu-9d6da8cb08e640db8f746524c231937e?pvs=4' className='notion-links'> 
+        <a href='https://harmonious-authority-301.notion.site/ASKu-9d6da8cb08e640db8f746524c231937e' className='notion-links'> 
             <span>&#124;&nbsp;&nbsp;&nbsp;KUniverse&nbsp;</span>
         </a>
     </div>
