@@ -16,6 +16,7 @@ import WikiEditContent from "./pages/WikiEditContent";
 import WikiHistory from "./pages/WikiHistory";
 import WikiShowVer from "./pages/WikiShowVer";
 import Admin from "./pages/Admin";
+import PrivactPolicy from "./pages/PrivactPolicy";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   //     // const [allContent, setAllContent] = useState(null);
@@ -102,6 +103,8 @@ function App() {
           loggedIn={loggedIn}
           setLoggedIn={setLoggedIn}
         />
+
+        <Route path="/privacy" element={<PrivactPolicy />} />
       </Routes>
     </Router>
   );
