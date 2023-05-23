@@ -1669,12 +1669,12 @@ hr {
 }
 
 .betCanBtn {
-    color: black;
+    color: #DE3A58;
     background-color: white;
     font-weight: 600;
     font-size: 12px;
     border-radius: 2rem;
-    border: 1px solid #DE3A58;
+    border: 2px solid #DE3A58;
     width: 35%;
     height: 30px;
     cursor: pointer;
