@@ -1642,7 +1642,7 @@ hr {
 
 .betBtn {
     color: white;
-    background-color: linear-gradient( to right, #DE3A58, #9F132E );
+    background: linear-gradient( to right, #DE3A58, #9F132E );
     font-weight: 700;
     font-size: 14px;
     border-radius: 6px;
