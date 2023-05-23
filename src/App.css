@@ -698,8 +698,7 @@ h4{
 .notion-box{
   width: 100%;
   height: auto;
-  position: absolute;
-  bottom: 1%;
+  margin-top: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -710,7 +709,7 @@ h4{
 }
 .notion-links{
   cursor: pointer;
-  font-size: 5px;
+  font-size: 8px;
   border: none;
   color: grey;
 }

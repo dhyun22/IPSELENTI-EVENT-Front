@@ -114,7 +114,7 @@ function Login() {
                             />
                             <input 
                             type='password'  
-                            placeholder='숫자, 영문, 특수문자 조합 최소 6자이상 입력해주세요'
+                            placeholder='비밀번호를 입력하세요.'
                             value={userPw} 
                             onChange={e => setUserPw(e.target.value)}
                             />
