@@ -440,6 +440,7 @@ h4{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 .alledit-btn button.wikiedit-btn{
   margin-right: 0px;
@@ -954,7 +955,6 @@ cursor: pointer;
 #mainpageheader{
 
     width: 100%;
-    height: 7vh;
     text-align: center;
     /* background-color: blue; */
     align-items: center;
@@ -965,8 +965,8 @@ cursor: pointer;
 #mainpagelogo {
   width: 25%;
   height: 27px;
-  margin-top: 1vh;
-  cursor: pointer;
+  margin-top: 10px;
+  cursor: pointer; 
 }
 
 #mainmyPageIcon {
@@ -1655,25 +1655,25 @@ hr {
 .betBtn {
     color: white;
     background: linear-gradient( to right, #DE3A58, #9F132E );
-    font-weight: 700;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: 12px;
     border-radius: 2rem;
     border: none;
-    width: 30%;
+    width: 35%;
     height: 10%;
     cursor: pointer;
     padding: 5px;
-    margin-right: 5%;
+    margin-right: 10%;
 }
 
 .betCanBtn {
     color: white;
     background-color: grey;
-    font-weight: 700;
-    font-size: 14px;
+    font-weight: 600;
+    font-size: 12px;
     border-radius: 2rem;
     border:none;
-    width: 30%;
+    width: 35%;
     height: 10%;
     cursor: pointer;
     padding: 5px;

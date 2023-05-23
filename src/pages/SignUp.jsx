@@ -89,13 +89,14 @@ function SignUp() {
             if (response.status === 201) {
                 setLoggedIn(true);
                 Navigate('/signup/completed');
-            } else if(response.status === 409){
-                return alert(response.data.message);
-            } else if(response.status === 422) {
-                return alert(response.data.message);
             }
         } catch (error) {
             console.error(error);
+            if(error.response.status === 409){
+                return alert("중복된 정보가 존재합니다.");
+            } else if(error.response.status === 422) {
+                return alert("추천인이 존재하지 않습니다.");
+            }
         }
     
     }
