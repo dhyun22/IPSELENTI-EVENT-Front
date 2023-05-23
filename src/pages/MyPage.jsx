@@ -100,7 +100,7 @@ useEffect(()=> {
         </div>
         <div className='account_box' id='account_box'>
           <div className='title' id='account_title'>
-            <h3 className="title_text" id='account_text'>내프로필</h3>
+            <h3 className="title_text" id='account_text'>내 프로필</h3>
           </div>
           <ul className="account_row" id='account_row'>
             <li className='account_list'>
@@ -132,7 +132,7 @@ useEffect(()=> {
 
         <div className='betting_box' id='betting_box'>
           <div className="title" id='betting_title'>
-           <h3 className="title_text" id='betting_text'>배팅현황</h3>
+           <h3 className="title_text" id='betting_text'>베팅현황</h3>
           </div>
           <ul className="betting_row" id='betting_row'>
             <li className='betting_info'>
@@ -143,7 +143,7 @@ useEffect(()=> {
 
             <li className='betting_info'>
               <div className="row_itemused">
-               <TbCoin/><span className="item_text" id='row_itemused'> &nbsp;배팅 포인트 : &nbsp;<BettingSum/> P</span>
+               <TbCoin/><span className="item_text" id='row_itemused'> &nbsp;베팅 포인트 : &nbsp;<BettingSum/> P</span>
               </div>
             </li>
           </ul> 

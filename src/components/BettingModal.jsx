@@ -104,15 +104,14 @@ function BettingModal(props) {
 
     }
 
-      const handleBettingPointChange = (e) => {
+    const handleBettingPointChange = (e) => {
         const inputPoint = parseInt(e.target.value);
-        if (isNaN(inputPoint)) {
-            setBettingPoint(0);
+        if (/^\d*$/.test(inputPoint)) { // 입력값이 숫자인지 확인
+          setBettingPoint(inputPoint);
+          setPointLeft(myPoint - inputPoint);
+          setDividend(inputPoint * parseFloat(props.dividendRate));
         } else {
-            setBettingPoint(inputPoint);
-            setPointLeft(myPoint - inputPoint);
-            setDividend(inputPoint * parseFloat(props.dividendRate))
-            ;
+          setBettingPoint(0);
         }
       };
 
