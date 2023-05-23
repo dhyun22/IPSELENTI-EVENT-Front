@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom/dist";
 import { useState, useEffect } from "react";
 // import logo from '../img/logo.png';
-import editCharacter from '../img/haho-head.png';
+
 //import {Useform, useForm} from 'react-hook-form';
 
 
@@ -123,7 +123,6 @@ function Login() {
                             </span>
                         </form>
                     </div>
-                    
                 </div>
             </div>
         </div>
