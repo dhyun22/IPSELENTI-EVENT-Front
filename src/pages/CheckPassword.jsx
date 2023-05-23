@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom/dist';
 import { Link } from 'react-router-dom/dist';
 
 const CheckPassword = () => {
+   
 
 
     const [userId, setUserId] = useState('');
@@ -43,7 +44,7 @@ const CheckPassword = () => {
         } else {
             setErrText('')
     }
-}
+    }
     const checkPwValid = () => {
 
             if (password === checkPassword){
@@ -55,6 +56,9 @@ const CheckPassword = () => {
             }
         
     }
+
+    const Navigate = useNavigate();
+
     const createNewPW = async (e) => {
         //event.preventDefault(); // 아무 동작 안하고 버튼만 눌러도 리프레쉬 되는 것을 막는다
 
@@ -73,7 +77,8 @@ const CheckPassword = () => {
                 withCredentials: true
             });
             if (response.status === 200) {
-                return alert("비밀번호가 변경되었습니다.");
+                alert("비밀번호가 변경되었습니다.");
+                Navigate('/login');
             } 
         } catch (error) {
             if(error.response.status === 400){

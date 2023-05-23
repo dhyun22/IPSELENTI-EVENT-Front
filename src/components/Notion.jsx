@@ -8,7 +8,7 @@ const Signout = () => {
 
   return (
     <div className='notion-box'>
-        <a href='https://www.notion.so/_-a53f9a71fb8540588235471c7a5c42f7' className='notion-links'><span>&nbsp;개인정보처리방침&nbsp;&nbsp;&nbsp;</span></a>
+        <a href='https://harmonious-authority-301.notion.site/8af858285ca94c74bde350058a3deb3d' className='notion-links'><span>&nbsp;개인정보처리방침&nbsp;&nbsp;&nbsp;</span></a>
         <a href='https://open.kakao.com/o/s74JtHlf' className='notion-links'> 
             <span>&#124;&nbsp;&nbsp;&nbsp;고객센터&nbsp;&nbsp;&nbsp;</span>
         </a>
