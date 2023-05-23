@@ -15,6 +15,8 @@ const WikiToHtml = (wikiText) => {
         
         // 링크 처리
         html = html.replace(/--(.+?)--/g, '<del>$1</del>');
+
+        html = html.replace(/&amp;/g, '&');
       
         return html;
 };
