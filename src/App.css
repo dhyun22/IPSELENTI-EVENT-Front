@@ -432,9 +432,9 @@ h4{
 }
 /* 위키뷰어 */
 .wiki-viewer{
-    padding: 25px;
+    padding-right: 5%;
     padding-top: 0px;
-    width: 100%;
+    width: 90%;
 }
 .wiki-title{
     display: flex;

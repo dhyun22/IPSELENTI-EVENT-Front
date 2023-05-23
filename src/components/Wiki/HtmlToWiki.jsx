@@ -24,6 +24,7 @@ const htmlToWiki = (html) => {
   wikiText = wikiText.replace(/<\/?span[^>]*>/g, '');
   wikiText = wikiText.replace(/<br>/g, '\n');
   wikiText = wikiText.replace(/&nbsp;/g, ' ');
+  html = html.replace(/<\/?p[^>]*>/g, '');
   // wikiText = wikiText.replace(/<p>(.*?)<\/p>/g, '$1');
   // wikiText = wikiText.replace(/<p>(.*?)<\/p>/g, '$1');
   // wikiText = wikiText.replace(/<p>(.*?)<\/p>/g, '$1');
