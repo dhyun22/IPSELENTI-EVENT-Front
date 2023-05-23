@@ -211,6 +211,7 @@ function SignUp() {
                                 />
                                 <span className='spans'>상품 수령 시 필요한 정보이니 정확하게 기입해주세요.</span>
                                 <span className={checkPhoneNum ? 'spans' : 'hidden'}>전화번호를 제대로 입력해주세요</span>
+                                <span className='spans'>이벤트가 종료된 뒤 모든 개인정보는 폐기됩니다.</span>
                             </div>
                         </div>
                     </form>

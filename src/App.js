@@ -16,7 +16,7 @@ import WikiEditContent from "./pages/WikiEditContent";
 import WikiHistory from "./pages/WikiHistory";
 import WikiShowVer from "./pages/WikiShowVer";
 import Admin from "./pages/Admin";
-import PrivactPolicy from "./pages/PrivactPolicy";
+import CheckPassword from "./pages/CheckPassword";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   //     // const [allContent, setAllContent] = useState(null);
@@ -104,7 +104,7 @@ function App() {
           setLoggedIn={setLoggedIn}
         />
 
-        <Route path="/privacy" element={<PrivactPolicy />} />
+        <Route path="/changepw" element={<CheckPassword />} />
       </Routes>
     </Router>
   );
