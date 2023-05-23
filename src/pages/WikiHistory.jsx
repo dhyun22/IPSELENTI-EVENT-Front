@@ -75,9 +75,11 @@ const WikiHistory = () => {
                     <h2>History</h2>
                     <div className='history-content'>
                         {history.map((item) => {
+                            const time = new Date(item.edited_time);
+                            const formattedTime = `${time.toLocaleDateString()} ${time.getHours()}:${time.getMinutes() < 10 ? '0' : ''}${time.getMinutes()}:${time.getSeconds() < 10 ? '0' : ''}${time.getSeconds()}`;
                             return(
                                 <div key={item.wiki_history_id}>
-                                   <HistoryBox ver={item.text_pointer} time={item.edited_time} studentid={item.editor_id} isrollback={item.is_rollback}/>
+                                   <HistoryBox ver={item.text_pointer} time={formattedTime} studentid={item.editor_id} isrollback={item.is_rollback}/>
                                 </div>
                             );
                         })}
