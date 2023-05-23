@@ -21,6 +21,12 @@ const htmlToWiki = (html) => {
   wikiText = wikiText.replace(/<del>(.*?)<\/del>/g, "--$1--");
   // 단락 처리
   wikiText = wikiText.replace(/<p>(.*?)<\/p>/g, '$1');
+  wikiText = wikiText.replace(/<\/?span[^>]*>/g, '');
+  wikiText = wikiText.replace(/<br>/g, '\n');
+  wikiText = wikiText.replace(/&nbsp;/g, ' ');
+  // wikiText = wikiText.replace(/<p>(.*?)<\/p>/g, '$1');
+  // wikiText = wikiText.replace(/<p>(.*?)<\/p>/g, '$1');
+  // wikiText = wikiText.replace(/<p>(.*?)<\/p>/g, '$1');
 
   return wikiText;
 };

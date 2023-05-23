@@ -434,6 +434,7 @@ h4{
 .wiki-viewer{
     padding: 25px;
     padding-top: 0px;
+    width: 100%;
 }
 .wiki-title{
     display: flex;
@@ -522,7 +523,7 @@ h4{
     justify-content: center;
     align-items: center;
 }
-.editsubmit-btn{
+.wikiedit-submit button{
     background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
     border-radius: 6px;
     color: white;
