@@ -1,120 +1,306 @@
 /*header*/
 
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
-.App {
-    font-family: "Pretendard";
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+* {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard Variable", Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
+
 
 .header {
     width: 100%;
-    height: 22vh;
+    height: 200px;
     text-align: center;
-    background-color: blue;
+    /* background-color: blue; */
     align-items: center;
-    position: relative;
 }
 
 .headerContainer {
     width: 100%;
     display: flex;
+    margin-bottom: 5px;
 }
 
 .logoContainer {
     width: 100%;
-    height: 20%;
+    height: 40px;
+    padding-top: 10px;
 }
 
 .logo {
-    width: 20%;
-    height: 60%;
-    margin-top: 4%;
+    width: 65px;
+    height: 45px;
+    margin-top: 13px;
     cursor: pointer;
+    object-fit: contain;
 }
 
 .myPageButton {
-    position: absolute;
-    right: 10%;
-    top: 5%;
-    background-color: green;
-    width: 10%;
-    height: 16%;
+    margin-top: -60px;
+    margin-right: 5px;
+    margin-left: 87%;
+    position: relative;
+    background-color: white;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.13) inset;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
-    color: black;
+    color: rgba(116, 116, 116, 1);
+    border-radius: 6px;
 }
 
 .myPageIcon {
     position: absolute;
-    font-size: 20px;
-    top: 20%;
-    left: 25%;
+    font-size: 15px;
+    top: 7px;
+    left: 8px;
 }
 
 .searchBarContainer {
-    margin-top: 4%;
+    margin-top: 30px;
     display: flex;
-    width: 90%;
-    margin-left: 5%;
+    width: 80%;
+    margin-left: 15px;
 }
 
 .searchBar {
-    width: 80%;
+    /* width: 80%;
     height: 4vh;
-    border-radius: 6px 0px 0px 6px;
+    border-radius: 6px 0px 0px 6px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 15px 6px 15px;
+  background-color: white;
+  border: none;
+  width: 80%;
+  height: 25px;
+  border-radius: 2rem;
+  margin-left: 8%;
+  margin-right: 5%;
+  color: rgb(0, 0, 0, 0.4);
+  /* box-shadow: 3px 3px 3px 2px rgba(0, 0, 0, 0.1); */
+  /* -webkit-appearance: none;
+  border:0;
+  border-radius: 1px;
+  height: 1px; */
+
+  -webkit-appearance: none;
+  -moz-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1) inset;
+}
+.searchBar:focus{
+  outline: none;
 }
 
 .searchButton {
-    position: absolute;
-    width: 10%;
-    height: 18%;
-    background-color: grey;
-    right: 9%;
-    margin-top: 0.7%;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    /* background-color: #ccc; */
+    padding-right: 50%;
+    /* margin-top: 0%; */
     align-items: center;
+    justify-content: center;
     cursor: pointer;
-    color: black;
+    color: rgba(116, 116, 116, 1);
+    transition-duration: 0.05s;
+    
 }
+
+/* .searchButton:active {
+  box-shadow:none;
+  margin-left:1px;
+  margin-top:1px;
+} */
 
 .search {
-    position: absolute;
+    /* position: absolute; */
     font-size: 20px;
-    top: 20%;
-    left: 25%;
+    /* top: 20%;
+    left: 25%; */
+}
+.searchButton:hover {
+  color: rgba(159, 19, 46, 1);
+}
+.searchButton:active {
+  color: rgba(159, 19, 46, 1);
 }
 
 
-
-.banner {
-    width: 80%;
-    height: 6vh;
-    margin-top: 20px;
-    background-color: grey;
-    border-radius: 6px;
+.banner{
+  width: 80%;
+  height: 50px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  border-radius: 8px;
+  /* object-fit: contain; */
 }
 
-/*wiki*/
-.body {
+.home-main{
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.homeContainer {
     display: flex;
-    width: 100%;;
-    height: 78vh;
-    background-color: grey;
+    width: 100%;
+    height: 450px;
+    position: absolute;
     position: relative;
     justify-content: center;
+    top: 30px;
+    bottom: 0px;
+} 
+
+
+@keyframes slide-in {
+  from {
+    margin-top: 0%;
+    opacity: 0;
+  }
+  to {
+    margin-top: 13px;
+    opacity: 1;
+  }
+}
+
+
+@keyframes slide-btn {
+  from {
+    bottom: 5%;
+    opacity: 0;
+  }
+  to {
+    bottom: 17%;
+    opacity: 1;
+  }
+}
+
+.homeText1 {
+  opacity: 0;
+  font-size: 27px;
+  /* font-weight: bold; */
+  font-family: 'Jua', sans-serif;
+  animation-name: slide-in;
+  animation-duration: 1.5s;
+  animation-delay: 1s;
+  animation-timing-function: ease-out;
+  /* animation-iteration-count: 3; */
+  position: absolute;
+  left: 10%;
+  top: -5%;
+  animation-fill-mode: forwards;
+}
+
+.homeText2 {
+  opacity: 0;
+  font-size: 22px;
+  /* font-weight: bold; */
+  font-family: 'Jua', sans-serif;
+  animation-name: slide-in;
+  animation-duration: 1.5s;
+  animation-delay: 1.6s;
+  animation-timing-function: ease-out;
+  /* animation-iteration-count: 3; */
+  position: absolute;
+  right: 5%;
+  top: 6%;
+  animation-fill-mode: forwards;
+}
+
+.homeText3 {
+  opacity: 0;
+  font-size: 22px;
+  /* font-weight: bold; */
+  font-family: 'Jua', sans-serif;
+  animation-name: slide-in;
+  animation-duration: 0.9s;
+  animation-delay: 2.2s;
+  animation-timing-function: ease-out;
+  /* animation-iteration-count: 3; */
+  position: absolute;
+  left: 7%;
+  top: 13%;
+  animation-fill-mode: forwards;
+}
+
+.homeText4 {
+  opacity: 0;
+  font-size: 18px;
+  /* font-weight: bold; */
+  font-family: 'Jua', sans-serif;
+  animation-name: slide-in;
+  animation-duration: 0.7s;
+  animation-delay: 2.8s;
+  animation-timing-function: ease-out;
+  /* animation-iteration-count: 3; */
+  position: absolute;
+  right: 2%;
+  top: 20%;
+  animation-fill-mode: forwards;
+}
+
+.homeCharacter {
+  position: absolute;
+  bottom: 35%;
+  width: 37%;
+  height: 22vh;
 }
 
 .redbutton {
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-name: slide-btn;
+    animation-duration: 0.7s;
+    animation-delay: 1s;
+    animation-timing-function: ease-out;
     color: white;
-    background-color: red;
+    background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
+    position: absolute;
     font-weight: 700;
     font-size: 18px;
-    border-radius: 6px;
+    border-radius: 2rem;
     border:none;
-    width: 60%;
-    height: 12%;
+    width: 140px;
+    height: 43px;
     cursor: pointer;
     padding: 5px;
     position: absolute;
-    bottom: 20%;
-    right: 20%;
+    right: 9%;
+    /* box-shadow: 0px 8px 8px -8px black;
+    transition-duration: 0.1s; */
+}
+.redbutton2 {
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-name: slide-btn;
+  animation-duration: 0.7s;
+  animation-delay: 1s;
+  animation-timing-function: ease-out;
+  color: rgba(159, 19, 46, 1);
+  /* background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1)); */
+  background-color: white;
+  /* box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1) inset; */
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 2rem;
+  border: 2px solid rgba(159, 19, 46, 1);
+  width: 140px;
+  height: 43px;
+  cursor: pointer;
+  padding: 5px;
+  position: absolute;
+  bottom: 15%;
+  right: 52%;
+  /* box-shadow: 0px 8px 8px -8px black;
+  transition-duration: 0.1s; */
+}
+
+.redbutton:active {
+  /* box-shadow: none;
+  margin-top: 10px; */
 }
 
 .index {
@@ -127,103 +313,67 @@ a {
     text-decoration-line: none;
 }
 
-.completedButton {
-    color: white;
-    background-color: red;
-    font-weight: 700;
-    font-size: 18px;
-    border-radius: 6px;
-    border:none;
-    width: 60%;
-    height: 8%;
-    cursor: pointer;
-    padding: 5px;
-    position: absolute;
-    bottom: 10%;
-    right: 20%;
-}
-
-.signUpCompleted{
-    color: white;
-    background-color: red;
-    font-weight: 700;
-    font-size: 18px;
-    border-radius: 6px;
-    border:none;
-    width: 60%;
-    height: 6%;
-    cursor: pointer;
-    padding: 5px;
-    position: absolute;
-    bottom: 15%;
-    right: 20%;
-}
-
-.backToHome {
-    color: white;
-    background-color: rgb(163, 159, 159);
-    font-weight: 700;
-    font-size: 18px;
-    border-radius: 6px;
-    border:none;
-    width: 60%;
-    height: 6%;
-    cursor: pointer;
-    padding: 5px;
-    position: absolute;
-    bottom: 7%;
-    right: 20%;
-}
 /* 로그인 */
 .auth{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+    /* position: relative; */
+    /* width: 80%;
+    height: 90%; */
 }
-.login-img{
-    margin-left: 3px;
-    margin-top: 190px;
-    margin-bottom: 20px;
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-    
+.logoCharacter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16%;
 }
+
 .login-form{
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    margin: 20px;
-
-    
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px 20px 20px; 
+    width: 90%;
 }
 .login-form input{
-    width: 260px;
-    height: 33px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
-    margin: 7px;
+    width: 240px;
+    height: 35px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 43px;
+    margin-bottom: 17px;
+    margin-top: 0px;
+    padding-left: 10px;
+    background-color: rgba(0, 0, 0, 0.04);
+}
+.login-form input:focus{
+  outline: 1px solid rgba(0, 0, 0, 0.35);
 }
 .login-form #btn{
-    border-radius: 30px;
+    width: 250px;
+    border-radius: 12px;
     height: 40px;
-    background-color: #c72f44;
+    background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
     color: white;
     border: none;
-    margin-bottom: 10px;
-
+    margin: 10px 0px 10px 0px;
+    cursor: pointer;
 }
 .login-form span{
     font-size: 11px;
-    margin-left: 45px;
+    /* margin-left: 22%; */
 }
 /* 회원가입 */
 .info{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 30px;
-    padding-top: 100px;
 }
 .info img{
     margin-bottom: 30px;
@@ -247,49 +397,177 @@ a {
     padding: 5px;
     font-size: 8px;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+}
+.signup-content input:focus{
+  outline: 1px solid rgba(0, 0, 0, 0.35);
+
 }
 
 h4{
     margin: 7px 0px;
 }
-.content-in span{
+.spans{
     display: block;
     font-size: 7px;
     padding: 8px 0px;
+    color: #DE3A58;
 }
-.phone-auth input{
-    height: 30px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: none;
-    border-radius: 6px 0px 0px 6px;
-    margin-bottom: 5px;
 
-}
 .hidden{
     display: none;
 }
 
-.phone-auth button{
-    background-color: #d63d43;
-    border: none;
-    height: 32px;
-    width: 60px;
-    color: white;
-    border-radius: 0px 6px 6px 0px;
-
-}
 #signup-btn{
     width: 150px;
     height: 40px;
-    margin-top: 50px;
-    margin-left: 35px;
+    margin-top: 30px;
+    margin-left: 0px;
     border: none;
-    background-color: #c72f44;
+    background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
     color: white;
     border-radius: 6px;
+    cursor: pointer;
 
 }
+/* 위키뷰어 */
+.wiki-viewer{
+    padding: 25px;
+    padding-top: 0px;
+}
+.wiki-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.alledit-btn button.wikiedit-btn{
+  margin-right: 0px;
+}
+.wiki-title div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wiki-title button{
+    margin: 10px;
+}
+.wiki-history{
+  padding: 0px 10px;
+}
 
+#history-link{
+    font-size: 10px;
+}
+.wiki-index{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    width: 43%;
+    font-size: 13px;
+}
+.wiki-index li{
+    cursor: pointer;
+    list-style-type: none;
+    padding: 4px;
+    
+}
+.wiki-contents{
+    margin: 10px 0px;
+    font-size: 12px;
+    width: 100%;
+}
+.wiki-contents li{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 0px;
+    padding: 5px 0px 5px 0px;
+
+}
+.wiki-contents hr{
+  width: 100%;
+  margin: 1px;
+  margin-bottom: 8px;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+/* 위키 편집기 */
+.wikiedit{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.wikiedit-btn{
+    justify-content: flex-end;
+    width: 40px;
+    height: 20px;
+    border: none;
+    background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
+    color: white;
+    border-radius: 6px;
+    font-size: 10px;
+    cursor: pointer;
+
+}
+.wikiedit-submit{
+    margin: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.wikiedit-submit button{
+    background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
+    border-radius: 6px;
+    color: white;
+    width: 60px;
+    height: 35px;
+    border: none;
+    
+}
+.wikiedit-submit p{
+  font-size: 12px;
+  color: rgba(222, 58, 88, 1);
+}
+/* 위키 히스토리 */
+.rollback-box{
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 5px;
+}
+.rollback-btn{
+    font-size: 10px;
+    background-color: white;
+    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.rollbacksubmit-btn{
+  margin-left: 10px;
+}
+
+/* 로그아웃 */
+.logout-box{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.logout-btn{
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  background-color: white;
+  font-size: 13px;
+  width: 60px;
+  height: 25px;
+  cursor: pointer;
+  
+}
 
 
 
@@ -298,7 +576,7 @@ h4{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: auto;
     background-color: #f5f5f5;
   }
   /* 모바일 뷰를 하나의 container로 잡고 제한 */
@@ -307,7 +585,7 @@ h4{
     display: flex;
     width: 100%;
     height: 100%;
-    padding: 10px;
+    /* padding: 10px; */
     background-color: #ffffff;
     box-sizing: border-box;
   }
@@ -319,7 +597,9 @@ h4{
       display: flex;
       position: relative;
       width: 375px;
-      height: 667px;
+      min-height: 100vh;
+      height: auto;
+      background-color: #ffffff;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
   }
@@ -327,19 +607,117 @@ h4{
 
 /* 위키 관련 페이지 */
 .editResult {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     white-space:pre-wrap;
     text-align: center;
     font-weight: bold;
-    margin-top: 20%;
+    margin-top: 20px
+    /* position: relative; */
+    /* width: 80%;
+    height: 90%; */
 }
 
 
-.temporaryLogo {
+.editLogo {
 
+  width: 100px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.editCharacter {
+  margin-top: 30px;
+  width: 55%;
+  height: 55%;
+  object-fit: contain;
+}
+
+.textContainer {
+  /* position: absolute; */
+  width: 70%;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.editText {
+  font-size: 16px;
+}
+.completed-btns{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8%;
+}
+.completedButton {
+  color: white;
+  background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));;
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 2rem;
+  border:none;
+  width: 200px;
+  height: 50px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.signUpCompleted{
+  color: white;
+  background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 2rem;
+  border:none;
+  width: 200px;
+  height: 50px;
+  cursor: pointer;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.backToHome {
+  color: rgba(159, 19, 46, 1);
+  background-color: white;
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 2rem;
+  border: 2px solid rgba(159, 19, 46, 1);
+  width: 200px;
+  height: 50px;
+  cursor: pointer;
+  padding: 5px;
 }
 
 /* 마이페이지 */
-.content{
+.myPageButton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#mypageheader{
+
+  width: 100%;
+  height: 7vh;
+  text-align: center;
+  /* background-color: blue; */
+  align-items: center;
+  position: relative;
+}
+
+#mypagelogo {
+width: 25%;
+height: 27px;
+margin-top: 1vh;
+cursor: pointer;
+}
+
+
+
+.mypage_content{
     padding: 0 20px;
     box-sizing: border-box;
   }
@@ -351,6 +729,7 @@ h4{
   
   .myPageLogo {
     text-align: center;
+    height: 4.4vh;
   }
   .mypage_text{
     text-align: center;
@@ -362,13 +741,8 @@ h4{
     font-size: 12px;
   }
   
-  
-  
-  
-  
-  
   #account_box{
-    height: 100%;
+  
     font-size: 1rem;
     font-family: Arial, Helvetica, sans-serif ;
     flex-direction: column;
@@ -378,9 +752,9 @@ h4{
   #account_title {
     position: relative;
     display: block;
-    padding: 1px 38px 1px 18px;
+    padding: 1px 38px 1px 0px;
     border-radius: 12px 12px 0 0;
-    background-image: linear-gradient(98deg, rgb(89, 1, 1),crimson);
+    background-image: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));;
   }
   
   #account_text{
@@ -437,25 +811,23 @@ h4{
     color: #000000;
   }
   
-  
-  
-  
-  
+
   
   #betting_box{
-    height: 100%;
+   
     font-size: 1rem;
     font-family: Arial, Helvetica, sans-serif ;
     flex-direction: column;
     background-color: #ffffff;
+    position: relative;
   }
   
   #betting_title {
     position: relative;
     display: block;
-    padding: 1px 38px 1px 18px;
+    padding: 1px 38px 1px 0px;
     border-radius: 12px 12px 0 0;
-    background-image: linear-gradient(98deg, rgb(89, 1, 1),crimson);
+    background-image: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));;
   }
   
   #betting_text {
@@ -475,25 +847,25 @@ h4{
     border: solid 1px #e3e9ed;
     background-color: #ffffff;
     box-sizing: border-box;
-    display: inline-flex;
+  }
+
+
+  .betting_info{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-bottom: 10px;
   }
   
-  #row_itemused, #row_itemleft{
-    font-size: 12px;
+  .row_itemleft, .row_itemused{
+    font-size: 15px;
     font-weight: 500;
     line-height: 15px;
     letter-spacing: -.47px;
     color: #000000;
   }
   
-  .row_itemused{
-    margin-left: 30px;
-  }
-  
-  
-  
-  
-  
+
   
   
   #betting_list_box{
@@ -514,6 +886,7 @@ h4{
     columns: 2;
     -webkit-columns: 2;
     -moz-columns: 2;
+    margin-bottom: 20px;
   }
   
   
@@ -543,14 +916,871 @@ h4{
     height: 75%;
     background-color: #c1c1c1;
   }
-  
-  #customer_box{
-    height: 100%;
-    font-size: 1rem;
-    font-family: Arial, Helvetica, sans-serif ;
-    flex-direction: column;
-    background-color: #ffffff;
+
+  #bettingtime {
+    font-size: 8px;
   }
+
+/* 메인페이지 */
+
+#mainpageheader{
+
+    width: 100%;
+    height: 7vh;
+    text-align: center;
+    /* background-color: blue; */
+    align-items: center;
+    position: relative;
+}
+
+#mainpagelogo {
+  width: 25%;
+  height: 27px;
+  margin-top: 1vh;
+  cursor: pointer;
+}
+
+#mainmyPageIcon {
+  position: absolute;
+  font-size: 20px;
+  top: 38%;
+  left: 25%;
+}
+
+
+.main_content{
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
+.main_head, .main_body{
+  position: relative;
+  min-height: 41px;
+  line-height: 41px;
+  margin-bottom: 5%;
+  border-bottom: 1px solid #c9c6c6;
+}
+.main_head{
+  padding-bottom: 18px;
+}
+
+
+.main_head_title{
+  display: initial;
+  text-align: left;
+}
+
+.adding_lineup{
+  font-size: 12px;
+  border : none;
+  background-color: white;
+  float: right;
+  margin-bottom: 1px;
+  color:rgb(122, 122, 122);
+  cursor: pointer;
+}
+
+.main_body {
+  display: flex;
+  padding-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.left_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100%/6);
+  width: 50%;
+}
+
+
+
+.remaintime_text {
+  font-size: 18px;
+  font-weight: bold;
+  flex:1;
+}
+
+.remaintime {
+  font-size: 14px;
+  flex:1;
+}
+
+.ShareModal {
+  margin-top: 10px;
+  flex:1;
+}
+
+.sharing_button{
+  color: white;
+  background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  margin-top: 20px;
+}
+
+.rignt_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: calc(100%/6);
+  
+}
+
+.Totalpoint_text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.Totalpoint {
+  font-size: 14px;
+}
+
+
+
+.Totalpoint_text,
+.Totalpoint,
+.MovetoComment {
+  flex: 1;
+}
+
+.MovetoComment{
+  margin-top: 10px;
+}
+
+.moving_button{
+    color: white;
+    background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 2rem;
+    border: none;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    margin-top: 20px;
+}
+
+
+
+
+.info_box{
+  border-bottom: 1px solid #c9c6c6;
+  position: relative;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+
+}
+.celeb_rank {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#celeb_thumb {
+  float: left;
+/*   width: 60px; */
+  height: 60px;
+  width: 60px; 
+  overflow: hidden;  /* 사진 찌그러짐수정 */
+  margin: 0 0 0 30px;
+  border-radius: 20px;
+  box-shadow: 0px 2px 4px 0 rgba(42, 55, 71, 0.15);
+  position: relative;
+  object-fit: cover; /* 사진 찌그러짐수정 */
+}
+
+.celeb_info {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+#celeb_name, #celeb_betrate {
+  display: block;
+  margin-left: 10px;
+}
+#celeb_name{
+  font-size: 16px;
+  font-weight: bold;
+}
+#celeb_betrate{
+  margin-top: 5px;
+  font-size: 10px;
+  color:rgb(122, 122, 122);
+}
+.celeb_footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 10px;
+}
+#celeb_point {
+  margin-top: 20px;
+  margin-right: 10px;
+  font-size: 10px;
+  color: rgb(122, 122, 122);
+}
+
+.betting_btn{
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));
+  color: white;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+}
+
+.celeb_graph{
+  margin : 0 15px 0 15px;
+  display: flex; 
+  align-items: center; 
+}
+
+#celeb_per{
+  clear: both;
+  display: block;
+  width: 100%;
+  height: 7px;
+  background: #eaeaea;
+  border-radius: 5px;
+  margin-top: 5px;
+  
+}
+
+#celeb_bg{
+  
+  display: block;
+  height: 7px;
+  border-radius: 5px;
+  background-image: linear-gradient(to left, rgba(159, 19, 46, 1), rgba(222, 58, 88, 1));;
+}
+
+.celeb_per_text{
+  font-size: 10px;
+  margin-top: 5px;
+  margin-left: 5px;
+  color: #7A7A7A;
+}
+
+#celeb_showmore{
+  border: none;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  background: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+  margin-top: -15px;
+
+}
+
+.AddLineup{
+  display: flex;
+
+}
+
+.ranking_count{
+  padding-bottom: 20px;
+}
+
+/* 댓글창 */
+.comment_content{
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.comment_head{
+  position: relative;
+  min-height: 41px;
+  line-height: 41px;
+  border-bottom: 1px solid #c9c6c6;
+  margin-bottom: 20px;
+  display: flex;
+
+}
+
+.comment_head_title .comment_head_count .comment_head_tools{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.comment_head_title{
+  display: initial;
+  text-align: left;
+}
+
+.comment_bylike, .comment_bytime {
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+
+
+.comment_writing_area{
+  margin-top: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.comment_writing_name{
+  text-align: left;
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+#comment_writing_textarea{
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 13px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+  color: #000;
+  border:none;
+  
+}n
+
+.comment_btn_wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.comment_btn{
+  margin: 5px 5px;
+  border: none;
+  background-color: #d0d0d0;
+  padding: 5px;
+  font-size: 13px;
+  border-radius: 4px;
+  color: #444;
+  float: right; 
+  cursor: pointer;
+}
+.comment_btn:hover{
+  color: white;
+  background-color: #444;
+}
+
+.comment_view {
+ 
+  padding: 0 10px;
+  box-sizing: border-box;
+} 
+
+.comment_main{
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.comment {
+  border-bottom: 1px solid #ccc;
+  font-size: 13px;
+}
+
+.comment_header{
+  display :flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.comment_id {
+  
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.comment_head_tools{
+  padding-top: 7px;
+  float: right;
+  margin: 0 10px 0 0;
+}
+
+.comment_text{
+  margin-left: 10px;
+}
+
+.comment_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment_time {
+  margin-left: 10px  ;
+  font-size: 10px;
+}
+
+.comment_liked {
+  margin-right: 15px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.more_btn {
+  border: none;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  background: none;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.every_btn{
+    border: none;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    background: none;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.scroll-to-top {
+
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  text-align: center;
+}
+
+.scroll-to-top button {
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 20%;
+  color: #9e9e9e;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: background-color 0.3s ease;
+  border: 1px solid #9e9e9e;
+  box-shadow: 1px 1px 10px 0 rgba(72,75,108,.08);
+
+}
+
+.scroll-to-top button:hover {
+  background-color: #eaeaea
+}
+
+
+
 /* 여기까지 다현이 css */
 
 /* modal */
+.lineupModal {
+  position: relative;
+  max-width: 330px;
+  max-height: 630px;
+  width: 70vw;
+  height: 370px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  border: solid black 2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: white;
+}
+
+
+.modalClose {
+  position: absolute;
+  top: 3%;
+  right: 5%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.singerContainer {
+  width: 100%;
+  height: 60%;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h3 {
+  margin-left: 3vw;
+  font-size: 16px;
+  margin-top: 8%;
+  margin-left: 10%;
+}
+
+.singerInput {
+  margin-left: 5%;
+  width: 75%;
+  height: 12%;
+  border: solid grey 1px;
+  border-radius: 3px;
+  margin-left: 10%;
+}
+
+.reasonInput {
+  margin-left: 5%;
+  width: 75%;
+  height: 32%;
+  border: solid grey 1px;
+  border-radius: 3px;
+  margin-left: 10%;
+  text-align: left;
+}
+
+.lineupAlert {
+  display: block;
+  width: 200px;
+  margin-left: 22%;
+}
+.addLineupBtn {
+  position: absolute;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: white;
+  background: linear-gradient( to right, #DE3A58, #9F132E );
+  font-weight: 700;
+  font-size: 12px;
+  border-radius: 2rem;
+  border: none;
+  width: 40%;
+  height: 12%;
+  cursor: pointer;
+  padding: 5px;
+  top: 88%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bettingModal {
+  position: relative;
+  max-width: 330px;
+  max-height: 630px;
+  height: 400px;
+  width: 70%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  border: solid black 2px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: white;
+}
+
+.singerInfoContainer {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 20%;
+  margin-top: 15%;
+  margin-left: 10%;
+}
+
+.profileContainer {
+  height: 100%;
+  width: 30%;
+}
+
+.singerDetailContainer {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.profilePic {
+  width: 5vh;
+  height: 5vh;
+  margin-top: 35%;
+  margin-left: 5%;
+}
+
+.nameAndVoterate {
+  display: flex;
+  flex-direction: row;
+  margin-top: 12%;
+}
+
+.singerNameContainer {
+  text-align: left;
+}
+
+.singerName {
+  font-weight: bold;
+  font-size: 14px;
+  width: 200%;
+  margin-right: 20%;
+}
+
+.voterateContainer {
+}
+
+.voterate {
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 52px;
+}
+
+.pointAndRank {
+  display: flex;
+  flex-direction: row;
+  margin-top: -15%;
+}
+
+.betPoint {
+  text-align: left;
+  color: grey;
+  font-size: 11px;
+  width: 200%;
+}
+
+.betRank {
+  text-align: right;
+  color: grey;
+  font-size: 11px;
+  width: 30px;
+  margin-left: 30px;
+}
+
+hr {
+  width: 80%;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+.betModalContainer {
+  width: 100%;
+}
+
+.betContainer {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  width: 100%;
+}
+
+.betInfoContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.betText {
+  width: 25%;
+  font-size: 11px;
+  font-weight: bold;
+  height: 5%;
+}
+
+.betInput {
+  width: 35%;
+  text-align: right;
+  height: 5%;
+}
+
+.betBtnContainer {
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-30%);
+  margin-top: 10%;
+}
+
+.betBtn {
+    color: white;
+    background-color: red;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    width: 30%;
+    height: 8%;
+    cursor: pointer;
+    padding: 5px;
+    margin-right: 5%;
+}
+
+.betCanBtn {
+    color: white;
+    background-color: grey;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 6px;
+    border:none;
+    width: 30%;
+    height: 8%;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.shareModal {
+  position: relative;
+  max-width: 350px;
+  max-height: 900px;
+  width: 95%;
+  height: 95%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+ /*  border: solid green 2px; */
+/*   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+  background-color: transparent;
+}
+
+.shareInfo{
+  background-color: transparent;
+  position: relative;
+  width: 80%;
+  height: 30%;
+  top: 23.5%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.picDiv{
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+  width: auto;
+  aspect-ratio: 1419 / 2889;
+}
+
+.shareContainer1 {
+  width: 100%;
+  height: 100%;
+  background-image: url('../src/img/bettingComplete1.png');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+}
+.shareContainer2 {
+  width: 100%;
+  height: 100%;
+  background-image: url('../src/img/bettingComplete2.png');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+}
+.shareContainer3 {
+  width: 100%;
+  height: 100%;
+  background-image: url('../src/img/bettingComplete3.png');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+}
+.shareContainer4 {
+  width: 100%;
+  height: 100%;
+  background-image: url('../src/img/bettingComplete4.png');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+}
+.shareContainer5 {
+  width: 100%;
+  height: 100%;
+  background-image: url('../src/img/bettingComplete5.png');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+}
+
+
+
+.shareLink {
+  width: 80%;
+  height: 3%;
+}
+
+.copyBtn {
+  color: white;
+  position: absolute;
+  background: linear-gradient( to right, #DE3A58, #9F132E );
+  top: 90%;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 30px;
+  border: none;
+  width: 55%;
+  height: 5%;
+  cursor: pointer;
+  padding: 5px;
+  align-items: center;
+}

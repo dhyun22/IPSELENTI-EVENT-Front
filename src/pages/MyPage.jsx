@@ -3,22 +3,100 @@ import {Link} from 'react-router-dom';
 import {FaRegUser} from 'react-icons/fa';
 import {FaRegSmile} from 'react-icons/fa';
 import {AiOutlineNumber} from 'react-icons/ai';
+// import logo from '../img/logo.png';
+import axios from 'axios';
+import {useState, useEffect} from 'react';
+import BettingSum from '../components/BettingSum';
+import LeftPoint from '../components/LeftPoint';
 import {TbCoin} from 'react-icons/tb';
-import logo from '../img/logo.png';
+import BettingList from '../components/BettingList';
+import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
+import Signout from '../components/Signout';
 
 
-function MyPage() {
+
+
+function MyPage({loggedIn, setLoggedIn}) {
+  const Navigate = useNavigate();
+/*   const [loggedIn, setLoggedIn] = useState(false); */
+  
+  const [user, setUser] = useState(''); 
+  const [betting, setBetting]=useState('');
+  const checkLoginStatus = async () => {
+    try {
+        const response = await axios.get(
+          process.env.REACT_APP_HOST+"/user/auth/issignedin",
+            {
+                withCredentials: true,
+            }
+        );
+
+        if (response.data.success) {
+            setLoggedIn(true);
+        } else{
+            setLoggedIn(false);
+               Navigate('/login');
+        }
+    } catch (error) {
+        console.error(error);
+    }
+
+};
+
+
+  const takeuser = async () => {
+    try{
+      //const login = await axios.post(process.env.REACT_APP_HOST+"/user/auth/signin", {user_id: "7777777777", password:"rha1214!"}, {withCredentials:true});
+      const response = await axios.get(process.env.REACT_APP_HOST+"/user/mypage/info", {withCredentials: true});
+      
+      if (response.data.success === true){
+        setUser(response.data.user)
+      }else{ navigator('/login')
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  } 
+
+  useEffect(()=> {takeuser();}, []);
+
+
+
+
+  
+  
+
+useEffect (() => {
+    checkLoginStatus();
+}, []);
+useEffect(()=> {
+  if (loggedIn === false){
+    Navigate('/login');
+  }
+}, [])
+
+
   return (
     <div className='container'>
-      <div className='content'>
-        <div className='myPageLogo'>
-          <img className='logo' src={logo} alt='logo' />
+    <div className='mobile-view'>
+       <div id='mypageheader'>
+                <div className='headerContainer'>
+                    <div className='logoContainer'>
+                        <Link to='/'>
+                         <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt='logo' className='logo' />
+                        </Link>
+                    </div>
+                </div>
         </div>
+
+      <div className='mypage_content'>
+       
         <div className='mypage'>
           <h2 className='mypage_text'>마이페이지</h2>
         </div>
         <div className='welcome_message'>
-          <span>정다현님 안녕하세요!</span>
+          <span>{user.name}님 안녕하세요!</span>
         </div>
         <div className='account_box' id='account_box'>
           <div className='title' id='account_title'>
@@ -28,7 +106,7 @@ function MyPage() {
             <li className='account_list'>
               <div className="row_itemname">
                 <FaRegUser />
-                  <span className="item_text"> &nbsp;정다현</span>
+                  <span className="item_text"> &nbsp;{user.name}</span>
               </div>
             </li>
 
@@ -36,7 +114,9 @@ function MyPage() {
             <li className='account_list'>
               <div className='row_nick'>
                 <FaRegSmile/>
-                  <span className='item_text'> &nbsp;정oo</span>
+                {user.name && user.name !== '' &&
+                <span className='item_text'> &nbsp;{user.name[0]}oo</span>
+                }              
               </div>
             </li>
 
@@ -44,7 +124,7 @@ function MyPage() {
            <li className='account_list'>
               <div className="row_schoolid">
                 <AiOutlineNumber/>
-                  <span className='item_text'> &nbsp;2019140004</span>
+                  <span className='item_text'> &nbsp;{user.user_id}</span>
               </div>
            </li>
           </ul>  
@@ -55,71 +135,29 @@ function MyPage() {
            <h3 className="title_text" id='betting_text'>배팅현황</h3>
           </div>
           <ul className="betting_row" id='betting_row'>
-            <li>
+            <li className='betting_info'>
               <div className="row_itemleft">
-                <TbCoin/>
-                  <span className="item_text" id="row_itemleft"> &nbsp;잔여 포인트 : 15000 P</span>
+                <TbCoin/><span className="item_text" id='row_itemleft'> &nbsp;잔여 포인트 : &nbsp;{user.point} P</span>
               </div>
-           </li>
+            </li>
 
-            <li>
+            <li className='betting_info'>
               <div className="row_itemused">
-                <TbCoin/>
-                 <span className="item_text" id='row_itemused'> &nbsp;배팅 포인트 : 15000 P</span>
+               <TbCoin/><span className="item_text" id='row_itemused'> &nbsp;배팅 포인트 : &nbsp;<BettingSum/> P</span>
               </div>
             </li>
           </ul> 
 
           <div className='betting_list_box' id="betting_list_box">
-            <ul className='betting_list' id='betting_list'>
-              <li>
-                <span className='first' id='first_bet'>르세라핌 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='second' id='second_bet'>뉴진스 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='third' id='third_bet'>아이브 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='fourth' id='fourth_bet'>서동현 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='fifth' id='fifth_bet'>세븐틴 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='sixth' id='sixth_bet'>아이유 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='seventh' id='seventh_bet'>수지 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='eighth' id='eighth_bet'>박재범 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='nineth' id='nineth_bet'>싸이 &nbsp;15000P</span>
-              </li>
-              <li>
-                <span className='nineth' id='nineth_bet'>최영섭 &nbsp;15000P</span>
-              </li>
-            </ul>
+            <BettingList/>
           </div>
-          <div className='customer_box' id='customer_box'>
-            <div className="title" id='customer_title'>
-              <h3 className="title_text" id='customer_text'>고객센터</h3>
-            </div>
-          </div>
-
-          <div className='askupagemove_box' id='askupagemove_box'>
-            <div className="title" id='askupagemove_title'>
-              <h3 className="title_text" id='askupagemove_text'>ASKu페이지</h3>
-            </div>
-          </div>
-
         </div>
       </div>
+      <Signout loggedIn= {loggedIn} setLoggedIn={setLoggedIn}/>
+    </div>
     </div>
   )
+    
 } 
     
     
