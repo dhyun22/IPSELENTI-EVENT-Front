@@ -1442,7 +1442,7 @@ cursor: pointer;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
-  border: solid black 2px;
+  /*border: solid black 2px;*/
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   background-color: white;
 }
@@ -1524,7 +1524,7 @@ h3 {
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
-  border: solid black 2px;
+  /*border: solid black 2px;*/
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   background-color: white;
 }
@@ -1578,7 +1578,7 @@ h3 {
 }
 
 .voterate {
-  color: #DE3A58;
+  color: #9F132E58;
   font-size: 14px;
   font-weight: bold;
   margin-left: 52px;
@@ -1669,12 +1669,12 @@ hr {
 }
 
 .betCanBtn {
-    color: #DE3A58;
+    color: #9F132E;
     background-color: white;
     font-weight: 600;
     font-size: 12px;
     border-radius: 2rem;
-    border: 2px solid #DE3A58;
+    border: 2px solid #9F132E;
     width: 35%;
     height: 30px;
     cursor: pointer;
