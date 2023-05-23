@@ -135,7 +135,7 @@ function BettingModal(props) {
                                         <p className='singerName'>{props.celebName}</p>
                                     </div>
                                     <div>
-                                        <p className='voterate'>{Math.floor(parseInt(props.voteRate))}%</p>
+                                        <p className='voterate'>{Math.floor(parseInt(props.voteRate))}</p>
                                     </div>
                                 </div>
                                 <div className='pointAndRank'>
