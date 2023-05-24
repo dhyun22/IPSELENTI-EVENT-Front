@@ -217,7 +217,7 @@ function LineupEvent({loggedIn, setLoggedIn}) {
                         </div>
                         <div className='rignt_body'>
                             <span className='Totalpoint_text'>누적 포인트</span>
-                            <span className='Totalpoint'>{bettingAmountSum}P</span>
+                            <span className='Totalpoint'>{bettingAmountSum.toLocaleString()}P</span>
                            <div className='move_comment'>
                             <MovetoComment/>
                             </div> 

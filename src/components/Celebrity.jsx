@@ -37,7 +37,7 @@ function Celebrity({loggedIn, setLoggedIn, celebList}) {
             <span id='celeb_betrate'>배당률&nbsp;{celeb.betRate}</span>
           </div>
           <div className='celeb_footer'>
-            <span id='celeb_point'>{celeb.betting_amount} P</span>
+            <span id='celeb_point'>{celeb.betting_amount.toLocaleString()} P</span>
             <BettingModal
             loggedIn={loggedIn} setLoggedIn={setLoggedIn}
             celebId={celeb.celebrity_id}
